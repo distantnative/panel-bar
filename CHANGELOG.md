@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.4
+- Fewer jQuery dependencies
+- Cleaner CSS and JS code and compression
+
 ## Version 0.3
 - Added a button to flip the panel bar from top to bottom and vice versa
 - Enhanced JS: toggle pages' visibility right from the panel bar (optional)
