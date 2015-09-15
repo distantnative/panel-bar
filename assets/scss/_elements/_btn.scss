@@ -1,4 +1,7 @@
+
 // Buttons
-.panelbar__element--btn {
+
+.panelbar-btn {
+  @extend .panelbar-element;
   cursor: pointer;
 }

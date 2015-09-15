@@ -1,10 +1,13 @@
+
 // Textboxes
-.panelbar__element--box {
+
+.panelbar-box {
+  @extend .panelbar-element;
   position: relative;
   cursor: pointer;
 }
 
-.panelbar__element--boxcontent{
+.panelbar-box__content{
   display: none;
   position: absolute;
   min-width: 100%;
@@ -26,9 +29,9 @@
 }
 
 
-.panelbar__element--box:hover {
+.panelbar-box:hover {
 
-  .panelbar__element--boxcontent {
+  .panelbar-box__content {
     display: block;
 
   }

@@ -1,6 +1,6 @@
 // Elements
 
-.panelbar__element {
+.panelbar-element {
   display: inline-block;
   color: #fff;
 
@@ -19,6 +19,7 @@
   }
 }
 
+@import '_elements/_label';
 @import '_elements/_btn';
 @import '_elements/_drop';
 @import '_elements/_box';

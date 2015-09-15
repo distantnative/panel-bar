@@ -5,7 +5,7 @@ namespace PanelBar;
 class Helpers {
   // public helper functions to create elements
   public static function label($args) {
-    $class  = 'panelbar__element panelbar__element--label '.self::__float($args).' pbel-'.$args['id'];
+    $class  = 'panelbar-label '.self::__float($args).' pbel--'.$args['id'];
     $block  = '<div class="'.$class.'">';
     $block .= '<span>';
     $block .= self::__icon($args);
@@ -16,7 +16,7 @@ class Helpers {
   }
 
   public static function link($args) {
-    $class  = 'panelbar__element panelbar__element--btn '.self::__float($args).' pbel-'.$args['id'];
+    $class  = 'panelbar-btn '.self::__float($args).' pbel--'.$args['id'];
     $block  = '<div class="'.$class.'">';
     $block .= '<a href="'.$args['url'].'">';
     $block .= self::__icon($args);
@@ -27,7 +27,7 @@ class Helpers {
   }
 
   public static function dropdown($args) {
-    $class  = 'panelbar__element panelbar__element--drop '.self::__float($args).' pbel-'.$args['id'];
+    $class  = 'panelbar-drop '.self::__float($args).' pbel--'.$args['id'];
     $block  = '<div class="'.$class.'">';
 
     // label
@@ -37,9 +37,9 @@ class Helpers {
     $block .= '</span>';
 
     // all items
-    $block .= '<div class="panelbar__dropitems">';
+    $block .= '<div class="panelbar-drop__list">';
     foreach($args['items'] as $item) {
-      $block .= '<a href="'.$item['url'].'" class="panelbar__dropitem">'.$item['label'].'</a>';
+      $block .= '<a href="'.$item['url'].'" class="panelbar-drop__item">'.$item['label'].'</a>';
     }
     $block .= '</div>';
 
@@ -48,7 +48,7 @@ class Helpers {
   }
 
   public static function box($args) {
-    $class  = 'panelbar__element panelbar__element--box '.self::__float($args).' pbel-'.$args['id'];
+    $class  = 'panelbar-box '.self::__float($args).' pbel--'.$args['id'];
     $block  = '<div class="'.$class.'">';
 
     // label
@@ -58,7 +58,7 @@ class Helpers {
     $block .= '</span>';
 
     // box content
-    $block .= '<div class="panelbar__element--boxcontent" '.self::__style($args).'>';
+    $block .= '<div class="panelbar-box__content" '.self::__style($args).'>';
     $block .= $args['content'];
     $block .= '</div>';
 
@@ -98,6 +98,6 @@ class Helpers {
   }
 
   protected static function __float($args) {
-    return (isset($args['float']) and $args['float'] !== false) ? 'panelbar__element--right' : '';
+    return (isset($args['float']) and $args['float'] !== false) ? 'panelbar-element--right' : '';
   }
 }
