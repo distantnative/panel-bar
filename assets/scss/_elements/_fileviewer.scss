@@ -51,17 +51,21 @@
     &::nth-child(3n+3)     { border-right: none; }
 
     &:hover {
-      opacity: .85;
-      .panelbar-fileviewer__label { color: #fff; }
+      .panelbar-fileviewer__preview {
+        background-color: #8dae28;
+        em {
+          display: block !important;
+          color: #fff;
+        }
+      }
+      .panelbar-fileviewer__image { opacity: .2 }
+      .panelbar-fileviewer__label { color: #fff; background: none; }
     }
   }
 
   &__preview {
     position: relative;
     background-color: #000;
-    background-size: cover;
-    background-position: 50% 50%;
-
     padding-bottom: 66.6666%;
 
     em {
@@ -73,6 +77,16 @@
       font-weight: 600;
       text-transform: uppercase;
     }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: 50% 50%;
   }
 
   &__label {

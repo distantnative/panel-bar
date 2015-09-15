@@ -58,17 +58,13 @@ class Helpers {
     // all items
     $block .= '<div class="panelbar-fileviewer__grid '.($args['single']?'panelbar-fileviewer__grid--single':'').'" '.self::__style($args).'>';
     foreach($args['items'] as $item) {
-      $content  = '<div class="panelbar-fileviewer__preview"';
+      $content  = '<div class="panelbar-fileviewer__preview">';
 
       if ($item['type'] == 'image') {
-        $content .= ' style="background-image:url('.$item['image'].');"';
+        $content .= '<div class="panelbar-fileviewer__image" style="background-image:url('.$item['image'].');"></div>';
       }
 
-      $content .= '>';
-
-      if ($item['type'] != 'image') {
-        $content .= '<em>'.$item['extension'].'</em>';
-      }
+      $content .= '<em '.($item['type'] == 'image' ? 'style="display:none;"' : '').'>'.$item['extension'].'</em>';
 
       $content .= '<span class="panelbar-fileviewer__label">'.$item['label'].'</span>';
       $content .= '</div>';
