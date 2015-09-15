@@ -1,10 +1,9 @@
-
-/* Fonts */
+// Fonts
 
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
-/* Bar */
+// Bar
 
 .panelbar {
   position: fixed;
@@ -51,39 +50,38 @@
   .panelbar.bottom &.fa-caret-down { display: none; }
 }
 
-.panelbar__el--right {
-  float: right;
-}
 
 
-/* Buttons */
+// Elements
 
-.panelbar__btn {
+.panelbar__element {
   display: inline-block;
   color: #fff;
+
+  > a,
+  > span {
+    display: inline-block;
+    padding: 16px 18px;
+  }
 
   &:not(:first-child):not(:last-child) {
     border-left: 1px solid #555;
   }
+
+  &--right {
+    float: right;
+  }
 }
 
-.panelbar__btn  > a,
-.panelbar__drop > span {
-  display: inline-block;
-  padding: 16px 18px;
+// Buttons
+.panelbar__element--btn {
   cursor: pointer;
 }
 
-
-
-/* Dropdowns */
-
-.panelbar__drop {
-  display: inline-block;
+// Dropdowns
+.panelbar__element--drop {
   position: relative;
-
-  color: #fff;
-  border-left: 1px solid #555;
+  cursor: pointer;
 }
 
 .panelbar__dropitems {
@@ -121,7 +119,7 @@
 }
 
 
-.panelbar__drop:hover .panelbar__dropitems {
+.panelbar__element--drop:hover .panelbar__dropitems {
   display: block;
 }
 
@@ -143,7 +141,7 @@
 
 
 
-/* Controls */
+// Controls
 
 .panelbar__controls {
   position: fixed;
@@ -171,7 +169,7 @@
   }
 }
 
-/* Switch */
+// Switch
 .panelbar__switch {
   display: inline-block;
 
@@ -215,7 +213,7 @@
 }
 
 
-/* Flip */
+// Flip
 
 .panelbar__flip {
   display: inline-block;
@@ -232,7 +230,7 @@
  display: none;
 }
 
-/* Mobile */
+// Responsive
 
 @media (max-width: 750px) {
   .not-mobile { display: none; }

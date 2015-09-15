@@ -139,8 +139,14 @@ class PanelBar {
     return $flip;
   }
 
+  protected static function __icon($args) {
+    if (isset($args['icon'])) {
+      return '<i class="fa fa-'.$args['icon'].' '.((isset($args['mobile']) and $args['mobile'] == 'label') ? 'not-mobile' : '').'"></i>';
+    }
+  }
+
   protected static function __float($args) {
-    return (isset($args['float']) and $args['float'] !== false) ? 'panelbar__el--right' : '';
+    return (isset($args['float']) and $args['float'] !== false) ? 'panelbar__element--right' : '';
   }
 
   /* Assets */
@@ -164,14 +170,23 @@ class PanelBar {
 
   // TODO: remove redundancy from helpers (esp. in regard to responsiveness)
 
+  public static function label($args) {
+    $block  = '<div class="panelbar__element panelbar__element--label pbel-'.$args['id'].'">';
+    $block .= '<span>';
+    $block .= self::__icon($args);
+    $block .= $args['label'];
+    $block .= '</span>';
+    $block .= '</div>';
+    return $block;
+  }
+
   public static function link($args) {
-    $class  = 'panelbar__btn '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar__element panelbar__element--btn '.self::__float($args).' pbel-'.$args['id'];
     $block  = '<div class="'.$class.'">';
     $block .= '<a href="'.$args['url'].'">';
 
-    if (isset($args['icon'])) {
-      $block .= '<i class="fa fa-'.$args['icon'].' '.((isset($args['mobile']) and $args['mobile'] == 'label') ? 'not-mobile' : '').'"></i>';
-    }
+    $block .= self::__icon($args);
+
 
     if (isset($args['label'])) {
       $block .= '<span '.((!isset($args['mobile']) or $args['mobile'] == 'icon') ? 'class="not-mobile"' : '').'>'.$args['label'].'</span>';
@@ -183,15 +198,14 @@ class PanelBar {
   }
 
   public static function dropdown($args) {
-    $class  = 'panelbar__drop '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar__element panelbar__element--drop '.self::__float($args).' pbel-'.$args['id'];
     $block  = '<div class="'.$class.'">';
 
     // label
     $block .= '<span>';
 
-    if (isset($args['icon'])) {
-      $block .= '<i class="fa fa-'.$args['icon'].' '.((isset($args['mobile']) and $args['mobile'] == 'label') ? 'not-mobile' : '').'"></i>';
-    }
+    $block .= self::__icon($args);
+
 
     if (isset($args['label'])) {
       $block .= '<span '.((!isset($args['mobile']) or $args['mobile'] == 'icon') ? 'class="not-mobile"' : '').'>'.$args['label'].'</span>';
