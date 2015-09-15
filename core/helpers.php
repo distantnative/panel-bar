@@ -5,7 +5,7 @@ namespace PanelBar;
 class Helpers {
   // public helper functions to create elements
   public static function label($args) {
-    $class  = 'panelbar-label '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar-label '.self::__class($args).' panelbar--'.$args['id'];
     $block  = '<div class="'.$class.'">';
     $block .= '<span>';
     $block .= self::__icon($args);
@@ -16,7 +16,7 @@ class Helpers {
   }
 
   public static function link($args) {
-    $class  = 'panelbar-btn '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar-btn '.self::__class($args).' panelbar--'.$args['id'];
     $block  = '<div class="'.$class.'">';
     $link   = self::__icon($args) . self::__label($args);
     $block .= self::__link($link, $args);
@@ -25,7 +25,7 @@ class Helpers {
   }
 
   public static function dropdown($args) {
-    $class  = 'panelbar-drop '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar-drop '.self::__class($args).' panelbar--'.$args['id'];
     $block  = '<div class="'.$class.'">';
 
     // label
@@ -46,7 +46,7 @@ class Helpers {
   }
 
   public static function box($args) {
-    $class  = 'panelbar-box '.self::__float($args).' panelbar--'.$args['id'];
+    $class  = 'panelbar-box '.self::__class($args).' panelbar--'.$args['id'];
     $block  = '<div class="'.$class.'">';
 
     // label
@@ -103,6 +103,15 @@ class Helpers {
       $style .= '"';
       return $style;
     }
+  }
+
+  protected static function __class($args) {
+    $class = '';
+    if (isset($args['class'])) {
+      $class .= $args['class'].' ';
+    }
+    $class .= self::__float($args);
+    return $class;
   }
 
   protected static function __float($args) {
