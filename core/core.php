@@ -22,6 +22,8 @@ class Core extends Helpers {
 
   public $includeCSS   = true;
   public $includeJS    = true;
+  public $hookCSS      = null;
+  public $hookJS      = null;
 
   protected $protected = null;
 
@@ -32,8 +34,11 @@ class Core extends Helpers {
     $this->elements   = c::get('panelbar.elements', $args['elements']);
     $this->position   = c::get('panelbar.position', 'top');
     $this->visible    = $args['hide'] !== true;
+
     $this->includeCSS = $args['css'];
     $this->includeJS  = $args['js'];
+    $this->hookCSS    = $args['css.hook'];
+    $this->hookJS     = $args['js.hook'];
 
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
   }
@@ -45,6 +50,8 @@ class Core extends Helpers {
       'elements' => get_class_methods('PanelBar\Elements'),
       'css'      => true,
       'js'       => true,
+      'css.hook' => null,
+      'js.hook'  => null,
       'hide'     => false,
     ), $args);
   }
@@ -66,8 +73,8 @@ class Core extends Helpers {
       $bar     = '<div class="'.$classes.'" id="panelbar">'.$this->__content().'</div>';
       $bar    .= Controls::controlBtn();
 
-      if ($this->includeCSS) $bar .= Assets::getCSS();
-      if ($this->includeJS)  $bar .= Assets::getJS();
+      if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
+      if ($this->includeJS)  $bar .= Assets::js($this->hookJS);
 
       return $bar;
     }
