@@ -7,23 +7,21 @@
   cursor: pointer;
 
   &:hover:after {
-    .panelbar-drop__list {
-      position: absolute;
-      content: "";
-      left: 50%;
-      margin-left: -8px;
+    position: absolute;
+    content: "";
+    left: 50%;
+    margin-left: -8px;
 
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
 
-      .panelbar.top & {
-        bottom: 0;
-        border-bottom: 8px solid #fff;
-      }
-      .panelbar.bottom & {
-        top: 0;
-        border-top: 8px solid #fff;
-      }
+    .panelbar--top & {
+      bottom: 0;
+      border-bottom: 8px solid #fff;
+    }
+    .panelbar--bottom & {
+      top: 0;
+      border-top: 8px solid #fff;
     }
   }
 
@@ -38,8 +36,8 @@
     background: #fff;
     box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
 
-    .panelbar.top    & { top: 100%; }
-    .panelbar.bottom & { bottom: 100%; }
+    .panelbar--top    & { top: 100%; }
+    .panelbar--bottom & { bottom: 100%; }
 
     > a { color: #000; }
     > a:hover { color: #777; }
@@ -60,8 +58,8 @@
     color: #000;
     transition: none;
 
-    .panelbar.top    & { border-bottom: 1px solid #efefef; }
-    .panelbar.bottom & { border-top: 1px solid #efefef; }
+    .panelbar--top    & { border-bottom: 1px solid #efefef; }
+    .panelbar--bottom & { border-top: 1px solid #efefef; }
   }
 
 }

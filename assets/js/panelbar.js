@@ -34,24 +34,24 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
 
   // Visibility toggle & flip
   switchbtn.addEventListener('click', function (e) {
-    if (hasClass(panelbar, 'hidden')) {
-      removeClass(panelbar, 'hidden');
+    if (hasClass(panelbar, 'panelbar--hidden')) {
+      removeClass(panelbar, 'panelbar--hidden');
     } else {
-      addClass(panelbar, 'hidden');
+      addClass(panelbar, 'panelbar--hidden');
     }
   });
 
   flipbtn.addEventListener('click', function (e) {
-    if (hasClass(panelbar, 'top')) {
-      removeClass(panelbar, 'top');
+    if (hasClass(panelbar, 'panelbar--top')) {
+      removeClass(panelbar, 'panelbar--top');
     } else {
-      addClass(panelbar, 'top');
+      addClass(panelbar, 'panelbar--top');
     }
 
-    if (hasClass(panelbar, 'bottom')) {
-      removeClass(panelbar, 'bottom');
+    if (hasClass(panelbar, 'panelbar--bottom')) {
+      removeClass(panelbar, 'panelbar--bottom');
     } else {
-      addClass(panelbar, 'bottom');
+      addClass(panelbar, 'panelbar--bottom');
     }
 
   });
@@ -61,7 +61,7 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
   // remove switch in legacy Browser
   controls.remove();
   panelbar.style.paddingRight = 0;
-  panelbar.classList.remove("hidden");
+  panelbar.classList.remove("panelbar--hidden");
 }
 
 

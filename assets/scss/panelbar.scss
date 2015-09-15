@@ -20,10 +20,10 @@
   font-size: 16px;
   font-weight: normal;
 
-  &.hidden { display: none; }
+  &--hidden { display: none; }
 
-  &.top    { top: 0; }
-  &.bottom { bottom: 0; }
+  &--top    { top: 0; }
+  &--bottom { bottom: 0; }
 
   a {
     color: #fff;
@@ -50,6 +50,6 @@
 
 @media (max-width: 750px) {
   .not-mobile { display: none; }
-  .panelbar i:not(.fa-styleless) { margin-right: 0; }
+  .panelbar i { margin-right: 0; }
 
 }

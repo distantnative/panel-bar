@@ -1,6 +1,7 @@
+
 // Controls
 
-.panelbar__controls {
+.panelbar-controls {
   position: fixed;
   z-index: 1200;
   right: 0;
@@ -12,10 +13,10 @@
   padding: 15px 17px 15px 10px;
   border-left: 1px solid #555;
 
-  .panelbar.top    + & { top: 0; }
-  .panelbar.bottom + & { bottom: 0; }
+  .panelbar--top    + & { top: 0; }
+  .panelbar--bottom + & { bottom: 0; }
 
-  .panelbar.hidden + & {
+  .panelbar--hidden + & {
     color: #000;
     border-left: none;
   }
@@ -24,66 +25,47 @@
     cursor: pointer;
     color: #999;
   }
-}
 
-// Switch
-.panelbar__switch {
-  display: inline-block;
 
-  &--visible,
-  &--hidden {
-    position: relative;
-    z-index: 1202;
+  // Flip
+  &__flip {
+    display: inline-block;
+    margin-right: 7px;
+
+    .panelbar--hidden + .panelbar-controls & { display: none; }
+
+    .panelbar--top    + .panelbar-controls &--top    { display: none; }
+    .panelbar--bottom + .panelbar-controls &--bottom { display: none; }
   }
 
-  &--bg {
-    position: absolute;
-    top: 17px;
-    right: 19px;
-    z-index: 1201;
-    color: transparent;
-    font-size: .8em;
-  }
-}
 
+  // Switch
+  &__switch {
+    display: inline-block;
 
-.panelbar__switch--hidden {
-  display: none;
-}
-
-
-
-
-.panelbar.hidden + .panelbar__controls {
-  .panelbar__switch {
-    &--visible {
-      display: none;
-    }
-
+    &--visible,
     &--hidden {
-      display: block;
+      position: relative;
+      z-index: 1202;
     }
+
+    &--hidden { display: none; }
 
     &--bg {
-      color: #fff;
+      position: absolute;
+      top: 17px;
+      right: 19px;
+      z-index: 1201;
+      color: transparent;
+      font-size: .8em;
     }
+
+    .panelbar--hidden + .panelbar-controls & {
+      &--visible { display: none; }
+      &--hidden  { display: block; }
+      &--bg      { color: #fff; }
+    }
+
   }
-}
 
-
-// Flip
-
-.panelbar__flip {
-  display: inline-block;
-  margin-right: 7px;
-
-  .panelbar.hidden + .panelbar__controls & { display: none; }
-}
-
-.panelbar.top + .panelbar__controls .panelbar__flip--top {
- display: none;
-}
-
-.panelbar.bottom + .panelbar__controls .panelbar__flip--bottom {
- display: none;
 }
