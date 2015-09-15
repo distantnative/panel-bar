@@ -1,19 +1,9 @@
 <?php
 
-require 'core.php';
+require 'core/core.php';
+use PanelBar\Core;
 
-class PanelBar extends PanelBarCore {
-
-  public $elements = array(
-      'panel',
-      'add',
-      'edit',
-      'toggle',
-      'languages',
-      'logout',
-      'user'
-    );
-
+class PanelBar extends Core {
 
   // Display functions
   public static function show($args = array()) {
