@@ -9,11 +9,24 @@
   position: absolute;
   min-width: 100%;
 
+  left: 50%;
+  transform: translateX(-50%);
+
   background: #fff;
   box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
 
   .panelbar.top    & { top: 100%; }
   .panelbar.bottom & { bottom: 100%; }
+
+  > a { color: #000; }
+  > a:hover { color: #777; }
+}
+
+
+.panelbar__element--drop:hover {
+  .panelbar__dropitems {
+    display: block;
+  }
 
   &:after {
     position: absolute;
@@ -25,22 +38,14 @@
     border-right: 8px solid transparent;
 
     .panelbar.top & {
-      top: -8px;
+      bottom: 0;
       border-bottom: 8px solid #fff;
     }
     .panelbar.bottom & {
-      bottom: -8px;
+      top: 0;
       border-top: 8px solid #fff;
     }
   }
-
-  > a { color: #000; }
-  > a:hover { color: #777; }
-}
-
-
-.panelbar__element--drop:hover .panelbar__dropitems {
-  display: block;
 }
 
 .panelbar__dropitem {
