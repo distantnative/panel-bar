@@ -73,11 +73,14 @@ class Core extends Helpers {
       $class  .= 'panelbar--'.$this->position.' ';
       if ($this->visible === false) $class .= 'panelbar--hidden ';
 
-      $bar     = '<div class="'.$class.'" id="panelbar">'.$this->__content().'</div>';
+      $bar     = '<div class="'.$class.'" id="panelbar">';
+      $bar    .= '<div class="panelbar__bar" id="panelbar_bar">'.$this->__content().'</div>';
       $bar    .= Controls::output();
 
       if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
       if ($this->includeJS)  $bar .= Assets::js($this->hookJS);
+
+      $bar    .= '</div>';
 
       return $bar;
     }

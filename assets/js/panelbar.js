@@ -23,7 +23,8 @@ var removeClass = function (elem, className) {
 
 
 // Elements
-var panelbar  = document.getElementById('panelbar');
+var wrapper   = document.getElementById('panelbar');
+var panelbar  = document.getElementById('panelbar_bar');
 var controls  = document.getElementById('panelbar_controls');
 var switchbtn = document.getElementById('panelbar_switch');
 var flipbtn   = document.getElementById('panelbar_flip');
@@ -34,24 +35,24 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
 
   // Visibility toggle & flip
   switchbtn.addEventListener('click', function (e) {
-    if (hasClass(panelbar, 'panelbar--hidden')) {
-      removeClass(panelbar, 'panelbar--hidden');
+    if (hasClass(panelbar, 'panelbar__bar--hidden')) {
+      removeClass(panelbar, 'panelbar__bar--hidden');
     } else {
-      addClass(panelbar, 'panelbar--hidden');
+      addClass(panelbar, 'panelbar__bar--hidden');
     }
   });
 
   flipbtn.addEventListener('click', function (e) {
-    if (hasClass(panelbar, 'panelbar--top')) {
-      removeClass(panelbar, 'panelbar--top');
+    if (hasClass(wrapper, 'panelbar--top')) {
+      removeClass(wrapper, 'panelbar--top');
     } else {
-      addClass(panelbar, 'panelbar--top');
+      addClass(wrapper, 'panelbar--top');
     }
 
-    if (hasClass(panelbar, 'panelbar--bottom')) {
-      removeClass(panelbar, 'panelbar--bottom');
+    if (hasClass(wrapper, 'panelbar--bottom')) {
+      removeClass(wrapper, 'panelbar--bottom');
     } else {
-      addClass(panelbar, 'panelbar--bottom');
+      addClass(wrapper, 'panelbar--bottom');
     }
 
   });
