@@ -145,7 +145,7 @@ class PanelBarCore {
 
   public static function link($args) {
     $class  = 'panelbar__element panelbar__element--btn '.self::__float($args).' pbel-'.$args['id'];
-    $block  = '<div class="'.$classes.'">';
+    $block  = '<div class="'.$class.'">';
     $block .= '<a href="'.$args['url'].'">';
     $block .= self::__icon($args);
     $block .= self::__label($args);
