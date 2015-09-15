@@ -3,8 +3,6 @@
 namespace PanelBar;
 
 class Helpers {
-  // Element Helpers
-
   // public helper functions to create elements
   public static function label($args) {
     $class  = 'panelbar__element panelbar__element--label '.self::__float($args).' pbel-'.$args['id'];

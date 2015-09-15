@@ -4,17 +4,17 @@ namespace PanelBar;
 
 require 'helpers.php';
 require 'elements.php';
+require 'controls.php';
+require 'assets.php';
 
 use A;
 use C;
-use Tpl;
 
 use PanelBar\Elements;
+use PanelBar\Controls;
+use PanelBar\Assets;
 
 class Core extends Helpers {
-
-  public $site         = null;
-  public $page         = null;
 
   public $elements     = null;
   public $position     = null;
@@ -35,10 +35,7 @@ class Core extends Helpers {
     $this->includeCSS = $args['css'];
     $this->includeJS  = $args['js'];
 
-    $this->site      = site();
-    $this->page      = page();
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
-    print_r($this->protected);
   }
 
 
@@ -67,10 +64,10 @@ class Core extends Helpers {
 
       $classes = 'panelbar '.$this->position.' '.($this->visible === false ? 'hidden' : '');
       $bar     = '<div class="'.$classes.'" id="panelbar">'.$this->__content().'</div>';
-      $bar    .= $this->__controlBtn();
+      $bar    .= Controls::controlBtn();
 
-      if ($this->includeCSS) $bar .= $this->__getCSS();
-      if ($this->includeJS)  $bar .= $this->__getJS();
+      if ($this->includeCSS) $bar .= Assets::getCSS();
+      if ($this->includeJS)  $bar .= Assets::getJS();
 
       return $bar;
     }
@@ -93,48 +90,6 @@ class Core extends Helpers {
       }
     }
     return $content;
-  }
-
-
-  // Output for control elements
-  protected function __controlBtn() {
-    $controls  = '<div class="panelbar__controls" id ="panelbar_control">';
-    $controls .= $this->__flipBtn();
-    $controls .= $this->__switchBtn();
-    $controls .= '</div>';
-    return $controls;
-  }
-
-  protected function __switchBtn() {
-    $switch  = '<div class="panelbar__switch" id ="panelbar_switch">';
-    $switch .= '<i class="fa fa-times-circle panelbar__switch--visible"></i>';
-    $switch .= '<i class="fa fa-plus-circle panelbar__switch--hidden"></i>';
-    $switch .= '<i class="fa fa-circle panelbar__switch--bg"></i>';
-    $switch .= '</div>';
-    return $switch;
-  }
-
-  protected function __flipBtn() {
-    $flip  = '<div class="panelbar__flip" id ="panelbar_flip">';
-    $flip .= '<i class="fa fa-arrow-circle-up panelbar__flip--top"></i>';
-    $flip .= '<i class="fa fa-arrow-circle-down panelbar__flip--bottom"></i>';
-    $flip .= '</div>';
-    return $flip;
-  }
-
-
-  // Output the assets
-  protected function __getCSS($position = null) {
-    $style  = tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS . 'panelbar.min.css');
-    return '<style>'.$style.'</style>';
-  }
-
-  protected function __getJS() {
-    $script  = 'siteURL="'.$this->site->url().'";';
-    $script .= 'currentURI="'.$this->page->uri().'";';
-    $script .= 'enhancedJS='.(c::get('panelbar.enhancedJS', false) ? 'true' : 'false').';';
-    $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'panelbar.min.js');
-    return '<script>'.$script.'</script>';
   }
 
 }
