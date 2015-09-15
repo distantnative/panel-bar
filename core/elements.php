@@ -63,26 +63,40 @@ class Elements {
     ));
   }
 
-  public function user() {
-    return Helpers::link(array(
-      'id'     => 'user',
-      'icon'   => 'user',
-      'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
-      'label'  => $this->site->user(),
-      'mobile' => 'icon',
-      'float'  => 'right',
-    ));
+  public function files($type = null) {
+    $files  = $this->page->files();
+    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
+    $more   = $files->count() > 15;
+    $files  = $files->limit(15);
+
+    if ($files->count() > 0) {
+      $items = array();
+      foreach($files as $file) {
+        $args = array(
+          'type'      => $file->type(),
+          'url'       => $this->site->url().'/panel/#/files/show/'.$this->page->uri().'/'.$file->filename(),
+          'label'     => $file->filename(),
+          'extension' => $file->extension(),
+        );
+
+        if ($file->type() == 'image') $args['image']  = $file->url();
+        array_push($items, $args);
+      }
+
+      return Helpers::fileviewer(array(
+        'id'     => 'files',
+        'icon'   => ($type == 'image') ? 'photo' : 'file',
+        'label'  => ($type == 'image') ? 'Images' : 'Files',
+        'items'  => $items,
+        'single' => count($items) == 1,
+        'more'   => $more ? $this->site->url().'/panel/#/files/index/'.$this->page->uri() : false,
+        'mobile' => 'icon'
+      ));
+    }
   }
 
-  public function logout() {
-    return Helpers::link(array(
-      'id'     => 'logout',
-      'icon'   => 'power-off',
-      'url'    => $this->site->url().'/panel/logout',
-      'label'  => 'Logout',
-      'mobile' => 'icon',
-      'float'  => 'right',
-    ));
+  public function images() {
+    return $this->files('image');
   }
 
   public function languages() {
@@ -104,4 +118,36 @@ class Elements {
       ));
     }
   }
+
+  public function loadtime() {
+    return Helpers::label(array(
+      'id'     => 'loadtime',
+      'icon'   => 'clock-o',
+      'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
+      'mobile' => 'label',
+    ));
+  }
+
+  public function logout() {
+    return Helpers::link(array(
+      'id'     => 'logout',
+      'icon'   => 'power-off',
+      'url'    => $this->site->url().'/panel/logout',
+      'label'  => 'Logout',
+      'mobile' => 'icon',
+      'float'  => 'right',
+    ));
+  }
+
+  public function user() {
+    return Helpers::link(array(
+      'id'     => 'user',
+      'icon'   => 'user',
+      'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
+      'label'  => $this->site->user(),
+      'mobile' => 'icon',
+      'float'  => 'right',
+    ));
+  }
+
 }
