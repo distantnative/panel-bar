@@ -6,7 +6,7 @@ class Helpers {
   // public helper functions to create elements
   public static function label($args) {
     $class  = 'panelbar__element panelbar__element--label '.self::__float($args).' pbel-'.$args['id'];
-    $block  = '<div class="'.$classes.'">';
+    $block  = '<div class="'.$class.'">';
     $block .= '<span>';
     $block .= self::__icon($args);
     $block .= self::__label($args);
