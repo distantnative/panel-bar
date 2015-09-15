@@ -6,24 +6,7 @@
   position: relative;
   cursor: pointer;
 
-  &:hover:after {
-    position: absolute;
-    content: "";
-    left: 50%;
-    margin-left: -8px;
-
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-
-    .panelbar--top & {
-      bottom: 0;
-      border-bottom: 8px solid #fff;
-    }
-    .panelbar--bottom & {
-      top: 0;
-      border-top: 8px solid #fff;
-    }
-  }
+  @include dropdownArrow;
 
   &__list {
     display: none;
@@ -42,9 +25,7 @@
     > a { color: #000; }
     > a:hover { color: #777; }
 
-    .panelbar-drop:hover & {
-      display: block;
-    }
+    .panelbar-drop:hover & { display: block; }
   }
 
   &__item {
