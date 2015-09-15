@@ -76,7 +76,7 @@ class Helpers {
     }
 
     if($args['more'] !== false) {
-      $block .= self::__link('– more files –', array('url' => $args['more']), 'panelbar-fileviewer__more');
+      $block .= self::__link('all '.$args['label'], array('url' => $args['more']), 'panelbar-fileviewer__more');
     }
 
     $block .= '</div>';
