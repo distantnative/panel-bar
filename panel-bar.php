@@ -227,12 +227,21 @@ class PanelBar {
   }
 
   protected function add() {
-    return self::link(array(
+    return self::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
-      'url'    => $this->site->url().'/panel/#/pages/add/'.$this->page->uri(),
       'label'  => 'Add',
-      'mobile' => 'icon',
+      'items'  => array(
+          'child' => array(
+              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->uri(),
+              'label' => 'Child',
+            ),
+          'sibling' => array(
+              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri(),
+              'label' => 'Sibling',
+            ),
+        ),
+      'mobile' => 'icon'
     ));
   }
 
