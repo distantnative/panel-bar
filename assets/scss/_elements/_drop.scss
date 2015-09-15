@@ -1,0 +1,59 @@
+// Dropdowns
+.panelbar__element--drop {
+  position: relative;
+  cursor: pointer;
+}
+
+.panelbar__dropitems {
+  display: none;
+  position: absolute;
+  min-width: 100%;
+
+  background: #fff;
+  box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
+
+  .panelbar.top    & { top: 100%; }
+  .panelbar.bottom & { bottom: 100%; }
+
+  &:after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    margin-left: -8px;
+
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+
+    .panelbar.top & {
+      top: -8px;
+      border-bottom: 8px solid #fff;
+    }
+    .panelbar.bottom & {
+      bottom: -8px;
+      border-top: 8px solid #fff;
+    }
+  }
+
+  > a { color: #000; }
+  > a:hover { color: #777; }
+}
+
+
+.panelbar__element--drop:hover .panelbar__dropitems {
+  display: block;
+}
+
+.panelbar__dropitem {
+  display: block;
+
+  padding: .75em 1.5em;
+  text-overflow: ellipsis;
+  text-align: center;
+  overflow: hidden;
+
+  color: #000;
+  transition: none;
+
+  .panelbar.top    & { border-bottom: 1px solid #efefef; }
+  .panelbar.bottom & { border-top: 1px solid #efefef; }
+}
