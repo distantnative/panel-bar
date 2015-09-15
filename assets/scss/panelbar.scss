@@ -35,17 +35,10 @@
     }
   }
 
-  i:not(.fa-styleless) {
+  i {
     margin-right: 7px;
   }
 
-}
-
-.fa-styleless {
-  margin-left: 7px;
-
-  .panelbar.top    &.fa-caret-up   { display: none; }
-  .panelbar.bottom &.fa-caret-down { display: none; }
 }
 
 

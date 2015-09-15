@@ -160,12 +160,8 @@ class PanelBarCore {
 
     // label
     $block .= '<span>';
-
     $block .= self::__icon($args);
     $block .= self::__label($args);
-
-    $block .= '<i class="fa fa-caret-up fa-styleless"></i>';
-    $block .= '<i class="fa fa-caret-down fa-styleless"></i>';
     $block .= '</span>';
 
     // all items
@@ -173,6 +169,25 @@ class PanelBarCore {
     foreach($args['items'] as $item) {
       $block .= '<a href="'.$item['url'].'" class="panelbar__dropitem">'.$item['label'].'</a>';
     }
+    $block .= '</div>';
+
+    $block .= '</div>';
+    return $block;
+  }
+
+  public static function box($args) {
+    $class  = 'panelbar__element panelbar__element--box '.self::__float($args).' pbel-'.$args['id'];
+    $block  = '<div class="'.$class.'">';
+
+    // label
+    $block .= '<span>';
+    $block .= self::__icon($args);
+    $block .= self::__label($args);
+    $block .= '</span>';
+
+    // box content
+    $block .= '<div class="panelbar__element--boxcontent" '.self::__style($args).'>';
+    $block .= $args['content'];
     $block .= '</div>';
 
     $block .= '</div>';
@@ -196,6 +211,17 @@ class PanelBarCore {
       if (!isset($args['mobile']) or $args['mobile'] == 'icon') $label .= ' class="not-mobile"';
       $label .= '">'.$args['label'].'</span>';
       return $label;
+    }
+  }
+
+  protected static function __style($args) {
+    if (isset($args['style'])) {
+      $style  = ' style="';
+      foreach ($args['style'] as $key => $value) {
+        $style .= $key.': '.$value.';';
+      }
+      $style .= '"';
+      return $style;
     }
   }
 
