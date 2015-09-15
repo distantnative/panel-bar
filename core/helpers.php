@@ -18,10 +18,8 @@ class Helpers {
   public static function link($args) {
     $class  = 'panelbar-btn '.self::__float($args).' panelbar--'.$args['id'];
     $block  = '<div class="'.$class.'">';
-    $block .= '<a href="'.$args['url'].'">';
-    $block .= self::__icon($args);
-    $block .= self::__label($args);
-    $block .= '</a>';
+    $link   = self::__icon($args) . self::__label($args);
+    $block .= self::__link($link, $args);
     $block .= '</div>';
     return $block;
   }
@@ -39,7 +37,7 @@ class Helpers {
     // all items
     $block .= '<div class="panelbar-drop__list">';
     foreach($args['items'] as $item) {
-      $block .= '<a href="'.$item['url'].'" class="panelbar-drop__item">'.$item['label'].'</a>';
+      $block .= self::__link($item['label'], $item, 'panelbar-drop__item');
     }
     $block .= '</div>';
 
@@ -83,6 +81,16 @@ class Helpers {
       if (!isset($args['mobile']) or $args['mobile'] == 'icon') $label .= ' class="not-mobile"';
       $label .= '">'.$args['label'].'</span>';
       return $label;
+    }
+  }
+
+  protected static function __link($content, $args = array(), $class = null) {
+    if (isset($args['url'])) {
+      return '<a href="'.$args['url'].'" class="'.$class.'">'.$content.'</a>';
+    } else if (!is_null($class)) {
+      return '<span class="'.$class.'">'.$content.'</span>';
+    } else {
+      return $content;
     }
   }
 
