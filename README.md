@@ -52,7 +52,7 @@ if(!site()->user()) c::set('cache', true);
 If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section, you first have to use (first parameter is `true` to get all default elements):
 
 ```php
-<?php echo panelbar::show($elements = true, $css = false, $js = false); ?>
+<?php echo panelbar::show(array('elements' => true, 'css' => false, 'js' => false); ?>
 ```
 
 Then you can add the following code where you want to output the CSS/JS:
@@ -103,7 +103,7 @@ c::set('panelbar.elements', a::merge(array(
 ), panelbar::defaults()));
 ```
 
-You can also pass an array with all elements as first parameter when calling `panelbar::show()`.
+You can also pass an array with all elements as first parameter when calling `panelbar::show(array('elements' => $elements))`.
 
 For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
 
