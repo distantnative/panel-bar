@@ -15,8 +15,9 @@ This plugin enables you to include a panel bar on top of your site which gives y
 1. [Installation & Update](#Installation)
 2. [Usage](#Usage)
 3. [Options](#Options)
-4. [Help & Improve](#Help)
-5. [Version History](#VersionHistory)
+4. [Addons](#Addons)
+5. [Help & Improve](#Help)
+6. [Version History](#VersionHistory)
 
 
 
@@ -190,6 +191,10 @@ You can switch the position of the panel bar from the top to the bottom browser 
 c::set('panelbar.position', 'bottom');
 ```
 
+
+# Addons/Elements <a id="Addons"></a>
+Addons/Elements created by the community:
+- Element: [Loading time label](https://gist.github.com/jenstornell/c4990a30eedd1dd69e6a) by @jenstornell
 
 
 # Help & Improve <a id="Help"></a>
