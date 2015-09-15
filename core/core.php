@@ -71,7 +71,7 @@ class Core extends Helpers {
 
       $classes = 'panelbar '.$this->position.' '.($this->visible === false ? 'hidden' : '');
       $bar     = '<div class="'.$classes.'" id="panelbar">'.$this->__content().'</div>';
-      $bar    .= Controls::controlBtn();
+      $bar    .= Controls::output();
 
       if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
       if ($this->includeJS)  $bar .= Assets::js($this->hookJS);
@@ -82,6 +82,7 @@ class Core extends Helpers {
 
   protected function __content() {
     $content = '';
+
     foreach ($this->elements as $element) {
       // $element is custom function
       if (is_callable($element)) {
@@ -96,6 +97,7 @@ class Core extends Helpers {
         $content .= $element;
       }
     }
+
     return $content;
   }
 
