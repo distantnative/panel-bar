@@ -39,6 +39,12 @@ Or with the following if you want the panel bar hidden on load:
 
 You can toggle the visibility of the panel bar on the right side, but only if your website already loads jQuery. If not, panel bar will simply hide the toggle switch and display the panel bar always.
 
+**Caching**
+If you want to use caching with Kirby, please make sure to only activate it if the visitor is not a logged-in user:
+```php
+if(!site()->user()) c::set('cache', true);
+```
+
 # Options <a id="Options"></a>
 
 ## Output CSS / JS separately
