@@ -5,6 +5,15 @@ use PanelBar\Core;
 
 class PanelBar extends Core {
 
+  public $defaults = array(
+    'panel',
+    'add',
+    'edit',
+    'files',
+    'logout',
+    'user'
+  );
+
   // Display functions
   public static function show($args = array()) {
     $self = new self($args);
@@ -32,7 +41,7 @@ class PanelBar extends Core {
   // Default elements
   public static function defaults() {
     $self = new self();
-    return $self->elements;
+    return $self->defaults;
   }
 
 }

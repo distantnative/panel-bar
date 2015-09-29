@@ -49,7 +49,7 @@ class Core extends Helpers {
     if (isset($args['elements']) and is_array($args['elements'])) {
       $elements = $args['elements'];
     } else {
-      $elements = c::get('panelbar.elements', get_class_methods('PanelBar\Elements'));
+      $elements = c::get('panelbar.elements', $this->defaults);
     }
 
     return a::merge(array(
