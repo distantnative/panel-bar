@@ -10,20 +10,21 @@
   }
 
   &__iframe {
-    display: none;
+    display:  none;
+
     position: fixed;
-    top: 48px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top:      48px;
+    left:     0;
+    width:    100%;
+    height:   100%;
     overflow: hidden;
 
     & > iframe {
-      width: 100%;
-      height: 100%;
       position: absolute;
-      top: -48px;
-      left: 0;
+      top:      -48px;
+      left:     0;
+      width:    100%;
+      height:   100%;
     }
   }
 }

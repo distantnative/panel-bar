@@ -33,9 +33,9 @@ class Assets {
     $fonts = $base . 'panel/assets/fonts/';
 
     // Fonts
-    $code = str_ireplace('{{FA}}', $fonts.'fontawesome-webfont.woff?v=4.2.0', $code);
-    $code = str_ireplace('{{SSP400}}', $fonts.'sourcesanspro-400.woff', $code);
-    $code = str_ireplace('{{SSP600}}', $fonts.'sourcesanspro-600.woff', $code);
+    $code = str_ireplace('{{FA}}',        $fonts.'fontawesome-webfont.woff?v=4.2.0', $code);
+    $code = str_ireplace('{{SSP400}}',    $fonts.'sourcesanspro-400.woff', $code);
+    $code = str_ireplace('{{SSP600}}',    $fonts.'sourcesanspro-600.woff', $code);
     $code = str_ireplace('{{SSPitalic}}', $fonts.'sourcesanspro-400-italic.woff', $code);
     return $code;
   }
