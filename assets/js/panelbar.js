@@ -64,35 +64,3 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
   panelbar.style.paddingRight = 0;
   panelbar.classList.remove("panelbar--hidden");
 }
-
-
-
-// EnhancedJS with jQuery
-
-if (typeof jQuery == 'function' && enhancedJS === true) {
-  $(function() {
-
-    // Element: toggle
-    $(".panelbar--toggle > a").on("click", function (e) {
-      e.preventDefault();
-
-      var status = $(this).find('span').text() == 'Visible' ? 'hide' : 'publish';
-      var url    = siteURL + "/panel/api/pages/" + status + "/" + currentURI;
-
-      $.ajax({
-        type: "POST",
-        url: url
-      });
-
-      $(this).find('.fa').toggleClass('fa-toggle-off fa-toggle-on');
-      $(this).find('span').text(status == "hide" ? "Invisible" : "Visible");
-
-      setTimeout(function() {
-        location.reload();
-      }, 100);
-
-    });
-
-
-  });
-}
