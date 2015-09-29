@@ -16,7 +16,7 @@ class Assets {
 
   public static function js($hook = null) {
     $path    = realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS;
-    $script .= tpl::load($path . 'panelbar.min.js');
+    $script  = tpl::load($path . 'panelbar.min.js');
 
     if (c::get('panelbar.rembember', false)) {
       $script .= tpl::load($path . 'localstorage.min.js');
