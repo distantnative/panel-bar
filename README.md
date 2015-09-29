@@ -15,8 +15,9 @@ This plugin enables you to include a panel bar on top of your site which gives y
 1. [Installation & Update](#Installation)
 2. [Usage](#Usage)
 3. [Options](#Options)
-4. [Help & Improve](#Help)
-5. [Version History](#VersionHistory)
+4. [Addons](#Addons)
+5. [Help & Improve](#Help)
+6. [Version History](#VersionHistory)
 
 
 
@@ -37,44 +38,48 @@ Or with the following if you want the panel bar hidden on load:
 <?php echo panelbar::hide(); ?>
 ```
 
-You can toggle the visibility of the panel bar on the right side, but only if your website already loads jQuery. If not, panel bar will simply hide the toggle switch and display the panel bar always.
+You can toggle the visibility of the panel bar on the right side, if your browser supports Javascript. If not, panel bar will simply hide the toggle switch and display the panel bar always.
+
+**Caching**
+If you want to use caching with Kirby, please make sure to only activate it if the visitor is not a logged-in user (in `site/config/config.php`):
+```php
+if(!site()->user()) c::set('cache', true);
+```
+
+
 
 # Options <a id="Options"></a>
 
-## Output CSS / JS separately
-If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section, you first have to use (first parameter is `true` to get all default elements):
+## Choose elements and/or add custom elements
+
+Panel Bar comes with a pre-defined set of default elements: `panel`, `add`, `edit`, `files`, `user` and `logout`. However, there are more standard elements available, which come already included in the Panel Bar plugin. A full list of all included standard elements:
+- `panel` (link to the panel)
+- `add` (pages as sibling or child)
+- `edit` (current page)
+- `toggle` (visibility toggle to hide/publish the page)
+- `files` (viewer for files of the current page)
+- `images` (viewer for image of the current page)
+- `loadtime` (loading time)
+- `languages` (dropdown to switch between site languages)
+- `user`
+- `logout`
+
+**Define custom set of elements:**  
+To define which elements should be included in the panel bar, you can either set a config option (in `site/config/config.php`):
 
 ```php
-<?php echo panelbar::show($elements = true, $css = false, $js = false); ?>
+c::set('panelbar.elements', array(…));
 ```
 
-Then you can add the following code where you want to output the CSS/JS:
+Or pass them as an argument when displaying the panel bar:
 
 ```php
-<?php echo panelbar::css(); ?>
-<?php echo panelbar::js(); ?>
+<?php echo panelbar::show(array('elements' => array(…))); ?>
 ```
 
+**Use standard elements:** 
 
-## Enhanced JS
-If you have jQuery already loaded, Panel Bar can do some enhanced features through javascript. For them you have to set the following config:
-
-```
-c::set('panelbar.enhancedJS', true);
-```
-
-So far, this enables you to toggle pages' visibility right from the panel bar without being redirected to the panel.
-
-
-## Custom elements
-
-Panel Bar is ready to include custom elements. Those should be set as config option:
-
-```php
-c::set('panelbar.elements', array());
-```
-
-This option overrides all default elements. You can either include them by naming them:
+You can include standard elements either by naming them:
 
 ```php
 c::set('panelbar.elements', array(
@@ -87,7 +92,7 @@ c::set('panelbar.elements', array(
 ));
 ```
 
-Or you can merge the custom array with all default elements:
+Or you can merge your custom array with the default set of elements:
 
 ```php
 c::set('panelbar.elements', a::merge(array(
@@ -96,11 +101,22 @@ c::set('panelbar.elements', a::merge(array(
 ), panelbar::defaults()));
 ```
 
-You can also pass an array with all elements as first parameter when calling `panelbar::show()`.
 
-For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
+**Add custom elements:**  
 
-Moreover, there are currently two helpers available to create elements:
+Panel Bar also is prepared to include custom elements. For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
+
+Moreover, there are four helpers available to create elements:
+
+Label elements
+```php
+panelbar::label(array(
+  'id'     => 'loadtime',
+  'icon'   => 'clock-o',
+  'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
+  'mobile' => 'label',
+));
+```
 
 **Link elements**
 ```php
@@ -134,7 +150,17 @@ panelbar::dropdown(array(
 ));
 ```
 
-**Example**
+**Textbox elements**
+panelbar::box(array(
+  'id'      => 'info',
+  'icon'    => 'info',
+  'content' => '<b>Important information</b>',
+  'label'   => 'Info'
+  'mobile'  => 'icon',
+));
+
+
+**Examples:**  
 ```php
 c::set('panelbar.elements', array(
   'panel', 
@@ -173,9 +199,6 @@ function dropitpanelbar() {
 kirby()->plugin('panel-bar');
 ``
 
-You cannot use any of the following as name/id of your custom elements:  
-`show, hide, css, js, defaults, __construct, __output, __content, __controlBtn, __switchBtn, __flipBtn, __float, __getCSS, __getJS, link, dropdown`
-
 
 ## Position of Panel Bar
 You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
@@ -183,6 +206,22 @@ You can switch the position of the panel bar from the top to the bottom browser 
 ```php
 c::set('panelbar.position', 'bottom');
 ```
+
+
+## Output CSS / JS separately
+If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section,:
+
+```php
+<?php echo panelbar::show(array('css' => false, 'js' => false); ?>
+```
+
+Then you can add the following code where you want to output the CSS/JS:
+
+```php
+<?php echo panelbar::css(); ?>
+<?php echo panelbar::js(); ?>
+```
+
 
 
 

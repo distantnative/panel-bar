@@ -1,0 +1,46 @@
+
+// Dropdowns
+
+.panelbar-drop {
+  @extend .panelbar-element;
+  position: relative;
+  cursor: pointer;
+
+  @include dropdownArrow;
+
+  &__list {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #fff;
+    box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
+
+    .panelbar--top    & { top: 100%; }
+    .panelbar--bottom & { bottom: 100%; }
+
+    > a { color: #000; }
+    > a:hover { color: #777; }
+
+    .panelbar-drop:hover & { display: block; }
+  }
+
+  &__item {
+    display: block;
+
+    padding: .75em 1.5em;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+
+    color: #000;
+    transition: none;
+
+    .panelbar--top    & { border-bottom: 1px solid #efefef; }
+    .panelbar--bottom & { border-top: 1px solid #efefef; }
+  }
+
+}

@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 0.5
+- Changed parameter structure of `::show()` and `::hide()`:
+```php
+echo panelbar::show(array('elements' => $elements, 'css' => true, 'js' => true));
+```
+- Label, textbox and filewviewer element helpers added
+- New Files and Images elements
+- Better Add element (dropdown with child and sibling option)
+- Limited set of default elements, while all are still available
+- Option to hook custom CSS and/or JS in output functions
+- Removed CDN requests for fonts in favor of local files
+- Restructured PHP code (namespacing, split up into different classes)
+- Started to clean up CSS and remove redundancies (SCSS introduced)
+- Bugfix: Check correctly if jQuery is loaded
+
 ## Version 0.4
 - Fewer jQuery dependencies
 - Cleaner CSS and JS code and compression
