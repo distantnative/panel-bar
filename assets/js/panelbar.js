@@ -30,10 +30,8 @@ var switchbtn = document.getElementById('panelbar_switch');
 var flipbtn   = document.getElementById('panelbar_flip');
 
 
-
 if ( 'querySelector' in document && 'addEventListener' in window ) {
-
-  // Visibility toggle & flip
+  // Controls
   switchbtn.addEventListener('click', function () {
     if (hasClass(panelbar, 'panelbar__bar--hidden')) {
       removeClass(panelbar, 'panelbar__bar--hidden');
@@ -41,22 +39,18 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
       addClass(panelbar, 'panelbar__bar--hidden');
     }
   });
-
   flipbtn.addEventListener('click', function () {
     if (hasClass(wrapper, 'panelbar--top')) {
       removeClass(wrapper, 'panelbar--top');
     } else {
       addClass(wrapper, 'panelbar--top');
     }
-
     if (hasClass(wrapper, 'panelbar--bottom')) {
       removeClass(wrapper, 'panelbar--bottom');
     } else {
       addClass(wrapper, 'panelbar--bottom');
     }
-
   });
-
 
 } else {
   // remove switch in legacy Browser

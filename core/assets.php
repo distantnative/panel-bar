@@ -17,8 +17,15 @@ class Assets {
     $script  = 'siteURL="'.site()->url().'";';
     $script .= 'currentURI="'.page()->uri().'";';
     $script .= 'enhancedJS='.(c::get('panelbar.enhancedJS', false) ? 'true' : 'false').';';
+    // main JS
     $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'panelbar.min.js');
+    // remember state with localStorage
+    if (c::get('panelbar.rembember', false)) {
+      $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'localstorage.min.js');
+    }
+    // hooked JS
     $script .= self::hook($hook);
+
     return '<script>'.$script.'</script>';
   }
 

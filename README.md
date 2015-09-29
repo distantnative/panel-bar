@@ -210,6 +210,14 @@ c::set('panelbar.position', 'bottom');
 ```
 
 
+## Remember position and visibility of Panel Bar
+With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
+
+```php
+c::set('panelbar.remember', true);
+```
+
+
 ## Output CSS / JS separately
 If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section,:
 
