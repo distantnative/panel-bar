@@ -30,12 +30,12 @@ This plugin enables you to include a panel bar on top of your site which gives y
 # Usage <a id="Usage"></a>
 Include in your `site/snippets/footer.php` right before the `</body>` tag:
 ```php
-<?php echo panelbar::show(); ?>
+<?php echo panelbar::show() ?>
 ```
 
 Or with the following if you want the panel bar hidden on load:
 ```php
-<?php echo panelbar::hide(); ?>
+<?php echo panelbar::hide() ?>
 ```
 
 You can toggle the visibility of the panel bar on the right side, if your browser supports Javascript. If not, panel bar will simply hide the toggle switch and display the panel bar always.
@@ -74,7 +74,7 @@ c::set('panelbar.elements', array(…));
 Or pass them as an argument when displaying the panel bar:
 
 ```php
-<?php echo panelbar::show(array('elements' => array(…))); ?>
+<?php echo panelbar::show(array('elements' => array(…))) ?>
 ```
 
 ### Use standard elements 
@@ -214,14 +214,14 @@ c::set('panelbar.position', 'bottom');
 If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section,:
 
 ```php
-<?php echo panelbar::show(array('css' => false, 'js' => false); ?>
+<?php echo panelbar::show(array('css' => false, 'js' => false) ?>
 ```
 
 Then you can add the following code where you want to output the CSS/JS:
 
 ```php
-<?php echo panelbar::css(); ?>
-<?php echo panelbar::js(); ?>
+<?php echo panelbar::css() ?>
+<?php echo panelbar::js() ?>
 ```
 
 
