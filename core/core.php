@@ -47,7 +47,8 @@ class Core extends Helpers {
   // defaults for $args parameter
   protected function __defaultParameters($args) {
     return a::merge(array(
-      'elements' => get_class_methods('PanelBar\Elements'),
+      'elements' => isset($args['elements']) and is_array($args['elements']) ?
+                    $args['elements'] : get_class_methods('PanelBar\Elements'),
       'css'      => true,
       'js'       => true,
       'css.hook' => null,
@@ -66,7 +67,7 @@ class Core extends Helpers {
 
 
   // Creating the output for the panel bar
-  protected function __output($args = array()) {
+  protected function __output() {
     if ($user = site()->user() and $user->hasPanelAccess()) {
 
       $class   = 'panelbar ';
