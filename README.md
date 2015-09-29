@@ -64,7 +64,7 @@ Panel Bar comes with a pre-defined set of default elements: `panel`, `add`, `edi
 - `user`
 - `logout`
 
-**Define custom set of elements:**  
+### Define custom set of elements
 To define which elements should be included in the panel bar, you can either set a config option (in `site/config/config.php`):
 
 ```php
@@ -77,7 +77,7 @@ Or pass them as an argument when displaying the panel bar:
 <?php echo panelbar::show(array('elements' => array(…))); ?>
 ```
 
-**Use standard elements:** 
+### Use standard elements 
 
 You can include standard elements either by naming them:
 
@@ -102,13 +102,13 @@ c::set('panelbar.elements', a::merge(array(
 ```
 
 
-**Add custom elements:**  
+### Add custom elements 
 
 Panel Bar also is prepared to include custom elements. For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
 
 Moreover, there are four helpers available to create elements:
 
-Label elements
+**Label elements**
 ```php
 panelbar::label(array(
   'id'     => 'loadtime',
@@ -151,6 +151,7 @@ panelbar::dropdown(array(
 ```
 
 **Textbox elements**
+```php
 panelbar::box(array(
   'id'      => 'info',
   'icon'    => 'info',
@@ -158,9 +159,9 @@ panelbar::box(array(
   'label'   => 'Info'
   'mobile'  => 'icon',
 ));
+```
 
-
-**Examples:**  
+### Examples
 ```php
 c::set('panelbar.elements', array(
   'panel', 
@@ -193,11 +194,12 @@ function dropitpanelbar() {
   ));
 }
 ```
+
 *If you use any helpers like `panelbar::link()`, `panelbar::dropdown()` or `panelbar::defaults()` in the `config.php`, you must include the following line before using them:*
 
 ```php
 kirby()->plugin('panel-bar');
-``
+```
 
 
 ## Position of Panel Bar
