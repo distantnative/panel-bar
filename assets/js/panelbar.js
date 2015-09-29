@@ -3,13 +3,13 @@
 
 var hasClass = function (elem, className) {
   return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
-}
+};
 
 var addClass = function (elem, className) {
   if (!hasClass(elem, className)) {
     elem.className += ' ' + className;
   }
-}
+};
 
 var removeClass = function (elem, className) {
   var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
@@ -19,7 +19,7 @@ var removeClass = function (elem, className) {
     }
     elem.className = newClass.replace(/^\s+|\s+$/g, '');
   }
-}
+};
 
 
 // Elements
@@ -34,7 +34,7 @@ var flipbtn   = document.getElementById('panelbar_flip');
 if ( 'querySelector' in document && 'addEventListener' in window ) {
 
   // Visibility toggle & flip
-  switchbtn.addEventListener('click', function (e) {
+  switchbtn.addEventListener('click', function () {
     if (hasClass(panelbar, 'panelbar__bar--hidden')) {
       removeClass(panelbar, 'panelbar__bar--hidden');
     } else {
@@ -42,7 +42,7 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
     }
   });
 
-  flipbtn.addEventListener('click', function (e) {
+  flipbtn.addEventListener('click', function () {
     if (hasClass(wrapper, 'panelbar--top')) {
       removeClass(wrapper, 'panelbar--top');
     } else {
@@ -69,7 +69,7 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
 
 // EnhancedJS with jQuery
 
-if (jQuery && enhancedJS === true) {
+if (typeof jQuery == 'function' && enhancedJS === true) {
   $(function() {
 
     // Element: toggle
