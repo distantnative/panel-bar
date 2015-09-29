@@ -8,22 +8,21 @@ use Tpl;
 class Assets {
 
   public static function css($hook = null) {
-    $style  = tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS . 'panelbar.min.css');
+    $path   = realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS;
+    $style  = tpl::load($path . 'panelbar.min.css');
     $style .= self::hook($hook);
     return '<style>'.self::paths($style).'</style>';
   }
 
   public static function js($hook = null) {
-    $script  = 'siteURL="'.site()->url().'";';
-    $script .= 'currentURI="'.page()->uri().'";';
-    $script .= 'enhancedJS='.(c::get('panelbar.enhancedJS', false) ? 'true' : 'false').';';
-    // main JS
-    $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'panelbar.min.js');
-    // remember state with localStorage
+    $path    = realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS;
+    $script .= tpl::load($path . 'panelbar.min.js');
+
     if (c::get('panelbar.rembember', false)) {
-      $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'localstorage.min.js');
+      $script .= tpl::load($path . 'localstorage.min.js');
     }
-    // hooked JS
+
+    $script .= tpl::load($path . 'elements' . DS . 'iframe.min.js');
     $script .= self::hook($hook);
 
     return '<script>'.$script.'</script>';

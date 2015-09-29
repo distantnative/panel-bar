@@ -10,7 +10,7 @@
     padding: 16px 18px 15px;
   }
 
-  &:not(:first-child):not(:last-child) {
+  &:not(:first-of-type):not(:last-of-type) {
     border-left: 1px solid #555;
   }
 

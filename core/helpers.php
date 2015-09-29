@@ -67,7 +67,7 @@ class Helpers {
   // Helper methods for element helpers
   protected static function __element($block, $class, $args) {
     $class    =  $class.' '.self::__class($args).' panelbar--'.$args['id'];
-    $element  = '<div class="'.$class.'">';
+    $element  = '<div class="'.$class.'" id="panelbar--'.$args['id'].'">';
     $element .= self::__link(self::__icon($args).self::__label($args), $args);
     $element .= $block;
     $element .= '</div>';
@@ -110,10 +110,16 @@ class Helpers {
   }
 
   protected static function __class($args) {
-    return r(isset($args['class']), $args['class'].' ') . self::__float($args);
+    if (isset($args['class'])) {
+      return $args['class'] . ' '. self::__float($args);
+    } else {
+      return self::__float($args);
+    }
   }
 
   protected static function __float($args) {
-    return r(isset($args['float']) and $args['float'], 'panelbar-element--right');
+    if (isset($args['float']) and $args['float']) {
+      return 'panelbar-element--right';
+    }
   }
 }

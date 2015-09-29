@@ -80,7 +80,11 @@ class Core extends Helpers {
       if ($this->visible === false) $class .= 'panelbar--hidden ';
 
       $bar     = '<div class="'.$class.'" id="panelbar">';
-      $bar    .= '<div class="panelbar__bar" id="panelbar_bar">'.$this->__content().'</div>';
+      $bar    .= '<div class="panelbar-return__iframe"><iframe></iframe></div>';
+      $bar    .= '<div class="panelbar__bar" id="panelbar_bar">';
+      $bar    .= $this->__content();
+      $bar    .= '<span class="panelbar-return__btn"><i class="fa fa-arrow-circle-left"></i> Return to page</span>';
+      $bar    .= '</div>';
       $bar    .= Controls::output();
 
       if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
@@ -94,7 +98,6 @@ class Core extends Helpers {
 
   protected function __content() {
     $content = '';
-
     foreach ($this->elements as $element) {
       // $element is custom function
       if (is_callable($element)) {
