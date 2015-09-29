@@ -56,7 +56,7 @@ class Helpers {
     $block .= '</span>';
 
     // all items
-    $block .= '<div class="panelbar-fileviewer__grid '.($args['single']?'panelbar-fileviewer__grid--single':'').'" '.self::__style($args).'>';
+    $block .= '<div class="panelbar-fileviewer__grid panelbar-fileviewer__grid--'.$args['count'].'" '.self::__style($args).'>';
     foreach($args['items'] as $item) {
       $content  = '<div class="panelbar-fileviewer__preview">';
 
@@ -68,7 +68,7 @@ class Helpers {
 
       $content .= '<span class="panelbar-fileviewer__label">'.$item['label'].'</span>';
       $content .= '</div>';
-      $block .= self::__link($content, $item, 'panelbar-fileviewer__item');
+      $block .= self::__link($content, $item, 'panelbar-fileviewer__item panelbar-fileviewer__item--'.$item['type']);
     }
 
     if($args['more'] !== false) {

@@ -22,7 +22,7 @@
     padding: .5em;
     cursor: default;
 
-    &--single {
+    &--1 {
       min-width: 240px;
     }
 
@@ -36,9 +36,8 @@
     display: inline-block;
     width: 33.3333%;
 
-    &:first-child:nth-last-child(1) { width: 100%; }
-    &:first-child:nth-last-child(2),
-    &:first-child:nth-last-child(2) ~ & { width: 50%; }
+    .panelbar-fileviewer__grid--1 & { width: 100%; }
+    .panelbar-fileviewer__grid--2 & { width: 50%; }
 
     text-overflow: ellipsis;
     text-align: center;
@@ -61,7 +60,7 @@
       .panelbar-fileviewer__image { opacity: .25 }
       .panelbar-fileviewer__label {
         color: #fff;
-        background: linear-gradient(to top, rgba(0,0,0,.4), rgba(0,0,0,.25) 65%, rgba(0,0,0,0));
+        background: linear-gradient(to top, rgba(0,0,0,.4), rgba(0,0,0,.2) 65%, rgba(0,0,0,0));
       }
     }
   }
@@ -100,8 +99,8 @@
     left: 0;
     right: 0;
 
-    padding: 10px 5px;
-    background: linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.6) 65%, rgba(0,0,0,0));
+    padding: 5px;
+    background: linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.45) 65%, rgba(0,0,0,0));
 
     font-size: .85em;
     white-space: nowrap;

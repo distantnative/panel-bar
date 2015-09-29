@@ -88,7 +88,7 @@ class Elements {
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
-        'single' => count($items) == 1,
+        'count'  => count($items),
         'more'   => $more ? $this->site->url().'/panel/#/files/index/'.$this->page->uri() : false,
         'mobile' => 'icon'
       ));
