@@ -23,20 +23,10 @@ var returnFromIframe = function () {
 
 
 if ( 'querySelector' in document && 'addEventListener' in window ) {
-  var addBtn = document.getElementById('panelbar--add').children[1];
-  addBtn.children[0].addEventListener('click', panelIframe);
-  addBtn.children[1].addEventListener('click', panelIframe);
-
-  var editBtn = document.getElementById('panelbar--edit').children[0];
-  editBtn.addEventListener('click', panelIframe);
-
-  var toggleBtn = document.getElementById('panelbar--toggle').children[0];
-  toggleBtn.addEventListener('click', panelIframe);
-
-  var files = document.querySelectorAll('.panelbar-fileviewer__item');
+  var panellinks = document.querySelectorAll('.panelbar--add a, .panelbar--edit a, .panelbar--toggle a, .panelbar-fileviewer__item, .panelbar-fileviewer__more');
   var i;
-  for (i = 0; i < files.length; i++) {
-    files[i].addEventListener('click', panelIframe);
+  for (i = 0; i < panellinks.length; i++) {
+    panellinks[i].addEventListener('click', panelIframe);
   }
 
   var returnBtn = document.querySelector(".panelbar-return__btn");
