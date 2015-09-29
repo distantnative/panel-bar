@@ -31,7 +31,7 @@ class Core extends Helpers {
   public function __construct($args = array()) {
     $args = $this->__defaultParameters($args);
 
-    $this->elements   = c::get('panelbar.elements', $args['elements']);
+    $this->elements   = $args['elements'];
     $this->position   = c::get('panelbar.position', 'top');
     $this->visible    = $args['hide'] !== true;
 
@@ -46,9 +46,14 @@ class Core extends Helpers {
 
   // defaults for $args parameter
   protected function __defaultParameters($args) {
+    if (isset($args['elements']) and is_array($args['elements'])) {
+      $elements = $args['elements'];
+    } else {
+      $elements = c::get('panelbar.elements', get_class_methods('PanelBar\Elements'));
+    }
+
     return a::merge(array(
-      'elements' => isset($args['elements']) and is_array($args['elements']) ?
-                    $args['elements'] : get_class_methods('PanelBar\Elements'),
+      'elements' => $elements,
       'css'      => true,
       'js'       => true,
       'css.hook' => null,
