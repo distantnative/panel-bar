@@ -4,7 +4,7 @@
 "files": {
 	"\/assets\/css\/panelbar.min.css": {
 		"fileType": 16,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/css\/panelbar.min.css",
 		"outputAbbreviatedPath": "No Output Path",
@@ -207,13 +207,13 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/panelbar.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/panelbar.css",
+		"outputAbbreviatedPath": "\/assets\/css\/panelbar.min.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/CHANGELOG.md": {
 		"criticStyle": 0,
