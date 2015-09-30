@@ -14,9 +14,15 @@ var panelIframe = function (e) {
   returnIFF.src           = href;
 
   document.body.style.overflow = 'hidden';
+
+  returnBtn.addEventListener('click', returnFromIframe);
+  switchbtn.addEventListener('click', returnFromIframe);
 };
 
 var returnFromIframe = function () {
+  var returnBtn = document.querySelector(".panelbar-return__btn");
+  returnBtn.removeEventListener('click', returnFromIframe);
+  switchbtn.removeEventListener('click', returnFromIframe);
   location.reload();
 };
 
@@ -29,7 +35,5 @@ if ( 'querySelector' in document && 'addEventListener' in window ) {
     panellinks[i].addEventListener('click', panelIframe);
   }
 
-  var returnBtn = document.querySelector(".panelbar-return__btn");
-  returnBtn.addEventListener('click', returnFromIframe);
-  switchbtn.addEventListener('click', returnFromIframe);
+
 }
