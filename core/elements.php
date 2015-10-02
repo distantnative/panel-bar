@@ -2,16 +2,21 @@
 
 namespace PanelBar;
 
+use Tpl;
+
 use PanelBar\Helpers;
 
 class Elements {
 
-  public $site         = null;
-  public $page         = null;
+  public $site;
+  public $page;
 
-  public function __construct() {
-    $this->site      = site();
-    $this->page      = page();
+  protected $assets;
+
+  public function __construct($assets) {
+    $this->site   = site();
+    $this->page   = page();
+    $this->assets = $assets;
   }
 
   public function panel() {
@@ -25,6 +30,8 @@ class Elements {
   }
 
   public function add() {
+    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+
     return Helpers::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
@@ -44,6 +51,8 @@ class Elements {
   }
 
   public function edit() {
+    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+
     return Helpers::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
@@ -54,6 +63,8 @@ class Elements {
   }
 
   public function toggle() {
+    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+
     return Helpers::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
@@ -64,6 +75,9 @@ class Elements {
   }
 
   public function files($type = null) {
+    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+
+
     $files  = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
     $more   = $files->count() > 15;

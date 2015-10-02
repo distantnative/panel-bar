@@ -10,8 +10,7 @@ class Assets {
 
   public $css;
   public $js;
-
-  protected $paths;
+  public $paths;
 
 
   public function __construct($external) {
@@ -49,7 +48,6 @@ class Assets {
       ),
       'js'  => array(
         tpl::load($this->paths['js'] . 'panelbar.min.js'),
-        tpl::load($this->paths['js'] . 'iframe.min.js'),
       ),
     ));
 
@@ -66,7 +64,9 @@ class Assets {
    */
 
   public function setHook($type, $hook) {
-    array_push($this->{$type}, $hook);
+    if(!in_array($hook, $this->{$type}, true)) {
+      array_push($this->{$type}, $hook);
+    }
   }
 
   protected function setHooks($collection) {

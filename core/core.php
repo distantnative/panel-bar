@@ -74,11 +74,11 @@ class Core extends Helpers {
     foreach ($this->elements as $element) {
       // $element is custom function
       if(is_callable($element)) {
-        $output .= call_user_func($element);
+        $output .= call_user_func_array($element, array());
       }
 
       // $element is default function
-      elseif($ref = new Elements() and
+      elseif($ref = new Elements($this->assets) and
              is_callable(array($ref, $element)) and
              !in_array($element, $this->protected)) {
         $output .= call_user_func(array($ref, $element));
