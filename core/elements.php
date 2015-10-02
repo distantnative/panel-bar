@@ -31,6 +31,9 @@ class Elements {
   }
 
   public function panel() {
+    // register hooks
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+
     // return output
     return Helpers::link(array(
       'id'      => 'panel',
