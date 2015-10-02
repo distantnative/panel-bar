@@ -14,13 +14,20 @@ class Assets {
   protected $paths = array();
 
 
-  public function __construct() {
+  public function __construct($external) {
     $this->paths = $this->setPaths();
 
     if (c::get('panelbar.rembember', false)) {
       $this->setHook('js', tpl::load($this->paths['js'] . 'localstorage.min.js'));
     }
     $this->setHook('js', tpl::load($this->paths['js'] . 'elements' . DS . 'iframe.min.js'));
+
+    foreach($external as $type => $hooks) {
+      foreach($hooks as $hook) {
+        $this->setHook($type, $hook);
+      }
+    }
+
   }
 
   public function css() {

@@ -24,45 +24,47 @@ class Core extends Helpers {
   public $assets       = null;
   public $includeCSS   = true;
   public $includeJS    = true;
-  public $hookCSS      = null;
-  public $hookJS      = null;
+  public $hooksCSS     = null;
+  public $hooksJS      = null;
 
   protected $protected = null;
 
 
   public function __construct($args = array()) {
-    $args = $this->__defaultParameters($args);
+    $args = a::merge(array(
+      'elements'  => $this->__defaultElements(),
+      'css'       => true,
+      'js'        => true,
+      'css.hooks' => null,
+      'js.hooks'  => null,
+      'hide'      => false,
+    ), $args);
 
     $this->elements   = $args['elements'];
     $this->position   = c::get('panelbar.position', 'top');
     $this->visible    = $args['hide'] !== true;
 
-    $this->assets     = new Assets();
     $this->includeCSS = $args['css'];
     $this->includeJS  = $args['js'];
-    $this->hookCSS    = $args['css.hook'];
-    $this->hookJS     = $args['js.hook'];
+    if($this->includeCSS or $this->includeJS) {
+      $this->hooksCSS   = $args['css.hooks'];
+      $this->hooksJS    = $args['js.hooks'];
+      $this->assets     = new Assets(array(
+        'css' => $this->hooksCSS,
+        'js'  => $this->hooksJS,
+      ));
+    }
 
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
   }
 
 
-  // defaults for $args parameter
-  protected function __defaultParameters($args) {
+  protected function __defaultElements($args) {
     if (isset($args['elements']) and is_array($args['elements'])) {
-      $elements = $args['elements'];
+      return $args['elements'];
     } else {
-      $elements = c::get('panelbar.elements', $this->defaults);
+      return c::get('panelbar.elements', $this->defaults);
     }
-
-    return a::merge(array(
-      'elements' => $elements,
-      'css'      => true,
-      'js'       => true,
-      'css.hook' => null,
-      'js.hook'  => null,
-      'hide'     => false,
-    ), $args);
   }
 
 
