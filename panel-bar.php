@@ -16,8 +16,10 @@ class PanelBar extends Core {
 
   // Display functions
   public static function show($args = array()) {
-    $self = new self($args);
-    return $self->__output();
+    if ($user = site()->user() and $user->hasPanelAccess()) {
+      $self = new self($args);
+      return $self->__output();
+    }
   }
 
   public static function hide($args = array()) {

@@ -9,6 +9,7 @@ require 'assets.php';
 
 use A;
 use C;
+use Tpl;
 
 use PanelBar\Elements;
 use PanelBar\Controls;
@@ -67,27 +68,14 @@ class Core extends Helpers {
 
   // Creating the output for the panel bar
   protected function __output() {
-    if ($user = site()->user() and $user->hasPanelAccess()) {
-
-      $class   = 'panelbar ';
-      $class  .= 'panelbar--'.$this->position.' ';
-      if ($this->visible === false) $class .= 'panelbar--hidden ';
-
-      $bar     = '<div class="'.$class.'" id="panelbar">';
-      $bar    .= '<div class="panelbar-return__iframe"><iframe></iframe></div>';
-      $bar    .= '<div class="panelbar__bar" id="panelbar_bar">';
-      $bar    .= $this->__content();
-      $bar    .= '<span class="panelbar-return__btn"><i class="fa fa-arrow-circle-left"></i> Return to page</span>';
-      $bar    .= '</div>';
-      $bar    .= Controls::output();
-
-      if ($this->includeCSS) $bar .= $this->assets->css();
-      if ($this->includeJS)  $bar .= $this->assets->js();
-
-      $bar    .= '</div>';
-
-      return $bar;
-    }
+    return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'main.php', array(
+      'class'    => 'panelbar panelbar--' . $this->position .
+                    ($this->visible === false ? ' panelbar--hidden' : ''),
+      'elements' => $this->__content(),
+      'controls' => Controls::output(),
+      'assets'   => ($this->includeCSS ? $this->assets->css() : '') .
+                    ($this->includeJS ? $this->assets->js() : ''),
+    ));
   }
 
   protected function __content() {
