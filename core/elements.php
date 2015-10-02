@@ -12,11 +12,22 @@ class Elements {
   public $page;
 
   protected $assets;
+  protected $css;
+  protected $js;
 
   public function __construct($assets) {
     $this->site   = site();
     $this->page   = page();
+
     $this->assets = $assets;
+    $this->css  = array(
+      'base'       => $this->assets->paths['css'],
+      'components' => $this->assets->paths['css'] . 'components' . DS,
+      'elements'   => $this->assets->paths['css'] . 'elements'   . DS,
+    );
+    $this->js  = array(
+      'base'       => $this->assets->paths['js'],
+    );
   }
 
   public function panel() {
@@ -32,7 +43,9 @@ class Elements {
 
   public function add() {
     // register hooks
-    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+    $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
+    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
 
     // return output
     return Helpers::dropdown(array(
@@ -55,7 +68,9 @@ class Elements {
 
   public function edit() {
     // register hooks
-    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+    $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
+    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
     // return output
     return Helpers::link(array(
@@ -69,7 +84,9 @@ class Elements {
 
   public function toggle() {
     // register hooks
-    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+    $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
+    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
     // return output
     return Helpers::link(array(
@@ -83,7 +100,7 @@ class Elements {
 
   public function files($type = null) {
     // register hooks
-    $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'fileviewer.css'));
 
     // prepare output
     $files  = $this->page->files();
@@ -125,6 +142,9 @@ class Elements {
 
   public function languages() {
     if ($languages = $this->site->languages()) {
+      // register hooks
+      $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
+
       // prepare output
       $items = array();
       foreach($languages->not($this->site->language()->code()) as $language) {
@@ -146,6 +166,10 @@ class Elements {
   }
 
   public function loadtime() {
+    // register hooks
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'label.css'));
+
+
     // return output
     return Helpers::label(array(
       'id'     => 'loadtime',
@@ -156,6 +180,9 @@ class Elements {
   }
 
   public function logout() {
+    // register hooks
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+
     // return output
     return Helpers::link(array(
       'id'     => 'logout',
@@ -168,6 +195,9 @@ class Elements {
   }
 
   public function user() {
+    // register hooks
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+
     // return output
     return Helpers::link(array(
       'id'     => 'user',

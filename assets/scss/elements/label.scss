@@ -1,0 +1,10 @@
+
+@import "../helpers/variables";
+@import "../helpers/mixins";
+@import "base";
+
+// Labels
+
+.panelbar-label {
+  @extend .panelbar-element;
+}

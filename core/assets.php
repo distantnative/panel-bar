@@ -44,7 +44,7 @@ class Assets {
   protected function defaults() {
     $this->setHooks(array(
       'css' => array(
-        tpl::load($this->paths['css'] . 'panelbar.min.css'),
+        tpl::load($this->paths['css'] . 'panelbar.css'),
       ),
       'js'  => array(
         tpl::load($this->paths['js'] . 'panelbar.min.js'),
