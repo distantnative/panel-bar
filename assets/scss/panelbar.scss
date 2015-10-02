@@ -50,6 +50,12 @@
   &--top    { top: 0; }
   &--bottom { bottom: 0; }
 
+
+  &-return__btn, &-return__iframe {
+    display:  none;
+  }
+
+
 }
 
 

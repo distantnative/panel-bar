@@ -4,7 +4,6 @@ namespace PanelBar;
 
 require 'helpers.php';
 require 'elements.php';
-require 'controls.php';
 require 'assets.php';
 
 use A;
