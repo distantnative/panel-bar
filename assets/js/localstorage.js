@@ -45,7 +45,7 @@ var PanelbarState = function() {
 
 
   this.getPosition = function() {
-    if (hasClass(wrapper, 'panelbar--top')) {
+    if(hasClass(wrapper, 'panelbar--top')) {
       return 'top';
     } else {
       return 'bottom';
@@ -67,7 +67,7 @@ var PanelbarState = function() {
   };
 
   this.setVisibility = function() {
-    if (localStorage['panelbar.visibility'] === 'show') {
+    if(localStorage['panelbar.visibility'] === 'show') {
       removeClass(panelbar, 'panelbar__bar--hidden');
     } else {
       addClass(panelbar, 'panelbar__bar--hidden');

@@ -46,25 +46,14 @@ class Core extends Helpers {
 
     $this->includeCSS = $args['css'];
     $this->includeJS  = $args['js'];
-    if($this->includeCSS or $this->includeJS) {
-      $this->hooksCSS   = $args['css.hooks'];
-      $this->hooksJS    = $args['js.hooks'];
-      $this->assets     = new Assets(array(
-        'css' => $this->hooksCSS,
-        'js'  => $this->hooksJS,
-      ));
-    }
+    $this->hooksCSS   = $args['css.hooks'];
+    $this->hooksJS    = $args['js.hooks'];
+    $this->assets     = new Assets(array(
+      'css' => $this->hooksCSS,
+      'js'  => $this->hooksJS,
+    ));
 
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
-  }
-
-
-  protected function __defaultElements($args) {
-    if (isset($args['elements']) and is_array($args['elements'])) {
-      return $args['elements'];
-    } else {
-      return c::get('panelbar.elements', $this->defaults);
-    }
   }
 
 
@@ -73,31 +62,44 @@ class Core extends Helpers {
     return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'main.php', array(
       'class'    => 'panelbar panelbar--' . $this->position .
                     ($this->visible === false ? ' panelbar--hidden' : ''),
-      'elements' => $this->__content(),
+      'elements' => $this->__elements(),
       'controls' => Controls::output(),
       'assets'   => ($this->includeCSS ? $this->assets->css() : '') .
                     ($this->includeJS ? $this->assets->js() : ''),
     ));
   }
 
-  protected function __content() {
-    $content = '';
+  protected function __elements() {
+    $output = '';
     foreach ($this->elements as $element) {
       // $element is custom function
-      if (is_callable($element)) {
-        $content .= call_user_func($element);
+      if(is_callable($element)) {
+        $output .= call_user_func($element);
+      }
 
       // $element is default function
-      } elseif ($instance = new Elements() and is_callable(array($instance, $element)) and !in_array($element, $this->protected)) {
-        $content .= call_user_func(array($instance, $element));
+      elseif($ref = new Elements() and
+             is_callable(array($ref, $element)) and
+             !in_array($element, $this->protected)) {
+        $output .= call_user_func(array($ref, $element));
+      }
 
       // $element is a string
-      } elseif (is_string($element)) {
-        $content .= $element;
+      elseif(is_string($element)) {
+        $output .= $element;
       }
     }
 
-    return $content;
+    return $output;
+  }
+
+
+  // Selecting the right elements to show (specified vs. defaults)
+  protected function __defaultElements($args) {
+    return
+      (isset($args['elements']) and is_array($args['elements'])) ?
+      $args['elements'] :
+      c::get('panelbar.elements', $this->defaults);
   }
 
 

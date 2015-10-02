@@ -8,14 +8,16 @@ use Tpl;
 
 class Assets {
 
-  public $css = array();
-  public $js  = array();
+  public $css;
+  public $js;
 
-  protected $paths = array();
+  protected $paths;
 
 
   public function __construct($external) {
     $this->paths = $this->setPaths();
+    $this->css   = array();
+    $this->js   = array();
 
     $this->defaults();
     $this->setHooks($external);
@@ -47,11 +49,14 @@ class Assets {
       ),
       'js'  => array(
         tpl::load($this->paths['js'] . 'panelbar.min.js'),
-        c::get('panelbar.rembember', false) ?
-          tpl::load($this->paths['js'] . 'localstorage.min.js') : '',
         tpl::load($this->paths['js'] . 'iframe.min.js'),
       ),
     ));
+
+    // JS: State - localStorage
+    if(c::get('panelbar.rembember', false)) {
+      $this->setHook('js', tpl::load($this->paths['js'] . 'localstorage.min.js'));
+    }
   }
 
 
@@ -61,17 +66,18 @@ class Assets {
    */
 
   public function setHook($type, $hook) {
-    if(!is_array($hook)) $hook = array($hook);
-    $this->{$type} = a::merge($this->{$type}, $hook);
+    array_push($this->{$type}, $hook);
   }
 
-  protected function setHooks($collection = array()) {
-    if (is_array($collection)) {
+  protected function setHooks($collection) {
+    if(is_array($collection)) {
       foreach($collection as $type => $hooks) {
-        if (is_array($hooks)) {
+        if(is_array($hooks)) {
           foreach($hooks as $hook) {
             $this->setHook($type, $hook);
           }
+        } elseif(is_string($hooks)) {
+          $this->setHook($type, $hooks);
         }
       }
     }
@@ -80,10 +86,10 @@ class Assets {
   protected function getHooks($type) {
     $return = '';
     foreach($this->{$type} as $hook) {
-      if(is_string($hook)) {
-        $return .= $hook;
-      } elseif(is_callable($hook)) {
+      if(is_callable($hook)) {
         $return .= call_user_func($hook);
+      } elseif(is_string($hook)) {
+        $return .= $hook;
       }
     }
     return $return;
@@ -99,10 +105,11 @@ class Assets {
     $base = str_ireplace(kirby()->roots()->index(), '', __DIR__);
     $base = substr_count($base, '/');
     $base = str_repeat('../', $base);
+
     return array(
       'base'  => $base,
-      'css'   => realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS,
       'fonts' => $base . 'panel/assets/fonts/',
+      'css'   => realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS,
       'js'    => realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS,
     );
   }
