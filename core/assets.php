@@ -16,7 +16,7 @@ class Assets {
   public function __construct($external) {
     $this->paths = $this->setPaths();
     $this->css   = array();
-    $this->js   = array();
+    $this->js    = array();
 
     $this->defaults();
     $this->setHooks($external);

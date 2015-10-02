@@ -20,6 +20,7 @@ class Elements {
   }
 
   public function panel() {
+    // return output
     return Helpers::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
@@ -30,8 +31,10 @@ class Elements {
   }
 
   public function add() {
+    // register hooks
     $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
 
+    // return output
     return Helpers::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
@@ -51,8 +54,10 @@ class Elements {
   }
 
   public function edit() {
+    // register hooks
     $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
 
+    // return output
     return Helpers::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
@@ -63,8 +68,10 @@ class Elements {
   }
 
   public function toggle() {
+    // register hooks
     $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
 
+    // return output
     return Helpers::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
@@ -75,9 +82,10 @@ class Elements {
   }
 
   public function files($type = null) {
+    // register hooks
     $this->assets->setHook('js', tpl::load($this->assets->paths['js'] . 'iframe.min.js'));
 
-
+    // prepare output
     $files  = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
     $more   = $files->count() > 15;
@@ -97,6 +105,7 @@ class Elements {
         array_push($items, $args);
       }
 
+      // return output
       return Helpers::fileviewer(array(
         'id'     => 'files',
         'icon'   => ($type == 'image') ? 'photo' : 'file',
@@ -110,11 +119,13 @@ class Elements {
   }
 
   public function images() {
+    // return output
     return $this->files('image');
   }
 
   public function languages() {
     if ($languages = $this->site->languages()) {
+      // prepare output
       $items = array();
       foreach($languages->not($this->site->language()->code()) as $language) {
         array_push($items, array(
@@ -123,6 +134,7 @@ class Elements {
         ));
       }
 
+      // return output
       return Helpers::dropdown(array(
         'id'     => 'lang',
         'icon'   => 'flag',
@@ -134,6 +146,7 @@ class Elements {
   }
 
   public function loadtime() {
+    // return output
     return Helpers::label(array(
       'id'     => 'loadtime',
       'icon'   => 'clock-o',
@@ -143,6 +156,7 @@ class Elements {
   }
 
   public function logout() {
+    // return output
     return Helpers::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
@@ -154,6 +168,7 @@ class Elements {
   }
 
   public function user() {
+    // return output
     return Helpers::link(array(
       'id'     => 'user',
       'icon'   => 'user',

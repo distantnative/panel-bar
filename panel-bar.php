@@ -29,13 +29,15 @@ class PanelBar extends Core {
 
 
   // Assets output functions
-  public static function css() {
+  public static function css($css) {
     $self = new self();
+    $self->assets->setHook('css', $css);
     return $self->assets->css();
   }
 
-  public static function js() {
+  public static function js($js) {
     $self = new self();
+    $self->assets->setHook('js', $js);
     return $self->assets->js();
   }
 

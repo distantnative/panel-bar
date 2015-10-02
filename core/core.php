@@ -22,10 +22,8 @@ class Core extends Helpers {
   public $visible      = true;
 
   public $assets       = null;
-  public $includeCSS   = true;
-  public $includeJS    = true;
-  public $hooksCSS     = null;
-  public $hooksJS      = null;
+  public $css          = true;
+  public $js           = true;
 
   protected $protected = null;
 
@@ -35,8 +33,6 @@ class Core extends Helpers {
       'elements'  => $this->__defaultElements($args),
       'css'       => true,
       'js'        => true,
-      'css.hooks' => null,
-      'js.hooks'  => null,
       'hide'      => false,
     ), $args);
 
@@ -44,13 +40,11 @@ class Core extends Helpers {
     $this->position   = c::get('panelbar.position', 'top');
     $this->visible    = $args['hide'] !== true;
 
-    $this->includeCSS = $args['css'];
-    $this->includeJS  = $args['js'];
-    $this->hooksCSS   = $args['css.hooks'];
-    $this->hooksJS    = $args['js.hooks'];
-    $this->assets     = new Assets(array(
-      'css' => $this->hooksCSS,
-      'js'  => $this->hooksJS,
+    $this->css    = $args['css'];
+    $this->js     = $args['js'];
+    $this->assets = new Assets(array(
+      'css' => $this->css,
+      'js'  => $this->js,
     ));
 
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
@@ -64,8 +58,8 @@ class Core extends Helpers {
                     ($this->visible === false ? ' panelbar--hidden' : ''),
       'elements' => $this->__elements(),
       'controls' => Controls::output(),
-      'assets'   => ($this->includeCSS ? $this->assets->css() : '') .
-                    ($this->includeJS ? $this->assets->js() : ''),
+      'assets'   => ($this->css !== false ? $this->assets->css() : '') .
+                    ($this->js  !== false ? $this->assets->js()  : ''),
     ));
   }
 
@@ -74,7 +68,7 @@ class Core extends Helpers {
     foreach ($this->elements as $element) {
       // $element is custom function
       if(is_callable($element)) {
-        $output .= call_user_func_array($element, array());
+        $output .= call_user_func_array($element, $this->assets);
       }
 
       // $element is default function
@@ -107,7 +101,7 @@ class Core extends Helpers {
   public static function defaults() { }
   public static function show()     { }
   public static function hide()     { }
-  public static function css()      { }
-  public static function js()       { }
+  public static function css($css)  { }
+  public static function js($js)    { }
 
 }
