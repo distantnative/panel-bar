@@ -12,7 +12,6 @@ use C;
 use Tpl;
 
 use PanelBar\Elements;
-use PanelBar\Controls;
 use PanelBar\Assets;
 
 class Core extends Helpers {
@@ -29,19 +28,13 @@ class Core extends Helpers {
 
 
   public function __construct($args = array()) {
-    $args = a::merge(array(
-      'elements'  => $this->__defaultElements($args),
-      'css'       => true,
-      'js'        => true,
-      'hide'      => false,
-    ), $args);
-
-    $this->elements   = $args['elements'];
+    $this->elements   = $this->__defaultElements($args);
     $this->position   = c::get('panelbar.position', 'top');
-    $this->visible    = $args['hide'] !== true;
+    $this->visible    = !isset($args['hide']) or $args['hide'] !== true;
 
-    $this->css    = $args['css'];
-    $this->js     = $args['js'];
+    // Assets
+    $this->css    = isset($args['css']) ? $args['css'] : true;
+    $this->js     = isset($args['js'])  ? $args['js']  : true;
     $this->assets = new Assets(array(
       'css' => $this->css,
       'js'  => $this->js,
@@ -51,18 +44,24 @@ class Core extends Helpers {
   }
 
 
-  // Creating the output for the panel bar
+
+  /**
+   *  OUTPUT
+   */
+
+  // main template
   protected function __output() {
     return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'main.php', array(
       'class'    => 'panelbar panelbar--' . $this->position .
                     ($this->visible === false ? ' panelbar--hidden' : ''),
       'elements' => $this->__elements(),
-      'controls' => Controls::output(),
+      'controls' => $this->__controls(),
       'assets'   => ($this->css !== false ? $this->assets->css() : '') .
                     ($this->js  !== false ? $this->assets->js()  : ''),
     ));
   }
 
+  // get all elements
   protected function __elements() {
     $output = '';
     foreach ($this->elements as $element) {
@@ -87,8 +86,16 @@ class Core extends Helpers {
     return $output;
   }
 
+  protected function __controls() {
+    return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'controls.php');
+  }
 
-  // Selecting the right elements to show (specified vs. defaults)
+
+
+  /**
+   *  DEFAULTS
+   */
+
   protected function __defaultElements($args) {
     return
       (isset($args['elements']) and is_array($args['elements'])) ?
@@ -97,7 +104,11 @@ class Core extends Helpers {
   }
 
 
-  // Placeholder for static methods
+
+  /**
+   *  PLACEHOLDERS for static methods
+   */
+
   public static function defaults() { }
   public static function show()     { }
   public static function hide()     { }
