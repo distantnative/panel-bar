@@ -20,6 +20,7 @@ class Core extends Helpers {
   public $position     = null;
   public $visible      = true;
 
+  public $assets       = null;
   public $includeCSS   = true;
   public $includeJS    = true;
   public $hookCSS      = null;
@@ -35,6 +36,7 @@ class Core extends Helpers {
     $this->position   = c::get('panelbar.position', 'top');
     $this->visible    = $args['hide'] !== true;
 
+    $this->assets     = new Assets();
     $this->includeCSS = $args['css'];
     $this->includeJS  = $args['js'];
     $this->hookCSS    = $args['css.hook'];
@@ -63,14 +65,6 @@ class Core extends Helpers {
   }
 
 
-  // Placeholder for static methods
-  public static function defaults() { }
-  public static function show()     { }
-  public static function hide()     { }
-  public static function css()      { }
-  public static function js()       { }
-
-
   // Creating the output for the panel bar
   protected function __output() {
     if ($user = site()->user() and $user->hasPanelAccess()) {
@@ -87,8 +81,8 @@ class Core extends Helpers {
       $bar    .= '</div>';
       $bar    .= Controls::output();
 
-      if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
-      if ($this->includeJS)  $bar .= Assets::js($this->hookJS);
+      if ($this->includeCSS) $bar .= $this->assets->css();
+      if ($this->includeJS)  $bar .= $this->assets->js();
 
       $bar    .= '</div>';
 
@@ -115,5 +109,13 @@ class Core extends Helpers {
 
     return $content;
   }
+
+
+  // Placeholder for static methods
+  public static function defaults() { }
+  public static function show()     { }
+  public static function hide()     { }
+  public static function css()      { }
+  public static function js()       { }
 
 }

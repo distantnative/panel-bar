@@ -29,12 +29,12 @@ class PanelBar extends Core {
   // Assets output functions
   public static function css() {
     $self = new self();
-    return $self->__getCSS(c::get('panelbar.position', 'top'));
+    return $self->assets->css();
   }
 
   public static function js() {
     $self = new self();
-    return $self->__getJS();
+    return $self->assets->js();
   }
 
 
