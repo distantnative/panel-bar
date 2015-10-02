@@ -10,6 +10,7 @@ var PanelbarIframe = function() {
   this.returnBtn = document.querySelector(".panelbar-return__btn");
   this.panelbar  = document.getElementById("panelbar");
   this.elements  = document.querySelectorAll(".panelbar__bar > div");
+  this.controls  = document.getElementById("panelbar_controls");
   this.position  = null;
   this.form      = null;
   this.submitted = false;
@@ -90,6 +91,7 @@ var PanelbarIframe = function() {
     for (i = 0; i < self.elements.length; i++) {
       self.elements[i].style.display = display;
     }
+    self.controls.style.display = display;
   };
 
 
