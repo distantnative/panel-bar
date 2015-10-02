@@ -1,62 +1,95 @@
-function supports_html5_storage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-  } catch (e) {
-    return false;
-  }
-}
 
-function save_current_state() {
-  localStorage['panelbar.expires'] = Date.now() + 3600000;
+var PanelbarState = function() {
+  var self = this;
 
-  // position
-  if (hasClass(wrapper, 'panelbar--top')) {
-    localStorage['panelbar.position'] = 'top';
-  } else {
-    localStorage['panelbar.position'] = 'bottom';
-  }
+  this.controls  = document.getElementById("panelbar_controls");
+  this.validTime = 24 * 60 * 60 * 1000;
 
-  // visibility
-  if (hasClass(panelbar, 'panelbar__bar--hidden')) {
-    localStorage['panelbar.visibility'] = 'hide';
-  } else {
-    localStorage['panelbar.visibility'] = 'show';
-  }
-}
 
-function restore_state() {
-  // position
-  if (localStorage['panelbar.position'] === 'top') {
-    removeClass(wrapper, 'panelbar--bottom');
-    addClass(wrapper, 'panelbar--top');
-  } else {
-    removeClass(wrapper, 'panelbar--top');
-    addClass(wrapper, 'panelbar--bottom');
-  }
+  self.init = function() {
+    if(self.support()) {
 
-  // visibility
-  if (localStorage['panelbar.visibility'] === 'show') {
-    removeClass(panelbar, 'panelbar__bar--hidden');
-  } else {
-    addClass(panelbar, 'panelbar__bar--hidden');
-  }
-}
+      if(self.expired()) {
+        self.reset();
+      } else {
+        self.restore();
+      }
 
-function reset_storage() {
-  localStorage.removeItem("panelbar.expires");
-  localStorage.removeItem("panelbar.position");
-  localStorage.removeItem("panelbar.visibility");
-}
+      self.save();
+      self.controls.addEventListener('click', self.save);
 
-if(supports_html5_storage()) {
-  if(Date.now() < localStorage['panelbar.expires']) {
-    restore_state();
-  } else {
-    reset_storage();
-  }
+    } else {
+      console.log('PanelBar: localStorage not supported');
+    }
+  };
 
-  //bind action
-  save_current_state();
-  switchbtn.addEventListener('click', save_current_state);
-  flipbtn.addEventListener('click', save_current_state);
-}
+
+  this.save = function() {
+    localStorage['panelbar.expires']    = Date.now() + self.validTime;
+    localStorage['panelbar.position']   = self.getPosition();
+    localStorage['panelbar.visibility'] = self.getVisibility();
+  };
+
+
+  this.restore = function() {
+    self.setPosition();
+    self.setVisibility();
+  };
+
+
+  this.reset = function() {
+    localStorage.removeItem("panelbar.expires");
+    localStorage.removeItem("panelbar.position");
+    localStorage.removeItem("panelbar.visibility");
+  };
+
+
+  this.getPosition = function() {
+    if (hasClass(wrapper, 'panelbar--top')) {
+      return 'top';
+    } else {
+      return 'bottom';
+    }
+  };
+
+  this.setPosition = function() {
+    var position = localStorage['panelbar.position'];
+    removeClass(wrapper, 'panelbar--' + (position === 'top' ? 'bottom' : 'top'));
+    addClass(wrapper, 'panelbar--' + position);
+  };
+
+  this.getVisibility = function() {
+    if (hasClass(panelbar, 'panelbar__bar--hidden')) {
+      return 'hide';
+    } else {
+      return 'show';
+    }
+  };
+
+  this.setVisibility = function() {
+    if (localStorage['panelbar.visibility'] === 'show') {
+      removeClass(panelbar, 'panelbar__bar--hidden');
+    } else {
+      addClass(panelbar, 'panelbar__bar--hidden');
+    }
+  };
+
+
+  this.expired = function() {
+    return Date.now() > localStorage['panelbar.expires'];
+  };
+
+
+  this.support = function() {
+    try {
+      return window.localStorage && window.localStorage !== null;
+    } catch (e) {
+      return false;
+    }
+  };
+
+};
+
+
+var pbState = new PanelbarState();
+pbState.init();
