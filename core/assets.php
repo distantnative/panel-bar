@@ -17,36 +17,64 @@ class Assets {
   public function __construct($external) {
     $this->paths = $this->setPaths();
 
-    if (c::get('panelbar.rembember', false)) {
-      $this->setHook('js', tpl::load($this->paths['js'] . 'localstorage.min.js'));
-    }
-    $this->setHook('js', tpl::load($this->paths['js'] . 'elements' . DS . 'iframe.min.js'));
-
-    foreach($external as $type => $hooks) {
-      foreach($hooks as $hook) {
-        $this->setHook($type, $hook);
-      }
-    }
-
+    $this->defaults();
+    $this->setHooks($external);
   }
 
+
+  /**
+   *  DISPLAY
+   */
+
   public function css() {
-    $css  = tpl::load($this->paths['css'] . 'panelbar.min.css');
-    $css  = $this->setFonts($css);
-    $css .= $this->getHooks('css');
-    return '<style>'.$css.'</style>';
+    return '<style>'.$this->setFonts($this->getHooks('css')).'</style>';
   }
 
   public function js() {
-    $js  = tpl::load($this->paths['js'] . 'panelbar.min.js');
-    $js .= $this->getHooks('js');
-    return '<script>'.$js.'</script>';
+    return '<script>'.$this->getHooks('js').'</script>';
   }
 
+
+
+  /**
+   *  DEFAULTS
+   */
+
+  protected function defaults() {
+    $this->setHooks(array(
+      'css' => array(
+        tpl::load($this->paths['css'] . 'panelbar.min.css'),
+      ),
+      'js'  => array(
+        tpl::load($this->paths['js'] . 'panelbar.min.js'),
+        c::get('panelbar.rembember', false) ?
+          tpl::load($this->paths['js'] . 'localstorage.min.js') : '',
+        tpl::load($this->paths['js'] . 'iframe.min.js'),
+      ),
+    ));
+  }
+
+
+
+  /**
+   *  HOOKS
+   */
 
   public function setHook($type, $hook) {
     if(!is_array($hook)) $hook = array($hook);
     $this->{$type} = a::merge($this->{$type}, $hook);
+  }
+
+  protected function setHooks($collection = array()) {
+    if (is_array($collection)) {
+      foreach($collection as $type => $hooks) {
+        if (is_array($hooks)) {
+          foreach($hooks as $hook) {
+            $this->setHook($type, $hook);
+          }
+        }
+      }
+    }
   }
 
   protected function getHooks($type) {
@@ -61,6 +89,11 @@ class Assets {
     return $return;
   }
 
+
+
+  /**
+   *  PATHS
+   */
 
   protected function setPaths() {
     $base = str_ireplace(kirby()->roots()->index(), '', __DIR__);
@@ -82,13 +115,9 @@ class Assets {
       array('{{SSPitalic}}', $this->paths['fonts'] . 'sourcesanspro-400-italic.woff'),
     );
     foreach($fonts as $font) {
-      $css = $this->placeholder($font[0], $font[1], $css);
+      $css = str_ireplace($font[0], $font[1], $css);
     }
     return $css;
-  }
-
-  protected function placeholder($placeholder, $replacement, $string) {
-    return str_ireplace($placeholder, $replacement, $string);
   }
 
 }

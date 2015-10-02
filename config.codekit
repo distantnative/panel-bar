@@ -11,22 +11,22 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/assets\/js\/elements\/iframe.js": {
+	"\/assets\/js\/iframe.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/iframe.js",
-		"outputAbbreviatedPath": "\/assets\/js\/elements\/iframe.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/iframe.js",
+		"outputAbbreviatedPath": "\/assets\/js\/iframe.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/elements\/iframe.min.js": {
+	"\/assets\/js\/iframe.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/iframe.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/iframe.min.js",
 		"outputAbbreviatedPath": "\/assets\/scripts\/iframe.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,

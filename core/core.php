@@ -32,7 +32,7 @@ class Core extends Helpers {
 
   public function __construct($args = array()) {
     $args = a::merge(array(
-      'elements'  => $this->__defaultElements(),
+      'elements'  => $this->__defaultElements($args),
       'css'       => true,
       'js'        => true,
       'css.hooks' => null,
