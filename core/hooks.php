@@ -2,7 +2,6 @@
 
 namespace PanelBar;
 
-
 class Hooks {
 
   public function setHook($type, $hook) {

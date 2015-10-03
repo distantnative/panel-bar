@@ -11,8 +11,8 @@ require 'assets.php';
 
 use A;
 use C;
-use Tpl;
 
+use PanelBar\PB;
 use PanelBar\Elements;
 use PanelBar\Output;
 use PanelBar\Assets;
@@ -82,8 +82,7 @@ class Core extends Helpers {
   }
 
   protected function _controls() {
-    $html = tpl::load($this->output->templates . 'controls.php');
-    $this->output->setHook('after', $html);
+    $this->output->setHook('after', pb::load('html', 'controls.php'));
   }
 
   protected function _assets() {

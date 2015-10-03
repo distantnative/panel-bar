@@ -3,7 +3,6 @@
 namespace PanelBar;
 
 use C;
-use Tpl;
 
 use PanelBar\PB;
 

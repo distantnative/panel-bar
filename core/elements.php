@@ -2,8 +2,6 @@
 
 namespace PanelBar;
 
-use Tpl;
-
 use PanelBar\PB;
 use PanelBar\Helpers;
 
