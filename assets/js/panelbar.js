@@ -92,6 +92,10 @@ var Panelbar = function() {
       self.switchVisibility();
     } else if(self.map[18] && self.map[189]) {    // alt + -
       self.switchPosition();
+    } else if(self.map[18] && self.map[69]) {    // alt + E
+      document.querySelector('.panelbar--edit a').click();
+    } else if(self.map[18] && self.map[80]) {    // alt + P
+      document.querySelector('.panelbar--panel a').click();
     }
   };
 
