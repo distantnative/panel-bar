@@ -3,17 +3,17 @@ var PanelbarIframe = function() {
 
   var self = this;
 
-  this.link      = null;
-  this.href      = null;
-  this.wrapper   = document.querySelector(".panelbar-return__iframe");
-  this.iframe    = this.wrapper.children[0];
-  this.returnBtn = document.querySelector(".panelbar-return__btn");
-  this.panelbar  = document.getElementById("panelbar");
-  this.elements  = document.querySelectorAll(".panelbar__bar > div");
-  this.controls  = document.getElementById("panelbar_controls");
-  this.position  = null;
-  this.form      = null;
-  this.submitted = false;
+  this.link       = null;
+  this.href       = null;
+  this.wrapper    = document.querySelector(".panelbar-iframe__iframe");
+  this.iframe     = this.wrapper.children[0];
+  this.buttons    = document.querySelector(".panelbar-iframe__btns");
+  this.returnBtn  = document.querySelector(".js_panelbar-iframe-close");
+  this.refreshBtn = document.querySelector(".js_panelbar-iframe-closerefresh");
+  this.panelbar   = document.getElementById("panelbar");
+  this.elements   = document.querySelectorAll(".panelbar__bar > div");
+  this.controls   = document.getElementById("panelbar_controls");
+  this.position   = null;
 
 
   this.activate = function(link) {
@@ -30,51 +30,36 @@ var PanelbarIframe = function() {
   };
 
   this.deactivate = function() {
-    if (self.submitted) {
-      location.reload();
+    self.restorePanelbar();
+    self.removeOverlay();
+    self.restorePosition();
+  };
 
-    } else {
-      self.restorePanelbar();
-      self.removeOverlay();
-      self.restorePosition();
-      self.unbindSubmit();
-    }
+  this.refresh = function() {
+    location.reload();
   };
 
   this.load = function(href) {
     self.iframe.src = self.href;
   };
 
-  this.bindSubmit = function() {
-    self.clearSubmit();
-
-    var inner     = self.iframe.contentDocument || self.iframe.contentWindow.document;
-    self.form     = inner.querySelector('.form');
-    self.form.addEventListener('submit', self.setSubmit);
-  };
-
-  this.unbindSubmit = function() {
-    self.form.removeEventListener('submit', self.setSubmit);
-  };
-
-  this.setSubmit   = function() { self.submitted = true; }
-  this.clearSubmit = function() { self.submitted = false; }
-
 
   this.buildOverlay = function() {
-    self.returnBtn.style.display = 'inline-block';
+    self.buttons.style.display   = 'inline-block';
     self.wrapper.style.display   = 'block';
     document.body.style.overflow = 'hidden';
 
     self.returnBtn.addEventListener('click', self.deactivate);
+    self.refreshBtn.addEventListener('click', self.refresh);
   };
 
   this.removeOverlay = function() {
-    self.returnBtn.style.display = 'none';
+    self.buttons.style.display   = 'none';
     self.wrapper.style.display   = 'none';
     document.body.style.overflow = 'auto';
 
     self.returnBtn.removeEventListener('click', self.deactivate);
+    self.refreshBtn.removeEventListener('click', self.refresh);
   };
 
 

@@ -1,1 +1,1 @@
-<div class="panelbar-return__iframe"><iframe></iframe></div>
+<div class="panelbar-iframe__iframe"><iframe></iframe></div>

@@ -2,14 +2,10 @@
 @import "../helpers/variables";
 @import "../helpers/mixins";
 
-.panelbar-return{
+.panelbar-iframe {
 
-  &__btn {
+  &__btns {
     display: none;
-    padding: 16px 18px 15px;
-
-    color:  #fff;
-    cursor: pointer;
   }
 
   &__iframe {

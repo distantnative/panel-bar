@@ -30,7 +30,9 @@ class Core extends Helpers {
 
 
   public function __construct($args = array()) {
-    $this->elements   = $this->_defaultElements($args);
+    // Elements
+    $this->elements = (isset($args['elements']) and is_array($args['elements'])) ?
+                      $args['elements'] : c::get('panelbar.elements', $this->defaults);
 
     // Output
     $visible      = !(isset($args['hide']) and $args['hide'] === true);
@@ -39,14 +41,10 @@ class Core extends Helpers {
     // Assets
     $this->css    = isset($args['css']) ? $args['css'] : true;
     $this->js     = isset($args['js'])  ? $args['js']  : true;
-    $this->assets = new Assets(array(
-      'css' => $this->css,
-      'js'  => $this->js,
-    ));
+    $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
 
     $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
   }
-
 
 
   /**
@@ -91,20 +89,6 @@ class Core extends Helpers {
     if($this->css !== false) $this->output->setHook('after', $this->assets->css());
     if($this->js  !== false) $this->output->setHook('after', $this->assets->js());
   }
-
-
-
-  /**
-   *  DEFAULTS
-   */
-
-  protected function _defaultElements($args) {
-    return
-      (isset($args['elements']) and is_array($args['elements'])) ?
-      $args['elements'] :
-      c::get('panelbar.elements', $this->defaults);
-  }
-
 
 
   /**
