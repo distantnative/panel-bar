@@ -16,6 +16,17 @@ var PanelbarIframe = function() {
   this.position   = null;
 
 
+  this.init = function(elements) {
+    var iframelinks = document.querySelectorAll(elements);
+    var i;
+    for (i = 0; i < iframelinks.length; i++) {
+      iframelinks[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        self.activate(this);
+      });
+    }
+  };
+
   this.activate = function(link) {
     self.link     = link;
     self.href     = self.link.href;
@@ -95,17 +106,7 @@ var PanelbarIframe = function() {
 
 
 
-if ( 'querySelector' in document && 'addEventListener' in window ) {
-  var iframelinks    = document.querySelectorAll('.panelbar--add a, .panelbar--edit a, .panelbar--toggle a, .panelbar-fileviewer__item, .panelbar-fileviewer__more');
+if ('querySelector' in document && 'addEventListener' in window) {
   var panelbarIframe = new PanelbarIframe();
-
-  var i;
-  for (i = 0; i < iframelinks.length; i++) {
-    iframelinks[i].addEventListener('click', function(e) {
-      e.preventDefault();
-      panelbarIframe.activate(this);
-    });
-  }
-
-
+  panelbarIframe.init('.panelbar--add a, .panelbar--edit a, .panelbar-fileviewer__item, .panelbar-fileviewer__more');
 }

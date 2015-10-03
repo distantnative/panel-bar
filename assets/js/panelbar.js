@@ -30,7 +30,7 @@ var switchbtn = document.getElementById('panelbar_switch');
 var flipbtn   = document.getElementById('panelbar_flip');
 
 
-if ( 'querySelector' in document && 'addEventListener' in window ) {
+if ('querySelector' in document && 'addEventListener' in window) {
   // Controls
   switchbtn.addEventListener('click', function () {
     if (hasClass(panelbar, 'panelbar__bar--hidden')) {
