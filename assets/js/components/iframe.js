@@ -30,10 +30,10 @@ var PanelbarIframe = function() {
     self.href     = self.link.href;
     self.position = panelbar.position;
 
+    self.load();
+    self.clearPosition();
     self.clearPanelbar();
     self.buildOverlay();
-    self.clearPosition();
-    self.load();
   };
 
   this.deactivate = function() {
