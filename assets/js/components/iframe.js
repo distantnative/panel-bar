@@ -11,7 +11,6 @@ var PanelbarIframe = function() {
   this.returnBtn  = document.querySelector(".js_panelbar-iframe-close");
   this.refreshBtn = document.querySelector(".js_panelbar-iframe-closerefresh");
   this.elements   = document.querySelectorAll(".panelbar__bar > div");
-  this.controls   = document.getElementById("panelbar_controls");
   this.position   = null;
 
 
@@ -29,7 +28,7 @@ var PanelbarIframe = function() {
   this.activate = function(link) {
     self.link     = link;
     self.href     = self.link.href;
-    self.position = hasClass(panelbar.wrapper, 'panelbar--top') ? 'top' : 'bottom';
+    self.position = panelbar.position;
 
     self.clearPanelbar();
     self.buildOverlay();
@@ -86,18 +85,16 @@ var PanelbarIframe = function() {
     for (i = 0; i < self.elements.length; i++) {
       self.elements[i].style.display = display;
     }
-    self.controls.style.display = display;
+    panelbar.controls.style.display = display;
   };
 
 
   this.clearPosition = function() {
-    removeClass(panelbar.wrapper, 'panelbar--bottom');
-    addClass(panelbar.wrapper, 'panelbar--top');
+    panelbar.top();
   };
 
   this.restorePosition = function() {
-    removeClass(panelbar.wrapper, 'panelbar--top');
-    addClass(panelbar.wrapper, 'panelbar--' + self.position);
+    if (self.position === 'bottom') { panelbar.bottom(); }
   };
 };
 

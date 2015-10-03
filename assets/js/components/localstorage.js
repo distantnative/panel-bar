@@ -8,11 +8,8 @@ var PanelbarState = function() {
   self.init = function() {
     if(self.support()) {
 
-      if(self.expired()) {
-        self.reset();
-      } else {
-        self.restore();
-      }
+      if(self.expired()) { self.reset();   }
+      else               { self.restore(); }
 
       self.save();
       panelbar.controls.addEventListener('click', self.save);
@@ -24,9 +21,9 @@ var PanelbarState = function() {
 
 
   this.save = function() {
-    localStorage['panelbar.expires']    = Date.now() + self.validTime;
-    localStorage['panelbar.position']   = self.getPosition();
-    localStorage['panelbar.visibility'] = self.getVisibility();
+    localStorage['panelbar.expires']  = Date.now() + self.validTime;
+    localStorage['panelbar.position'] = panelbar.position;
+    localStorage['panelbar.visible']  = panelbar.visible;
   };
 
 
@@ -37,40 +34,19 @@ var PanelbarState = function() {
 
 
   this.reset = function() {
-    localStorage.removeItem("panelbar.expires");
-    localStorage.removeItem("panelbar.position");
-    localStorage.removeItem("panelbar.visibility");
-  };
-
-
-  this.getPosition = function() {
-    if(hasClass(panelbar.wrapper, 'panelbar--top')) {
-      return 'top';
-    } else {
-      return 'bottom';
-    }
+    localStorage.removeItem('panelbar.expires');
+    localStorage.removeItem('panelbar.position');
+    localStorage.removeItem('panelbar.visibile');
   };
 
   this.setPosition = function() {
-    var position = localStorage['panelbar.position'];
-    removeClass(panelbar.wrapper, 'panelbar--' + (position === 'top' ? 'bottom' : 'top'));
-    addClass(panelbar.wrapper, 'panelbar--' + position);
-  };
-
-  this.getVisibility = function() {
-    if (hasClass(panelbar.panelbar, 'panelbar__bar--hidden')) {
-      return 'hide';
-    } else {
-      return 'show';
-    }
+    if (localStorage['panelbar.position'] === 'top') { panelbar.top();    }
+    else                                             { panelbar.bottom(); }
   };
 
   this.setVisibility = function() {
-    if(localStorage['panelbar.visibility'] === 'show') {
-      removeClass(panelbar.panelbar, 'panelbar__bar--hidden');
-    } else {
-      addClass(panelbar.panelbar, 'panelbar__bar--hidden');
-    }
+    if (localStorage['panelbar.visible'] === 'true') { panelbar.show(); }
+    else                                             { panelbar.hide(); }
   };
 
 
