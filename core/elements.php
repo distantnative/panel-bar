@@ -40,6 +40,11 @@ class Elements {
     );
   }
 
+  protected function purl($old, $new = null) {
+    $kirby = kirby();
+    return (version_compare($kirby::$version, '2.2.0', '<')) ?
+           (is_null($new) ? $old : $new) : $old;
+  }
 
   /**
    *  PANEL
@@ -53,7 +58,7 @@ class Elements {
     $this->output->setHook('elements', Helpers::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
-      'url'     => site()->url().'/panel',
+      'url'     => $this->purl(site()->url().'/panel'),
       'label'   => 'Panel',
       'mobile'  => 'icon',
     )));
@@ -79,11 +84,11 @@ class Elements {
       'label'  => 'Add',
       'items'  => array(
           'child' => array(
-              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->uri(),
+              'url'   => $this->purl($this->site->url().'/panel/#/pages/add/'.$this->page->uri()),
               'label' => 'Child',
             ),
           'sibling' => array(
-              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri(),
+              'url'   => $this->purl($this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri()),
               'label' => 'Sibling',
             ),
         ),
