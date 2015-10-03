@@ -15,7 +15,7 @@ var PanelbarIframe = function() {
 
 
   this.init = function(elements) {
-    var iframelinks = document.querySelectorAll(elements);
+    var iframelinks = document.querySelectorAll(elements.join());
     var i;
     for (i = 0; i < iframelinks.length; i++) {
       iframelinks[i].addEventListener('click', function(e) {
@@ -103,6 +103,11 @@ var PanelbarIframe = function() {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
+  var elements = ['.panelbar--add a',
+                  '.panelbar--edit a',
+                  '.panelbar--user a',
+                  '.panelbar-fileviewer__item',
+                  '.panelbar-fileviewer__more'];
   var panelbarIframe = new PanelbarIframe();
-  panelbarIframe.init('.panelbar--add a, .panelbar--edit a, .panelbar-fileviewer__item, .panelbar-fileviewer__more');
+  panelbarIframe.init(elements);
 }

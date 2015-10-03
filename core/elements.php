@@ -242,9 +242,13 @@ class Elements {
 
   public function user() {
     // register assets
+    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
+    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
     // register output
+    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
+    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
     $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'user',
       'icon'   => 'user',
