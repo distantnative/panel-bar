@@ -36,6 +36,7 @@ class Elements {
     $this->js  = array(
       'base'       => $this->assets->paths['js'],
       'elements'   => $this->assets->paths['js'] . 'elements'   . DS,
+      'components' => $this->assets->paths['js'] . 'components' . DS,
     );
   }
 
@@ -65,7 +66,7 @@ class Elements {
 
   public function add() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
+    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
     $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
 
@@ -97,7 +98,7 @@ class Elements {
 
   public function edit() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
+    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
     $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
@@ -121,8 +122,8 @@ class Elements {
   public function toggle() {
     // register assets
     $this->assets->setHook('js',  tpl::load($this->js['elements'] . 'toggle.min.js'));
-    $this->assets->setHook('js',  'currentURI="'.$this->page->uri().'";');
-    $this->assets->setHook('js',  'siteURL="'.$this->site->url().'";');
+    $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
+    $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
     // register output

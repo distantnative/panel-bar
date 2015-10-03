@@ -2,7 +2,6 @@
 var PanelbarState = function() {
   var self = this;
 
-  this.controls  = document.getElementById("panelbar_controls");
   this.validTime = 24 * 60 * 60 * 1000;
 
 
@@ -16,7 +15,7 @@ var PanelbarState = function() {
       }
 
       self.save();
-      self.controls.addEventListener('click', self.save);
+      panelbar.controls.addEventListener('click', self.save);
 
     } else {
       console.log('PanelBar: localStorage not supported');
@@ -45,7 +44,7 @@ var PanelbarState = function() {
 
 
   this.getPosition = function() {
-    if(hasClass(wrapper, 'panelbar--top')) {
+    if(hasClass(panelbar.wrapper, 'panelbar--top')) {
       return 'top';
     } else {
       return 'bottom';
@@ -54,12 +53,12 @@ var PanelbarState = function() {
 
   this.setPosition = function() {
     var position = localStorage['panelbar.position'];
-    removeClass(wrapper, 'panelbar--' + (position === 'top' ? 'bottom' : 'top'));
-    addClass(wrapper, 'panelbar--' + position);
+    removeClass(panelbar.wrapper, 'panelbar--' + (position === 'top' ? 'bottom' : 'top'));
+    addClass(panelbar.wrapper, 'panelbar--' + position);
   };
 
   this.getVisibility = function() {
-    if (hasClass(panelbar, 'panelbar__bar--hidden')) {
+    if (hasClass(panelbar.panelbar, 'panelbar__bar--hidden')) {
       return 'hide';
     } else {
       return 'show';
@@ -68,9 +67,9 @@ var PanelbarState = function() {
 
   this.setVisibility = function() {
     if(localStorage['panelbar.visibility'] === 'show') {
-      removeClass(panelbar, 'panelbar__bar--hidden');
+      removeClass(panelbar.panelbar, 'panelbar__bar--hidden');
     } else {
-      addClass(panelbar, 'panelbar__bar--hidden');
+      addClass(panelbar.panelbar, 'panelbar__bar--hidden');
     }
   };
 

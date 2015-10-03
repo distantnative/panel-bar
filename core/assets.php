@@ -46,13 +46,14 @@ class Assets extends Hooks {
         tpl::load($this->paths['css'] . 'panelbar.css'),
       ),
       'js'  => array(
+        'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
         tpl::load($this->paths['js'] . 'panelbar.min.js'),
       ),
     ));
 
     // JS: State - localStorage
     if(c::get('panelbar.rembember', false)) {
-      $this->setHook('js', tpl::load($this->paths['js'] . 'localstorage.min.js'));
+      $this->setHook('js', tpl::load($this->paths['js'] . 'components' . DS . 'localstorage.min.js'));
     }
   }
 
