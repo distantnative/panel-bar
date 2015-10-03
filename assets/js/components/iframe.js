@@ -33,15 +33,14 @@ var PanelbarIframe = function() {
     self.clearPanelbar();
     self.buildOverlay();
     self.clearPosition();
-
     self.load();
-    setTimeout(self.bindSubmit, 500);
   };
 
   this.deactivate = function() {
     self.restorePanelbar();
     self.removeOverlay();
     self.restorePosition();
+    self.unload();
   };
 
   this.refresh = function() {
@@ -51,6 +50,10 @@ var PanelbarIframe = function() {
   this.load = function(href) {
     self.iframe.src = self.href;
   };
+
+  this.unload = function(href) {
+    self.iframe.src = "";
+  }
 
 
   this.buildOverlay = function() {
