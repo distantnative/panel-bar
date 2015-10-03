@@ -14,11 +14,15 @@ class PanelBar extends Core {
     'user'
   );
 
-  // Display functions
+
+  /**
+   *  DISPLAY
+   */
+
   public static function show($args = array()) {
     if ($user = site()->user() and $user->hasPanelAccess()) {
       $self = new self($args);
-      return $self->__output();
+      return $self->_output();
     }
   }
 
@@ -28,7 +32,10 @@ class PanelBar extends Core {
   }
 
 
-  // Assets output functions
+  /**
+   *  ASSETS OUTPUT
+   */
+
   public static function css($css) {
     $self = new self();
     $self->assets->setHook('css', $css);
@@ -42,7 +49,10 @@ class PanelBar extends Core {
   }
 
 
-  // Default elements
+  /**
+   *  DEFAULT ELEMENTS
+   */
+
   public static function defaults() {
     $self = new self();
     return $self->defaults;

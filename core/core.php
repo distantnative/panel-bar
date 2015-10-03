@@ -2,8 +2,10 @@
 
 namespace PanelBar;
 
+require 'hooks.php';
 require 'helpers.php';
 require 'elements.php';
+require 'output.php';
 require 'assets.php';
 
 use A;
@@ -11,25 +13,28 @@ use C;
 use Tpl;
 
 use PanelBar\Elements;
+use PanelBar\Output;
 use PanelBar\Assets;
 
 class Core extends Helpers {
 
-  public $elements     = null;
-  public $position     = null;
-  public $visible      = true;
+  public $elements;
+  public $position;
 
-  public $assets       = null;
-  public $css          = true;
-  public $js           = true;
+  public $output;
+  public $assets;
+  public $css = true;
+  public $js  = true;
 
-  protected $protected = null;
+  protected $protected;
 
 
   public function __construct($args = array()) {
-    $this->elements   = $this->__defaultElements($args);
-    $this->position   = c::get('panelbar.position', 'top');
-    $this->visible    = !isset($args['hide']) or $args['hide'] !== true;
+    $this->elements   = $this->_defaultElements($args);
+
+    // Output
+    $visible      = !(isset($args['hide']) and $args['hide'] === true);
+    $this->output = new Output($visible);
 
     // Assets
     $this->css    = isset($args['css']) ? $args['css'] : true;
@@ -48,45 +53,43 @@ class Core extends Helpers {
    *  OUTPUT
    */
 
-  // main template
-  protected function __output() {
-    return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'main.php', array(
-      'class'    => 'panelbar panelbar--' . $this->position .
-                    ($this->visible === false ? ' panelbar--hidden' : ''),
-      'elements' => $this->__elements(),
-      'controls' => $this->__controls(),
-      'assets'   => ($this->css !== false ? $this->assets->css() : '') .
-                    ($this->js  !== false ? $this->assets->js()  : ''),
-    ));
+  protected function _output() {
+    $this->_elements();
+    $this->_controls();
+    $this->_assets();
+    return $this->output->get();
   }
 
   // get all elements
-  protected function __elements() {
-    $output = '';
+  protected function _elements() {
     foreach ($this->elements as $element) {
       // $element is custom function
       if(is_callable($element)) {
-        $output .= call_user_func_array($element, $this->assets);
+        $element = call_user_func_array($element, $this->output, $this->assets);
       }
 
       // $element is default function
-      elseif($ref = new Elements($this->assets) and
+      elseif($ref = new Elements($this->output, $this->assets) and
              is_callable(array($ref, $element)) and
              !in_array($element, $this->protected)) {
-        $output .= call_user_func(array($ref, $element));
+        $element = call_user_func(array($ref, $element));
       }
 
-      // $element is a string
-      elseif(is_string($element)) {
-        $output .= $element;
+      if(is_string($element)) {
+        $this->output->setHook('elements', $element);
       }
+
     }
-
-    return $output;
   }
 
-  protected function __controls() {
-    return tpl::load(realpath(__DIR__ . '/..') . DS . 'templates' . DS . 'controls.php');
+  protected function _controls() {
+    $html = tpl::load($this->output->templates . 'controls.php');
+    $this->output->setHook('after', $html);
+  }
+
+  protected function _assets() {
+    if($this->css !== false) $this->output->setHook('after', $this->assets->css());
+    if($this->js  !== false) $this->output->setHook('after', $this->assets->js());
   }
 
 
@@ -95,7 +98,7 @@ class Core extends Helpers {
    *  DEFAULTS
    */
 
-  protected function __defaultElements($args) {
+  protected function _defaultElements($args) {
     return
       (isset($args['elements']) and is_array($args['elements'])) ?
       $args['elements'] :

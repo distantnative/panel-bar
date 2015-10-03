@@ -11,15 +11,23 @@ class Elements {
   public $site;
   public $page;
 
+  protected $output;
+  protected $templates;
   protected $assets;
   protected $css;
   protected $js;
 
-  public function __construct($assets) {
+  public function __construct($output, $assets) {
     $this->site   = site();
     $this->page   = page();
 
+    $this->output = $output;
     $this->assets = $assets;
+
+    $this->templates  = array(
+      'base'       => $this->output->templates,
+      'iframe'     => $this->output->templates . 'iframe' . DS,
+    );
     $this->css  = array(
       'base'       => $this->assets->paths['css'],
       'components' => $this->assets->paths['css'] . 'components' . DS,
@@ -30,28 +38,40 @@ class Elements {
     );
   }
 
+
+  /**
+   *  PANEL
+   */
+
   public function panel() {
-    // register hooks
+    // register assets
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
-    // return output
-    return Helpers::link(array(
+    // register output
+    $this->output->setHook('elements', Helpers::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
       'url'     => site()->url().'/panel',
       'label'   => 'Panel',
       'mobile'  => 'icon',
-    ));
+    )));
   }
 
+
+  /**
+   *  ADD
+   */
+
   public function add() {
-    // register hooks
+    // register assets
     $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
     $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
 
-    // return output
-    return Helpers::dropdown(array(
+    // register output
+    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
+    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('elements', Helpers::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
@@ -66,40 +86,59 @@ class Elements {
             ),
         ),
       'mobile' => 'icon'
-    ));
+    )));
   }
 
+
+  /**
+   *  EDIT
+   */
+
   public function edit() {
-    // register hooks
+    // register assets
     $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
     $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
-    // return output
-    return Helpers::link(array(
+    // register output
+    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
+    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
       'url'    => $this->site->url().'/panel/#/pages/show/'.$this->page->uri(),
       'label'  => 'Edit',
       'mobile' => 'icon',
-    ));
+    )));
   }
 
+
+  /**
+   *  TOGGLE
+   */
+
   public function toggle() {
-    // register hooks
+    // register assets
     $this->assets->setHook('js',  tpl::load($this->js['base'] . 'iframe.min.js'));
     $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
-    // return output
-    return Helpers::link(array(
+    // register output
+    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
+    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'url'    => $this->site->url().'/panel/#/pages/toggle/'.$this->page->uri(),
       'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
       'mobile' => 'icon',
-    ));
+    )));
   }
+
+
+  /**
+   *  FILES
+   */
 
   public function files($type = null) {
     // register hooks
@@ -125,8 +164,8 @@ class Elements {
         array_push($items, $args);
       }
 
-      // return output
-      return Helpers::fileviewer(array(
+      // register output
+      $this->output->setHook('elements', Helpers::fileviewer(array(
         'id'     => 'files',
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
@@ -134,18 +173,27 @@ class Elements {
         'count'  => count($items),
         'more'   => $more ? $this->site->url().'/panel/#/files/index/'.$this->page->uri() : false,
         'mobile' => 'icon'
-      ));
+      )));
     }
   }
 
+
+  /**
+   *  IMAGES
+   */
+
   public function images() {
-    // return output
     return $this->files('image');
   }
 
+
+  /**
+   *  LANGUAGES
+   */
+
   public function languages() {
     if ($languages = $this->site->languages()) {
-      // register hooks
+      // register assets
       $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
 
       // prepare output
@@ -157,59 +205,73 @@ class Elements {
         ));
       }
 
-      // return output
-      return Helpers::dropdown(array(
+      // register output
+      $this->output->setHook('elements', Helpers::dropdown(array(
         'id'     => 'lang',
         'icon'   => 'flag',
         'label'  => strtoupper($this->site->language()->code()),
         'items'  => $items,
         'mobile' => 'label'
-      ));
+      )));
     }
   }
 
+
+  /**
+   *  LOADTIME
+   */
+
   public function loadtime() {
-    // register hooks
+    // register assets
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'label.css'));
 
-
-    // return output
-    return Helpers::label(array(
+    // register output
+    $this->output->setHook('elements', Helpers::label(array(
       'id'     => 'loadtime',
       'icon'   => 'clock-o',
       'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
       'mobile' => 'label',
-    ));
+    )));
   }
 
-  public function logout() {
-    // register hooks
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
-    // return output
-    return Helpers::link(array(
-      'id'     => 'logout',
-      'icon'   => 'power-off',
-      'url'    => $this->site->url().'/panel/logout',
-      'label'  => 'Logout',
-      'mobile' => 'icon',
-      'float'  => 'right',
-    ));
-  }
+  /**
+   *  USER
+   */
 
   public function user() {
-    // register hooks
+    // register assets
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
 
-    // return output
-    return Helpers::link(array(
+    // register output
+    $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'user',
       'icon'   => 'user',
       'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
       'label'  => $this->site->user(),
       'mobile' => 'icon',
       'float'  => 'right',
-    ));
+    )));
+  }
+
+
+  /**
+   *  LOGOUT
+   */
+
+  public function logout() {
+    // register assets
+    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+
+    // register output
+    $this->output->setHook('elements', Helpers::link(array(
+      'id'     => 'logout',
+      'icon'   => 'power-off',
+      'url'    => $this->site->url().'/panel/logout',
+      'label'  => 'Logout',
+      'mobile' => 'icon',
+      'float'  => 'right',
+    )));
   }
 
 }
