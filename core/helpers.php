@@ -66,7 +66,7 @@ class Helpers {
 
   // Helper methods for element helpers
   protected static function __element($block, $class, $args) {
-    $class    =  $class.' '.self::__class($args).' panelbar--'.$args['id'];
+    $class    =  $class.' panelbar-element '.self::__class($args).' panelbar--'.$args['id'];
     $element  = '<div class="'.$class.'" id="panelbar--'.$args['id'].'">';
     $element .= self::__link(self::__icon($args).self::__label($args), $args);
     $element .= $block;

@@ -1,12 +1,10 @@
 
 @import "../helpers/variables";
 @import "../helpers/mixins";
-@import "base";
 
 // Dropdowns
 
 .panelbar-drop {
-  @extend .panelbar-element;
   position: relative;
   cursor: pointer;
 

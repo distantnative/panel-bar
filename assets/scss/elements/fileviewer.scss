@@ -1,12 +1,10 @@
 
 @import "../helpers/variables";
 @import "../helpers/mixins";
-@import "base";
 
 // Fileviewers
 
 .panelbar-fileviewer {
-  @extend .panelbar-element;
   position: relative;
   cursor: pointer;
 

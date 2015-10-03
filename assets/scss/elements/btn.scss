@@ -1,11 +1,9 @@
 
 @import "../helpers/variables";
 @import "../helpers/mixins";
-@import "base";
 
 // Buttons
 
 .panelbar-btn {
-  @extend .panelbar-element;
   cursor: pointer;
 }
