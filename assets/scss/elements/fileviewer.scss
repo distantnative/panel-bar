@@ -34,8 +34,13 @@
     .panelbar-fileviewer:hover & { display: block; }
   }
 
+  &__items {
+    @include clearfix;
+  }
+
   &__item {
-    display: inline-block;
+    display: block;
+    float: left;
     width: 33.3333%;
 
     .panelbar-fileviewer__grid--1 & { width: 100%; }
@@ -54,6 +59,7 @@
     &:hover {
       .panelbar-fileviewer__preview {
         background-color: #8dae28;
+
         em {
           display: block !important;
           color: #fff;
@@ -65,7 +71,12 @@
         background: linear-gradient(to top, rgba(0,0,0,.4), rgba(0,0,0,.2) 65%, rgba(0,0,0,0));
       }
     }
+
+    &--image .panelbar-fileviewer__preview em {
+      display: none;
+    }
   }
+
 
   &__preview {
     position: relative;
@@ -119,6 +130,10 @@
     font-size: .95em;
     text-transform: uppercase;
     text-align: center;
+
+    &:hover {
+      color: #999 !important;
+    }
   }
 
 }

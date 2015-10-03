@@ -4,7 +4,7 @@ namespace PanelBar;
 
 require 'toolkit.php';
 require 'hooks.php';
-require 'helpers.php';
+require 'builders.php';
 require 'elements.php';
 require 'output.php';
 require 'assets.php';
@@ -17,7 +17,7 @@ use PanelBar\Elements;
 use PanelBar\Output;
 use PanelBar\Assets;
 
-class Core extends Helpers {
+class Core {
 
   public $elements;
   public $position;

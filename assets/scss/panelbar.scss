@@ -25,13 +25,7 @@
     font-size:   16px;
     font-weight: normal;
 
-    *zoom: 1;
-    &::before,
-    &::after {
-      content: " ";
-      display: table;
-    }
-    &::after { clear: both; }
+    @include clearfix;
 
     &--hidden { display: none; }
 

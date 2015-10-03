@@ -3,7 +3,7 @@
 namespace PanelBar;
 
 use PanelBar\PB;
-use PanelBar\Helpers;
+use PanelBar\Build;
 
 class Elements {
 
@@ -34,7 +34,7 @@ class Elements {
     $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
-    $this->output->setHook('elements', Helpers::link(array(
+    $this->output->setHook('elements', Build::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
       'url'     => pb::purl(site()->url().'/panel'),
@@ -57,7 +57,7 @@ class Elements {
     // register output
     $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
     $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Helpers::dropdown(array(
+    $this->output->setHook('elements', Build::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
@@ -89,7 +89,7 @@ class Elements {
     // register output
     $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
     $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Helpers::link(array(
+    $this->output->setHook('elements', Build::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
       'url'    => $this->site->url().'/panel/#/pages/show/'.$this->page->uri(),
@@ -111,7 +111,7 @@ class Elements {
     $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
-    $this->output->setHook('elements', Helpers::link(array(
+    $this->output->setHook('elements', Build::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'url'    => $this->site->url().'/panel/#/pages/toggle/'.$this->page->uri(),
@@ -149,13 +149,13 @@ class Elements {
       }
 
       // register output
-      $this->output->setHook('elements', Helpers::fileviewer(array(
+      $this->output->setHook('elements', Build::fileviewer(array(
         'id'     => 'files',
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
         'count'  => count($items),
-        'more'   => $this->site->url().'/panel/#/files/index/'.$this->page->uri(),
+        'all'    => $this->site->url().'/panel/#/files/index/'.$this->page->uri(),
         'mobile' => 'icon'
       )));
     }
@@ -190,7 +190,7 @@ class Elements {
       }
 
       // register output
-      $this->output->setHook('elements', Helpers::dropdown(array(
+      $this->output->setHook('elements', Build::dropdown(array(
         'id'     => 'lang',
         'icon'   => 'flag',
         'label'  => strtoupper($this->site->language()->code()),
@@ -210,7 +210,7 @@ class Elements {
     $this->assets->setHook('css', pb::load('css', 'elements/label.css'));
 
     // register output
-    $this->output->setHook('elements', Helpers::label(array(
+    $this->output->setHook('elements', Build::label(array(
       'id'     => 'loadtime',
       'icon'   => 'clock-o',
       'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
@@ -232,7 +232,7 @@ class Elements {
     // register output
     $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
     $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Helpers::link(array(
+    $this->output->setHook('elements', Build::link(array(
       'id'     => 'user',
       'icon'   => 'user',
       'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
@@ -252,7 +252,7 @@ class Elements {
     $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
-    $this->output->setHook('elements', Helpers::link(array(
+    $this->output->setHook('elements', Build::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
       'url'    => $this->site->url().'/panel/logout',
