@@ -2,6 +2,7 @@
 
 namespace PanelBar;
 
+use A;
 use Tpl;
 
 class PB {
@@ -44,7 +45,7 @@ class PB {
     $site = site();
     if(is_a($end, 'Page')) $end = $end->uri();
 
-    $urls = array(
+    $old = array(
       'panel'  => $site->url() . '/panel',
       'add'    => $site->url() . '/panel/#/pages/add/'    . $end,
       'edit'   => $site->url() . '/panel/#/pages/show/'   . $end,
@@ -54,12 +55,19 @@ class PB {
       'user'   => $site->url() . '/panel/#/users/edit/'   . $end,
       'logout' => $site->url() . '/panel/logout',
     );
-    return $urls[$target];
+
+    $new = array(
+
+    );
+
+    $urls = array($old, a::merge($old, $new));
+
+    return $urls[self::version('2.2.0')][$target];
   }
 
   public static function version($version) {
     $kirby = kirby();
-    return version_compare($kirby::$version, $version, '>=');
+    return version_compare($kirby::$version, $version) + 1;
   }
 
 }
