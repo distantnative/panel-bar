@@ -5,15 +5,15 @@ namespace PanelBar;
 use C;
 use Tpl;
 
+use PanelBar\PB;
+
 class Assets extends Hooks {
 
   public $css;
   public $js;
-  public $paths;
 
 
   public function __construct($external) {
-    $this->paths = $this->setPaths();
     $this->css   = array();
     $this->js    = array();
 
@@ -27,7 +27,7 @@ class Assets extends Hooks {
    */
 
   public function css() {
-    return '<style>'.$this->setFonts($this->getHooks('css')).'</style>';
+    return '<style>'.$this->fontPaths($this->getHooks('css')).'</style>';
   }
 
   public function js() {
@@ -43,45 +43,32 @@ class Assets extends Hooks {
   protected function defaults() {
     $this->setHooks(array(
       'css' => array(
-        tpl::load($this->paths['css'] . 'panelbar.css'),
+        pb::load('css', 'panelbar.css'),
       ),
       'js'  => array(
         'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        tpl::load($this->paths['js'] . 'panelbar.min.js'),
+        pb::load('js', 'panelbar.min.js'),
       ),
     ));
 
     // JS: State - localStorage
     if(c::get('panelbar.rembember', false)) {
-      $this->setHook('js', tpl::load($this->paths['js'] . 'components' . DS . 'localstorage.min.js'));
+      $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
     }
   }
 
 
 
   /**
-   *  PATHS
+   *  FONTS
    */
 
-  protected function setPaths() {
-    $base = str_ireplace(kirby()->roots()->index(), '', __DIR__);
-    $base = substr_count($base, '/');
-    $base = str_repeat('../', $base);
-
-    return array(
-      'base'  => $base,
-      'fonts' => $base . 'panel/assets/fonts/',
-      'css'   => realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS,
-      'js'    => realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS,
-    );
-  }
-
-  protected function setFonts($css) {
+  protected function fontPaths($css) {
     $fonts = array(
-      array('{{FA}}',        $this->paths['fonts'] . 'fontawesome-webfont.woff?v=4.2.0'),
-      array('{{SSP400}}',    $this->paths['fonts'] . 'sourcesanspro-400.woff'),
-      array('{{SSP600}}',    $this->paths['fonts'] . 'sourcesanspro-600.woff'),
-      array('{{SSPitalic}}', $this->paths['fonts'] . 'sourcesanspro-400-italic.woff'),
+      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2.0')),
+      array('{{SSP400}}',    pb::font('sourcesanspro-400.woff')),
+      array('{{SSP600}}',    pb::font('sourcesanspro-600.woff')),
+      array('{{SSPitalic}}', pb::font('sourcesanspro-400-italic.woff')),
     );
     foreach($fonts as $font) {
       $css = str_ireplace($font[0], $font[1], $css);

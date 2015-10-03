@@ -2,6 +2,7 @@
 
 namespace PanelBar;
 
+require 'toolkit.php';
 require 'hooks.php';
 require 'helpers.php';
 require 'elements.php';

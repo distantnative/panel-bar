@@ -4,6 +4,7 @@ namespace PanelBar;
 
 use Tpl;
 
+use PanelBar\PB;
 use PanelBar\Helpers;
 
 class Elements {
@@ -23,28 +24,8 @@ class Elements {
 
     $this->output = $output;
     $this->assets = $assets;
-
-    $this->templates  = array(
-      'base'       => $this->output->templates,
-      'iframe'     => $this->output->templates . 'iframe' . DS,
-    );
-    $this->css  = array(
-      'base'       => $this->assets->paths['css'],
-      'components' => $this->assets->paths['css'] . 'components' . DS,
-      'elements'   => $this->assets->paths['css'] . 'elements'   . DS,
-    );
-    $this->js  = array(
-      'base'       => $this->assets->paths['js'],
-      'elements'   => $this->assets->paths['js'] . 'elements'   . DS,
-      'components' => $this->assets->paths['js'] . 'components' . DS,
-    );
   }
 
-  protected function purl($old, $new = null) {
-    $kirby = kirby();
-    return (version_compare($kirby::$version, '2.2.0', '<')) ?
-           (is_null($new) ? $old : $new) : $old;
-  }
 
   /**
    *  PANEL
@@ -52,13 +33,13 @@ class Elements {
 
   public function panel() {
     // register assets
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
     $this->output->setHook('elements', Helpers::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
-      'url'     => $this->purl(site()->url().'/panel'),
+      'url'     => pb::purl(site()->url().'/panel'),
       'label'   => 'Panel',
       'mobile'  => 'icon',
     )));
@@ -71,24 +52,24 @@ class Elements {
 
   public function add() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
-    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
+    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
 
     // register output
-    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
-    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
     $this->output->setHook('elements', Helpers::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => array(
           'child' => array(
-              'url'   => $this->purl($this->site->url().'/panel/#/pages/add/'.$this->page->uri()),
+              'url'   => pb::purl($this->site->url().'/panel/#/pages/add/'.$this->page->uri()),
               'label' => 'Child',
             ),
           'sibling' => array(
-              'url'   => $this->purl($this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri()),
+              'url'   => pb::purl($this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri()),
               'label' => 'Sibling',
             ),
         ),
@@ -103,13 +84,13 @@ class Elements {
 
   public function edit() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
-    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
-    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
-    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
     $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
@@ -126,10 +107,10 @@ class Elements {
 
   public function toggle() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['elements'] . 'toggle.min.js'));
+    $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
     $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
     $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
     $this->output->setHook('elements', Helpers::link(array(
@@ -148,7 +129,7 @@ class Elements {
 
   public function files($type = null) {
     // register hooks
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'fileviewer.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/fileviewer.css'));
 
     // prepare output
     $files = $this->page->files();
@@ -199,7 +180,7 @@ class Elements {
   public function languages() {
     if ($languages = $this->site->languages()) {
       // register assets
-      $this->assets->setHook('css', tpl::load($this->css['elements'] . 'drop.css'));
+      $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
 
       // prepare output
       $items = array();
@@ -228,7 +209,7 @@ class Elements {
 
   public function loadtime() {
     // register assets
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'label.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/label.css'));
 
     // register output
     $this->output->setHook('elements', Helpers::label(array(
@@ -246,13 +227,13 @@ class Elements {
 
   public function user() {
     // register assets
-    $this->assets->setHook('js',  tpl::load($this->js['components'] . 'iframe.min.js'));
-    $this->assets->setHook('css', tpl::load($this->css['components'] . 'iframe.css'));
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
-    $this->output->setHook('before', tpl::load($this->templates['iframe'] . 'iframe.php'));
-    $this->output->setHook('elements', tpl::load($this->templates['iframe'] . 'btn.php'));
+    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
     $this->output->setHook('elements', Helpers::link(array(
       'id'     => 'user',
       'icon'   => 'user',
@@ -270,7 +251,7 @@ class Elements {
 
   public function logout() {
     // register assets
-    $this->assets->setHook('css', tpl::load($this->css['elements'] . 'btn.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
 
     // register output
     $this->output->setHook('elements', Helpers::link(array(
