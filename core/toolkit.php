@@ -40,8 +40,21 @@ class PB {
    *  PANEL 'API'
    */
 
-  public static function purl($old, $new = null) {
-    return self::version('2.2.0') ? (is_null($new) ? $old : $new) : $old;
+  public static function url($target, $end = null) {
+    $site = site();
+    if(is_a($end, 'Page')) $end = $end->uri();
+
+    $urls = array(
+      'panel'  => $site->url() . '/panel',
+      'add'    => $site->url() . '/panel/#/pages/add/'    . $end,
+      'edit'   => $site->url() . '/panel/#/pages/show/'   . $end,
+      'toggle' => $site->url() . '/panel/#/pages/toggle/' . $end,
+      'files'  => $site->url() . '/panel/#/files/index/'  . $end,
+      'file'   => $site->url() . '/panel/#/files/show/'   . $end,
+      'user'   => $site->url() . '/panel/#/users/edit/'   . $end,
+      'logout' => $site->url() . '/panel/logout',
+    );
+    return $urls[$target];
   }
 
   public static function version($version) {

@@ -37,7 +37,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
-      'url'     => pb::purl(site()->url().'/panel'),
+      'url'     => pb::url('panel'),
       'label'   => 'Panel',
       'mobile'  => 'icon',
     )));
@@ -63,11 +63,11 @@ class Elements {
       'label'  => 'Add',
       'items'  => array(
           'child' => array(
-              'url'   => pb::purl($this->site->url().'/panel/#/pages/add/'.$this->page->uri()),
+              'url'   => pb::url('add', $this->page),
               'label' => 'Child',
             ),
           'sibling' => array(
-              'url'   => pb::purl($this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri()),
+              'url'   => pb::url('add', $this->page->parent()),
               'label' => 'Sibling',
             ),
         ),
@@ -92,7 +92,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
-      'url'    => $this->site->url().'/panel/#/pages/show/'.$this->page->uri(),
+      'url'    => pb::url('edit', $this->page),
       'label'  => 'Edit',
       'mobile' => 'icon',
     )));
@@ -114,8 +114,8 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-      'url'    => $this->site->url().'/panel/#/pages/toggle/'.$this->page->uri(),
-      'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
+      'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
+      'url'    => pb::url('toggle', $this->page),
       'mobile' => 'icon',
     )));
   }
@@ -139,7 +139,7 @@ class Elements {
       foreach($files as $file) {
         $args = array(
           'type'      => $file->type(),
-          'url'       => $this->site->url().'/panel/#/files/show/'.$this->page->uri().'/'.$file->filename(),
+          'url'       => pb::url('file', $this->page->uri() . '/' . $file->filename()),
           'label'     => $file->filename(),
           'extension' => $file->extension(),
         );
@@ -155,7 +155,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
         'count'  => count($items),
-        'all'    => $this->site->url().'/panel/#/files/index/'.$this->page->uri(),
+        'all'    => pb::url('files', $this->page),
         'mobile' => 'icon'
       )));
     }
@@ -184,7 +184,7 @@ class Elements {
       $items = array();
       foreach($languages->not($this->site->language()->code()) as $language) {
         array_push($items, array(
-          'url'   => $language->url().'/'.$this->page->uri(),
+          'url'   => $language->url() . '/' . $this->page->uri(),
           'label' => strtoupper($language->code())
         ));
       }
@@ -235,7 +235,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'user',
       'icon'   => 'user',
-      'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
+      'url'    => pb::url('user', $this->site->user()),
       'label'  => $this->site->user(),
       'mobile' => 'icon',
       'float'  => 'right',
@@ -255,7 +255,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
-      'url'    => $this->site->url().'/panel/logout',
+      'url'    => pb::url('logout'),
       'label'  => 'Logout',
       'mobile' => 'icon',
       'float'  => 'right',

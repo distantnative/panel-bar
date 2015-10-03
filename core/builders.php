@@ -60,25 +60,20 @@ class Build {
     ));
   }
 
-
-  protected static function _link($content, $args, $class = null) {
-    if (isset($args['url'])) {
-      return '<a href="' . $args['url'] . '" class="' . $class . '">' . $content . '</a>';
-    } else {
-      return '<span class="' . $class . '">' . $content . '</span>';
-    }
-  }
-
   protected static function _class($class, $args) {
-    $class .= ' ' . r(isset($args['class']), $args['class']);
-    $class .= ' ' . r(isset($args['float']) and $args['float'], 'panelbar-element--right');
+    if(isset($args['class'])) {
+      $class .= ' ' . $args['class'];
+    }
+    if(isset($args['float']) and $args['float']) {
+      $class .= ' panelbar-element--right';
+    }
     return $class;
   }
 
   protected static function _style($args) {
     $style = '';
-    if (isset($args['style'])) {
-      foreach ($args['style'] as $key => $value) {
+    if(isset($args['style'])) {
+      foreach($args['style'] as $key => $value) {
         $style .= $key . ': ' . $value . ';';
       }
       return ' style="' . $style . '"';
