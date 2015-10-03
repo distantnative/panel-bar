@@ -146,10 +146,9 @@ class Elements {
     $this->assets->setHook('css', tpl::load($this->css['elements'] . 'fileviewer.css'));
 
     // prepare output
-    $files  = $this->page->files();
+    $files = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-    $more   = $files->count() > 15;
-    $files  = $files->limit(15);
+    $files = $files->limit(15);
 
     if ($files->count() > 0) {
       $items = array();
@@ -172,7 +171,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
         'count'  => count($items),
-        'more'   => $more ? $this->site->url().'/panel/#/files/index/'.$this->page->uri() : false,
+        'more'   => $this->site->url().'/panel/#/files/index/'.$this->page->uri(),
         'mobile' => 'icon'
       )));
     }

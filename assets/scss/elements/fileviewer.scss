@@ -69,7 +69,7 @@
 
   &__preview {
     position: relative;
-    background-color: #000;
+    background-color: #efefef;
     padding-bottom: 66.6666%;
 
     em {
@@ -79,6 +79,7 @@
       transform: translate(-50%, -50%);
       font-style: normal;
       font-weight: 600;
+      color: #999;
       text-transform: uppercase;
     }
   }
@@ -101,7 +102,7 @@
     left: 0;
     right: 0;
 
-    padding: 5px;
+    padding: 4px 6px;
     background: linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.45) 65%, rgba(0,0,0,0));
 
     font-size: .85em;
