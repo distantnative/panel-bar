@@ -64,7 +64,7 @@ class Core {
     foreach ($this->elements as $element) {
       // $element is custom function
       if(is_callable($element)) {
-        $element = call_user_func_array($element, $this->output, $this->assets);
+        $element = call_user_func_array($element, array($this->output, $this->assets));
       }
 
       // $element is default function
