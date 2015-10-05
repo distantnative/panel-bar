@@ -9,7 +9,6 @@ var PanelbarToggle = function(element) {
   this.status = this.text.innerHTML === 'Visible' ? 'hide' : 'publish';
 
 
-
   this.init = function() {
     self.button.addEventListener('click', self.click);
   };

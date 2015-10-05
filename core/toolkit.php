@@ -2,8 +2,13 @@
 
 namespace PanelBar;
 
+if(file_exists('panel/app/panel.php')) {
+  require_once 'panel/app/panel.php';
+}
+
 use A;
 use Tpl;
+use Panel;
 
 class PB {
 
@@ -66,8 +71,7 @@ class PB {
   }
 
   public static function version($version) {
-    $kirby = kirby();
-    return version_compare($kirby::$version, $version) + 1;
+    return version_compare(panel::$version, $version) + 1;
   }
 
 }
