@@ -2,13 +2,6 @@
 
 namespace PanelBar;
 
-if(file_exists('panel/app/panel.php')) {
-  require_once 'panel/app/panel.php';
-} elseif(file_exists('panel/app/src/panel.php')) {
-  require_once 'panel/app/src/panel.php';
-  class_alias('Kirby\\Panel', 'Panel');
-}
-
 use A;
 use Tpl;
 use Panel;
@@ -89,10 +82,16 @@ class PB {
   }
 
 
-
-
   public static function version($version) {
-    return version_compare(panel::$version, $version, '>=');
+    switch ($version) {
+      case '2.2.0':
+        return !file_exists('panel/app/panel.php') and
+               file_exists('panel/app/src/panel.php');
+        break;
+      default:
+        return false;
+        break;
+    }
   }
 
 }
