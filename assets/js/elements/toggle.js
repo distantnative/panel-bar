@@ -4,7 +4,7 @@ var PanelbarToggle = function(element) {
   var self = this;
 
   this.button    = element.children[0];
-  this.droplinks = document.querySelectorAll(".panelbar-drop__list a");
+  this.droplinks = document.querySelectorAll(".panelbar--toggle .panelbar-drop__list a");
   this.icon      = this.button.children[0];
   this.text      = this.button.children[1];
   this.status    = this.text.innerHTML === 'Visible' ? 'hide' : 'sort';
