@@ -1,6 +1,6 @@
 <?php
 
-require 'core/core.php';
+require_once 'core/core.php';
 use PanelBar\Core;
 
 class PanelBar extends Core {

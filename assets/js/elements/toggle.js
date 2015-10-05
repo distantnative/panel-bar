@@ -41,11 +41,11 @@ var PanelbarToggle = function(element) {
   };
 
   this.request = function(num) {
-    var url = siteURL + "/panel/api/pages/" + self.status + "/" + currentURI;
+    var url     = siteURL + "/panel/api/pages/" + self.status + "/" + currentURI;
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    request.send('to='+num);
+    request.send('to=' + num);
   };
 
 };

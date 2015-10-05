@@ -37,7 +37,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
-      'url'     => pb::url('panel'),
+      'url'     => pb::url(''),
       'label'   => 'Panel',
       'mobile'  => 'icon',
     )));
@@ -92,7 +92,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
-      'url'    => pb::url('edit', $this->page),
+      'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
       'mobile' => 'icon',
     )));
@@ -105,13 +105,21 @@ class Elements {
 
   public function toggle() {
     // register assets
-    $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
-    $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
-    $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
     $this->assets->setHook('css', pb::load('css', 'elements/toggle.css'));
+    if(!pb::version("2.2.0")) {
+      $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
+      $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
+      $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
+    } else {
+      $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+      $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+      $this->assets->setHook('js',  'panelbarIframe.init([".panelbar--toggle a"]);');
+      $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+      $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+    }
 
 
-    if($this->page->isInvisible()) {
+    if($this->page->isInvisible() and !pb::version("2.2.0")) {
       // register assets
       $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
       // prepare output
@@ -142,8 +150,8 @@ class Elements {
       // register output
       $this->output->setHook('elements', Build::link(array(
         'id'     => 'toggle',
-        'icon'   => 'toggle-on',
-        'label'  => 'Visible',
+        'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
+        'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
         'url'    => pb::url('toggle', $this->page),
         'mobile' => 'icon',
       )));
@@ -169,7 +177,7 @@ class Elements {
       foreach($files as $file) {
         $args = array(
           'type'      => $file->type(),
-          'url'       => pb::url('file', $this->page->uri() . '/' . $file->filename()),
+          'url'       => pb::url('show', $file),
           'label'     => $file->filename(),
           'extension' => $file->extension(),
         );
@@ -185,7 +193,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
         'count'  => count($items),
-        'all'    => pb::url('files', $this->page),
+        'all'    => pb::url('index', $file),
         'mobile' => 'icon'
       )));
     }
@@ -265,7 +273,7 @@ class Elements {
     $this->output->setHook('elements', Build::link(array(
       'id'     => 'user',
       'icon'   => 'user',
-      'url'    => pb::url('user', $this->site->user()),
+      'url'    => pb::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
       'mobile' => 'icon',
       'float'  => 'right',

@@ -4,6 +4,9 @@ namespace PanelBar;
 
 if(file_exists('panel/app/panel.php')) {
   require_once 'panel/app/panel.php';
+} elseif(file_exists('panel/app/src/panel.php')) {
+  require_once 'panel/app/src/panel.php';
+  class_alias('Kirby\\Panel', 'Panel');
 }
 
 use A;
@@ -46,32 +49,50 @@ class PB {
    *  PANEL 'API'
    */
 
-  public static function url($target, $end = null) {
-    $site = site();
-    if(is_a($end, 'Page')) $end = $end->uri();
+  public static function url($action, $obj = null) {
+    if(is_null($obj)) {
+      $url = $action;
+    }
 
-    $old = array(
-      'panel'  => $site->url() . '/panel',
-      'add'    => $site->url() . '/panel/#/pages/add/'    . $end,
-      'edit'   => $site->url() . '/panel/#/pages/show/'   . $end,
-      'toggle' => $site->url() . '/panel/#/pages/toggle/' . $end,
-      'files'  => $site->url() . '/panel/#/files/index/'  . $end,
-      'file'   => $site->url() . '/panel/#/files/show/'   . $end,
-      'user'   => $site->url() . '/panel/#/users/edit/'   . $end,
-      'logout' => $site->url() . '/panel/logout',
-    );
+    // Panel version < 2.2.0
+    elseif(!self::version('2.2.0')) {
+      if(is_a($obj, 'File')) {
+        if($action == 'index') {
+          $url = '#/files/' . $action . '/' . $obj->page()->id() . '/';
+        } else {
+          $url = '#/files/' . $action . '/' . $obj->page()->id() . '/' . urlencode($obj->filename());
+        }
+      } else if(is_a($obj, 'Page')) {
+        $url = '#/pages/' . $action . '/' . $obj->id();
+      } else if(is_a($obj, 'User')) {
+        $url = '#/users/' . $action . '/' . $obj->username();
+      }
 
-    $new = array(
+    // Panel version >= 2.2.0
+    } else {
+      if($action == 'show') $action = 'edit';
 
-    );
+      if(is_a($obj, 'File')) {
+        if($action == 'index') {
+          $url = 'pages/' . $obj->page()->id() . '/files';
+        } else {
+          $url = 'pages/' . $obj->page()->id() . '/file/' . urlencode($obj->filename()) . '/' . $action;
+        }
+      } else if(is_a($obj, 'Page')) {
+        $url = 'pages/' . $obj->id() . '/' . $action;
+      } else if(is_a($obj, 'User')) {
+        $url = 'users/' . $obj->username() . '/' . $action;
+      }
+    }
 
-    $urls = array($old, a::merge($old, $new));
-
-    return $urls[self::version('2.2.0')][$target];
+    return site()->url() . '/panel/' . $url;
   }
 
+
+
+
   public static function version($version) {
-    return version_compare(panel::$version, $version) + 1;
+    return version_compare(panel::$version, $version, '>=');
   }
 
 }

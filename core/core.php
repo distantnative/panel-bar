@@ -2,12 +2,12 @@
 
 namespace PanelBar;
 
-require 'toolkit.php';
-require 'hooks.php';
-require 'builders.php';
-require 'elements.php';
-require 'output.php';
-require 'assets.php';
+require_once 'toolkit.php';
+require_once 'hooks.php';
+require_once 'builders.php';
+require_once 'elements.php';
+require_once 'output.php';
+require_once 'assets.php';
 
 use A;
 use C;
