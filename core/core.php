@@ -62,15 +62,10 @@ class Core {
   // get all elements
   protected function _elements() {
     foreach ($this->elements as $element) {
-      // $element is custom function
-      if(is_callable($element)) {
-        $element = call_user_func_array($element, array($this->output, $this->assets));
-      }
-
       // $element is default function
-      elseif($ref = new Elements($this->output, $this->assets) and
-             is_callable(array($ref, $element)) and
-             !in_array($element, $this->protected)) {
+      if($ref = new Elements($this->output, $this->assets) and
+         is_callable(array($ref, $element)) and
+         !in_array($element, $this->protected)) {
         $element = call_user_func(array($ref, $element));
       }
 
