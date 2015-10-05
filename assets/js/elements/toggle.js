@@ -4,7 +4,7 @@ var PanelbarToggle = function(element) {
   var self = this;
 
   this.button    = element.children[0];
-  this.droplinks = document.querySelectorAll(".panelbar--toggle .panelbar-drop__list a");
+  this.droplinks = document.querySelectorAll(".panelbar--toggle .panelbar-drop__list > a");
   this.icon      = this.button.children[0];
   this.text      = this.button.children[1];
   this.status    = this.text.innerHTML === 'Visible' ? 'hide' : 'sort';
@@ -14,7 +14,7 @@ var PanelbarToggle = function(element) {
     self.button.addEventListener('click', self.click);
     var i;
     for (i = 0; i < self.droplinks.length; i++) {
-      self.droplinks[i].setAttribute('data-num' , i-1);
+      self.droplinks[i].setAttribute('data-num' , (i + 1));
       self.droplinks[i].addEventListener('click', function(e){
         self.click(e);
       });
@@ -34,17 +34,19 @@ var PanelbarToggle = function(element) {
       addClass(self.icon, 'fa-toggle-off');
       self.text.innerHTML = "Invisible";
     }
-
-    setTimeout(function() {
-      location.reload();
-    }, 200);
   };
 
   this.request = function(num) {
+    console.log(num);
     var url     = siteURL + "/panel/api/pages/" + self.status + "/" + currentURI;
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.onreadystatechange = function() {
+      if (request.readyState == 4 && request.status == 200) {
+        location.reload();
+      }
+    }
     request.send('to=' + num);
   };
 
