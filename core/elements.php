@@ -108,16 +108,46 @@ class Elements {
     $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
     $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
     $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
-    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
+    $this->assets->setHook('css', pb::load('css', 'elements/toggle.css'));
 
-    // register output
-    $this->output->setHook('elements', Build::link(array(
-      'id'     => 'toggle',
-      'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-      'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
-      'url'    => pb::url('toggle', $this->page),
-      'mobile' => 'icon',
-    )));
+
+    if($this->page->isInvisible()) {
+      // register assets
+      $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
+      // prepare output
+      $siblings = array();
+      array_push($siblings, array(
+        'url'   => pb::url('toggle', $this->page),
+        'label' => '&rarr;<span class="gap"></span>&larr;'
+      ));
+      foreach ($this->page->siblings()->visible() as $sibling) {
+        array_push($siblings, array('label' => $sibling->title()));
+        array_push($siblings, array(
+          'url'   => pb::url('toggle', $this->page),
+          'label' => '&rarr;<span class="gap"></span>&larr;'
+        ));
+      }
+      // register output
+      $this->output->setHook('elements', Build::dropdown(array(
+        'id'     => 'toggle',
+        'icon'   => 'toggle-off',
+        'label'  => 'Invisible',
+        'items'  => $siblings,
+        'mobile' => 'icon',
+      )));
+
+    } else {
+      // register assets
+      $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
+      // register output
+      $this->output->setHook('elements', Build::link(array(
+        'id'     => 'toggle',
+        'icon'   => 'toggle-on',
+        'label'  => 'Visible',
+        'url'    => pb::url('toggle', $this->page),
+        'mobile' => 'icon',
+      )));
+    }
   }
 
 
