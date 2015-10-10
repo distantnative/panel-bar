@@ -10,16 +10,15 @@
   right:    0;
   z-index:  2147483000;
 
-  line-height: 1;
+  padding-right: 68px;
+  line-height:   1;
+
+  background-color: #000;
+  box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
 
   &__bar {
-    min-height:    48px;
-    padding-right: 68px;
-
-
-    background-color: #000;
-    box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
-
+    height:    48px;
+    white-space: nowrap;
 
     font-family: 'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
     font-size:   16px;
@@ -47,6 +46,26 @@
   &--mobile {
     .not-mobile { display: none; }
     i { margin-right: 0; }
+  }
+
+  &--scroll,
+  &--resize {
+    .panelbar__bar {
+      &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 67px;
+        width: 15px;
+        height: 48px;
+        background-color: blue;
+        background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      }
+
+      &--hidden:after {
+        display: none;
+      }
+    }
   }
 
 }

@@ -2,13 +2,17 @@
 
 .panelbar-element {
   display:      inline-block;
-  margin-right: -4px;
   color:        #fff;
 
   > a,
   > span {
     display: inline-block;
-    padding: 16px 18px 15px;
+    padding: 16px 14px 15px 18px;
+
+    .panelbar--scroll & {
+      padding-left:  12px;
+      padding-right: 8px;
+    }
   }
 
   &:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
@@ -17,5 +21,11 @@
 
   &--right {
     float: right;
+
+    .panelbar--scroll & {
+      float: none;
+      border-left: 1px solid #555;
+    }
+
   }
 }

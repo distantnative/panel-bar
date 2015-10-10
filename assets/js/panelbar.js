@@ -13,6 +13,7 @@ var Panelbar = function() {
   this.visible  = !hasClass(this.panelbar, 'panelbar__bar--hidden');
   this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
   this.map      = [];
+  this.resize   = null;
 
 
   /**
@@ -85,26 +86,46 @@ var Panelbar = function() {
    */
 
   this.responsive = function() {
-    setTimeout(self.isMobile, 100);
-    var resizeTimer;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(self.isMobile, 100);
-    });
+    setTimeout(self.adapt, 100);
+    window.addEventListener('resize', self.resize);
   };
 
-  this.isMobile = function() {
+  this.resize = function() {
+    self.panelbar.style.overflowY = 'hidden';
+    clearTimeout(self.resize);
+    self.resize = setTimeout(function() {
+      self.adapt();
+      self.panelbar.style.overflowY = 'visible';
+    }, 200);
+  };
+
+  this.adapt = function() {
+    removeClass(self.wrapper, 'panelbar--scroll');
+    addClass(self.wrapper, 'panelbar--mobile');
+    var mobile = self.width();
+    removeClass(self.wrapper, 'panelbar--mobile');
+    var desktop = self.width();
+
+    if(self.wrapper.offsetWidth < mobile) {
+      addClass(self.wrapper, 'panelbar--scroll');
+      addClass(self.wrapper, 'panelbar--mobile');
+    } else if(self.wrapper.offsetWidth < desktop) {
+      removeClass(self.wrapper, 'panelbar--scroll');
+      addClass(self.wrapper, 'panelbar--mobile');
+    } else {
+      removeClass(self.wrapper, 'panelbar--scroll');
+      removeClass(self.wrapper, 'panelbar--mobile');
+    }
+  };
+
+  this.width = function() {
     var width    = self.controls.offsetWidth + 30;
     var elements = self.panelbar.children;
     var i;
     for (i = 0; i < elements.length; i++) {
       width = width + elements[i].offsetWidth;
     }
-    if(width >= self.wrapper.offsetWidth) {
-      addClass(self.wrapper, 'panelbar--mobile');
-    } else {
-      removeClass(self.wrapper, 'panelbar--mobile');
-    }
+    return width;
   };
 
   /**

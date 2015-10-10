@@ -1,7 +1,9 @@
 # Changelog
 
 ## Version 0.7
+- Improved: Mobile responsiveness
 - Fixed: Panel Keyboard Shortcut (Alt + P)
+- Fixed: Lots of small styling fixes
 
 ## Version 0.6
 - Feature: Added iFrame mode for most elements (e.g. Add, Edit, Files, User)

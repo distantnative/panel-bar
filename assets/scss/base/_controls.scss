@@ -6,9 +6,10 @@
   z-index:  2147483200;
   right:    0;
 
-  font-size:   17px;
-  line-height: 1;
-  color:       #fff;
+  font-size:        17px;
+  line-height:      1;
+  color:            #fff;
+  background-color: #000;
 
   padding:     15px 15px 15px 12px;
   border-left: 1px solid #555;
@@ -19,10 +20,10 @@
   .panelbar--bottom & { bottom: 0; }
 
   .panelbar__bar--hidden + & {
-    color:       #000;
-    border-left: none;
-    height:      auto;
-
+    color:            #000;
+    background-color: transparent;
+    border-left:      none;
+    height:           auto;
   }
 
   i:hover {
