@@ -6,10 +6,16 @@
 
 This plugin enables you to include a panel bar on top of your site which gives you direct access to some administrative functions. The panel bar will only be visible to logged in users who are eligible to access the panel.
 
-![Panel Bar in action](screen.png)
+![panel bar in action](assets/screens/screen.png)  
+![panel bar - Add element](assets/screens/screen2.png)  
+![panel bar - Edit in iFrame view](assets/screens/screen3.png)  
+![panel bar - Toggle element](assets/screens/screen4.png)
+![panel bar - Files element](assets/screens/screen5.png)  
 
-**The plugin is free. However, I would really appreciate if you could support me with a [moral license](https://gumroad.com/l/kirby-panelbar)!**
 
+**Please support the development by buying a [moral license](https://gumroad.com/l/kirby-panelbar)!**
+
+&nbsp;  
 
 # Table of Contents
 1. [Setup](#Setup)
@@ -149,6 +155,7 @@ panelbar::builder(array(
 ```
 
 The following element builders are available and require additional parameters if referenced:  
+
 1. **Label**  
 
     ```php

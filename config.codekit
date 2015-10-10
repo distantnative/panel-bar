@@ -173,6 +173,61 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/assets\/screens\/screen.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 823127,
+		"inputAbbreviatedPath": "\/assets\/screens\/screen.png",
+		"outputAbbreviatedPath": "\/assets\/screens\/screen.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/assets\/screens\/screen2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 56071,
+		"inputAbbreviatedPath": "\/assets\/screens\/screen2.png",
+		"outputAbbreviatedPath": "\/assets\/screens\/screen2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/assets\/screens\/screen3.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 176966,
+		"inputAbbreviatedPath": "\/assets\/screens\/screen3.png",
+		"outputAbbreviatedPath": "\/assets\/screens\/screen3.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/assets\/screens\/screen4.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 101181,
+		"inputAbbreviatedPath": "\/assets\/screens\/screen4.png",
+		"outputAbbreviatedPath": "\/assets\/screens\/screen4.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
+	"\/assets\/screens\/screen5.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 509250,
+		"inputAbbreviatedPath": "\/assets\/screens\/screen5.png",
+		"outputAbbreviatedPath": "\/assets\/screens\/screen5.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 1
+		},
 	"\/assets\/scss\/base\/_controls.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -531,17 +586,6 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
-		},
-	"\/screen.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 551890,
-		"inputAbbreviatedPath": "\/screen.png",
-		"outputAbbreviatedPath": "\/screen.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
 		},
 	"\/templates\/controls.php": {
 		"fileType": 8192,
