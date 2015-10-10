@@ -3,7 +3,7 @@
 
 .panelbar-controls {
   position: absolute;
-  z-index:  1200;
+  z-index:  2147483200;
   right:    0;
 
   font-size:   17px;
@@ -33,7 +33,7 @@
 
   // Position
   &__position {
-    display: inline-block;
+    display:      inline-block;
     margin-right: 7px;
 
     .panelbar__bar--hidden + .panelbar-controls & { display: none; }
@@ -50,24 +50,26 @@
     &--visible,
     &--hidden {
       position: relative;
-      z-index: 1202;
+      z-index:  2147483250;
     }
 
     &--hidden { display: none; }
 
     &--bg {
+      display:  none;
       position: absolute;
-      top: 17px;
-      right: 19px;
-      z-index: 1201;
-      color: transparent;
-      font-size: .8em;
+      top:      17px;
+      right:    18px;
+      z-index:  2147483210;
+
+      color:      #fff;
+      font-size:  .8em;
     }
 
     .panelbar__bar--hidden + .panelbar-controls & {
       &--visible { display: none; }
       &--hidden  { display: block; }
-      &--bg      { color: #fff; }
+      &--bg      { display: block; }
     }
 
   }
