@@ -12,17 +12,29 @@ This plugin enables you to include a panel bar on top of your site which gives y
 
 
 # Table of Contents
-1. [Installation & Update](#Installation)
+1. [Setup](#Setup)
 2. [Usage](#Usage)
-3. [Options](#Options)
-4. [Addons](#Addons)
+3. Elements
+  1. [Standard Elements](#StandardElements)
+  2. [Default Set of Elements](#DefaulSet)
+4. Customize
+  1. [Custom Set of Elements](#CustomSet)
+  2. [Custom Elements](#CustomElements)
+  3. [Element Builders](#Builders)
+  4. [Custom CSS/JS](#CustomCSSJS)
+  5. [Hooks](#Hooks)
+  6. [Output CSS/JS](#OutputCSSJS)
+5. Options
+  1. [Default Position](#OptionPosition)
+  2. [Remember State](#OptionState)
+  3. [Keyboard Shortcuts](#OptionKeyboard)
 5. [Help & Improve](#Help)
-6. [Version History](#VersionHistory)
+6. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
 
 
 
-# Installation & Update <a id="Installation"></a>
-1. Download [Panel Bar](https://github.com/distantnative/panel-bar/zipball/master/)
+# Setup<a id="Setup"></a>
+1. Download the [panel-bar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
 
@@ -40,7 +52,7 @@ Or with the following if you want the panel bar hidden on load:
 
 You can toggle the visibility of the panel bar on the right side, if your browser supports Javascript. If not, panel bar will simply hide the toggle switch and display the panel bar always.
 
-**Caching**
+**Caching**  
 If you want to use caching with Kirby, please make sure to only activate it if the visitor is not a logged-in user (in `site/config/config.php`):
 ```php
 if(!site()->user()) c::set('cache', true);
@@ -48,39 +60,44 @@ if(!site()->user()) c::set('cache', true);
 
 
 
-# Options <a id="Options"></a>
+# Elements
 
-## Choose elements and/or add custom elements
+### Standard Elements <a id="StandardElements"></a>
+The panel bar provides several standard elements:  
 
-Panel Bar comes with a pre-defined set of default elements: `panel`, `add`, `edit`, `files`, `user` and `logout`. However, there are more standard elements available, which come already included in the Panel Bar plugin. A full list of all included standard elements:
-- `panel` (link to the panel)
-- `add` (pages as sibling or child)
-- `edit` (current page)
-- `toggle` (visibility toggle to hide/publish the page)
-- `files` (viewer for files of the current page)
-- `images` (viewer for image of the current page)
-- `loadtime` (loading time)
-- `languages` (dropdown to switch between site languages)
-- `user`
-- `logout`
+Name        | Description
+----------- | ---------------------------------------------------------
+`panel`     | Open the Kirby panel
+`add`       | Add page as sibling or child
+`edit`      | Edit current page
+`toggle`    | Change the visibility of the current page (hide/publish)
+`files`     | Viewer for files of the current page
+`images`    | Viewer for images of the current page
+`loadtime`  | Info label for loading time
+`language`  | Dropdown to switch between site languages
+`user`      | Current user
+`logout`    | Sign out current user
 
-### Define custom set of elements
+
+### Default Set of Elements <a id="DefaultSet"></a>
+The pre-defined default set of elements consists of `panel`, `add`, `edit`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
+
+
+
+# Customize
+
+### Custom Set of Elements <a id="CustomSet"></a>
 To define which elements should be included in the panel bar, you can either set a config option (in `site/config/config.php`):
-
 ```php
 c::set('panelbar.elements', array(…));
 ```
 
 Or pass them as an argument when displaying the panel bar:
-
 ```php
 <?php echo panelbar::show(array('elements' => array(…))) ?>
 ```
 
-### Use standard elements 
-
 You can include standard elements either by naming them:
-
 ```php
 c::set('panelbar.elements', array(
   'panel', 
@@ -93,7 +110,6 @@ c::set('panelbar.elements', array(
 ```
 
 Or you can merge your custom array with the default set of elements:
-
 ```php
 c::set('panelbar.elements', a::merge(array(
   'custom1',
@@ -102,66 +118,10 @@ c::set('panelbar.elements', a::merge(array(
 ```
 
 
-### Add custom elements 
-
+### Custom Elements <a id="CustomElements"></a>
 Panel Bar also is prepared to include custom elements. For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
 
-Moreover, there are four helpers available to create elements:
-
-**Label elements**
-```php
-panelbar::label(array(
-  'id'     => 'loadtime',
-  'icon'   => 'clock-o',
-  'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
-  'mobile' => 'label',
-));
-```
-
-**Link elements**
-```php
-panelbar::link(array(
-  'id'     => 'panel',
-  'icon'   => 'cogs',
-  'url'    => site()->url().'/panel',
-  'label'  => 'Panel'
-  'mobile' => 'icon',
-));
-```
-
-**Dropdown elements**
-```php
-panelbar::dropdown(array(
-  'id'    => 'lang',
-  'icon'  => 'flag',
-  'label' => 'Language',
-  'items' => array(
-               0 => array(
-                     'url'   => …,
-                     'label' => …
-                    ),
-               1 => array(
-                     'url'   => …,
-                     'label' => …
-                    ),
-               …
-             ),
-  'mobile' => 'label',
-));
-```
-
-**Textbox elements**
-```php
-panelbar::box(array(
-  'id'      => 'info',
-  'icon'    => 'info',
-  'content' => '<b>Important information</b>',
-  'label'   => 'Info'
-  'mobile'  => 'icon',
-));
-```
-
-### Examples
+Examples:
 ```php
 c::set('panelbar.elements', array(
   'panel', 
@@ -195,30 +155,93 @@ function dropitpanelbar() {
 }
 ```
 
-*If you use any helpers like `panelbar::link()`, `panelbar::dropdown()` or `panelbar::defaults()` in the `config.php`, you must include the following line before using them:*
 
+### Element Builders <a id="Builders"></a>
+The panel bar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
+
+<table>
+<tr>
+  <td>
+    <b>Label</b>
+    <pre lang="php">
+      panelbar::label(array(
+        …
+      ));
+    </pre>
+  </td>
+  <td>
+    
+  </td>
+</tr>
+</table>
+
+
+
+
+```php
+panelbar::builder(array(
+  'id'     => 'theID',
+  'icon'   => 'heart',
+  'label'  => 'Just the label',
+  'mobile' => 'label',
+));
+```
+
+
+**Label builder**
+```php
+panelbar::label(array(
+  …
+));
+```
+
+**Link builder**
+```php
+panelbar::link(array(
+  …
+  'url' => site()->url().'/panel',
+));
+```
+
+**Dropdown builder**
+```php
+panelbar::dropdown(array(
+  …
+  'items' => array(
+    0 => array(
+      'url'   => …,
+      'label' => …
+    ),
+    1 => array(
+      'url'   => …,
+      'label' => …
+    ),
+    …
+   ),
+));
+```
+
+**Textbox builder**
+```php
+panelbar::box(array(
+  …
+  'content' => '<b>Important information</b>',
+));
+```
+
+**If you use any builders in the `config.php`, you must prepend the following line:**  
 ```php
 kirby()->plugin('panel-bar');
 ```
 
 
-## Position of Panel Bar
-You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
-
-```php
-c::set('panelbar.position', 'bottom');
-```
+### Custom CSS/JS <a id="CustomCSSJS"></a>
 
 
-## Remember position and visibility of Panel Bar
-With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
-
-```php
-c::set('panelbar.remember', true);
-```
+### Hooks for Assets/Output <a id="Hooks"></a>
 
 
-## Output CSS / JS separately
+### Output CSS/JS separately <a id="OutputCSSJS"></a>
 If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section,:
 
 ```php
@@ -233,13 +256,45 @@ Then you can add the following code where you want to output the CSS/JS:
 ```
 
 
+# Options
+
+### Default Position <a id="OptionPosition"></a>
+You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
+
+```php
+c::set('panelbar.position', 'bottom');
+```
+
+
+### Remember State <a id="OptionState"></a>
+With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
+
+```php
+c::set('panelbar.remember', true);
+```
+
+
+### Keyboard Shortcuts <a id="OptionKeyboard"></a>
+By default the panel bar features a few keyboard shortcuts:  
+
+Keyboard Shortcut    | Effect
+-------------------- | -------------
+`alt` + `X`          | Toggle visibility (show/hide)
+`alt` + `-` (dash)   | Toggle position (top/bottom)
+`alt`+ `up arrow`    | Set position to top
+`alt` + `down arrow` | Set position to bottom
+`alt` + `E`          | Toggle Edit mode
+`alt` + `R`          | Close Panel iFrame and Refresh
+`alt` + `P`          | Go to the Kirby panel
+
+If you want to deactivate these keyboard shortcuts, you have to include the following line in your `config.php`:
+```php
+c::set('panelbar.keys', false);
+``
+
 
 
 # Help & Improve <a id="Help"></a>
-*If you have any suggestions for new elements or further configuration options, [please let me know](https://github.com/distantnative/panel-bar/issues/new).*
+If you find any bugs, have troubles or ideas for new elements or further configuration options, please let me know [by opening a new issue](https://github.com/distantnative/panel-bar/issues/new).
 
-
-
-
-# Version history <a id="VersionHistory"></a>
-Check out the more or less complete [changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md).
+So far the plugin has been free of charge and open for everyone to use it. Still, if it helps you with your work and/or life and you can share, I would really appreciate your support by buying a [moral license](https://gumroad.com/l/kirby-panelbar).
