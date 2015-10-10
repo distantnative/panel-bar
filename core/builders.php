@@ -2,7 +2,11 @@
 
 namespace PanelBar;
 
+use A;
+
 class Build {
+
+  public $buildAssets = array();
 
   /**
    *  PUBLIC CONSTRUCTORS
@@ -10,15 +14,29 @@ class Build {
 
   public static function label($args) {
     return self::_element('panelbar-label', '', $args);
+
+    return array(
+      'element' => self::_element('panelbar-label', '', $args),
+      'assets'  => array('css' => pb::load('css', 'elements/label.css')),
+    );
   }
 
   public static function link($args) {
     return self::_element('panelbar-btn', '', $args);
+
+    return array(
+      'element' => self::_element('panelbar-btn', '', $args),
+      'assets'  => array('css' => pb::load('css', 'elements/btn.css')),
+    );
   }
 
   public static function dropdown($args) {
     $drop = pb::load('html', 'elements/drop.php' , array('items' =>$args['items']));
-    return self::_element('panelbar-drop', $drop, $args);
+
+    return array(
+      'element' => self::_element('panelbar-drop', $drop, $args),
+      'assets'  => array('css' => pb::load('css', 'elements/drop.css')),
+    );
   }
 
   public static function fileviewer($args) {
@@ -31,8 +49,11 @@ class Build {
       ),
       'style'   => self::_style($args),
     ));
-    return self::_element('panelbar-fileviewer', $grid, $args);
 
+    return array(
+      'element' => self::_element('panelbar-fileviewer', $grid, $args),
+      'assets'  => array('css' => pb::load('css', 'elements/fileviewer.css')),
+    );
   }
 
   public static function box($args) {
@@ -40,7 +61,11 @@ class Build {
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
-    return self::_element('panelbar-box', $box, $args);
+
+    return array(
+      'element' => self::_element('panelbar-box', $box, $args),
+      'assets'  => array('css' => pb::load('css', 'elements/box.css')),
+    );
   }
 
 

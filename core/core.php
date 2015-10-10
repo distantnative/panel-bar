@@ -63,6 +63,7 @@ class Core extends Build {
   // get all elements
   protected function _elements() {
     foreach ($this->elements as $element) {
+
       // $element is default function
       if($ref = new Elements($this->output, $this->assets) and
          is_callable(array($ref, $element)) and
@@ -70,7 +71,11 @@ class Core extends Build {
         $element = call_user_func(array($ref, $element));
       }
 
-      if(is_string($element)) {
+      if(is_array($element)) {
+        $this->assets->setHooks($element['assets']);
+        $this->output->setHooks($element['html']);
+        $this->output->setHook('elements', $element['element']);
+      } elseif(is_string($element)) {
         $this->output->setHook('elements', $element);
       }
 

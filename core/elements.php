@@ -30,17 +30,13 @@ class Elements {
    */
 
   public function panel() {
-    // register assets
-    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
-
-    // register output
-    $this->output->setHook('elements', Build::link(array(
+    return Build::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
       'url'     => pb::url(''),
       'label'   => 'Panel',
       'mobile'  => 'icon',
-    )));
+    ));
   }
 
 
@@ -49,15 +45,9 @@ class Elements {
    */
 
   public function add() {
-    // register assets
-    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-    $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
+    $this->_registerIframe();
 
-    // register output
-    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Build::dropdown(array(
+    return Build::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
@@ -72,7 +62,7 @@ class Elements {
             ),
         ),
       'mobile' => 'icon'
-    )));
+    ));
   }
 
 
@@ -81,21 +71,15 @@ class Elements {
    */
 
   public function edit() {
-    // register assets
-    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
+    $this->_registerIframe();
 
-    // register output
-    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Build::link(array(
+    return Build::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
       'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
       'mobile' => 'icon',
-    )));
+    ));
   }
 
 
@@ -106,22 +90,18 @@ class Elements {
   public function toggle() {
     // register assets
     $this->assets->setHook('css', pb::load('css', 'elements/toggle.css'));
+
     if(!pb::version("2.2.0")) {
+      $js = 'currentURI="'.$this->page->uri().'";siteURL="'.$this->site->url().'";';
       $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
-      $this->assets->setHook('js',  'var currentURI="'.$this->page->uri().'";');
-      $this->assets->setHook('js',  'var siteURL="'.$this->site->url().'";');
+      $this->assets->setHook('js',  $js);
     } else {
-      $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-      $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+      $this->_registerIframe();
       $this->assets->setHook('js',  'panelbarIframe.init([".panelbar--toggle a"]);');
-      $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-      $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
     }
 
 
     if($this->page->isInvisible() and !pb::version("2.2.0")) {
-      // register assets
-      $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
       // prepare output
       $siblings = array();
       array_push($siblings, array(
@@ -135,26 +115,23 @@ class Elements {
           'label' => '&rarr;<span class="gap"></span>&larr;'
         ));
       }
-      // register output
-      $this->output->setHook('elements', Build::dropdown(array(
+
+      return Build::dropdown(array(
         'id'     => 'toggle',
         'icon'   => 'toggle-off',
         'label'  => 'Invisible',
         'items'  => $siblings,
         'mobile' => 'icon',
-      )));
+      ));
 
     } else {
-      // register assets
-      $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
-      // register output
-      $this->output->setHook('elements', Build::link(array(
+      return Build::link(array(
         'id'     => 'toggle',
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
         'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
         'url'    => pb::url('toggle', $this->page),
         'mobile' => 'icon',
-      )));
+      ));
     }
   }
 
@@ -164,10 +141,7 @@ class Elements {
    */
 
   public function files($type = null) {
-    // register hooks
-    $this->assets->setHook('css', pb::load('css', 'elements/fileviewer.css'));
-
-    // prepare output
+     // prepare output
     $files = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
     $files = $files->limit(15);
@@ -186,8 +160,7 @@ class Elements {
         array_push($items, $args);
       }
 
-      // register output
-      $this->output->setHook('elements', Build::fileviewer(array(
+      return Build::fileviewer(array(
         'id'     => 'files',
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
@@ -195,7 +168,7 @@ class Elements {
         'count'  => count($items),
         'all'    => pb::url('index', $file),
         'mobile' => 'icon'
-      )));
+      ));
     }
   }
 
@@ -215,9 +188,6 @@ class Elements {
 
   public function languages() {
     if ($languages = $this->site->languages()) {
-      // register assets
-      $this->assets->setHook('css', pb::load('css', 'elements/drop.css'));
-
       // prepare output
       $items = array();
       foreach($languages->not($this->site->language()->code()) as $language) {
@@ -228,13 +198,13 @@ class Elements {
       }
 
       // register output
-      $this->output->setHook('elements', Build::dropdown(array(
+      return Build::dropdown(array(
         'id'     => 'lang',
         'icon'   => 'flag',
         'label'  => strtoupper($this->site->language()->code()),
         'items'  => $items,
         'mobile' => 'label'
-      )));
+      ));
     }
   }
 
@@ -244,16 +214,12 @@ class Elements {
    */
 
   public function loadtime() {
-    // register assets
-    $this->assets->setHook('css', pb::load('css', 'elements/label.css'));
-
-    // register output
-    $this->output->setHook('elements', Build::label(array(
+    return Build::label(array(
       'id'     => 'loadtime',
       'icon'   => 'clock-o',
-      'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
+      'label'  => number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
       'mobile' => 'label',
-    )));
+    ));
   }
 
 
@@ -262,22 +228,16 @@ class Elements {
    */
 
   public function user() {
-    // register assets
-    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
+    $this->_registerIframe();
 
-    // register output
-    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
-    $this->output->setHook('elements', Build::link(array(
+    return Build::link(array(
       'id'     => 'user',
       'icon'   => 'user',
       'url'    => pb::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
       'mobile' => 'icon',
       'float'  => 'right',
-    )));
+    ));
   }
 
 
@@ -286,18 +246,29 @@ class Elements {
    */
 
   public function logout() {
-    // register assets
-    $this->assets->setHook('css', pb::load('css', 'elements/btn.css'));
-
-    // register output
-    $this->output->setHook('elements', Build::link(array(
+    return Build::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
       'url'    => pb::url('logout'),
       'label'  => 'Logout',
       'mobile' => 'icon',
       'float'  => 'right',
-    )));
+    ));
+  }
+
+
+  /**
+   *  TOOL: iFrame
+   */
+
+  protected function _registerIframe() {
+    // register assets
+    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+
+    // register output
+    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
   }
 
 }
