@@ -27,8 +27,6 @@ class Core extends Build {
   public $css = true;
   public $js  = true;
 
-  protected $protected;
-
 
   public function __construct($args = array()) {
     // Elements
@@ -43,9 +41,6 @@ class Core extends Build {
     $this->css    = isset($args['css']) ? $args['css'] : true;
     $this->js     = isset($args['js'])  ? $args['js']  : true;
     $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
-
-
-    $this->protected = array_diff(get_class_methods('PanelBar\Core'), array());
   }
 
 
@@ -67,7 +62,7 @@ class Core extends Build {
       // $element is default function
       if($ref = new Elements($this->output, $this->assets) and
          is_callable(array($ref, $element)) and
-         !in_array($element, $this->protected)) {
+         substr($element, 0, 1) !== '_') {
         $element = call_user_func(array($ref, $element));
       }
 
