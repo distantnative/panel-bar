@@ -203,6 +203,7 @@ With the builders you can easily create [custom elements](#CustomElements) and a
 <?php
 function customDropdown() {
   return panelbar::dropdown(array(
+    'id'    => 'songs',
     'icon'  => 'headphones',
     'label' => 'Songs',
     'items' => array(
@@ -213,19 +214,20 @@ function customDropdown() {
       array(
         'url'   => 'https://www.youtube.com/watch?v=gdby5w5rseo',
         'label' => 'Me Gusta'
-      ),
+      )
      )
   ));
 }
 
 $elements = array(
   'panel',
-  'mum'   => panelbar::link(array(
+  panelbar::link(array(
+    'id'    => 'mum',
     'icon'  => 'heart',
     'label' => 'Mum',
     'url'   => 'http://mydomain.com/pictureofmum.jpg'
   )),
-  'songs' => 'customDropdown',
+  'customDropdown'
 );
 
 echo panelbar::show(array('elements' => $elements));

@@ -16,7 +16,6 @@
 - Improved: Design improvements on several elements
 - Improved: Extended and updated docs + more screenshots
 - Fixed: Added IDs to elements created by element builders
-- Fixed: Got rid of ID argument by using array key
 - Fixed: Increased z-index (CSS)
 - Fixed: Missing border on unfloated last element
 - Internal: Standard elements and builders use assets and output hooks
