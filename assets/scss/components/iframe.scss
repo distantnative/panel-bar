@@ -6,6 +6,10 @@
 
   &__btns {
     display: none;
+
+    > span {
+      cursor: pointer;
+    }
   }
 
   &__iframe {
