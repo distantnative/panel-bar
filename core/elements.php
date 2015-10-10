@@ -123,7 +123,7 @@ class Elements {
         'icon'   => 'toggle-off',
         'label'  => 'Invisible',
         'items'  => $siblings,
-        'mobile' => 'icon',
+        'mobile' => false,
       ));
 
     } else {
@@ -132,7 +132,7 @@ class Elements {
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
         'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
         'url'    => pb::url('toggle', $this->page),
-        'mobile' => 'icon',
+        'mobile' => false,
       ));
     }
   }
@@ -237,7 +237,7 @@ class Elements {
       'icon'   => 'user',
       'url'    => pb::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
-      'mobile' => 'icon',
+      'mobile' => false,
       'float'  => 'right',
     ));
   }
