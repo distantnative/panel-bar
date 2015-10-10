@@ -13,19 +13,15 @@ class Build {
    */
 
   public static function label($args) {
-    return self::_element('panelbar-label', '', $args);
-
     return array(
-      'element' => self::_element('panelbar-label', '', $args),
+      'element' => self::_element('panelbar-label', null, $args),
       'assets'  => array('css' => pb::load('css', 'elements/label.css')),
     );
   }
 
   public static function link($args) {
-    return self::_element('panelbar-btn', '', $args);
-
     return array(
-      'element' => self::_element('panelbar-btn', '', $args),
+      'element' => self::_element('panelbar-btn', null, $args),
       'assets'  => array('css' => pb::load('css', 'elements/btn.css')),
     );
   }
@@ -73,7 +69,11 @@ class Build {
    *  HELPER METHODS
    */
 
-  protected static function _element($class = null, $content = '', $args = array()) {
+  protected static function _element($class = null, $content = null, $args = array()) {
+    if(is_null($content)) {
+      $content = isset($args['content']) ? $args['content'] : '';
+    }
+
     return pb::load('html', 'elements/base.php', array(
       'id'      => $args['id'],
       'class'   => self::_class($class, $args),
