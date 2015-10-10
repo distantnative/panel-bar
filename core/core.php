@@ -64,6 +64,10 @@ class Core extends Build {
          is_callable(array($ref, $element)) and
          substr($element, 0, 1) !== '_') {
         $element = call_user_func(array($ref, $element));
+
+      // $element is callable
+      } elseif(is_callable($element)) {
+        $element = call_user_func_array($element, array($this->output, $this->assets));
       }
 
       if(is_array($element)) {
