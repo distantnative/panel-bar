@@ -40,20 +40,17 @@ This plugin enables you to include a panel bar on top of your site which gives y
 
 
 # Usage <a id="Usage"></a>
-Include in your `site/snippets/footer.php` right before the `</body>` tag:
+Include in your `site/snippets/footer.php` (or equivalent) before the `</body>` tag:
 ```php
 <?php echo panelbar::show() ?>
 ```
 
-Or with the following if you want the panel bar hidden on load:
+If you want the panel bar hidden when the page loads:
 ```php
 <?php echo panelbar::hide() ?>
 ```
 
-You can toggle the visibility of the panel bar on the right side, if your browser supports Javascript. If not, panel bar will simply hide the toggle switch and display the panel bar always.
-
-**Caching**  
-If you want to use caching with Kirby, please make sure to only activate it if the visitor is not a logged-in user (in `site/config/config.php`):
+If you want to use **caching with Kirby**, please make sure to only activate it if the visitor is not a logged-in user:
 ```php
 if(!site()->user()) c::set('cache', true);
 ```
@@ -87,72 +84,56 @@ The pre-defined default set of elements consists of `panel`, `add`, `edit`, `fil
 # Customize
 
 ### Custom Set of Elements <a id="CustomSet"></a>
-To define which elements should be included in the panel bar, you can either set a config option (in `site/config/config.php`):
+You can define a custom set of elements in `site/config/config.php`:
 ```php
 c::set('panelbar.elements', array(…));
 ```
 
-Or pass them as an argument when displaying the panel bar:
+Or pass them as a parameter when calling `::show()` or `::hide()`:
 ```php
 <?php echo panelbar::show(array('elements' => array(…))) ?>
 ```
 
-You can include standard elements either by naming them:
+To include [standard elements](#StandardElements) in your custom set, simply name them:
 ```php
 c::set('panelbar.elements', array(
   'panel', 
   'edit', 
-  'toggle', 
-  'languages', 
-  'logout', 
-  'user'
+  'languages'
 ));
 ```
 
-Or you can merge your custom array with the default set of elements:
+Or you can merge your custom set of elements with the default set of elements using `::defaults():
 ```php
-c::set('panelbar.elements', a::merge(array(
+<?php
+$elements = a::merge(array(
   'custom1',
-  'custom 2'
+  'custom2'
 ), panelbar::defaults()));
+
+echo panelbar::show(array('elements' => $elements));
+?>
 ```
 
 
 ### Custom Elements <a id="CustomElements"></a>
-Panel Bar also is prepared to include custom elements. For custom elements you can either pass the HTML directly in the array or use the name of a callable function in the array which then returns the HTML code.
-
-Examples:
+The panel bar can include custom elements. You can either include the custom element's output code directly in the elements array or use the name of a callable function in the array, which returns the output code:
 ```php
-c::set('panelbar.elements', array(
-  'panel', 
+<?php
+$elements = array(
+  'panel',
+  'add',
   'edit',
-  'custom-link' => panelbar::link(array(
-                    'id'   => 'mum',
-                    'icon' => 'heart',
-                    'url'  => 'http://mydomain.com/pictureofmum.jpg',
-                    'text' => 'Mum'
-                  )),
-  'custom-dropdown' => 'dropitpanelbar',
-  'logout', 
-));
+  'custom-link'  => '<div class="panelbar-element panelbar-btn"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>',
+  'custom-songs' => 'customSongs'
+);
 
-function dropitpanelbar() {
-  return panelbar::dropdown(array(
-    'id'    => 'songs',
-    'icon'  => 'headphones',
-    'label' => 'Songs',
-    'items' => array(
-                 0 => array(
-                       'url' => 'https://www.youtube.com/watch?v=BIp_Y28qyZc',
-                       'text' => 'Como Soy'
-                      ),
-                 1 => array(
-                       'url' => 'https://www.youtube.com/watch?v=gdby5w5rseo',
-                       'text' => 'Me Gusta'
-                      ),
-               )
-  ));
+function customSongs() {
+  return '<div class="panelbar-element panelbar-drop"><span><i class="fa fa-headphones "></i><span>Songs</span></span><div class="panelbar-drop__list"><a href="https://www.youtube.com/watch?v=BIp_Y28qyZc" class="panelbar-drop__item">Como Soy</a><a href="https://www.youtube.com/watch?v=gdby5w5rseo" class="panelbar-drop__item">Me Gusta</a></div></div>';
 }
+
+echo panelbar::show(array('elements' => $elements));
+?>
 ```
 
 
@@ -167,54 +148,74 @@ panelbar::builder(array(
 ));
 ```
 
-The following element builders are available and require additional parameters if referenced:  
-<table>
-<tr>
-  <th>Label</th>
-  <th>Link</th>
-</tr>
-<tr>
-  <td style="vertical-align: top;">
-<pre lang="php" style="padding: 0;">
-panelbar::label(array(
-  …,
-));</pre>
-  </td>
-  <td style="vertical-align: top;">
-<pre lang="php" style="padding: 0;">
-panelbar::link(array(
-  …,
-  'url' => site()->url().'/panel',
-));</pre>
-  </td>
-</tr>
-<tr>
-  <th>Dropdown</th>
-  <th>Textbox</th>
-</tr>
-<tr>
-  <td style="vertical-align: top;">
-<pre lang="php" style="padding: 0;">
-panelbar::dropdown(array(
-  …,
-  'items' => array(
-    0 => array(
-      'url'   => …,
-      'label' => …
-    ),
-    …
-   ),
-));</pre>
-  </td>
-  <td style="vertical-align: top;">
-<pre lang="php" style="padding: 0;">
-panelbar::box(array(
-  …,
-  'content' => '<b>Important information</b>',
-));</pre>
-  </td>
-</tr>
-</table>
+The following element builders are available and require additional parameters if referenced:
+- **Label**  
+    ```php
+    panelbar::label(array(
+      …,
+    ));
+    ```
+- **Link**  
+    ```php
+    panelbar::link(array(
+      …,
+      'url' => site()->url().'/panel',
+    ));
+    ```
+- **Dropdown**  
+    ```php
+    panelbar::dropdown(array(
+      …,
+      'items' => array(
+        0 => array(
+          'url'   => …,
+          'label' => …
+        ),
+        …
+       ),
+    ));
+    ```
+- **Textbox**  
+    ```php
+    panelbar::box(array(
+      …,
+      'content' => '<b>Important information</b>',
+    ));
+    ```
+
+With the builders you can easily create [custom elements](#CustomElements) and add them to your [custom set of elements](#CustomSet) - for example:
+```php
+<?php
+function customDropdown() {
+  return panelbar::dropdown(array(
+    'icon'  => 'headphones',
+    'label' => 'Songs',
+    'items' => array(
+      array(
+        'url'   => 'https://www.youtube.com/watch?v=BIp_Y28qyZc',
+        'label' => 'Como Soy'
+      ),
+      array(
+        'url'   => 'https://www.youtube.com/watch?v=gdby5w5rseo',
+        'label' => 'Me Gusta'
+      ),
+     )
+  ));
+}
+
+$elements = array(
+  'panel',
+  'mum'   => panelbar::link(array(
+    'icon'  => 'heart',
+    'label' => 'Mum',
+    'url'   => 'http://mydomain.com/pictureofmum.jpg'
+  )),
+  'songs' => 'customDropdown',
+);
+
+echo panelbar::show(array('elements' => $elements));
+?>
+```
 
 
 *If you use any builders in the `config.php`, you must prepend the following line:*  
@@ -235,9 +236,9 @@ There are two types of hooks in panel bar: asset hooks and output hooks. Asset h
 ```php
 <?php
 function customHelpElement($output, $assets) {
-  $assets->setHook('css',     '.mylove{}');
-  $assets->setHook('js',      'alert("hello")');
-  $output->setHook('element', panelbar::label(…));
+  $assets->setHook('css',      '.mylove{}');
+  $assets->setHook('js',       'alert("hello")');
+  $output->setHook('elements', panelbar::label(…));
 }
 
 $elements = array(
@@ -251,7 +252,7 @@ echo panelbar::show(array('elements' => $elements));
 
 If you do not want to directly set hooks, you can  return an array instead and the plugin will take care of hooking the CSS, JS and/or HTML into the panel bar:
 ```php
-function customHelpElement($output, $assets) {
+function customHelpElement() {
   return array(
     'element' => '…',
     'assets'  => array(
@@ -264,6 +265,13 @@ function customHelpElement($output, $assets) {
     )
   );
 }
+
+$elements = array(
+  'panel',
+  'help' => customHelpElement(),
+);
+
+echo panelbar::show(array('elements' => $elements));
 ```
 
 
