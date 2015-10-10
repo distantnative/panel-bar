@@ -2,7 +2,7 @@
 
   <?php if($url) : ?>
     <a href="<?php echo $url ?>">
-  <?php else : ?>
+  <?php elseif($icon or $label) : ?>
     <span>
   <?php endif ?>
 
@@ -18,9 +18,10 @@
 
   <?php if($url) : ?>
     </a>
-  <?php else : ?>
+  <?php elseif($icon or $label) : ?>
     </span>
   <?php endif ?>
 
   <?php echo $content ?>
+
 </div>

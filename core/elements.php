@@ -31,7 +31,7 @@ class Elements {
 
   public function panel() {
     return Build::link(array(
-      'id'      => 'panel',
+      'id'      => __FUNCTION__,
       'icon'    => 'cogs',
       'url'     => pb::url(''),
       'label'   => 'Panel',
@@ -48,7 +48,7 @@ class Elements {
     $this->_registerIframe();
 
     return Build::dropdown(array(
-      'id'     => 'add',
+      'id'     => __FUNCTION__,
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => array(
@@ -74,7 +74,7 @@ class Elements {
     $this->_registerIframe();
 
     return Build::link(array(
-      'id'     => 'edit',
+      'id'     => __FUNCTION__,
       'icon'   => 'pencil',
       'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
@@ -117,7 +117,7 @@ class Elements {
       }
 
       return Build::dropdown(array(
-        'id'     => 'toggle',
+        'id'     => __FUNCTION__,
         'icon'   => 'toggle-off',
         'label'  => 'Invisible',
         'items'  => $siblings,
@@ -126,7 +126,7 @@ class Elements {
 
     } else {
       return Build::link(array(
-        'id'     => 'toggle',
+        'id'     => __FUNCTION__,
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
         'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
         'url'    => pb::url('toggle', $this->page),
@@ -140,7 +140,7 @@ class Elements {
    *  FILES
    */
 
-  public function files($type = null) {
+  public function files($type = null, $function = null) {
      // prepare output
     $files = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
@@ -161,7 +161,7 @@ class Elements {
       }
 
       return Build::fileviewer(array(
-        'id'     => 'files',
+        'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
@@ -178,7 +178,7 @@ class Elements {
    */
 
   public function images() {
-    return $this->files('image');
+    return $this->files('image', __FUNCTION__);
   }
 
 
@@ -199,7 +199,7 @@ class Elements {
 
       // register output
       return Build::dropdown(array(
-        'id'     => 'lang',
+        'id'     => __FUNCTION__,
         'icon'   => 'flag',
         'label'  => strtoupper($this->site->language()->code()),
         'items'  => $items,
@@ -215,7 +215,7 @@ class Elements {
 
   public function loadtime() {
     return Build::label(array(
-      'id'     => 'loadtime',
+      'id'     => __FUNCTION__,
       'icon'   => 'clock-o',
       'label'  => number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
       'mobile' => 'label',
@@ -231,7 +231,7 @@ class Elements {
     $this->_registerIframe();
 
     return Build::link(array(
-      'id'     => 'user',
+      'id'     => __FUNCTION__,
       'icon'   => 'user',
       'url'    => pb::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
@@ -247,7 +247,7 @@ class Elements {
 
   public function logout() {
     return Build::link(array(
-      'id'     => 'logout',
+      'id'     => __FUNCTION__,
       'icon'   => 'power-off',
       'url'    => pb::url('logout'),
       'label'  => 'Logout',

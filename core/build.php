@@ -73,8 +73,8 @@ class Build {
    *  HELPER METHODS
    */
 
-  protected static function _element($class, $content, $args) {
-    return pb::load('html', 'elements/element.php', array(
+  protected static function _element($class = null, $content = '', $args = array()) {
+    return pb::load('html', 'elements/base.php', array(
       'id'      => $args['id'],
       'class'   => self::_class($class, $args),
       'icon'    => isset($args['icon'])   ? $args['icon']   : false,

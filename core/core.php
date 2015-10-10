@@ -4,7 +4,7 @@ namespace PanelBar;
 
 require_once 'toolkit.php';
 require_once 'hooks.php';
-require_once 'builders.php';
+require_once 'build.php';
 require_once 'elements.php';
 require_once 'output.php';
 require_once 'assets.php';
@@ -57,7 +57,7 @@ class Core extends Build {
 
   // get all elements
   protected function _elements() {
-    foreach ($this->elements as $element) {
+    foreach ($this->elements as $id => $element) {
 
       // $element is default function
       if($ref = new Elements($this->output, $this->assets) and
@@ -68,13 +68,19 @@ class Core extends Build {
       // $element is callable
       } elseif(is_callable($element)) {
         $element = call_user_func_array($element, array($this->output, $this->assets));
+
+      // $element is string
+      } elseif(is_string($element)) {
+        $element = build::_element(null, $element, array(
+          'id' => $id
+        ));
       }
 
       if(is_array($element)) {
         if(isset($element['assets']))  $this->assets->setHooks($element['assets']);
         if(isset($element['html']))    $this->output->setHooks($element['html']);
-        if(isset($element['element'])) $this->output->setHook('elements', $element['element']);
-      } elseif(is_string($element)) {
+        if(isset($element['element'])) $this->output->setHook('elements', $element['element']);;
+      } else {
         $this->output->setHook('elements', $element);
       }
 
