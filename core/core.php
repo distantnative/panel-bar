@@ -67,9 +67,9 @@ class Core extends Build {
       }
 
       if(is_array($element)) {
-        $this->assets->setHooks($element['assets']);
-        $this->output->setHooks($element['html']);
-        $this->output->setHook('elements', $element['element']);
+        if(isset($element['assets']))  $this->assets->setHooks($element['assets']);
+        if(isset($element['html']))    $this->output->setHooks($element['html']);
+        if(isset($element['element'])) $this->output->setHook('elements', $element['element']);
       } elseif(is_string($element)) {
         $this->output->setHook('elements', $element);
       }
