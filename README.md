@@ -31,13 +31,13 @@ This plugin enables you to include a panel bar on top of your site which gives y
 5. [Help & Improve](#Help)
 6. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
 
-
+&nbsp;  
 
 # Setup<a id="Setup"></a>
 1. Download the [panel-bar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
-
+&nbsp;  
 
 # Usage <a id="Usage"></a>
 Include in your `site/snippets/footer.php` (or equivalent) before the `</body>` tag:
@@ -55,7 +55,7 @@ If you want to use **caching with Kirby**, please make sure to only activate it 
 if(!site()->user()) c::set('cache', true);
 ```
 
-
+&nbsp;  
 
 # Elements
 
@@ -79,7 +79,7 @@ Name        | Description
 ### Default Set of Elements <a id="DefaultSet"></a>
 The pre-defined default set of elements consists of `panel`, `add`, `edit`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
 
-
+&nbsp;  
 
 # Customize
 
@@ -148,7 +148,7 @@ panelbar::builder(array(
 ));
 ```
 
-The following element builders are available and require additional parameters if referenced:
+The following element builders are available and require additional parameters if referenced:  
 1. **Label**  
 
     ```php
@@ -189,7 +189,7 @@ The following element builders are available and require additional parameters i
       'content' => '<b>Important information</b>',
     ));
     ```
-
+&nbsp;
 
 With the builders you can easily create [custom elements](#CustomElements) and add them to your [custom set of elements](#CustomSet) - for example:
 ```php
@@ -299,6 +299,7 @@ You can still pass your [custom CSS/JS](#CustomCSSJS) to these methods:
 <?php echo panelbar::css('.mylove{}') ?>
 ```
 
+&nbsp;  
 
 # Options
 All options refer to settings in the `site/config/config.php` if not stated otherwise.
@@ -335,7 +336,7 @@ If you want to deactivate these keyboard shortcuts, you have to include:
 c::set('panelbar.keys', false);
 ```
 
-
+&nbsp;  
 
 # Help & Improve <a id="Help"></a>
 If you find any bugs, have troubles or ideas for new elements or further configuration options, please let me know [by opening a new issue](https://github.com/distantnative/panel-bar/issues/new).
