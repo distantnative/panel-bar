@@ -1545,6 +1545,7 @@
   position: fixed;
   left: 0;
   right: 0;
+  height: 48px;
   z-index: 2147483000;
   padding-right: 68px;
   line-height: 1;
