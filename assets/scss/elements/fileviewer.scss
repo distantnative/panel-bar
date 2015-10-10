@@ -58,14 +58,14 @@
 
     &:hover {
       .panelbar-fileviewer__preview {
-        background-color: #8dae28;
+        background: #8dae28;
 
         em {
           display: block !important;
           color: #fff;
         }
       }
-      .panelbar-fileviewer__image { opacity: .25 }
+      .panelbar-fileviewer__image { opacity: .35 }
       .panelbar-fileviewer__label {
         color: #fff;
         background: linear-gradient(to top, rgba(0,0,0,.4), rgba(0,0,0,.2) 65%, rgba(0,0,0,0));
@@ -80,7 +80,7 @@
 
   &__preview {
     position: relative;
-    background-color: #efefef;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
     padding-bottom: 66.6666%;
 
     em {
