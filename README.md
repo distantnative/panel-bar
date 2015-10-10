@@ -37,7 +37,7 @@ This plugin enables you to include a panel bar on top of your site which gives y
 1. Download the [panel-bar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
-  
+
 
 # Usage <a id="Usage"></a>
 Include in your `site/snippets/footer.php` right before the `</body>` tag:
@@ -58,7 +58,7 @@ If you want to use caching with Kirby, please make sure to only activate it if t
 if(!site()->user()) c::set('cache', true);
 ```
 
-  
+
 
 # Elements
 
@@ -174,13 +174,13 @@ The following element builders are available and require additional parameters i
   <th>Link</th>
 </tr>
 <tr>
-  <td>
+  <td style="vertical-align: top;">
 <pre lang="php" style="padding: 0;">
 panelbar::label(array(
   …,
 ));</pre>
   </td>
-  <td>
+  <td style="vertical-align: top;">
 <pre lang="php" style="padding: 0;">
 panelbar::link(array(
   …,
@@ -193,7 +193,7 @@ panelbar::link(array(
   <th>Textbox</th>
 </tr>
 <tr>
-  <td>
+  <td style="vertical-align: top;">
 <pre lang="php" style="padding: 0;">
 panelbar::dropdown(array(
   …,
@@ -202,15 +202,11 @@ panelbar::dropdown(array(
       'url'   => …,
       'label' => …
     ),
-    1 => array(
-      'url'   => …,
-      'label' => …
-    ),
     …
    ),
 ));</pre>
   </td>
-  <td>
+  <td style="vertical-align: top;">
 <pre lang="php" style="padding: 0;">
 panelbar::box(array(
   …,
@@ -228,41 +224,78 @@ kirby()->plugin('panel-bar');
 
 
 ### Custom CSS/JS <a id="CustomCSSJS"></a>
+To include your custom CSS and JS with panel bar (e.g. for a [custom element](#CustomElement)), the best way would be to use [asset hooks](#Hooks) in your custom element function. However, you can also pass custom CSS and JS as parameters to the `::show()` and `::hide()` methods:
+```php
+<?php echo panelbar::show(array('css' => '.mylove{}', 'js' => 'alert("hello")')) ?>
+```
 
 
 ### Hooks for Assets/Output <a id="Hooks"></a>
+There are two types of hooks in panel bar: asset hooks and output hooks. Asset hooks are divided into `css` and `js`. Output hooks all refer to HTML but are included at different positions in the panel bar: as `element`, `before` and `after`. To make use of assets and output hooks, the plugin passes the `$output` and `$assets` objects to callable custom element functions:
+```php
+<?php
+function customHelpElement($output, $assets) {
+  $assets->setHook('css',     '.mylove{}');
+  $assets->setHook('js',      'alert("hello")');
+  $output->setHook('element', panelbar::label(…));
+}
+
+$elements = array(
+  'panel',
+  'help' => 'customHelpElement',
+);
+
+echo panelbar::show(array('elements' => $elements));
+?>
+```
+
+If you do not want to directly set hooks, you can  return an array instead and the plugin will take care of hooking the CSS, JS and/or HTML into the panel bar:
+```php
+function customHelpElement($output, $assets) {
+  return array(
+    'element' => '…',
+    'assets'  => array(
+      'css' => '.mylove{}',
+      'js'  => 'alert("hello")'
+    ),
+    'html'    => array(
+      'before' => '…',
+      'after'  => '…'
+    )
+  );
+}
+```
 
 
 ### Output CSS/JS separately <a id="OutputCSSJS"></a>
-If you want to output the CSS and/or JS not with the panel bar, but separately e.g. in the `<head>` section,:
-
+At default, panel bar includes the necessary CSS styles and JS scripts in its output. If you not want to output the CSS and/or JS directly with the panel bar (e.g. separately within the `<head>` section), you first have to disable their output:
 ```php
 <?php echo panelbar::show(array('css' => false, 'js' => false) ?>
 ```
 
-Then you can add the following code where you want to output the CSS/JS:
-
+To output the CSS and/or JS wherever you want it, just use `::css()` or `::js()`:
 ```php
-<?php echo panelbar::css() ?>
 <?php echo panelbar::js() ?>
+```
+
+You can still pass your [custom CSS/JS](#CustomCSSJS) to these methods:  
+```php
+<?php echo panelbar::css('.mylove{}') ?>
 ```
 
 
 # Options
 All options refer to settings in the `site/config/config.php` if not stated otherwise.
 
-
 ### Default Position <a id="OptionPosition"></a>
-You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
-
+To change the default position of the panel bar to bottom include:
 ```php
 c::set('panelbar.position', 'bottom');
 ```
 
 
 ### Remember State <a id="OptionState"></a>
-With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
-
+The panel bar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. If you want the panel bar to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link), you need to include:
 ```php
 c::set('panelbar.remember', true);
 ```
@@ -281,7 +314,7 @@ Keyboard Shortcut    | Effect
 `alt` + `R`          | Close Panel iFrame and Refresh
 `alt` + `P`          | Go to the Kirby panel
 
-If you want to deactivate these keyboard shortcuts, you have to include the following line in your `config.php`:
+If you want to deactivate these keyboard shortcuts, you have to include:
 ```php
 c::set('panelbar.keys', false);
 ```
