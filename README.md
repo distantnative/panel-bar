@@ -37,7 +37,7 @@ This plugin enables you to include a panel bar on top of your site which gives y
 1. Download the [panel-bar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
-
+  
 
 # Usage <a id="Usage"></a>
 Include in your `site/snippets/footer.php` right before the `</body>` tag:
@@ -58,7 +58,7 @@ If you want to use caching with Kirby, please make sure to only activate it if t
 if(!site()->user()) c::set('cache', true);
 ```
 
-
+  
 
 # Elements
 
@@ -167,6 +167,7 @@ panelbar::builder(array(
 ));
 ```
 
+The following element builders are available and require additional parameters if referenced:  
 <table>
 <tr>
   <th>Label</th>
@@ -174,19 +175,17 @@ panelbar::builder(array(
 </tr>
 <tr>
   <td>
-    <pre lang="php">
+<pre lang="php" style="padding: 0;">
 panelbar::label(array(
-  …
-));
-    </pre>
+  …,
+));</pre>
   </td>
   <td>
-    <pre lang="php">
+<pre lang="php" style="padding: 0;">
 panelbar::link(array(
-  …
+  …,
   'url' => site()->url().'/panel',
-));
-    </pre>
+));</pre>
   </td>
 </tr>
 <tr>
@@ -195,9 +194,9 @@ panelbar::link(array(
 </tr>
 <tr>
   <td>
-    <pre lang="php">
+<pre lang="php" style="padding: 0;">
 panelbar::dropdown(array(
-  …
+  …,
   'items' => array(
     0 => array(
       'url'   => …,
@@ -209,16 +208,14 @@ panelbar::dropdown(array(
     ),
     …
    ),
-));
-    </pre>
+));</pre>
   </td>
   <td>
-    <pre lang="php">
+<pre lang="php" style="padding: 0;">
 panelbar::box(array(
-  …
+  …,
   'content' => '<b>Important information</b>',
-));
-    </pre>
+));</pre>
   </td>
 </tr>
 </table>
@@ -255,7 +252,7 @@ Then you can add the following code where you want to output the CSS/JS:
 All options refer to settings in the `site/config/config.php` if not stated otherwise.
 
 
-## Default Position <a id="OptionPosition"></a>
+### Default Position <a id="OptionPosition"></a>
 You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
 
 ```php
@@ -263,7 +260,7 @@ c::set('panelbar.position', 'bottom');
 ```
 
 
-## Remember State <a id="OptionState"></a>
+### Remember State <a id="OptionState"></a>
 With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
 
 ```php
@@ -271,7 +268,7 @@ c::set('panelbar.remember', true);
 ```
 
 
-## Keyboard Shortcuts <a id="OptionKeyboard"></a>
+### Keyboard Shortcuts <a id="OptionKeyboard"></a>
 By default the panel bar features a few keyboard shortcuts:  
 
 Keyboard Shortcut    | Effect
