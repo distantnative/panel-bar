@@ -10,7 +10,7 @@
     padding: 16px 18px 15px;
   }
 
-  &:not(:first-of-type):not(:last-of-type) {
+  &:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
     border-left: 1px solid #555;
   }
 
