@@ -1,8 +1,10 @@
 
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
 // Dropdowns
 
 .panelbar-drop {
-  @extend .panelbar-element;
   position: relative;
   cursor: pointer;
 
@@ -22,7 +24,7 @@
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
 
-    > a { color: #000; }
+    > a       { color: #000; }
     > a:hover { color: #777; }
 
     .panelbar-drop:hover & { display: block; }

@@ -1,6 +1,6 @@
 <?php
 
-require 'core/core.php';
+require_once 'core/core.php';
 use PanelBar\Core;
 
 class PanelBar extends Core {
@@ -14,10 +14,16 @@ class PanelBar extends Core {
     'user'
   );
 
-  // Display functions
+
+  /**
+   *  DISPLAY
+   */
+
   public static function show($args = array()) {
-    $self = new self($args);
-    return $self->__output();
+    if ($user = site()->user() and $user->hasPanelAccess()) {
+      $self = new self($args);
+      return $self->_output();
+    }
   }
 
   public static function hide($args = array()) {
@@ -26,19 +32,27 @@ class PanelBar extends Core {
   }
 
 
-  // Assets output functions
-  public static function css() {
+  /**
+   *  ASSETS OUTPUT
+   */
+
+  public static function css($css) {
     $self = new self();
-    return $self->__getCSS(c::get('panelbar.position', 'top'));
+    $self->assets->setHook('css', $css);
+    return $self->assets->css();
   }
 
-  public static function js() {
+  public static function js($js) {
     $self = new self();
-    return $self->__getJS();
+    $self->assets->setHook('js', $js);
+    return $self->assets->js();
   }
 
 
-  // Default elements
+  /**
+   *  DEFAULT ELEMENTS
+   */
+
   public static function defaults() {
     $self = new self();
     return $self->defaults;

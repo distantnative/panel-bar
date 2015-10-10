@@ -3,44 +3,76 @@
 namespace PanelBar;
 
 use C;
-use Tpl;
 
-class Assets {
+use PanelBar\PB;
 
-  public static function css($hook = null) {
-    $style  = tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'css' . DS . 'panelbar.min.css');
-    $style .= self::hook($hook);
-    return '<style>'.self::paths($style).'</style>';
+class Assets extends Hooks {
+
+  public $css;
+  public $js;
+
+
+  public function __construct($external) {
+    $this->css   = array();
+    $this->js    = array();
+
+    $this->defaults();
+    $this->setHooks($external);
   }
 
-  public static function js($hook = null) {
-    $script  = 'siteURL="'.site()->url().'";';
-    $script .= 'currentURI="'.page()->uri().'";';
-    $script .= 'enhancedJS='.(c::get('panelbar.enhancedJS', false) ? 'true' : 'false').';';
-    $script .= tpl::load(realpath(__DIR__ . '/..') . DS . 'assets' . DS . 'js' . DS . 'panelbar.min.js');
-    $script .= self::hook($hook);
-    return '<script>'.$script.'</script>';
+
+  /**
+   *  DISPLAY
+   */
+
+  public function css() {
+    return '<style>'.$this->fontPaths($this->getHooks('css')).'</style>';
   }
 
-  protected static function paths($code){
-    $base = str_repeat('../', substr_count(str_ireplace(kirby()->roots()->index(),'',__DIR__), '/'));
-    $fonts = $base . 'panel/assets/fonts/';
-
-    // Fonts
-    $code = str_ireplace('{{FA}}', $fonts.'fontawesome-webfont.woff?v=4.2.0', $code);
-    $code = str_ireplace('{{SSP400}}', $fonts.'sourcesanspro-400.woff', $code);
-    $code = str_ireplace('{{SSP600}}', $fonts.'sourcesanspro-600.woff', $code);
-    $code = str_ireplace('{{SSPitalic}}', $fonts.'sourcesanspro-400-italic.woff', $code);
-    return $code;
+  public function js() {
+    return '<script>'.$this->getHooks('js').'</script>';
   }
 
-  protected static function hook($hook)  {
-    if (is_string($hook)) {
-      return $hook;
-    } elseif (is_callable($hook)) {
-      return call_user_func($hook);
-    } else {
-      return null;
+
+
+  /**
+   *  DEFAULTS
+   */
+
+  protected function defaults() {
+    $this->setHooks(array(
+      'css' => array(
+        pb::load('css', 'panelbar.css'),
+      ),
+      'js'  => array(
+        'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
+        pb::load('js', 'panelbar.min.js'),
+      ),
+    ));
+
+    // JS: State - localStorage
+    if(c::get('panelbar.rembember', false)) {
+      $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
     }
   }
+
+
+
+  /**
+   *  FONTS
+   */
+
+  protected function fontPaths($css) {
+    $fonts = array(
+      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2', false)),
+      array('{{SSP400}}',    pb::font('sourcesanspro-400.woff')),
+      array('{{SSP600}}',    pb::font('sourcesanspro-600.woff')),
+      array('{{SSPitalic}}', pb::font('sourcesanspro-400-italic.woff')),
+    );
+    foreach($fonts as $font) {
+      $css = str_ireplace($font[0], $font[1], $css);
+    }
+    return $css;
+  }
+
 }

@@ -1,0 +1,33 @@
+
+@mixin clearfix() {
+  *zoom: 1;
+  &::before,
+  &::after {
+    content: " ";
+    display: table;
+  }
+  &::after { clear: both; }
+}
+
+
+
+@mixin dropdownArrow() {
+  &:hover:after {
+    content:     "";
+    position:    absolute;
+    left:        50%;
+    margin-left: -8px;
+
+    border-left:  8px solid transparent;
+    border-right: 8px solid transparent;
+
+    .panelbar--top & {
+      bottom: 0;
+      border-bottom: 8px solid #fff;
+    }
+    .panelbar--bottom & {
+      top: 0;
+      border-top: 8px solid #fff;
+    }
+  }
+}

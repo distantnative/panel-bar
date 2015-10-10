@@ -2,115 +2,109 @@
 
 namespace PanelBar;
 
-require 'helpers.php';
-require 'elements.php';
-require 'controls.php';
-require 'assets.php';
+require_once 'toolkit.php';
+require_once 'hooks.php';
+require_once 'build.php';
+require_once 'elements.php';
+require_once 'output.php';
+require_once 'assets.php';
 
 use A;
 use C;
 
+use PanelBar\PB;
 use PanelBar\Elements;
-use PanelBar\Controls;
+use PanelBar\Output;
 use PanelBar\Assets;
 
-class Core extends Helpers {
+class Core extends Build {
 
-  public $elements     = null;
-  public $position     = null;
-  public $visible      = true;
+  public $elements;
+  public $position;
 
-  public $includeCSS   = true;
-  public $includeJS    = true;
-  public $hookCSS      = null;
-  public $hookJS      = null;
-
-  protected $protected = null;
+  public $output;
+  public $assets;
+  public $css = true;
+  public $js  = true;
 
 
   public function __construct($args = array()) {
-    $args = $this->__defaultParameters($args);
+    // Elements
+    $this->elements = (isset($args['elements']) and is_array($args['elements'])) ?
+                      $args['elements'] : c::get('panelbar.elements', $this->defaults);
 
-    $this->elements   = $args['elements'];
-    $this->position   = c::get('panelbar.position', 'top');
-    $this->visible    = $args['hide'] !== true;
+    // Output
+    $visible      = !(isset($args['hide']) and $args['hide'] === true);
+    $this->output = new Output($visible);
 
-    $this->includeCSS = $args['css'];
-    $this->includeJS  = $args['js'];
-    $this->hookCSS    = $args['css.hook'];
-    $this->hookJS     = $args['js.hook'];
-
-    $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
+    // Assets
+    $this->css    = isset($args['css']) ? $args['css'] : true;
+    $this->js     = isset($args['js'])  ? $args['js']  : true;
+    $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
   }
 
 
-  // defaults for $args parameter
-  protected function __defaultParameters($args) {
-    if (isset($args['elements']) and is_array($args['elements'])) {
-      $elements = $args['elements'];
-    } else {
-      $elements = c::get('panelbar.elements', $this->defaults);
+  /**
+   *  OUTPUT
+   */
+
+  protected function _output() {
+    $this->_elements();
+    $this->_controls();
+    $this->_assets();
+    return $this->output->get();
+  }
+
+  // get all elements
+  protected function _elements() {
+    foreach ($this->elements as $id => $element) {
+
+      // $element is default function
+      if($ref = new Elements($this->output, $this->assets) and
+         is_callable(array($ref, $element)) and
+         substr($element, 0, 1) !== '_') {
+        $element = call_user_func(array($ref, $element));
+
+      // $element is callable
+      } elseif(is_callable($element)) {
+        $element = call_user_func_array($element, array($this->output, $this->assets));
+
+      // $element is string
+      } elseif(is_string($element)) {
+        $element = build::_element(null, $element, array(
+          'id' => $id
+        ));
+      }
+
+      if(is_array($element)) {
+        if(isset($element['assets']))  $this->assets->setHooks($element['assets']);
+        if(isset($element['html']))    $this->output->setHooks($element['html']);
+        if(isset($element['element'])) $this->output->setHook('elements', $element['element']);;
+      } else {
+        $this->output->setHook('elements', $element);
+      }
+
     }
+  }
 
-    return a::merge(array(
-      'elements' => $elements,
-      'css'      => true,
-      'js'       => true,
-      'css.hook' => null,
-      'js.hook'  => null,
-      'hide'     => false,
-    ), $args);
+  protected function _controls() {
+    $this->output->setHook('after', pb::load('html', 'controls.php'));
+  }
+
+  protected function _assets() {
+    if($this->css !== false) $this->output->setHook('after', $this->assets->css());
+    if($this->js  !== false) $this->output->setHook('after', $this->assets->js());
   }
 
 
-  // Placeholder for static methods
+  /**
+   *  PLACEHOLDERS for static methods
+   */
+
   public static function defaults() { }
   public static function show()     { }
   public static function hide()     { }
-  public static function css()      { }
-  public static function js()       { }
-
-
-  // Creating the output for the panel bar
-  protected function __output() {
-    if ($user = site()->user() and $user->hasPanelAccess()) {
-
-      $class   = 'panelbar ';
-      $class  .= 'panelbar--'.$this->position.' ';
-      if ($this->visible === false) $class .= 'panelbar--hidden ';
-
-      $bar     = '<div class="'.$class.'" id="panelbar">';
-      $bar    .= '<div class="panelbar__bar" id="panelbar_bar">'.$this->__content().'</div>';
-      $bar    .= Controls::output();
-
-      if ($this->includeCSS) $bar .= Assets::css($this->hookCSS);
-      if ($this->includeJS)  $bar .= Assets::js($this->hookJS);
-
-      $bar    .= '</div>';
-
-      return $bar;
-    }
-  }
-
-  protected function __content() {
-    $content = '';
-
-    foreach ($this->elements as $element) {
-      // $element is custom function
-      if (is_callable($element)) {
-        $content .= call_user_func($element);
-
-      // $element is default function
-      } elseif ($instance = new Elements() and is_callable(array($instance, $element)) and !in_array($element, $this->protected)) {
-        $content .= call_user_func(array($instance, $element));
-
-      // $element is a string
-      } elseif (is_string($element)) {
-        $content .= $element;
-      }
-    }
-
-    return $content;
-  }
+  public static function css($css)  { }
+  public static function js($js)    { }
 
 }

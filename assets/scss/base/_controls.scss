@@ -3,37 +3,37 @@
 
 .panelbar-controls {
   position: absolute;
-  z-index: 1200;
-  right: 0;
+  z-index:  2147483200;
+  right:    0;
 
-  font-size: 17px;
+  font-size:   17px;
   line-height: 1;
-  color: #fff;
+  color:       #fff;
 
-  padding: 15px 17px 15px 12px;
+  padding:     15px 15px 15px 12px;
   border-left: 1px solid #555;
 
   height: 100%;
 
-  .panelbar--top & { top: 0; }
+  .panelbar--top &    { top:    0; }
   .panelbar--bottom & { bottom: 0; }
 
   .panelbar__bar--hidden + & {
-    color: #000;
+    color:       #000;
     border-left: none;
-    height: auto;
+    height:      auto;
 
   }
 
   i:hover {
     cursor: pointer;
-    color: #999;
+    color:  #999;
   }
 
 
-  // Flip
-  &__flip {
-    display: inline-block;
+  // Position
+  &__position {
+    display:      inline-block;
     margin-right: 7px;
 
     .panelbar__bar--hidden + .panelbar-controls & { display: none; }
@@ -43,31 +43,33 @@
   }
 
 
-  // Switch
-  &__switch {
+  // Visibility
+  &__visibility {
     display: inline-block;
 
     &--visible,
     &--hidden {
       position: relative;
-      z-index: 1202;
+      z-index:  2147483250;
     }
 
     &--hidden { display: none; }
 
     &--bg {
+      display:  none;
       position: absolute;
-      top: 17px;
-      right: 19px;
-      z-index: 1201;
-      color: transparent;
-      font-size: .8em;
+      top:      17px;
+      right:    18px;
+      z-index:  2147483210;
+
+      color:      #fff;
+      font-size:  .8em;
     }
 
     .panelbar__bar--hidden + .panelbar-controls & {
       &--visible { display: none; }
       &--hidden  { display: block; }
-      &--bg      { color: #fff; }
+      &--bg      { display: block; }
     }
 
   }

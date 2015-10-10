@@ -2,40 +2,63 @@
 
 namespace PanelBar;
 
-use PanelBar\Helpers;
+use PanelBar\PB;
+use PanelBar\Build;
 
 class Elements {
 
-  public $site         = null;
-  public $page         = null;
+  public $site;
+  public $page;
 
-  public function __construct() {
-    $this->site      = site();
-    $this->page      = page();
+  protected $output;
+  protected $templates;
+  protected $assets;
+  protected $css;
+  protected $js;
+
+  public function __construct($output, $assets) {
+    $this->site   = site();
+    $this->page   = page();
+
+    $this->output = $output;
+    $this->assets = $assets;
   }
 
+
+  /**
+   *  PANEL
+   */
+
   public function panel() {
-    return Helpers::link(array(
-      'id'      => 'panel',
+    return Build::link(array(
+      'id'      => __FUNCTION__,
       'icon'    => 'cogs',
-      'url'     => site()->url().'/panel',
+      'url'     => pb::url(''),
       'label'   => 'Panel',
+      'title'   => 'Alt + P',
       'mobile'  => 'icon',
     ));
   }
 
+
+  /**
+   *  ADD
+   */
+
   public function add() {
-    return Helpers::dropdown(array(
-      'id'     => 'add',
+    $this->_registerIframe();
+
+    return Build::dropdown(array(
+      'id'     => __FUNCTION__,
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => array(
           'child' => array(
-              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->uri(),
+              'url'   => pb::url('add', $this->page),
               'label' => 'Child',
             ),
           'sibling' => array(
-              'url'   => $this->site->url().'/panel/#/pages/add/'.$this->page->parent()->uri(),
+              'url'   => pb::url('add', $this->page->parent()),
               'label' => 'Sibling',
             ),
         ),
@@ -43,38 +66,94 @@ class Elements {
     ));
   }
 
+
+  /**
+   *  EDIT
+   */
+
   public function edit() {
-    return Helpers::link(array(
-      'id'     => 'edit',
+    $this->_registerIframe();
+
+    return Build::link(array(
+      'id'     => __FUNCTION__,
       'icon'   => 'pencil',
-      'url'    => $this->site->url().'/panel/#/pages/show/'.$this->page->uri(),
+      'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
+      'title'  => 'Alt + E',
       'mobile' => 'icon',
     ));
   }
+
+
+  /**
+   *  TOGGLE
+   */
 
   public function toggle() {
-    return Helpers::link(array(
-      'id'     => 'toggle',
-      'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-      'url'    => $this->site->url().'/panel/#/pages/toggle/'.$this->page->uri(),
-      'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
-      'mobile' => 'icon',
-    ));
+    // register assets
+    $this->assets->setHook('css', pb::load('css', 'elements/toggle.css'));
+
+    if(!pb::version("2.2.0")) {
+      $js = 'currentURI="'.$this->page->uri().'";siteURL="'.$this->site->url().'";';
+      $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
+      $this->assets->setHook('js',  $js);
+    } else {
+      $this->_registerIframe();
+      $this->assets->setHook('js',  'panelbarIframe.init([".panelbar--toggle a"]);');
+    }
+
+
+    if($this->page->isInvisible() and !pb::version("2.2.0")) {
+      // prepare output
+      $siblings = array();
+      array_push($siblings, array(
+        'url'   => pb::url('toggle', $this->page),
+        'label' => '&rarr;<span class="gap"></span>&larr;'
+      ));
+      foreach ($this->page->siblings()->visible() as $sibling) {
+        array_push($siblings, array('label' => $sibling->title()));
+        array_push($siblings, array(
+          'url'   => pb::url('toggle', $this->page),
+          'label' => '&rarr;<span class="gap"></span>&larr;'
+        ));
+      }
+
+      return Build::dropdown(array(
+        'id'     => __FUNCTION__,
+        'icon'   => 'toggle-off',
+        'label'  => 'Invisible',
+        'items'  => $siblings,
+        'mobile' => 'icon',
+      ));
+
+    } else {
+      return Build::link(array(
+        'id'     => __FUNCTION__,
+        'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
+        'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
+        'url'    => pb::url('toggle', $this->page),
+        'mobile' => 'icon',
+      ));
+    }
   }
 
-  public function files($type = null) {
-    $files  = $this->page->files();
+
+  /**
+   *  FILES
+   */
+
+  public function files($type = null, $function = null) {
+     // prepare output
+    $files = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-    $more   = $files->count() > 15;
-    $files  = $files->limit(15);
+    $files = $files->limit(15);
 
     if ($files->count() > 0) {
       $items = array();
       foreach($files as $file) {
         $args = array(
           'type'      => $file->type(),
-          'url'       => $this->site->url().'/panel/#/files/show/'.$this->page->uri().'/'.$file->filename(),
+          'url'       => pb::url('show', $file),
           'label'     => $file->filename(),
           'extension' => $file->extension(),
         );
@@ -83,34 +162,46 @@ class Elements {
         array_push($items, $args);
       }
 
-      return Helpers::fileviewer(array(
-        'id'     => 'files',
+      return Build::fileviewer(array(
+        'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
         'count'  => count($items),
-        'more'   => $more ? $this->site->url().'/panel/#/files/index/'.$this->page->uri() : false,
+        'all'    => pb::url('index', $file),
         'mobile' => 'icon'
       ));
     }
   }
 
+
+  /**
+   *  IMAGES
+   */
+
   public function images() {
-    return $this->files('image');
+    return $this->files('image', __FUNCTION__);
   }
+
+
+  /**
+   *  LANGUAGES
+   */
 
   public function languages() {
     if ($languages = $this->site->languages()) {
+      // prepare output
       $items = array();
       foreach($languages->not($this->site->language()->code()) as $language) {
         array_push($items, array(
-          'url'   => $language->url().'/'.$this->page->uri(),
+          'url'   => $language->url() . '/' . $this->page->uri(),
           'label' => strtoupper($language->code())
         ));
       }
 
-      return Helpers::dropdown(array(
-        'id'     => 'lang',
+      // register output
+      return Build::dropdown(array(
+        'id'     => __FUNCTION__,
         'icon'   => 'flag',
         'label'  => strtoupper($this->site->language()->code()),
         'items'  => $items,
@@ -119,35 +210,67 @@ class Elements {
     }
   }
 
+
+  /**
+   *  LOADTIME
+   */
+
   public function loadtime() {
-    return Helpers::label(array(
-      'id'     => 'loadtime',
+    return Build::label(array(
+      'id'     => __FUNCTION__,
       'icon'   => 'clock-o',
-      'label'  => number_format( ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
+      'label'  => number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
       'mobile' => 'label',
     ));
   }
 
+
+  /**
+   *  USER
+   */
+
+  public function user() {
+    $this->_registerIframe();
+
+    return Build::link(array(
+      'id'     => __FUNCTION__,
+      'icon'   => 'user',
+      'url'    => pb::url('edit', $this->site->user()),
+      'label'  => $this->site->user(),
+      'mobile' => 'icon',
+      'float'  => 'right',
+    ));
+  }
+
+
+  /**
+   *  LOGOUT
+   */
+
   public function logout() {
-    return Helpers::link(array(
-      'id'     => 'logout',
+    return Build::link(array(
+      'id'     => __FUNCTION__,
       'icon'   => 'power-off',
-      'url'    => $this->site->url().'/panel/logout',
+      'url'    => pb::url('logout'),
       'label'  => 'Logout',
       'mobile' => 'icon',
       'float'  => 'right',
     ));
   }
 
-  public function user() {
-    return Helpers::link(array(
-      'id'     => 'user',
-      'icon'   => 'user',
-      'url'    => $this->site->url().'/panel/#/users/edit/'.$this->site->user(),
-      'label'  => $this->site->user(),
-      'mobile' => 'icon',
-      'float'  => 'right',
-    ));
+
+  /**
+   *  TOOL: iFrame
+   */
+
+  protected function _registerIframe() {
+    // register assets
+    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+
+    // register output
+    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
   }
 
 }
