@@ -10,7 +10,7 @@ class Hooks {
     }
   }
 
-  protected function setHooks($collection) {
+  public function setHooks($collection) {
     if(is_array($collection)) {
       foreach($collection as $type => $hooks) {
         if(is_array($hooks)) {
