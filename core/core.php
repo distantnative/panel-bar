@@ -44,7 +44,8 @@ class Core extends Build {
     $this->js     = isset($args['js'])  ? $args['js']  : true;
     $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
 
-    $this->protected = array_diff(get_class_methods('PanelBar\Core'), $this->elements);
+
+    $this->protected = array_diff(get_class_methods('PanelBar\Core'), array());
   }
 
 
