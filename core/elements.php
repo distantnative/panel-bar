@@ -108,13 +108,15 @@ class Elements {
       $siblings = array();
       array_push($siblings, array(
         'url'   => pb::url('toggle', $this->page),
-        'label' => '&rarr;<span class="gap"></span>&larr;'
+        'label' => '&rarr;<span class="gap"></span>&larr;',
+        'title' => 'Publish page at this position'
       ));
       foreach ($this->page->siblings()->visible() as $sibling) {
         array_push($siblings, array('label' => $sibling->title()));
         array_push($siblings, array(
           'url'   => pb::url('toggle', $this->page),
-          'label' => '&rarr;<span class="gap"></span>&larr;'
+          'label' => '&rarr;<span class="gap"></span>&larr;',
+          'title' => 'Publish page at this position'
         ));
       }
 
