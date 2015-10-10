@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.7
+- Fixed: Panel Keyboard Shortcut (Alt + P)
+
 ## Version 0.6
 - Feature: Added iFrame mode for most elements (e.g. Add, Edit, Files, User)
 - Feature: Added persistent state of position and visibility (localStorage)

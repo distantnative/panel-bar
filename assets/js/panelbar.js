@@ -107,7 +107,7 @@ var Panelbar = function() {
         document.querySelector('.js_panelbar-iframe-closerefresh').click();
       }
     } else if(self.map[18] && self.map[80]) {                 // alt + P
-      document.querySelector('.panelbar--panel a').click();
+      location.href = document.querySelector('.panelbar--panel a').href;
     }
   };
 
