@@ -149,20 +149,25 @@ panelbar::builder(array(
 ```
 
 The following element builders are available and require additional parameters if referenced:
-- **Label**  
-  ```php
-panelbar::label(array(
-  …,
-));
-  ```
-- **Link**  
+1. **Label**  
+
+    ```php
+    panelbar::label(array(
+      …,
+    ));
+    ```
+
+2. **Link**  
+
     ```php
     panelbar::link(array(
       …,
       'url' => site()->url().'/panel',
     ));
     ```
-- **Dropdown**  
+
+3. **Dropdown**  
+
     ```php
     panelbar::dropdown(array(
       …,
@@ -175,13 +180,16 @@ panelbar::label(array(
        ),
     ));
     ```
-- **Textbox**  
+
+4. **Textbox**  
+
     ```php
     panelbar::box(array(
       …,
       'content' => '<b>Important information</b>',
     ));
     ```
+
 
 With the builders you can easily create [custom elements](#CustomElements) and add them to your [custom set of elements](#CustomSet) - for example:
 ```php
