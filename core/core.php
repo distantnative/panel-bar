@@ -17,7 +17,7 @@ use PanelBar\Elements;
 use PanelBar\Output;
 use PanelBar\Assets;
 
-class Core {
+class Core extends Build {
 
   public $elements;
   public $position;
