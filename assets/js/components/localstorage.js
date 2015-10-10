@@ -7,7 +7,6 @@ var PanelbarState = function() {
 
   self.init = function() {
     if(self.support()) {
-
       if(self.expired()) { self.reset();   }
       else               { self.restore(); }
 
@@ -21,9 +20,9 @@ var PanelbarState = function() {
 
 
   this.save = function() {
-    localStorage['panelbar.expires']  = Date.now() + self.validTime;
-    localStorage['panelbar.position'] = panelbar.position;
-    localStorage['panelbar.visible']  = panelbar.visible;
+    localStorage.setItem('panelbar.expires',  Date.now() + self.validTime);
+    localStorage.setItem('panelbar.position', panelbar.position);
+    localStorage.setItem('panelbar.visible',  panelbar.visible);
   };
 
 
@@ -40,25 +39,30 @@ var PanelbarState = function() {
   };
 
   this.setPosition = function() {
-    if (localStorage['panelbar.position'] === 'top') { panelbar.top();    }
-    else                                             { panelbar.bottom(); }
+    if(localStorage.getItem('panelbar.position') === 'top') { panelbar.top(); }
+    else { panelbar.bottom(); }
   };
 
   this.setVisibility = function() {
-    if (localStorage['panelbar.visible'] === 'true') { panelbar.show(); }
-    else                                             { panelbar.hide(); }
+    if(localStorage.getItem('panelbar.visible') === 'true') { panelbar.show(); }
+    else { panelbar.hide(); }
   };
 
 
   this.expired = function() {
-    return Date.now() > localStorage['panelbar.expires'];
+    return Date.now() > localStorage.getItem('panelbar.expires');
   };
 
 
   this.support = function() {
     try {
-      return window.localStorage && window.localStorage !== null;
-    } catch (e) {
+      x = '__storage_test__';
+      localStorage.setItem(x, x);
+      localStorage.getItem(x);
+      localStorage.removeItem(x);
+      return true;
+    }
+    catch(e) {
       return false;
     }
   };
