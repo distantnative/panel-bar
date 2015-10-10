@@ -23,6 +23,7 @@ var Panelbar = function() {
     if ('querySelector' in document && 'addEventListener' in window) {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
+      self.responsive();
 
       if (panelbarKEYS === true) {
         document.addEventListener('keydown', self.keys);
@@ -79,12 +80,38 @@ var Panelbar = function() {
     self.visible = false;
   };
 
+  /**
+   *  RESPONSIVENESS
+   */
+
+  this.responsive = function() {
+    setTimeout(self.isMobile, 100);
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(self.isMobile, 100);
+    });
+  };
+
+  this.isMobile = function() {
+    var width    = self.controls.offsetWidth + 30;
+    var elements = self.panelbar.children;
+    var i;
+    for (i = 0; i < elements.length; i++) {
+      width = width + elements[i].offsetWidth;
+    }
+    if(width >= self.wrapper.offsetWidth) {
+      addClass(self.wrapper, 'panelbar--mobile');
+    } else {
+      removeClass(self.wrapper, 'panelbar--mobile');
+    }
+  };
 
   /**
    *  KEYBINDINGS
    */
 
-  this.keys = function (e) {
+  this.keys = function(e) {
     e = e || event;
     self.map[e.keyCode] = e.type == 'keydown';
 

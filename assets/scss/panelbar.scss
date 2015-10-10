@@ -44,18 +44,10 @@
   &--top    { top: 0; }
   &--bottom { bottom: 0; }
 
-
-  &-return__btn, &-return__iframe {
-    display:  none;
+  &--mobile {
+    .not-mobile { display: none; }
+    i { margin-right: 0; }
   }
-
-
-}
-
-
-@media (max-width: 750px) {
-  .not-mobile { display: none; }
-  .panelbar i { margin-right: 0; }
 
 }
 
