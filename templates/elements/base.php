@@ -1,9 +1,9 @@
 <div class="panelbar-element <?php echo $class ?> panelbar--<?php echo $id ?>" id="panelbar--<?php echo $id ?>">
 
   <?php if($url) : ?>
-    <a href="<?php echo $url ?>">
+    <a href="<?php echo $url ?>" title="<?php echo $title ?>">
   <?php elseif($icon or $label) : ?>
-    <span>
+    <span title="<?php echo $title ?>">
   <?php endif ?>
 
 

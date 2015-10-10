@@ -77,6 +77,7 @@ class Build {
     return pb::load('html', 'elements/base.php', array(
       'id'      => $args['id'],
       'class'   => self::_class($class, $args),
+      'title'   => isset($args['title'])  ? $args['title']   : '',
       'icon'    => isset($args['icon'])   ? $args['icon']   : false,
       'label'   => isset($args['label'])  ? $args['label']  : false,
       'mobile'  => isset($args['mobile']) ? $args['mobile'] : 'icon',

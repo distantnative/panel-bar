@@ -35,6 +35,7 @@ class Elements {
       'icon'    => 'cogs',
       'url'     => pb::url(''),
       'label'   => 'Panel',
+      'title'   => 'Alt + P',
       'mobile'  => 'icon',
     ));
   }
@@ -78,6 +79,7 @@ class Elements {
       'icon'   => 'pencil',
       'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
+      'title'  => 'Alt + E',
       'mobile' => 'icon',
     ));
   }
