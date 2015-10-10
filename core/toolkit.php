@@ -31,10 +31,7 @@ class PB {
   }
 
   public static function font($append) {
-    $base = str_ireplace(kirby()->roots()->index(), '', __DIR__);
-    $base = substr_count($base, '/');
-    $base = str_repeat('../', $base);
-    return $base . 'panel' . DS . 'assets' . DS . 'fonts' . DS . $append;
+    return kirby()->urls()->index() . '/panel/assets/fonts/' . $append;
   }
 
 

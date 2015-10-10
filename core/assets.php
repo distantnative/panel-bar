@@ -64,7 +64,7 @@ class Assets extends Hooks {
 
   protected function fontPaths($css) {
     $fonts = array(
-      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2.0')),
+      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2', false)),
       array('{{SSP400}}',    pb::font('sourcesanspro-400.woff')),
       array('{{SSP600}}',    pb::font('sourcesanspro-600.woff')),
       array('{{SSPitalic}}', pb::font('sourcesanspro-400-italic.woff')),
