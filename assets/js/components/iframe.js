@@ -3,6 +3,7 @@ var PanelbarIframe = function() {
 
   var self = this;
 
+  this.active     = false;
   this.link       = null;
   this.href       = null;
   this.wrapper    = document.querySelector(".panelbar-iframe__iframe");
@@ -34,6 +35,8 @@ var PanelbarIframe = function() {
     self.clearPosition();
     self.clearPanelbar();
     self.buildOverlay();
+
+    self.active = true;
   };
 
   this.deactivate = function() {
@@ -41,6 +44,8 @@ var PanelbarIframe = function() {
     self.removeOverlay();
     self.restorePosition();
     self.unload();
+
+    self.active = false;
   };
 
   this.refresh = function() {
