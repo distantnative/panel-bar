@@ -158,26 +158,6 @@ function dropitpanelbar() {
 
 ### Element Builders <a id="Builders"></a>
 The panel bar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
-
-<table>
-<tr>
-  <td>
-    <b>Label</b>
-    <pre lang="php">
-      panelbar::label(array(
-        …
-      ));
-    </pre>
-  </td>
-  <td>
-    
-  </td>
-</tr>
-</table>
-
-
-
-
 ```php
 panelbar::builder(array(
   'id'     => 'theID',
@@ -187,24 +167,35 @@ panelbar::builder(array(
 ));
 ```
 
-
-**Label builder**
-```php
+<table>
+<tr>
+  <th>Label</th>
+  <th>Link</th>
+</tr>
+<tr>
+  <td>
+    <pre lang="php">
 panelbar::label(array(
   …
 ));
-```
-
-**Link builder**
-```php
+    </pre>
+  </td>
+  <td>
+    <pre lang="php">
 panelbar::link(array(
   …
   'url' => site()->url().'/panel',
 ));
-```
-
-**Dropdown builder**
-```php
+    </pre>
+  </td>
+</tr>
+<tr>
+  <th>Dropdown</th>
+  <th>Textbox</th>
+</tr>
+<tr>
+  <td>
+    <pre lang="php">
 panelbar::dropdown(array(
   …
   'items' => array(
@@ -219,17 +210,21 @@ panelbar::dropdown(array(
     …
    ),
 ));
-```
-
-**Textbox builder**
-```php
+    </pre>
+  </td>
+  <td>
+    <pre lang="php">
 panelbar::box(array(
   …
   'content' => '<b>Important information</b>',
 ));
-```
+    </pre>
+  </td>
+</tr>
+</table>
 
-**If you use any builders in the `config.php`, you must prepend the following line:**  
+
+*If you use any builders in the `config.php`, you must prepend the following line:*  
 ```php
 kirby()->plugin('panel-bar');
 ```
@@ -257,8 +252,10 @@ Then you can add the following code where you want to output the CSS/JS:
 
 
 # Options
+All options refer to settings in the `site/config/config.php` if not stated otherwise.
 
-### Default Position <a id="OptionPosition"></a>
+
+## Default Position <a id="OptionPosition"></a>
 You can switch the position of the panel bar from the top to the bottom browser window border (in your `site/config/config.php`):
 
 ```php
@@ -266,7 +263,7 @@ c::set('panelbar.position', 'bottom');
 ```
 
 
-### Remember State <a id="OptionState"></a>
+## Remember State <a id="OptionState"></a>
 With the default settings on every page load the panel bar will load at the position defined in `config.php` and with the visibility you included them in your templates. If you want to keep the panel bar's state across page loads (e.g. it loads on top, you move it to bottom and you want it still on bottom after clicking a link), you need to include the following line (in your `site/config/config.php`):
 
 ```php
@@ -274,7 +271,7 @@ c::set('panelbar.remember', true);
 ```
 
 
-### Keyboard Shortcuts <a id="OptionKeyboard"></a>
+## Keyboard Shortcuts <a id="OptionKeyboard"></a>
 By default the panel bar features a few keyboard shortcuts:  
 
 Keyboard Shortcut    | Effect
@@ -290,7 +287,7 @@ Keyboard Shortcut    | Effect
 If you want to deactivate these keyboard shortcuts, you have to include the following line in your `config.php`:
 ```php
 c::set('panelbar.keys', false);
-``
+```
 
 
 
