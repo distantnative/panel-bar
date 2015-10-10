@@ -88,13 +88,25 @@ var Panelbar = function() {
     e = e || event;
     self.map[e.keyCode] = e.type == 'keydown';
 
-    if(self.map[18] && self.map[88]) {            // alt + x
+    if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();
-    } else if(self.map[18] && self.map[189]) {    // alt + -
+    } else if(self.map[18] && self.map[189]) {                // alt + -
       self.switchPosition();
-    } else if(self.map[18] && self.map[69]) {    // alt + E
-      document.querySelector('.panelbar--edit a').click();
-    } else if(self.map[18] && self.map[80]) {    // alt + P
+    } else if(self.map[18] && self.map[38]) {                 // alt + up
+      self.top();
+    } else if(self.map[18] && self.map[40]) {                 // alt + down
+      self.bottom();
+    } else if(self.map[18] && self.map[69]) {                 // alt + E
+      if(panelbarIframe.active === false) {
+        document.querySelector('.panelbar--edit a').click();
+      } else {
+        document.querySelector('.js_panelbar-iframe-close').click();
+      }
+    } else if(self.map[18] && self.map[82]) {                 // alt + R
+      if(panelbarIframe.active === true) {
+        document.querySelector('.js_panelbar-iframe-closerefresh').click();
+      }
+    } else if(self.map[18] && self.map[80]) {                 // alt + P
       document.querySelector('.panelbar--panel a').click();
     }
   };
