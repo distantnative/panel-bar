@@ -1,5 +1,30 @@
 # Changelog
 
+## Version 0.6
+- Feature: Added iFrame mode for most elements (e.g. Add, Edit, Files, User)
+- Feature: Added persistent state of position and visibility (localStorage)
+- Feature: Added AJAX-ified Toggle element (for Kirby versions < 2.2.0)
+- Feature: Added keyboard shortcuts
+- Feature: Added assets and output hooks (usable in callable custom element)
+- Improved: Split up assets and only including required ones (reduces inserted code)
+- Improved: Completely jQuery independent
+- Improved: Prepared panel urls for Kirby 2.2.0
+- Improved: Added some title tags
+- Improved: Design improvements on several elements
+- Improved: Extended and updated docs + more screenshots
+- Fixed: Added IDs to elements created by element builders
+- Fixed: Got rid of ID argument by using array key
+- Fixed: Increased z-index (CSS)
+- Fixed: Missing border on unfloated last element
+- Internal: Standard elements and builders use assets and output hooks
+- Internal: Added `pb::` toolkit
+- Internal: Refactored JS as objects
+- Internal: Refactored a lot of the PHP code to get a much cleaner structure
+- Internal: Restructured a lot of the plugin files (new: template files)
+- Internal: Simplified paths to plugin files and panel fonts
+- Internal: Better protection of plugin methods as callable elements
+- Internal: Renamed `helpers::` to `build::`
+
 ## Version 0.5
 - Changed parameter structure of `::show()` and `::hide()`:
 ```php
