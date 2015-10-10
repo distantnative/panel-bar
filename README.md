@@ -150,11 +150,11 @@ panelbar::builder(array(
 
 The following element builders are available and require additional parameters if referenced:
 - **Label**  
-    ```php
-    panelbar::label(array(
-      …,
-    ));
-    ```
+      ```php
+panelbar::label(array(
+  …,
+));
+      ```
 - **Link**  
     ```php
     panelbar::link(array(
