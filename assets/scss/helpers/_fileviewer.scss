@@ -9,14 +9,18 @@
   &--default { min-width: 480px; }
   &--12more  {
     position:   fixed;
-    top:        48px !important;
     min-width:  95vw;
+
+    .panelbar--top    & { top:    48px !important;}
+    .panelbar--bottom & { bottom: 48px !important; }
   }
 
   @media (max-width: 550px) {
     position:   fixed;
-    top:        48px !important;
     min-width:  95vw;
+
+    .panelbar--top    & { top:    48px !important;}
+    .panelbar--bottom & { bottom: 48px !important; }
   }
 }
 

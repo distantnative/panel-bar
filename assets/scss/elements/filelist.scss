@@ -17,14 +17,16 @@
     max-height:   calc(100vh - 70px);
     overflow-y:   auto;
 
-    @media (max-width: 550px) {
-      position:   fixed;
-      top:        48px !important;
-      min-width:  95vw;
-    }
-
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
+
+    @media (max-width: 550px) {
+      position:   fixed;
+      min-width:  95vw;
+
+      .panelbar--top    & { top:    48px !important;}
+      .panelbar--bottom & { bottom: 48px !important; }
+    }
 
     > a       { color: #000; }
     > a:hover { color: #777; }
@@ -78,9 +80,9 @@
     width:          150px;
     margin-right:   3px;
     vertical-align: top;
-    padding-top:    2px;
 
     font-size:      .95em;
+    line-height:    1.2;
     text-overflow:  ellipsis;
     overflow:       hidden;
   }
