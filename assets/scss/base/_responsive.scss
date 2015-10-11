@@ -1,0 +1,40 @@
+/*------------------------------------*\
+   Responsive Adaptations
+\*------------------------------------*/
+
+.panelbar {
+  // mobile view
+  &--mobile .not-mobile { display: none; }
+
+  // minimized view
+  &--minimized {
+    .not-minimized { display: none; }
+
+    .panelbar__bar:after {
+        content:    " ";
+        position:   absolute;
+        top:        0;
+        right:      67px;
+        width:      15px;
+        height:     48px;
+        background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
+    .panelbar-element {
+      > a,
+      > span {
+        padding-left:  12px;
+        padding-right: 8px;
+      }
+
+      &--right {
+        float: none;
+        border-left: 1px solid #555;
+      }
+    }
+
+  }
+
+  // hidden state fix
+  &--hidden:after .panelbar__bar { display: none; }
+}

@@ -100,20 +100,20 @@ var Panelbar = function() {
   };
 
   this.adapt = function() {
-    removeClass(self.wrapper, 'panelbar--scroll');
+    removeClass(self.wrapper, 'panelbar--minimized');
     addClass(self.wrapper, 'panelbar--mobile');
-    var mobile = self.width();
+    var mobile  = self.width();
     removeClass(self.wrapper, 'panelbar--mobile');
     var desktop = self.width();
 
     if(self.wrapper.offsetWidth < mobile) {
-      addClass(self.wrapper, 'panelbar--scroll');
+      addClass(self.wrapper, 'panelbar--minimized');
       addClass(self.wrapper, 'panelbar--mobile');
     } else if(self.wrapper.offsetWidth < desktop) {
-      removeClass(self.wrapper, 'panelbar--scroll');
+      removeClass(self.wrapper, 'panelbar--minimized');
       addClass(self.wrapper, 'panelbar--mobile');
     } else {
-      removeClass(self.wrapper, 'panelbar--scroll');
+      removeClass(self.wrapper, 'panelbar--minimized');
       removeClass(self.wrapper, 'panelbar--mobile');
     }
   };
@@ -134,7 +134,7 @@ var Panelbar = function() {
 
   this.keys = function(e) {
     e = e || event;
-    self.map[e.keyCode] = e.type == 'keydown';
+    self.map[e.keyCode] = e.type === 'keydown';
 
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();

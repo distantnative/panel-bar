@@ -1558,28 +1558,13 @@
     top: 0; }
   .panelbar--bottom {
     bottom: 0; }
-  .panelbar--mobile .not-mobile {
-    display: none; }
-  .panelbar--mobile i {
-    margin-right: 0; }
-  .panelbar--scroll .panelbar__bar:after, .panelbar--resize .panelbar__bar:after {
-    content: " ";
-    position: absolute;
-    top: 0;
-    right: 67px;
-    width: 15px;
-    height: 48px;
-    background-color: blue;
-    background: linear-gradient(to left, black, transparent); }
-  .panelbar--scroll .panelbar__bar--hidden:after, .panelbar--resize .panelbar__bar--hidden:after {
-    display: none; }
   .panelbar__bar {
     height: 48px;
     white-space: nowrap;
+    *zoom: 1;
     font-family: 'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
-    font-weight: normal;
-    *zoom: 1; }
+    font-weight: normal; }
     .panelbar__bar::before, .panelbar__bar::after {
       content: " ";
       display: table; }
@@ -1595,6 +1580,33 @@
         color: #999; }
     .panelbar__bar i {
       margin-right: 7px; }
+      .panelbar--hidden .panelbar__bar i {
+        margin-right: 0; }
+
+/*------------------------------------*\
+   Responsive Adaptations
+\*------------------------------------*/
+.panelbar--mobile .not-mobile {
+  display: none; }
+.panelbar--minimized .not-minimized {
+  display: none; }
+.panelbar--minimized .panelbar__bar:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 67px;
+  width: 15px;
+  height: 48px;
+  background: linear-gradient(to left, black, transparent); }
+.panelbar--minimized .panelbar-element > a,
+.panelbar--minimized .panelbar-element > span {
+  padding-left: 12px;
+  padding-right: 8px; }
+.panelbar--minimized .panelbar-element--right {
+  float: none;
+  border-left: 1px solid #555; }
+.panelbar--hidden:after .panelbar__bar {
+  display: none; }
 
 .panelbar-controls {
   position: absolute;
@@ -1659,14 +1671,7 @@
   .panelbar-element > span {
     display: inline-block;
     padding: 16px 14px 15px 18px; }
-    .panelbar--scroll .panelbar-element > a, .panelbar--scroll
-    .panelbar-element > span {
-      padding-left: 12px;
-      padding-right: 8px; }
   .panelbar-element:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
     border-left: 1px solid #555; }
   .panelbar-element--right {
     float: right; }
-    .panelbar--scroll .panelbar-element--right {
-      float: none;
-      border-left: 1px solid #555; }

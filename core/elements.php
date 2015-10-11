@@ -36,7 +36,6 @@ class Elements {
       'url'     => pb::url(''),
       'label'   => 'Panel',
       'title'   => 'Alt + P',
-      'mobile'  => 'icon',
     ));
   }
 
@@ -62,7 +61,6 @@ class Elements {
               'label' => 'Sibling',
             ),
         ),
-      'mobile' => 'icon'
     ));
   }
 
@@ -80,7 +78,6 @@ class Elements {
       'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
       'title'  => 'Alt + E',
-      'mobile' => 'icon',
     ));
   }
 
@@ -121,20 +118,20 @@ class Elements {
       }
 
       return Build::dropdown(array(
-        'id'     => __FUNCTION__,
-        'icon'   => 'toggle-off',
-        'label'  => 'Invisible',
-        'items'  => $siblings,
-        'mobile' => false,
+        'id'      => __FUNCTION__,
+        'icon'    => 'toggle-off',
+        'label'   => 'Invisible',
+        'items'   => $siblings,
+        'compact' => false,
       ));
 
     } else {
       return Build::link(array(
-        'id'     => __FUNCTION__,
-        'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-        'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
-        'url'    => pb::url('toggle', $this->page),
-        'mobile' => false,
+        'id'      => __FUNCTION__,
+        'icon'    => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
+        'label'   => $this->page->isVisible() ? 'Visible' : 'Invisible',
+        'url'     => pb::url('toggle', $this->page),
+        'compact' => false,
       ));
     }
   }
@@ -171,7 +168,6 @@ class Elements {
         'items'  => $items,
         'count'  => count($items),
         'all'    => pb::url('index', $file),
-        'mobile' => 'icon'
       ));
     }
   }
@@ -235,12 +231,12 @@ class Elements {
     $this->_registerIframe();
 
     return Build::link(array(
-      'id'     => __FUNCTION__,
-      'icon'   => 'user',
-      'url'    => pb::url('edit', $this->site->user()),
-      'label'  => $this->site->user(),
-      'mobile' => false,
-      'float'  => 'right',
+      'id'      => __FUNCTION__,
+      'icon'    => 'user',
+      'url'     => pb::url('edit', $this->site->user()),
+      'label'   => $this->site->user(),
+      'compact' => false,
+      'float'   => 'right',
     ));
   }
 
@@ -251,12 +247,12 @@ class Elements {
 
   public function logout() {
     return Build::link(array(
-      'id'     => __FUNCTION__,
-      'icon'   => 'power-off',
-      'url'    => pb::url('logout'),
-      'label'  => 'Logout',
-      'mobile' => 'icon',
-      'float'  => 'right',
+      'id'      => __FUNCTION__,
+      'icon'    => 'power-off',
+      'url'     => pb::url('logout'),
+      'label'   => 'Logout',
+      'compact' => false,
+      'float'   => 'right',
     ));
   }
 

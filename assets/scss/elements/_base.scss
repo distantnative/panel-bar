@@ -8,24 +8,11 @@
   > span {
     display: inline-block;
     padding: 16px 14px 15px 18px;
-
-    .panelbar--scroll & {
-      padding-left:  12px;
-      padding-right: 8px;
-    }
   }
 
   &:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
     border-left: 1px solid #555;
   }
 
-  &--right {
-    float: right;
-
-    .panelbar--scroll & {
-      float: none;
-      border-left: 1px solid #555;
-    }
-
-  }
+  &--right { float: right;  }
 }
