@@ -46,8 +46,11 @@ var Panelbar = function() {
    */
 
   this.switchPosition = function() {
-    if (self.position === 'top') { self.bottom(); }
-    else                         { self.top();    }
+    if (self.position === 'top') {
+      self.bottom();
+    } else {
+      self.top();
+    }
   };
 
   this.top = function() {
@@ -59,7 +62,6 @@ var Panelbar = function() {
   this.bottom = function() {
     removeClass(self.wrapper, 'panelbar--top');
     addClass(self.wrapper, 'panelbar--bottom');
-
     self.position = 'bottom';
   };
 
@@ -69,8 +71,11 @@ var Panelbar = function() {
    */
 
   this.switchVisibility = function() {
-    if (self.visible) { self.hide(); }
-    else              { self.show(); }
+    if (self.visible) {
+      self.hide();
+    } else {
+      self.show();
+    }
   };
 
   this.show = function() {
@@ -90,21 +95,12 @@ var Panelbar = function() {
   this.responsive = function() {
     setTimeout(self.setupResponsive, 100);
     setTimeout(self.setupResponsive, 250);
-    window.addEventListener('resize', self.onResize);
+    window.addEventListener('resize', self.adaptResponsive);
   };
 
   this.setupResponsive = function() {
     self.measureResponsive();
     self.adaptResponsive();
-  };
-
-  this.onResize = function() {
-    self.panelbar.style.overflowY = 'hidden';
-    clearTimeout(self.resize);
-    self.resize = setTimeout(function() {
-      self.adaptResponsive();
-      self.panelbar.style.overflowY = 'visible';
-    }, 50);
   };
 
   this.measureResponsive = function() {
@@ -130,10 +126,9 @@ var Panelbar = function() {
 
   this.widthResponsive = function() {
     var width    = self.controls.offsetWidth + 40;
-    var elements = self.panelbar.children;
     var i;
-    for (i = 0; i < elements.length; i++) {
-      width = width + elements[i].offsetWidth;
+    for (i = 0; i < self.panelbar.children.length; i++) {
+      width = width + self.panelbar.children[i].offsetWidth;
     }
     return width;
   };
@@ -146,30 +141,36 @@ var Panelbar = function() {
     e = e || event;
     self.map[e.keyCode] = e.type === 'keydown';
 
+
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();
+
     } else if(self.map[18] && self.map[189]) {                // alt + -
       self.switchPosition();
+
     } else if(self.map[18] && self.map[38]) {                 // alt + up
       self.top();
+
     } else if(self.map[18] && self.map[40]) {                 // alt + down
       self.bottom();
-    } else if(self.map[18] && self.map[69]) {                 // alt + E
-      if(panelbarIframe.active === false) {
-        document.querySelector('.panelbar--edit a').click();
-      } else {
-        document.querySelector('.js_panelbar-iframe-close').click();
-      }
-    } else if(self.map[18] && self.map[82]) {                 // alt + R
-      if(panelbarIframe.active === true) {
-        document.querySelector('.js_panelbar-iframe-closerefresh').click();
-      }
+
     } else if(self.map[18] && self.map[80]) {                 // alt + P
-      location.href = document.querySelector('.panelbar--panel a').href;
+      self.map      = [];
+      location.href = self.panelbar.querySelector('.panelbar--panel a').href;
+
+    } else if(self.map[18] && self.map[69]) {                 // alt + E
+      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === true) {
+        panelbarIframe.returnBtn.click();
+      } else {
+        self.panelbar.querySelector('.panelbar--edit a').click();
+      }
+
+    } else if(self.map[18] && self.map[82] && typeof panelbarIframe !== 'undefined' && panelbarIframe.active === true) {                      // alt + R
+      panelbarIframe.refreshBtn.click();
     }
   };
-
 };
+
 
 
 var panelbar = new Panelbar();

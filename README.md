@@ -105,7 +105,7 @@ To include [standard elements](#StandardElements) in your custom set, simply nam
 c::set('panelbar.elements', array(
   'panel', 
   'edit', 
-  'languages'
+  'languages',
 ));
 ```
 
@@ -114,7 +114,7 @@ Or you can merge your custom set of elements with the default set of elements us
 <?php
 $elements = a::merge(array(
   'custom1',
-  'custom2'
+  'custom2',
 ), panelbar::defaults()));
 
 echo panelbar::show(array('elements' => $elements));
@@ -130,8 +130,8 @@ $elements = array(
   'panel',
   'add',
   'edit',
-  'custom-link'  => '<div class="panelbar-element panelbar-btn"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>',
-  'custom-songs' => 'customSongs'
+  '<div class="panelbar-element panelbar-btn"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>',
+  'customSongs',
 );
 
 function customSongs() {
@@ -181,7 +181,7 @@ The following element builders are available and require additional parameters i
       'items' => array(
         0 => array(
           'url'   => …,
-          'label' => …
+          'label' => …,
         ),
         …
        ),
@@ -209,12 +209,12 @@ function customDropdown() {
     'items' => array(
       array(
         'url'   => 'https://www.youtube.com/watch?v=BIp_Y28qyZc',
-        'label' => 'Como Soy'
+        'label' => 'Como Soy',
       ),
       array(
         'url'   => 'https://www.youtube.com/watch?v=gdby5w5rseo',
-        'label' => 'Me Gusta'
-      )
+        'label' => 'Me Gusta',
+      ),
      )
   ));
 }
@@ -225,9 +225,9 @@ $elements = array(
     'id'    => 'mum',
     'icon'  => 'heart',
     'label' => 'Mum',
-    'url'   => 'http://mydomain.com/pictureofmum.jpg'
+    'url'   => 'http://mydomain.com/pictureofmum.jpg',
   )),
-  'customDropdown'
+  'customDropdown',
 );
 
 echo panelbar::show(array('elements' => $elements));
@@ -244,7 +244,7 @@ kirby()->plugin('panel-bar');
 ### Custom CSS/JS <a id="CustomCSSJS"></a>
 To include your custom CSS and JS with panel bar (e.g. for a [custom element](#CustomElement)), the best way would be to use [asset hooks](#Hooks) in your custom element function. However, you can also pass custom CSS and JS as parameters to the `::show()` and `::hide()` methods:
 ```php
-<?php echo panelbar::show(array('css' => '.mylove{}', 'js' => 'alert("hello")')) ?>
+<?php echo panelbar::show(array('css' => '.mylove{}', 'js' => 'console.log("hello");')) ?>
 ```
 
 
@@ -254,13 +254,13 @@ There are two types of hooks in panel bar: asset hooks and output hooks. Asset h
 <?php
 function customHelpElement($output, $assets) {
   $assets->setHook('css',      '.mylove{}');
-  $assets->setHook('js',       'alert("hello")');
+  $assets->setHook('js',       'console.log("hello");');
   $output->setHook('elements', panelbar::label(…));
 }
 
 $elements = array(
   'panel',
-  'help' => 'customHelpElement',
+  'customHelpElement',
 );
 
 echo panelbar::show(array('elements' => $elements));
@@ -274,18 +274,18 @@ function customHelpElement() {
     'element' => '…',
     'assets'  => array(
       'css' => '.mylove{}',
-      'js'  => 'alert("hello")'
+      'js'  => 'console.log("hello");',
     ),
     'html'    => array(
       'before' => '…',
-      'after'  => '…'
+      'after'  => '…',
     )
   );
 }
 
 $elements = array(
   'panel',
-  'help' => customHelpElement(),
+  'customHelpElement',
 );
 
 echo panelbar::show(array('elements' => $elements));

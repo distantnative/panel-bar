@@ -1,23 +1,21 @@
 
 var PanelbarState = function() {
+
   var self = this;
 
   this.validTime = 24 * 60 * 60 * 1000;
 
-
   self.init = function() {
     if(self.support()) {
-      if(self.expired()) { self.reset();   }
-      else               { self.restore(); }
-
+      if(self.expired()) {
+        self.reset();
+      } else {
+        self.restore();
+      }
       self.save();
       panelbar.controls.addEventListener('click', self.save);
-
-    } else {
-      console.log('PanelBar: localStorage not supported');
     }
   };
-
 
   this.save = function() {
     localStorage.setItem('panelbar.expires',  Date.now() + self.validTime);
@@ -25,12 +23,10 @@ var PanelbarState = function() {
     localStorage.setItem('panelbar.visible',  panelbar.visible);
   };
 
-
   this.restore = function() {
     self.setPosition();
     self.setVisibility();
   };
-
 
   this.reset = function() {
     localStorage.removeItem('panelbar.expires');
@@ -39,13 +35,19 @@ var PanelbarState = function() {
   };
 
   this.setPosition = function() {
-    if(localStorage.getItem('panelbar.position') === 'top') { panelbar.top(); }
-    else { panelbar.bottom(); }
+    if(localStorage.getItem('panelbar.position') === 'top') {
+      panelbar.top();
+    } else {
+      panelbar.bottom();
+    }
   };
 
   this.setVisibility = function() {
-    if(localStorage.getItem('panelbar.visible') === 'true') { panelbar.show(); }
-    else { panelbar.hide(); }
+    if(localStorage.getItem('panelbar.visible') === 'true') {
+      panelbar.show();
+    } else {
+      panelbar.hide();
+    }
   };
 
 
@@ -56,7 +58,7 @@ var PanelbarState = function() {
 
   this.support = function() {
     try {
-      x = '__storage_test__';
+      var x = '__storage_test__';
       localStorage.setItem(x, x);
       localStorage.getItem(x);
       localStorage.removeItem(x);
