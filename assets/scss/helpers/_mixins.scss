@@ -1,15 +1,9 @@
 
-@mixin clearfix() {
-  *zoom: 1;
-  &::before,
-  &::after {
-    content: " ";
-    display: table;
-  }
-  &::after { clear: both; }
-}
+/*------------------------------------*\
+   Mixins
+\*------------------------------------*/
 
-
+// Absolute positioned, fill parent
 @mixin absoluteFill() {
   position:   absolute;
   top:        0;
@@ -19,6 +13,7 @@
 }
 
 
+// Panel-like dropdown
 @mixin dropdown() {
   position:   absolute;
   left:       50%;
@@ -33,8 +28,7 @@
   }
 }
 
-
-
+// center-positioned dropdown arrow
 @mixin dropdownArrow() {
   position:   relative;
   cursor:     pointer;
@@ -64,4 +58,15 @@
       border-top: 8px solid #fff;
     }
   }
+}
+
+// clearfix
+@mixin clearfix() {
+  *zoom: 1;
+  &::before,
+  &::after {
+    content: " ";
+    display: table;
+  }
+  &::after { clear: both; }
 }

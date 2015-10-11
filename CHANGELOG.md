@@ -1,9 +1,12 @@
 # Changelog
 
 ## Version 0.7
+- Feature: Added RTL language support ([set up](http://getkirby.com/docs/languages/supporting-RTL-languages) in your theme)
+- Feature: Better control over responsive display
 - Improved: Mobile responsiveness
 - Fixed: Panel Keyboard Shortcut (Alt + P)
 - Fixed: Lots of small styling fixes
+- Internal: Cleaner, better-readable CSS code
 
 ## Version 0.6
 - Feature: Added iFrame mode for most elements (e.g. Add, Edit, Files, User)

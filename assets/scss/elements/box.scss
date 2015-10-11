@@ -1,8 +1,9 @@
 
-@import "../helpers/variables";
-@import "../helpers/mixins";
+/*------------------------------------*\
+   Textbox elements
+\*------------------------------------*/
 
-// Textboxes
+@import "../helpers/mixins";
 
 .panelbar-box {
   @include dropdownArrow;
@@ -22,6 +23,5 @@
 
     .panelbar-box:hover & { display: block; }
   }
-
 }
 

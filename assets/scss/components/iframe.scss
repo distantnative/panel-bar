@@ -1,25 +1,29 @@
 
-@import "../helpers/variables";
-@import "../helpers/mixins";
+/*------------------------------------*\
+   iFrame mode
+\*------------------------------------*/
 
 .panelbar-iframe {
 
   &__btns {
     display: none;
 
-    > span {
-      cursor: pointer;
-    }
+    > span { cursor: pointer; }
   }
 
   &__iframe {
-    display: none;
-    position: fixed;
-    top:      48px;
-    left:     0;
-    width:    100%;
-    height:   100%;
-    overflow: hidden;
+    display:    none;
+    position:   fixed;
+    top:        48px;
+    left:       0;
+    width:      100%;
+    height:     100%;
+    overflow:   hidden;
+
+    body.rtl & {
+      left:  auto;
+      right: 0;
+    }
 
     & > iframe {
       position: absolute;
@@ -27,6 +31,11 @@
       left:     0;
       width:    100%;
       height:   100%;
+
+      body.rtl & {
+        left:  auto;
+        right: 0;
+      }
     }
   }
 }

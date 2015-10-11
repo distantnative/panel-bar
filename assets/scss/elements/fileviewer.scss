@@ -1,8 +1,9 @@
 
-@import "../helpers/variables";
-@import "../helpers/mixins";
+/*------------------------------------*\
+   Fileviewer elements
+\*------------------------------------*/
 
-// Fileviewers
+@import "../helpers/mixins";
 
 .panelbar-fileviewer {
   @include dropdownArrow;

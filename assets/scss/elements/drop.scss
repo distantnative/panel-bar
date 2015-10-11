@@ -1,8 +1,9 @@
 
-@import "../helpers/variables";
-@import "../helpers/mixins";
+/*------------------------------------*\
+   Dropdown elements
+\*------------------------------------*/
 
-// Dropdowns
+@import "../helpers/mixins";
 
 .panelbar-drop {
   @include dropdownArrow;
@@ -32,7 +33,6 @@
     transition:    none;
 
     .panelbar--top    & { border-bottom: 1px solid #efefef; }
-    .panelbar--bottom & { border-top: 1px solid #efefef; }
+    .panelbar--bottom & { border-top:    1px solid #efefef; }
   }
-
 }
