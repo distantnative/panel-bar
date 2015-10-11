@@ -3,6 +3,9 @@
 @import 'helpers/mixins';
 @import 'base/_fonts';
 
+body.rtl {
+  direction: rtl;
+}
 
 .panelbar {
   position: fixed;
@@ -11,8 +14,13 @@
   height:   48px;
   z-index:  2147483000;
 
-  padding-right: 68px;
   line-height:   1;
+  padding-right: 68px;
+
+  body.rtl & {
+    padding-right: 0;
+    padding-left:  68px;
+  }
 
   background-color: #000;
   box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
@@ -44,6 +52,11 @@
       width:      15px;
       height:     48px;
       background: linear-gradient(to left, #000, transparent);
+
+      body.rtl & {
+        right: auto;
+        left:  67px;
+      }
     }
 
     .panelbar--hidden & { display: none; }
@@ -60,6 +73,11 @@
       margin-right: 7px;
 
       .panelbar--hidden & { margin-right: 0; }
+
+      body.rtl & {
+        margin-right: 0;
+        margin-left: 7px
+      }
     }
   }
 

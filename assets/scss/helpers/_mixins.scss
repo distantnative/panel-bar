@@ -10,8 +10,35 @@
 }
 
 
+@mixin absoluteFill() {
+  position:   absolute;
+  top:        0;
+  bottom:     0;
+  left:       0;
+  right:      0;
+}
+
+
+@mixin dropdown() {
+  position:   absolute;
+  left:       50%;
+  transform:  translateX(-50%);
+  background: #fff;
+  box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
+
+  body.rtl & {
+    left:      auto;
+    right:     50%;
+    transform: translateX(50%);
+  }
+}
+
+
 
 @mixin dropdownArrow() {
+  position:   relative;
+  cursor:     pointer;
+
   &:hover:after {
     content:     "";
     position:    absolute;
@@ -20,6 +47,13 @@
 
     border-left:  8px solid transparent;
     border-right: 8px solid transparent;
+
+    body.rtl & {
+      left:         auto;
+      right:        50%;
+      margin-left:  0;
+      margin-right: -8px;
+    }
 
     .panelbar--top & {
       bottom: 0;

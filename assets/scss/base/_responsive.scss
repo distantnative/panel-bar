@@ -15,15 +15,39 @@
       > span {
         padding-left:  13px;
         padding-right: 9px;
+
+        body.rtl & {
+          padding-left:  9px;
+          padding-right: 13px;
+        }
       }
 
       &--right {
         float: none;
         border-left: 1px solid #555;
+
+        body.rtl & {
+          border-left:  none;
+          border-right: 1px solid #555;
+        }
       }
     }
   }
+}
 
-  // hidden state fix
-  &--hidden:after .panelbar__bar { display: none; }
+
+
+
+// Responsive Elements - TODO!
+
+@media (max-width: 750px) {
+  .panelbar-fileviewer__grid {
+    min-width: 250px;
+  }
+
+  .panelbar-fileviewer__item {
+    width: 100%;
+
+    &:nth-child(n+4) { display: none; }
+  }
 }

@@ -1,1 +1,55 @@
-.panelbar-drop{position:relative;cursor:pointer}.panelbar-drop:hover:after{content:"";position:absolute;left:50%;margin-left:-8px;border-left:8px solid transparent;border-right:8px solid transparent}.panelbar--top .panelbar-drop:hover:after{bottom:0;border-bottom:8px solid #fff}.panelbar--bottom .panelbar-drop:hover:after{top:0;border-top:8px solid #fff}.panelbar-drop__list{display:none;position:absolute;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);background:#fff;box-shadow:rgba(0,0,0,0.2) 0px 2px 10px}.panelbar--top .panelbar-drop__list{top:100%}.panelbar--bottom .panelbar-drop__list{bottom:100%}.panelbar-drop__list>a{color:#000}.panelbar-drop__list>a:hover{color:#777}.panelbar-drop:hover .panelbar-drop__list{display:block}.panelbar-drop__item{display:block;padding:0.75em 1.5em;text-overflow:ellipsis;text-align:center;overflow:hidden;color:#000;-webkit-transition:none;transition:none}.panelbar--top .panelbar-drop__item{border-bottom:1px solid #efefef}.panelbar--bottom .panelbar-drop__item{border-top:1px solid #efefef}
+.panelbar-drop {
+  position: relative;
+  cursor: pointer; }
+  .panelbar-drop:hover:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent; }
+    body.rtl .panelbar-drop:hover:after {
+      left: auto;
+      right: 50%;
+      margin-left: 0;
+      margin-right: -8px; }
+    .panelbar--top .panelbar-drop:hover:after {
+      bottom: 0;
+      border-bottom: 8px solid #fff; }
+    .panelbar--bottom .panelbar-drop:hover:after {
+      top: 0;
+      border-top: 8px solid #fff; }
+  .panelbar-drop__list {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
+    display: none;
+    min-width: 100%; }
+    body.rtl .panelbar-drop__list {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%); }
+    .panelbar--top .panelbar-drop__list {
+      top: 100%; }
+    .panelbar--bottom .panelbar-drop__list {
+      bottom: 100%; }
+    .panelbar-drop__list > a {
+      color: #000; }
+    .panelbar-drop__list > a:hover {
+      color: #777; }
+    .panelbar-drop:hover .panelbar-drop__list {
+      display: block; }
+  .panelbar-drop__item {
+    display: block;
+    padding: .75em 1.5em;
+    color: #000;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+    transition: none; }
+    .panelbar--top .panelbar-drop__item {
+      border-bottom: 1px solid #efefef; }
+    .panelbar--bottom .panelbar-drop__item {
+      border-top: 1px solid #efefef; }

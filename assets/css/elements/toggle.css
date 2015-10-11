@@ -1,6 +1,7 @@
 .panelbar--toggle a.panelbar-drop__item {
   padding: .25em 1.5em .3em;
-  background-color: #efefef; }
+  background-color: #efefef;
+  direction: ltr; }
 .panelbar--toggle .gap {
   display: inline-block;
   width: 15px;

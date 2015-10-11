@@ -16,6 +16,16 @@
   background-color: #000;
   border-left:    1px solid #555;
 
+  body.rtl & {
+    right:          auto;
+    left:           0;
+    padding-right:  12px;
+    padding-left:   15px;
+
+    border-left:    none;
+    border-right:   1px solid #555;
+  }
+
   .panelbar--top &    { top:    0; }
   .panelbar--bottom & { bottom: 0; }
 
@@ -24,6 +34,10 @@
     background-color: transparent;
     border-left:      none;
     height:           auto;
+
+    body.rtl & {
+      border-right: none;
+    }
   }
 
   i:hover {
@@ -36,6 +50,11 @@
   &__position {
     display:      inline-block;
     margin-right: 7px;
+
+    body.rtl & {
+      margin-right: 0;
+      margin-left:  7px;
+    }
 
     .panelbar--hidden &         { display: none; }
     .panelbar--top    &--top    { display: none; }
@@ -64,6 +83,11 @@
 
       color:      #fff;
       font-size:  .8em;
+
+      body.rtl & {
+        right: auto;
+        left:  16px;
+      }
     }
 
     .panelbar--hidden & {

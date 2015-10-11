@@ -14,8 +14,7 @@ class Build {
 
   public static function label($args) {
     return array(
-      'element' => self::_element('panelbar-label', null, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/label.css')),
+      'element' => self::_element('panelbar-label', null, $args)
     );
   }
 

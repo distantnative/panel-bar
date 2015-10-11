@@ -5,26 +5,16 @@
 // Fileviewers
 
 .panelbar-fileviewer {
-  position: relative;
-  cursor: pointer;
-
   @include dropdownArrow;
 
   &__grid {
-    display:   none;
-    position:  absolute;
-    min-width: 480px;
-    left:      50%;
-    transform: translateX(-50%);
-
+    @include    dropdown;
+    display:    none;
+    min-width:  480px;
     padding:    .5em;
-    background: #fff;
-    box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
     cursor:     default;
 
-    &--1 {
-      min-width: 240px;
-    }
+    &--1 { min-width: 240px; }
 
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
@@ -32,27 +22,25 @@
     .panelbar-fileviewer:hover & { display: block; }
   }
 
-  &__items {
-    @include clearfix;
-  }
+  &__items { @include clearfix; }
 
   &__item {
-    display: block;
-    float:   left;
-    width:   33.3333%;
-
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
-
-    .panelbar-fileviewer__grid--1 & { width: 100%; }
-    .panelbar-fileviewer__grid--2 & { width: 50%; }
+    display:  block;
+    float:    left;
+    width:    33.3333%;
 
     text-align:    center;
     text-overflow: ellipsis;
     overflow:      hidden;
-
     transition:    none;
-
     border:        1px solid #ddd;
+    background:    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+
+    body.rtl & { float: right; }
+
+    .panelbar-fileviewer__grid--1 & { width: 100%; }
+    .panelbar-fileviewer__grid--2 & { width: 50%; }
+
   }
 
 
@@ -81,52 +69,41 @@
   }
 
   &__image {
-    position: absolute;
-    top:      0;
-    bottom:   0;
-    left:     0;
-    right:    0;
-    background-size:     contain;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
+    @include              absoluteFill();
+    background-size:      contain;
+    background-position:  50% 50%;
+    background-repeat:    no-repeat;
   }
 
   &__overlay {
-    display:  none;
-    position: absolute;
-    top:      0;
-    bottom:   0;
-    left:     0;
-    right:    0;
-
-    background-color: #8dae28;
-    opacity:          .8;
+    @include    absoluteFill();
+    display:    none;
+    background: #8dae28;
+    opacity:    .8;
 
     .panelbar-fileviewer__item:hover & { display: block; }
   }
 
   &__label {
-    display:  block;
-    position: absolute;
-    bottom:   0;
-    left:     0;
-    right:    0;
-    padding:  4px 6px;
+    display:    block;
+    position:   absolute;
+    bottom:     0;
+    left:       0;
+    right:      0;
+    padding:    4px 6px;
+    background: linear-gradient(to top, rgba(#000,.8), rgba(#000,.45) 65%, transparent);
 
-    background: linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,.45) 65%, rgba(0,0,0,0));
-
-    font-size:     .85em;
-    white-space:   nowrap;
-    overflow:      hidden;
-    text-overflow: ellipsis;
+    font-size:      .85em;
+    white-space:    nowrap;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
 
     .panelbar-fileviewer__item:hover & {
       color:      #fff;
-      background: linear-gradient(to top, rgba(0,0,0,.4), rgba(0,0,0,.2) 65%, rgba(0,0,0,0));
+      background: linear-gradient(to top, rgba(#000,.4), rgba(#000,.2) 65%, transparent);
 
     }
   }
-
 
 
   &__more {
@@ -138,22 +115,6 @@
     text-transform: uppercase;
     text-align:     center;
 
-    &:hover {
-      color: #999 !important;
-    }
-  }
-
-}
-
-
-@media (max-width: 750px) {
-  .panelbar-fileviewer__grid {
-    min-width: 250px;
-  }
-
-  .panelbar-fileviewer__item {
-    width: 100%;
-
-    &:nth-child(n+4) { display: none; }
+    &:hover { color: #999 !important; }
   }
 }

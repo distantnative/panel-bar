@@ -8,11 +8,24 @@
   > span {
     display: inline-block;
     padding: 16px 14px 15px 18px;
+
+    body.rtl & { padding: 16px 18px 15px 14px; }
   }
 
   &:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
     border-left: 1px solid #555;
+
+    body.rtl & {
+      border-left:  none;
+      border-right: 1px solid #555;
+    }
   }
 
-  &--right { float: right;  }
+  &--right {
+    float: right;
+
+    body.rtl & {
+     float: left;
+    }
+  }
 }

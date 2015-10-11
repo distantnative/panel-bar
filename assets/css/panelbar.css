@@ -1541,16 +1541,22 @@
 .fa-meanpath:before {
   content: "\f20c"; }
 
+body.rtl {
+  direction: rtl; }
+
 .panelbar {
   position: fixed;
   left: 0;
   right: 0;
   height: 48px;
   z-index: 2147483000;
-  padding-right: 68px;
   line-height: 1;
+  padding-right: 68px;
   background-color: #000;
   box-shadow: rgba(0, 0, 0, 0.075) 0 0px 4px; }
+  body.rtl .panelbar {
+    padding-right: 0;
+    padding-left: 68px; }
   .panelbar--hidden {
     background-color: transparent;
     box-shadow: none; }
@@ -1578,6 +1584,9 @@
       width: 15px;
       height: 48px;
       background: linear-gradient(to left, #000, transparent); }
+      body.rtl .panelbar__bar:after {
+        right: auto;
+        left: 67px; }
     .panelbar--hidden .panelbar__bar {
       display: none; }
     .panelbar__bar a {
@@ -1590,6 +1599,9 @@
       margin-right: 7px; }
       .panelbar--hidden .panelbar__bar i {
         margin-right: 0; }
+      body.rtl .panelbar__bar i {
+        margin-right: 0;
+        margin-left: 7px; }
 
 /*------------------------------------*\
    Responsive Adaptations
@@ -1602,12 +1614,25 @@
 .panelbar--compact .panelbar-element > span {
   padding-left: 13px;
   padding-right: 9px; }
+  body.rtl .panelbar--compact .panelbar-element > a, body.rtl
+  .panelbar--compact .panelbar-element > span {
+    padding-left: 9px;
+    padding-right: 13px; }
 .panelbar--compact .panelbar-element--right {
   float: none;
   border-left: 1px solid #555; }
-.panelbar--hidden:after .panelbar__bar {
-  display: none; }
+  body.rtl .panelbar--compact .panelbar-element--right {
+    border-left: none;
+    border-right: 1px solid #555; }
 
+@media (max-width: 750px) {
+  .panelbar-fileviewer__grid {
+    min-width: 250px; }
+
+  .panelbar-fileviewer__item {
+    width: 100%; }
+    .panelbar-fileviewer__item:nth-child(n+4) {
+      display: none; } }
 .panelbar-controls {
   position: absolute;
   z-index: 2147483200;
@@ -1621,6 +1646,13 @@
   color: #fff;
   background-color: #000;
   border-left: 1px solid #555; }
+  body.rtl .panelbar-controls {
+    right: auto;
+    left: 0;
+    padding-right: 12px;
+    padding-left: 15px;
+    border-left: none;
+    border-right: 1px solid #555; }
   .panelbar--top .panelbar-controls {
     top: 0; }
   .panelbar--bottom .panelbar-controls {
@@ -1630,12 +1662,17 @@
     background-color: transparent;
     border-left: none;
     height: auto; }
+    body.rtl .panelbar--hidden .panelbar-controls {
+      border-right: none; }
   .panelbar-controls i:hover {
     cursor: pointer;
     color: #999; }
   .panelbar-controls__position {
     display: inline-block;
     margin-right: 7px; }
+    body.rtl .panelbar-controls__position {
+      margin-right: 0;
+      margin-left: 7px; }
     .panelbar--hidden .panelbar-controls__position {
       display: none; }
     .panelbar--top .panelbar-controls__position--top {
@@ -1657,6 +1694,9 @@
       z-index: 2147483210;
       color: #fff;
       font-size: .8em; }
+      body.rtl .panelbar-controls__visibility--bg {
+        right: auto;
+        left: 16px; }
     .panelbar--hidden .panelbar-controls__visibility--visible {
       display: none; }
     .panelbar--hidden .panelbar-controls__visibility--hidden {
@@ -1671,7 +1711,15 @@
   .panelbar-element > span {
     display: inline-block;
     padding: 16px 14px 15px 18px; }
+    body.rtl .panelbar-element > a, body.rtl
+    .panelbar-element > span {
+      padding: 16px 18px 15px 14px; }
   .panelbar-element:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
     border-left: 1px solid #555; }
+    body.rtl .panelbar-element:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
+      border-left: none;
+      border-right: 1px solid #555; }
   .panelbar-element--right {
     float: right; }
+    body.rtl .panelbar-element--right {
+      float: left; }
