@@ -145,7 +145,6 @@ class Elements {
      // prepare output
     $files = $this->page->files();
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-    $files = $files->limit(15);
 
     if ($files->count() > 0) {
       $items = array();
@@ -155,18 +154,25 @@ class Elements {
           'url'       => pb::url('show', $file),
           'label'     => $file->filename(),
           'extension' => $file->extension(),
+          'size'      => $file->niceSize(),
         );
 
         if ($file->type() == 'image') $args['image']  = $file->url();
         array_push($items, $args);
       }
 
+      if($files->count() > 12)        $count = '12more';
+      elseif($files->count() == 2)    $count = 2;
+      elseif($files->count() == 1)    $count = 1;
+      else                            $count = 'default';
+
+
       return Build::fileviewer(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $items,
-        'count'  => count($items),
+        'count'  => $count,
         'all'    => pb::url('index', $file),
       ));
     }

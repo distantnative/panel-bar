@@ -4,69 +4,53 @@
 \*------------------------------------*/
 
 @import "../helpers/mixins";
+@import "../helpers/fileviewer";
 
 .panelbar-fileviewer {
   @include dropdownArrow;
 
   &__grid {
-    @include    dropdown;
-    display:    none;
-    min-width:  480px;
-    padding:    .5em;
-    cursor:     default;
+    @include      dropdown;
+    display:      none;
+    width:        100%;
+    max-height:   85vh;
+    max-height:   calc(100vh - 70px);
+    @include      gridResponsive();
 
-    &--1 { min-width: 240px; }
+    padding:      .5em;
+    overflow-y:   auto;
+    white-space:  normal;
+    cursor:       default;
+
+    .panelbar-fileviewer:hover & { display: block; }
 
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
-
-    .panelbar-fileviewer:hover & { display: block; }
   }
 
-  &__items { @include clearfix; }
-
   &__item {
-    display:  block;
-    float:    left;
-    width:    33.3333%;
+    display:        inline-block;
+    margin-right:   -4px;
+    margin-bottom:  3px;
+    @include        itemResponsive();
 
-    text-align:    center;
-    text-overflow: ellipsis;
-    overflow:      hidden;
-    transition:    none;
-    border:        1px solid #ddd;
-    background:    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+    text-align:     center;
+    text-overflow:  ellipsis;
+    overflow:       hidden;
+    transition:     none;
+
+    background:    black;
+    &--image {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+    }
 
     body.rtl & { float: right; }
-
-    .panelbar-fileviewer__grid--1 & { width: 100%; }
-    .panelbar-fileviewer__grid--2 & { width: 50%; }
-
   }
 
 
   &__preview {
     position:       relative;
-    padding-bottom: 66.6666%;
-
-    em {
-      position:  absolute;
-      top:       45%;
-      left:      50%;
-      transform: translate(-50%, -50%);
-
-      font-style:     normal;
-      font-weight:    600;
-      color:          #666;
-      text-transform: uppercase;
-
-      .panelbar-fileviewer__item--image & { display: none; }
-
-      .panelbar-fileviewer__item:hover & {
-        display: block;
-        color:   #fff;
-      }
-    }
+    padding-bottom: 67%;
   }
 
   &__image {
@@ -85,31 +69,57 @@
     .panelbar-fileviewer__item:hover & { display: block; }
   }
 
-  &__label {
-    display:    block;
-    position:   absolute;
-    bottom:     0;
-    left:       0;
-    right:      0;
-    padding:    4px 6px;
-    background: linear-gradient(to top, rgba(#000,.8), rgba(#000,.45) 65%, transparent);
+  &__info {
+      position:  absolute;
+      top:       45%;
+      left:      50%;
+      transform: translate(-50%, -50%);
 
-    font-size:      .85em;
+      font-size:      .95em;
+      font-style:     normal;
+      font-weight:    600;
+      color:          #fff;
+      text-transform: uppercase;
+
+      .panelbar-fileviewer__item--image & { display: none; }
+      .panelbar-fileviewer__item:hover  & { display: block; }
+  }
+
+  &__extension {
+    display: block;
+    .panelbar-fileviewer__item:hover        & { display: none;  }
+    .panelbar-fileviewer__item--image:hover & { display: block; }
+  }
+
+  &__size {
+    display:      none;
+    font-weight:  400;
+    .panelbar-fileviewer__item:hover  & { display: block; }
+  }
+
+  &__label {
+    position:       absolute;
+    bottom:         0;
+    left:           0;
+    right:          0;
+    padding:        4px 5px 5px;
+
+    font-size:      .8em;
+    color:          #fff;
     white-space:    nowrap;
     overflow:       hidden;
     text-overflow:  ellipsis;
+    background:     rgba(0, 0, 0, .75);
 
     .panelbar-fileviewer__item:hover & {
-      color:      #fff;
-      background: linear-gradient(to top, rgba(#000,.4), rgba(#000,.2) 65%, transparent);
-
+      color: #fff;
     }
   }
 
 
   &__more {
-    display: block;
-    padding: 6px 5px 2px;
+    display:        block;
+    padding:        8px 5px 2px;
 
     color:          #000 !important;
     font-size:      .95em;
@@ -119,3 +129,6 @@
     &:hover { color: #999 !important; }
   }
 }
+
+
+

@@ -1,0 +1,59 @@
+
+/*------------------------------------*\
+   Fileviewer responsive mixins
+\*------------------------------------*/
+
+@mixin gridResponsive() {
+  &--1       { min-width: 240px; }
+  &--2       { min-width: 360px; }
+  &--default { min-width: 480px; }
+  &--12more  {
+    position: fixed;
+    top:      48px !important;
+    width:    82vw;
+  }
+
+  @media (max-width: 550px) {
+    position: fixed;
+    top:      48px !important;
+    width:    82vw;
+  }
+}
+
+
+@mixin itemResponsive() {
+  .panelbar-fileviewer__grid--1 & {
+    width: 100%;
+  }
+  .panelbar-fileviewer__grid--2 & {
+    width: 49.5%;
+    &:not(:first-child) { margin-left: 0.5%; }
+  }
+  .panelbar-fileviewer__grid--default & {
+    width: 33%;
+    &:not(:nth-child(3n+1)) { margin-left: 0.5%; }
+  }
+  .panelbar-fileviewer__grid--12more & {
+    @media (min-width: 551px) and (max-width: 750px) {
+      width: 33%;
+      &:not(:nth-child(3n+1)) { margin-left: 0.5%; }
+    }
+    @media (min-width: 751px) and (max-width: 950px) {
+      width: 24.7%;
+      &:not(:nth-child(4n+1)) { margin-left: 0.4%; }
+    }
+    @media (min-width: 951px) and (max-width: 1150px) {
+      width: 19.76%;
+      &:not(:nth-child(5n+1)) { margin-left: 0.3%; }
+    }
+    @media (min-width: 1151px) {
+      width: 16.5%;
+      &:not(:nth-child(5n+1)) { margin-left: 0.2%; }
+    }
+  }
+
+  @media (max-width: 550px) {
+    width: 49.5% !important;
+    &:not(:first-child) { margin-left: 0.5% !important; }
+  }
+}
