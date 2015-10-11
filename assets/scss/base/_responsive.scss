@@ -6,25 +6,15 @@
   // mobile view
   &--mobile .not-mobile { display: none; }
 
-  // minimized view
-  &--minimized {
-    .not-minimized { display: none; }
-
-    .panelbar__bar:after {
-        content:    " ";
-        position:   absolute;
-        top:        0;
-        right:      67px;
-        width:      15px;
-        height:     48px;
-        background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    }
+  // compact view
+  &--compact {
+    .not-compact { display: none; }
 
     .panelbar-element {
       > a,
       > span {
-        padding-left:  12px;
-        padding-right: 8px;
+        padding-left:  13px;
+        padding-right: 9px;
       }
 
       &--right {
@@ -32,7 +22,6 @@
         border-left: 1px solid #555;
       }
     }
-
   }
 
   // hidden state fix

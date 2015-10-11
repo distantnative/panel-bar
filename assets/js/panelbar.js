@@ -14,6 +14,8 @@ var Panelbar = function() {
   this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
   this.map      = [];
   this.resize   = null;
+  this.mobile   = null;
+  this.desktop  = null;
 
 
   /**
@@ -86,40 +88,48 @@ var Panelbar = function() {
    */
 
   this.responsive = function() {
-    setTimeout(self.adapt, 100);
-    window.addEventListener('resize', self.resize);
+    setTimeout(self.setupResponsive, 100);
+    setTimeout(self.setupResponsive, 250);
+    window.addEventListener('resize', self.onResize);
   };
 
-  this.resize = function() {
+  this.setupResponsive = function() {
+    self.measureResponsive();
+    self.adaptResponsive();
+  };
+
+  this.onResize = function() {
     self.panelbar.style.overflowY = 'hidden';
     clearTimeout(self.resize);
     self.resize = setTimeout(function() {
-      self.adapt();
+      self.adaptResponsive();
       self.panelbar.style.overflowY = 'visible';
-    }, 200);
+    }, 50);
   };
 
-  this.adapt = function() {
-    removeClass(self.wrapper, 'panelbar--minimized');
+  this.measureResponsive = function() {
+    removeClass(self.wrapper, 'panelbar--compact');
     addClass(self.wrapper, 'panelbar--mobile');
-    var mobile  = self.width();
+    self.mobile  = self.widthResponsive();
     removeClass(self.wrapper, 'panelbar--mobile');
-    var desktop = self.width();
+    self.desktop = self.widthResponsive();
+  };
 
-    if(self.wrapper.offsetWidth < mobile) {
-      addClass(self.wrapper, 'panelbar--minimized');
+  this.adaptResponsive = function() {
+    if(self.wrapper.offsetWidth < self.mobile) {
+      addClass(self.wrapper, 'panelbar--compact');
       addClass(self.wrapper, 'panelbar--mobile');
-    } else if(self.wrapper.offsetWidth < desktop) {
-      removeClass(self.wrapper, 'panelbar--minimized');
+    } else if(self.wrapper.offsetWidth < self.desktop) {
+      removeClass(self.wrapper, 'panelbar--compact');
       addClass(self.wrapper, 'panelbar--mobile');
     } else {
-      removeClass(self.wrapper, 'panelbar--minimized');
+      removeClass(self.wrapper, 'panelbar--compact');
       removeClass(self.wrapper, 'panelbar--mobile');
     }
   };
 
-  this.width = function() {
-    var width    = self.controls.offsetWidth + 30;
+  this.widthResponsive = function() {
+    var width    = self.controls.offsetWidth + 40;
     var elements = self.panelbar.children;
     var i;
     for (i = 0; i < elements.length; i++) {
