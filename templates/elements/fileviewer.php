@@ -1,4 +1,4 @@
-<div class="panelbar-fileviewer__grid panelbar-fileviewer__grid--<?php echo $count ?>" <?php echo $style ?>>
+<div class="panelbar-fileviewer__grid panelbar-fileviewer__grid--<?php echo $count ?>">
 
   <?php foreach($items as $item) : ?>
     <a href="<?php echo $item['url'] ?>" class="panelbar-fileviewer__item panelbar-fileviewer__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'] ?>">

@@ -8,15 +8,15 @@
   &--2       { min-width: 360px; }
   &--default { min-width: 480px; }
   &--12more  {
-    position: fixed;
-    top:      48px !important;
-    width:    82vw;
+    position:   fixed;
+    top:        48px !important;
+    min-width:  95vw;
   }
 
   @media (max-width: 550px) {
-    position: fixed;
-    top:      48px !important;
-    width:    82vw;
+    position:   fixed;
+    top:        48px !important;
+    min-width:  95vw;
   }
 }
 

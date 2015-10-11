@@ -142,38 +142,20 @@ class Elements {
    */
 
   public function files($type = null, $function = null) {
-     // prepare output
-    $files = $this->page->files();
-    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
+    if ($files = $this->_files($type)) {
 
-    if ($files->count() > 0) {
-      $items = array();
-      foreach($files as $file) {
-        $args = array(
-          'type'      => $file->type(),
-          'url'       => pb::url('show', $file),
-          'label'     => $file->filename(),
-          'extension' => $file->extension(),
-          'size'      => $file->niceSize(),
-        );
-
-        if ($file->type() == 'image') $args['image']  = $file->url();
-        array_push($items, $args);
-      }
-
-      if($files->count() > 12)        $count = '12more';
-      elseif($files->count() == 2)    $count = 2;
-      elseif($files->count() == 1)    $count = 1;
-      else                            $count = 'default';
-
+      if    (count($files) > 12)    $count = '12more';
+      elseif(count($files) == 2)    $count = 2;
+      elseif(count($files) == 1)    $count = 1;
+      else                          $count = 'default';
 
       return Build::fileviewer(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
-        'items'  => $items,
+        'items'  => $files,
         'count'  => $count,
-        'all'    => pb::url('index', $file),
+        'all'    => pb::url('index', $this->page->files()->first()),
       ));
     }
   }
@@ -185,6 +167,32 @@ class Elements {
 
   public function images() {
     return $this->files('image', __FUNCTION__);
+  }
+
+
+  /**
+   *  FILELIST
+   */
+
+  public function filelist($type = null, $function = null) {
+    if ($files = $this->_files($type)) {
+      return Build::filelist(array(
+        'id'     => is_null($function) ? __FUNCTION__ : $function,
+        'icon'   => 'th-list',
+        'label'  => ($type == 'image') ? 'Images' : 'Files',
+        'items'  => $files,
+        'all'    => pb::url('index', $this->page->files()->first()),
+      ));
+    }
+  }
+
+
+  /**
+   *  IMAGELIST
+   */
+
+  public function imagelist() {
+    return $this->filelist('image', __FUNCTION__);
   }
 
 
@@ -263,11 +271,13 @@ class Elements {
   }
 
 
+
+
   /**
    *  TOOL: iFrame
    */
 
-  protected function _registerIframe() {
+  private function _registerIframe() {
     // register assets
     $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
     $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
@@ -276,5 +286,40 @@ class Elements {
     $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
     $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
   }
+
+
+  /**
+   *  TOOL: Files
+   */
+
+  private function _files($type = null) {
+    $files = $this->page->files();
+
+    if (!is_null($type)) {
+      $files = $files->filterBy('type', '==', $type);
+    }
+
+    if ($files->count() > 0) {
+      $items = array();
+      foreach($files as $file) {
+        $args = array(
+          'type'      => $file->type(),
+          'url'       => pb::url('show', $file),
+          'label'     => $file->name(),
+          'extension' => $file->extension(),
+          'size'      => $file->niceSize(),
+        );
+
+        if ($file->type() == 'image') $args['image']  = $file->url();
+        array_push($items, $args);
+      }
+
+      return $items;
+
+    } else {
+      return false;
+    }
+  }
+
 
 }

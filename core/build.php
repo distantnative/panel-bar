@@ -42,12 +42,26 @@ class Build {
         'label' => $args['label'],
         'url'   => $args['all'],
       ),
-      'style'   => self::_style($args),
     ));
 
     return array(
       'element' => self::_element('panelbar-fileviewer', $grid, $args),
       'assets'  => array('css' => pb::load('css', 'elements/fileviewer.css')),
+    );
+  }
+
+  public static function filelist($args) {
+    $list = pb::load('html', 'elements/filelist.php', array(
+      'items'   => $args['items'],
+      'all'     => array(
+        'label' => $args['label'],
+        'url'   => $args['all'],
+      ),
+    ));
+
+    return array(
+      'element' => self::_element('panelbar-filelist', $list, $args),
+      'assets'  => array('css' => pb::load('css', 'elements/filelist.css')),
     );
   }
 
