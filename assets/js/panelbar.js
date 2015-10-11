@@ -72,12 +72,12 @@ var Panelbar = function() {
   };
 
   this.show = function() {
-    removeClass(self.panelbar, 'panelbar__bar--hidden');
+    removeClass(self.wrapper, 'panelbar--hidden');
     self.visible = true;
   };
 
   this.hide = function() {
-    addClass(self.panelbar, 'panelbar__bar--hidden');
+    addClass(self.wrapper, 'panelbar--hidden');
     self.visible = false;
   };
 
