@@ -303,9 +303,14 @@ To output the CSS and/or JS wherever you want it, just use `::css()` or `::js()`
 <?php echo panelbar::js() ?>
 ```
 
-You can still pass your [custom CSS/JS](#CustomCSSJS) to these methods:  
+If you use a [custom set of elements](#CustomSet), please make sure to also pass the array of elements:
 ```php
-<?php echo panelbar::css('.mylove{}') ?>
+<?php echo panelbar::js(array('elements' => $elements)) ?>
+```
+
+You can also still pass your [custom CSS/JS](#CustomCSSJS) to these methods:  
+```php
+<?php echo panelbar::css(array('elements' => $elements, 'css' => '.mylove{}') ?>
 ```
 
 &nbsp;  

@@ -272,7 +272,6 @@ class Elements {
 
 
 
-
   /**
    *  TOOL: iFrame
    */
@@ -281,7 +280,6 @@ class Elements {
     // register assets
     $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
     $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-
     // register output
     $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
     $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
@@ -294,7 +292,6 @@ class Elements {
 
   private function _files($type = null) {
     $files = $this->page->files();
-
     if (!is_null($type)) {
       $files = $files->filterBy('type', '==', $type);
     }
@@ -309,11 +306,9 @@ class Elements {
           'extension' => $file->extension(),
           'size'      => $file->niceSize(),
         );
-
         if ($file->type() == 'image') $args['image']  = $file->url();
         array_push($items, $args);
       }
-
       return $items;
 
     } else {

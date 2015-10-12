@@ -101,10 +101,10 @@ class Core extends Build {
    *  PLACEHOLDERS for static methods
    */
 
-  public static function defaults() { }
-  public static function show()     { }
-  public static function hide()     { }
-  public static function css($css)  { }
-  public static function js($js)    { }
+  public static function show()               { }
+  public static function hide()               { }
+  public static function css($args = array()) { }
+  public static function js($args = array())  { }
+  public static function defaults()           { }
 
 }
