@@ -63,6 +63,7 @@ var PanelbarIframe = function() {
     self.buttons.style.display   = 'inline-block';
     self.wrapper.style.display   = 'block';
     document.body.style.overflow = 'hidden';
+    addClass(panelbar.wrapper, 'panelbar--iframe');
 
     self.returnBtn.addEventListener('click', self.deactivate);
     self.refreshBtn.addEventListener('click', self.refresh);
@@ -72,6 +73,7 @@ var PanelbarIframe = function() {
     self.buttons.style.display   = 'none';
     self.wrapper.style.display   = 'none';
     document.body.style.overflow = 'auto';
+    removeClass(panelbar.wrapper, 'panelbar--iframe');
 
     self.returnBtn.removeEventListener('click', self.deactivate);
     self.refreshBtn.removeEventListener('click', self.refresh);

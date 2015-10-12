@@ -11,6 +11,8 @@
   &--compact {
     .not-compact { display: none; }
 
+    &.panelbar--iframe .panelbar__bar:after { display: none; }
+
     .panelbar-element {
       > a,
       > span {
