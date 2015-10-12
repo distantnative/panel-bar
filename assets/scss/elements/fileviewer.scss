@@ -39,9 +39,12 @@
     overflow:       hidden;
     transition:     none;
 
-    background:    black;
+    background:     black;
     &--image {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+      background:   url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+    }
+    &:hover {
+      background:   #8dae28;
     }
 
     body.rtl & { float: right; }
@@ -64,7 +67,7 @@
     @include    absoluteFill();
     display:    none;
     background: #8dae28;
-    opacity:    .8;
+    opacity:    .6;
 
     .panelbar-fileviewer__item:hover & { display: block; }
   }
@@ -86,14 +89,18 @@
   }
 
   &__extension {
-    display: block;
-    .panelbar-fileviewer__item:hover        & { display: none;  }
-    .panelbar-fileviewer__item--image:hover & { display: block; }
+    display:       block;
   }
 
   &__size {
     display:      none;
+    font-size:    .8em;
     font-weight:  400;
+
+    padding:    3px 2px 0;
+    margin-top: 4px;
+    border-top: 1px solid #fff;
+
     .panelbar-fileviewer__item:hover  & { display: block; }
   }
 

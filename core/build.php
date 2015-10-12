@@ -89,13 +89,13 @@ class Build {
 
     return pb::load('html', 'elements/base.php', array(
       'class'   => self::_class($class, $args),
-      'id'      => isset($args['id'])      ? $args['id']     : '',
-      'title'   => isset($args['title'])   ? $args['title']  : '',
-      'icon'    => isset($args['icon'])    ? $args['icon']   : false,
-      'label'   => isset($args['label'])   ? $args['label']  : false,
-      'mobile'  => isset($args['mobile'])  ? $args['mobile'] : 'icon',
+      'id'      => isset($args['id'])      ? $args['id']      : '',
+      'title'   => isset($args['title'])   ? $args['title']   : '',
+      'icon'    => isset($args['icon'])    ? $args['icon']    : false,
+      'label'   => isset($args['label'])   ? $args['label']   : false,
+      'mobile'  => isset($args['mobile'])  ? $args['mobile']  : 'icon',
       'compact' => isset($args['compact']) ? $args['compact'] : true,
-      'url'     => isset($args['url'])     ? $args['url']    : false,
+      'url'     => isset($args['url'])     ? $args['url']     : false,
       'content' => $content,
     ));
   }

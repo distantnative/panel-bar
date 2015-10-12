@@ -16,6 +16,7 @@
     max-height:   85vh;
     max-height:   calc(100vh - 70px);
     overflow-y:   auto;
+    text-align:   center;
 
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
@@ -43,11 +44,6 @@
 
     .panelbar--top    & { border-bottom: 1px solid #efefef; }
     .panelbar--bottom & { border-top:    1px solid #efefef; }
-
-    &:hover {
-      opacity:  .75;
-      color:    #000;
-    }
   }
 
   &__preview {
@@ -55,10 +51,14 @@
     width:        30px;
     height:       20px;
     margin-right: 3px;
+    text-align:   left;
 
-    background:    black;
+    background: #fff;
     .panelbar-filelist__item--image & {
       background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+    }
+    .panelbar-filelist__item--image:hover & {
+      background:   #8dae28;
     }
   }
 
@@ -69,28 +69,39 @@
     background-position:  50% 50%;
     background-repeat:    no-repeat;
 
+    .panelbar-filelist__item:hover & { opacity: .45; }
   }
 
   &__item > span {
     display:        inline-block;
+  }
 
+  &__item:hover > span {
+    color: #8dae28;
   }
 
   &__label {
-    width:          150px;
+    width:          160px;
     margin-right:   3px;
     vertical-align: top;
+    padding-top:    2px;
 
-    font-size:      .95em;
+    font-size:      .9em;
+    text-align:     left;
     line-height:    1.2;
     text-overflow:  ellipsis;
     overflow:       hidden;
+
+    @media (max-width: 550px) {
+      width: calc(95vw - 150px);
+    }
   }
 
-  &__extension,
-  &__size {
+  &__info {
+    width:          80px;
     color:          #999;
     font-size:      .75em;
+    text-align:     right;
     vertical-align: text-top;
   }
 

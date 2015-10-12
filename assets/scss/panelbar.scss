@@ -6,9 +6,6 @@
 @import 'helpers/mixins';
 @import 'base/_fonts';
 
-body.rtl {
-  direction: rtl;
-}
 
 .panelbar {
   position: fixed;
@@ -33,7 +30,7 @@ body.rtl {
     box-shadow:       none;
   }
 
-  &--top    { top: 0; }
+  &--top    { top:    0; }
   &--bottom { bottom: 0; }
 
 
