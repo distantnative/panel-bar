@@ -1,7 +1,8 @@
 # Changelog
 
 ## Version 0.7
-- Feature: Added Filelist and Imagelist as standard element 
+- Feature: Added Filelist and Imagelist standard element 
+- Feature: Added Index standard element
 - Feature: Lots of improvements for fileviewers (Files and Images standard element)
 - Feature: Added RTL language support ([set up](http://getkirby.com/docs/languages/supporting-RTL-languages) in your theme)
 - Feature: Better control over responsive display

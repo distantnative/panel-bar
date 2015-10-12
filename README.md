@@ -6,6 +6,9 @@
 
 This plugin enables you to include a panel bar on top of your site which gives you direct access to some administrative functions. The panel bar will only be visible to logged in users who are eligible to access the panel.
 
+*Requires PHP 5.3+ and Kirby 2.1 or higher*
+
+
 ![panel bar in action](assets/screens/screen.png)  
 ![panel bar - Add element](assets/screens/screen2.png)  
 ![panel bar - Edit in iFrame view](assets/screens/screen3.png)  

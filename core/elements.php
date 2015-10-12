@@ -39,6 +39,35 @@ class Elements {
     ));
   }
 
+  public function index() {
+    // register assets
+    $this->assets->setHook('css', pb::load('css', 'elements/index.css'));
+
+    // prepare output
+    $items = array();
+    foreach(kirby()->site()->index() as $index) {
+      array_push($items, array(
+        'label' => pb::load('html', 'elements/index/label.php', array(
+          'title'   => $index->title(),
+          'num'     => $index->num(),
+          'depth'   => $index->depth() - 1,
+          'visible' => $index->isVisible()
+        )),
+        'url'   => $index->url(),
+      ));
+    }
+
+    return Build::dropdown(array(
+      'id'     => __FUNCTION__,
+      'icon'   => 'th',
+      'label'  => 'Index',
+      'items'  => $items,
+      'class'  => 'panelbar-index',
+    ));
+
+
+  }
+
 
   /**
    *  ADD
