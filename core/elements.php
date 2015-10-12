@@ -45,15 +45,18 @@ class Elements {
 
     // prepare output
     $items = array();
-    foreach(kirby()->site()->index() as $index) {
+    $home  = $this->site->homePage();
+    $index = $this->site->index()->prepend($home->id(), $home);
+
+    foreach($index as $page) {
       array_push($items, array(
         'label' => pb::load('html', 'elements/index/label.php', array(
-          'title'   => $index->title(),
-          'num'     => $index->num(),
-          'depth'   => $index->depth() - 1,
-          'visible' => $index->isVisible()
+          'title'   => $page->title(),
+          'num'     => $page->num(),
+          'depth'   => $page->depth() - 1,
+          'visible' => $page->isVisible()
         )),
-        'url'   => $index->url(),
+        'url'   => $page->url(),
       ));
     }
 

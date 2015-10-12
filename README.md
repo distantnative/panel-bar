@@ -74,11 +74,14 @@ The panel bar provides several standard elements:
 Name        | Description
 ----------- | ---------------------------------------------------------
 `panel`     | Open the Kirby panel
+`index`     | List of all pages (index)
 `add`       | Add page as sibling or child
 `edit`      | Edit current page
 `toggle`    | Change the visibility of the current page (hide/publish)
 `files`     | Viewer for files of the current page
 `images`    | Viewer for images of the current page
+`filelist`  | List of files of the current page
+`imagelist` | List of images of the current page
 `loadtime`  | Info label for loading time
 `language`  | Dropdown to switch between site languages
 `user`      | Current user
