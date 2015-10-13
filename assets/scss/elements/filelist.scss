@@ -53,9 +53,11 @@
     margin-right: 3px;
     text-align:   left;
 
-    background: #fff;
+    background-color:       #fff;
     .panelbar-filelist__item--image & {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
+      background-image:     linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8);
+      background-size:      10px 10px;
+      background-position:  0 0, 5px 5px;
     }
     .panelbar-filelist__item--image:hover & {
       background:   #8dae28;
