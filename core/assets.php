@@ -4,8 +4,6 @@ namespace PanelBar;
 
 use C;
 
-use PanelBar\PB;
-
 class Assets extends Hooks {
 
   public $css;
@@ -42,22 +40,22 @@ class Assets extends Hooks {
   protected function defaults() {
     $this->setHooks(array(
       'css' => array(
-        pb::load('css', 'panelbar.css'),
+        tools::load('css', 'panelbar.css'),
       ),
       'js'  => array(
         'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        pb::load('js', 'panelbar.min.js'),
+        tools::load('js', 'panelbar.min.js'),
       ),
     ));
 
     // JS: Responsive
     if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', pb::load('js', 'components' . DS . 'responsive.min.js'));
+      $this->setHook('js', tools::load('js', 'components' . DS . 'responsive.min.js'));
     }
 
     // JS: State - localStorage
     if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
+      $this->setHook('js', tools::load('js', 'components' . DS . 'localstorage.min.js'));
     }
   }
 
@@ -69,10 +67,10 @@ class Assets extends Hooks {
 
   protected function fontPaths($css) {
     $fonts = array(
-      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2', false)),
-      array('{{SSP400}}',    pb::font('sourcesanspro-400.woff')),
-      array('{{SSP600}}',    pb::font('sourcesanspro-600.woff')),
-      array('{{SSPitalic}}', pb::font('sourcesanspro-400-italic.woff')),
+      array('{{FA}}',        tools::font('fontawesome-webfont.woff?v=4.2', false)),
+      array('{{SSP400}}',    tools::font('sourcesanspro-400.woff')),
+      array('{{SSP600}}',    tools::font('sourcesanspro-600.woff')),
+      array('{{SSPitalic}}', tools::font('sourcesanspro-400-italic.woff')),
     );
     foreach($fonts as $font) {
       $css = str_ireplace($font[0], $font[1], $css);

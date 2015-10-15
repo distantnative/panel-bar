@@ -6,7 +6,7 @@ use A;
 use Tpl;
 use Panel;
 
-class PB {
+class Tools {
 
   /**
    *  LOAD
@@ -39,7 +39,12 @@ class PB {
    *  PANEL 'API'
    */
 
-  public static function url($action, $obj = null) {
+  public static function url($action = false, $obj = '/') {
+
+    return site()->url() . '/panel/' . purl($obj, $action);
+
+    /*
+
     if(is_null($obj)) {
       $url = $action;
     }
@@ -76,6 +81,7 @@ class PB {
     }
 
     return site()->url() . '/panel/' . $url;
+    */
   }
 
 

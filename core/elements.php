@@ -4,9 +4,6 @@ namespace PanelBar;
 
 use C;
 
-use PanelBar\PB;
-use PanelBar\Build;
-
 class Elements {
 
   public $site;
@@ -35,7 +32,7 @@ class Elements {
     return Build::link(array(
       'id'      => __FUNCTION__,
       'icon'    => 'cogs',
-      'url'     => pb::url(''),
+      'url'     => tools::url(''),
       'label'   => '<span class="in-compact">Go to </span>Panel',
       'title'   => 'Alt + P',
       'compact' => true,
@@ -44,7 +41,7 @@ class Elements {
 
   public function index() {
     // register assets
-    $this->assets->setHook('css', pb::load('css', 'elements/index.css'));
+    $this->assets->setHook('css', tools::load('css', 'elements/index.css'));
 
     // prepare output
     $items = array();
@@ -53,7 +50,7 @@ class Elements {
 
     foreach($index as $page) {
       array_push($items, array(
-        'label' => pb::load('html', 'elements/index/label.php', array(
+        'label' => tools::load('html', 'elements/index/label.php', array(
           'title'   => $page->title(),
           'num'     => $page->num(),
           'depth'   => $page->depth() - 1,
@@ -88,11 +85,11 @@ class Elements {
       'label'  => 'Add',
       'items'  => array(
         'child' => array(
-          'url'   => pb::url('add', $this->page),
+          'url'   => tools::url('add', $this->page),
           'label' => 'Child',
         ),
         'sibling' => array(
-          'url'   => pb::url('add', $this->page->parent()),
+          'url'   => tools::url('add', $this->page->parent()),
           'label' => 'Sibling',
         ),
       ),
@@ -110,7 +107,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'pencil',
-      'url'    => pb::url('show', $this->page),
+      'url'    => tools::url('show', $this->page),
       'label'  => 'Edit',
       'title'  => 'Alt + E',
     ));
@@ -123,11 +120,11 @@ class Elements {
 
   public function toggle() {
     // register assets
-    $this->assets->setHook('css', pb::load('css', 'elements/toggle.css'));
+    $this->assets->setHook('css', tools::load('css', 'elements/toggle.css'));
 
-    if(!pb::version("2.2.0")) {
+    if(!tools::version("2.2.0")) {
       $js = 'currentURI="'.$this->page->uri().'";siteURL="'.$this->site->url().'";';
-      $this->assets->setHook('js',  pb::load('js', 'elements/toggle.min.js'));
+      $this->assets->setHook('js',  tools::load('js', 'elements/toggle.min.js'));
       $this->assets->setHook('js',  $js);
     } else {
       $this->_registerIframe();
@@ -135,18 +132,18 @@ class Elements {
     }
 
 
-    if($this->page->isInvisible() and !pb::version("2.2.0")) {
+    if($this->page->isInvisible() and !tools::version("2.2.0")) {
       // prepare output
       $siblings = array();
       array_push($siblings, array(
-        'url'   => pb::url('toggle', $this->page),
+        'url'   => tools::url('toggle', $this->page),
         'label' => '&rarr;<span class="gap"></span>&larr;',
         'title' => 'Publish page at this position'
       ));
       foreach ($this->page->siblings()->visible() as $sibling) {
         array_push($siblings, array('label' => $sibling->title()));
         array_push($siblings, array(
-          'url'   => pb::url('toggle', $this->page),
+          'url'   => tools::url('toggle', $this->page),
           'label' => '&rarr;<span class="gap"></span>&larr;',
           'title' => 'Publish page at this position'
         ));
@@ -164,7 +161,7 @@ class Elements {
         'id'     => __FUNCTION__,
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
         'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
-        'url'    => pb::url('toggle', $this->page),
+        'url'    => tools::url('toggle', $this->page),
       ));
     }
   }
@@ -188,7 +185,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $files,
         'count'  => $count,
-        'all'    => pb::url('index', $this->page->files()->first()),
+        'all'    => tools::url('index', $this->page->files()->first()),
       ));
     }
   }
@@ -214,7 +211,7 @@ class Elements {
         'icon'   => 'th-list',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $files,
-        'all'    => pb::url('index', $this->page->files()->first()),
+        'all'    => tools::url('index', $this->page->files()->first()),
       ));
     }
   }
@@ -280,7 +277,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'user',
-      'url'    => pb::url('edit', $this->site->user()),
+      'url'    => tools::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
       'float'  => 'right',
     ));
@@ -295,7 +292,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'power-off',
-      'url'    => pb::url('logout'),
+      'url'    => tools::url('logout'),
       'label'  => 'Logout',
       'float'  => 'right',
     ));
@@ -310,11 +307,11 @@ class Elements {
   private function _registerIframe() {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
-      $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-      $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+      $this->assets->setHook('js',  tools::load('js',  'components/iframe.min.js'));
+      $this->assets->setHook('css', tools::load('css', 'components/iframe.css'));
       // register output
-      $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-      $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+      $this->output->setHook('before',   tools::load('html', 'iframe/iframe.php'));
+      $this->output->setHook('elements', tools::load('html', 'iframe/btn.php'));
     }
   }
 
@@ -334,7 +331,7 @@ class Elements {
       foreach($files as $file) {
         $args = array(
           'type'      => $file->type(),
-          'url'       => pb::url('show', $file),
+          'url'       => tools::url('show', $file),
           'label'     => $file->name(),
           'extension' => $file->extension(),
           'size'      => $file->niceSize(),

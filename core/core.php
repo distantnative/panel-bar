@@ -2,20 +2,15 @@
 
 namespace PanelBar;
 
-require_once 'toolkit.php';
-require_once 'hooks.php';
-require_once 'build.php';
-require_once 'elements.php';
-require_once 'output.php';
-require_once 'assets.php';
+require_once('toolkit.php');
+require_once('hooks.php');
+require_once('build.php');
+require_once('elements.php');
+require_once('output.php');
+require_once('assets.php');
 
 use A;
 use C;
-
-use PanelBar\PB;
-use PanelBar\Elements;
-use PanelBar\Output;
-use PanelBar\Assets;
 
 class Core extends Build {
 

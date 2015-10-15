@@ -4,8 +4,6 @@ namespace PanelBar;
 
 use C;
 
-use PanelBar\PB;
-
 class Output extends Hooks {
 
   public $before;
@@ -27,7 +25,7 @@ class Output extends Hooks {
 
 
   public function get() {
-    return pb::load('html', 'main.php', array(
+    return tools::load('html', 'main.php', array(
       'class'    => 'panelbar panelbar--' . $this->position .
                     ($this->visible === false ? ' panelbar--hidden' : ''),
       'before'   => $this->getHooks('before'),

@@ -21,21 +21,21 @@ class Build {
   public static function link($args) {
     return array(
       'element' => self::_element('panelbar-btn', null, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/btn.css')),
+      'assets'  => array('css' => tools::load('css', 'elements/btn.css')),
     );
   }
 
   public static function dropdown($args) {
-    $drop = pb::load('html', 'elements/drop.php' , array('items' =>$args['items']));
+    $drop = tools::load('html', 'elements/drop.php' , array('items' =>$args['items']));
 
     return array(
       'element' => self::_element('panelbar-drop', $drop, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/drop.css')),
+      'assets'  => array('css' => tools::load('css', 'elements/drop.css')),
     );
   }
 
   public static function fileviewer($args) {
-    $grid = pb::load('html', 'elements/fileviewer.php', array(
+    $grid = tools::load('html', 'elements/fileviewer.php', array(
       'items'   => $args['items'],
       'count'   => $args['count'],
       'all'     => array(
@@ -46,12 +46,12 @@ class Build {
 
     return array(
       'element' => self::_element('panelbar-fileviewer', $grid, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/fileviewer.css')),
+      'assets'  => array('css' => tools::load('css', 'elements/fileviewer.css')),
     );
   }
 
   public static function filelist($args) {
-    $list = pb::load('html', 'elements/filelist.php', array(
+    $list = tools::load('html', 'elements/filelist.php', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -61,19 +61,19 @@ class Build {
 
     return array(
       'element' => self::_element('panelbar-filelist', $list, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/filelist.css')),
+      'assets'  => array('css' => tools::load('css', 'elements/filelist.css')),
     );
   }
 
   public static function box($args) {
-    $box = pb::load('html', 'elements/box.php', array(
+    $box = tools::load('html', 'elements/box.php', array(
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
 
     return array(
       'element' => self::_element('panelbar-box', $box, $args),
-      'assets'  => array('css' => pb::load('css', 'elements/box.css')),
+      'assets'  => array('css' => tools::load('css', 'elements/box.css')),
     );
   }
 
@@ -87,7 +87,7 @@ class Build {
       $content = isset($args['content']) ? $args['content'] : '';
     }
 
-    return pb::load('html', 'elements/base.php', array(
+    return tools::load('html', 'elements/base.php', array(
       'class'   => self::_class($class, $args),
       'id'      => isset($args['id'])      ? $args['id']      : '',
       'title'   => isset($args['title'])   ? $args['title']   : '',
