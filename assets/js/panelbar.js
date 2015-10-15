@@ -158,7 +158,7 @@ var Panelbar = function() {
       self.map      = [];
       location.href = self.panelbar.querySelector('.panelbar--panel a').href;
 
-    } else if(self.map[18] && self.map[69]) {                 // alt + E
+    } else if(self.map[18] && self.map[77]) {                 // alt + M
       if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === true) {
         panelbarIframe.returnBtn.click();
       } else {
