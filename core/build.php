@@ -94,7 +94,7 @@ class Build {
       'icon'    => isset($args['icon'])    ? $args['icon']    : false,
       'label'   => isset($args['label'])   ? $args['label']   : false,
       'mobile'  => isset($args['mobile'])  ? $args['mobile']  : 'icon',
-      'compact' => isset($args['compact']) ? $args['compact'] : true,
+      'compact' => isset($args['compact']) ? $args['compact'] : false,
       'url'     => isset($args['url'])     ? $args['url']     : false,
       'content' => $content,
     ));

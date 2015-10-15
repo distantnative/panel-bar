@@ -10,22 +10,21 @@
   @include dropdownArrow;
 
   &__grid {
-    @include      dropdown;
-    display:      none;
-    min-width:    100%;
-    max-height:   85vh;
-    max-height:   calc(100vh - 70px);
-    @include      gridResponsive();
+    visibility:   hidden;
 
     padding:      .5em;
-    overflow-y:   auto;
     white-space:  normal;
     cursor:       default;
 
-    .panelbar-fileviewer:hover & { display: block; }
-
-    .panelbar--top    & { top: 100%; }
+    .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
+
+    @include      dropdown;
+    @include      gridResponsive();
+
+    .panelbar-fileviewer:hover & { visibility: visible; }
+
+
   }
 
   &__item {
@@ -69,7 +68,7 @@
     @include    absoluteFill();
     display:    none;
     background: #8dae28;
-    opacity:    .6;
+    opacity:    .7;
 
     .panelbar-fileviewer__item:hover & { display: block; }
   }

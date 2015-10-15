@@ -27,6 +27,7 @@ var Panelbar = function() {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
       self.responsive();
+      self.overlap();
 
       if (panelbarKEYS === true) {
         document.addEventListener('keydown', self.keys);
@@ -92,6 +93,26 @@ var Panelbar = function() {
    *  RESPONSIVENESS
    */
 
+  this.overlap = function() {
+    setTimeout(self.fixOverlap, 250);
+    window.addEventListener('resize', self.fixOverlap);
+  };
+
+  this.fixOverlap = function() {
+    var drops = panelbar.panelbar.querySelectorAll('.js-overlap');
+    var i;
+    for(i = 0; i < drops.length; i++) {
+      removeClass(drops[i], 'panelbar-element--overlapLeft');
+      removeClass(drops[i], 'panelbar-element--overlapRight');
+      var position = drops[i].getBoundingClientRect();
+      if(position.left < 0) {
+        addClass(drops[i], 'panelbar-element--overlapLeft');
+      } else if (position.right < 0) {
+        addClass(drops[i], 'panelbar-element--overlapRight');
+      }
+    }
+  };
+
   this.responsive = function() {
     setTimeout(self.setupResponsive, 100);
     setTimeout(self.setupResponsive, 250);
@@ -140,9 +161,6 @@ var Panelbar = function() {
   this.keys = function(e) {
     e = e || event;
     self.map[e.keyCode] = e.type === 'keydown';
-
-    console.log(self.map);
-
 
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();

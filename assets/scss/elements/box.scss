@@ -9,19 +9,19 @@
   @include dropdownArrow;
 
   &__content{
-    @include    dropdown;
-    display:    none;
-    min-width:  100%;
-    padding:    .75em 1.5em;
-    color:      #000;
+    visibility:   hidden;
+    padding:      .75em 1.5em;
+    color:        #000;
 
     .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
 
+    @include      dropdown;
+
     > a       { color: #000; }
     > a:hover { color: #777; }
 
-    .panelbar-box:hover & { display: block; }
+    .panelbar-box:hover & { visibility: visible; }
   }
 }
 

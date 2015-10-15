@@ -1,4 +1,4 @@
-<div class="panelbar-filelist__list">
+<div class="panelbar-filelist__list js-overlap">
 
   <?php foreach($items as $item) : ?>
       <a href="<?php echo $item['url'] ?>" class="panelbar-filelist__item panelbar-filelist__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'].'.'.$item['extension'] ?>">

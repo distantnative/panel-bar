@@ -1,4 +1,4 @@
-<div class="panelbar-drop__list">
+<div class="panelbar-drop__list js-overlap">
   <?php foreach($items as $item) : ?>
 
     <?php if(isset($item['url'])) : ?>

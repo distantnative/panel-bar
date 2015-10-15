@@ -9,30 +9,20 @@
   @include dropdownArrow;
 
   &__list {
-    @include      dropdown;
-    display:      none;
-    min-width:    100%;
+    visibility:   hidden;
     max-width:    340px;
-    max-height:   85vh;
-    max-height:   calc(100vh - 70px);
-    overflow-y:   auto;
     text-align:   center;
 
     .panelbar--top    & { top: 100%; }
     .panelbar--bottom & { bottom: 100%; }
 
-    @media (max-width: 550px) {
-      position:   fixed;
-      min-width:  95vw;
+    @include      dropdown;
 
-      .panelbar--top    & { top:    48px !important;}
-      .panelbar--bottom & { bottom: 48px !important; }
-    }
 
     > a       { color: #000; }
     > a:hover { color: #777; }
 
-    .panelbar-filelist:hover & { display: block; }
+    .panelbar-filelist:hover & { visibility: visible; }
   }
 
   &__item {
@@ -71,7 +61,7 @@
     background-position:  50% 50%;
     background-repeat:    no-repeat;
 
-    .panelbar-filelist__item:hover & { opacity: .45; }
+    .panelbar-filelist__item:hover & { opacity: .5; }
   }
 
   &__item > span {
