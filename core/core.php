@@ -2,7 +2,7 @@
 
 namespace PanelBar;
 
-require_once('toolkit.php');
+require_once('tools.php');
 require_once('hooks.php');
 require_once('build.php');
 require_once('elements.php');
@@ -83,7 +83,7 @@ class Core extends Build {
   }
 
   protected function _controls() {
-    $this->output->setHook('after', pb::load('html', 'controls.php'));
+    $this->output->setHook('after', tools::load('html', 'controls.php'));
   }
 
   protected function _assets() {

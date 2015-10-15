@@ -39,12 +39,7 @@ class Tools {
    *  PANEL 'API'
    */
 
-  public static function url($action = false, $obj = '/') {
-
-    return site()->url() . '/panel/' . purl($obj, $action);
-
-    /*
-
+  public static function url($action, $obj = null) {
     if(is_null($obj)) {
       $url = $action;
     }
@@ -81,7 +76,6 @@ class Tools {
     }
 
     return site()->url() . '/panel/' . $url;
-    */
   }
 
 
