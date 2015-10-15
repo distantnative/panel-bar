@@ -89,7 +89,7 @@ Name        | Description
 
 
 ### Default Set of Elements <a id="DefaultSet"></a>
-The pre-defined default set of elements consists of `panel`, `add`, `edit`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
+The pre-defined default set of elements consists of `panel`, `add`, `edit`, `toggle`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
 
 &nbsp;  
 

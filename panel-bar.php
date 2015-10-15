@@ -10,6 +10,7 @@ class PanelBar extends Core {
     'panel',
     'add',
     'edit',
+    'toggle',
     'files',
     'logout',
     'user'
