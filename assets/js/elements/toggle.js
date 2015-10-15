@@ -1,5 +1,5 @@
 
-var PanelbarToggle = function(element) {
+var PanelBarToggle = function(element) {
 
   var self = this;
 
@@ -11,19 +11,22 @@ var PanelbarToggle = function(element) {
 
 
   this.init = function() {
-    self.button.addEventListener('click', self.click);
-    var i;
-    for (i = 0; i < self.droplinks.length; i++) {
-      self.droplinks[i].setAttribute('data-num' , (i + 1));
-      self.droplinks[i].addEventListener('click', function(e){
-        self.click(e);
-      });
+    if(self.status == 'hide') {
+      self.button.addEventListener('click', self.click);
+    } else {
+      self.button.style.cursor = 'default';
+      var i;
+      for (i = 0; i < self.droplinks.length; i++) {
+        self.droplinks[i].setAttribute('data-num' , (i + 1));
+        self.droplinks[i].addEventListener('click', function(e){
+          self.click(e);
+        });
+      }
     }
   };
 
   this.click = function(e) {
     e.preventDefault();
-    self.request(e.target.getAttribute('data-num'));
 
     if(self.status === 'sort') {
       removeClass(self.icon, 'fa-toggle-off');
@@ -34,6 +37,8 @@ var PanelbarToggle = function(element) {
       addClass(self.icon, 'fa-toggle-off');
       self.text.innerHTML = "Invisible";
     }
+
+    self.request(e.target.getAttribute('data-num'));
   };
 
   this.request = function(num) {
@@ -47,11 +52,10 @@ var PanelbarToggle = function(element) {
     request.send('to=' + num);
   };
 
+  this.init();
 };
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var toggle   = document.querySelector(".panelbar--toggle");
-  var toggleJS = new PanelbarToggle(toggle);
-  toggleJS.init();
+  var pbToggle = new PanelBarToggle(document.querySelector(".panelbar--toggle"));
 }

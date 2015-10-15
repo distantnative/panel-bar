@@ -1,25 +1,25 @@
 
-var PanelbarIframe = function() {
+var PanelBarIframe = function(elements) {
 
   var self = this;
 
   this.active     = false;
   this.link       = null;
   this.href       = null;
-  this.wrapper    = panelbar.wrapper.querySelector(".panelbar-iframe__iframe");
+  this.wrapper    = PanelBar.wrapper.querySelector(".panelbar-iframe__iframe");
   this.iframe     = this.wrapper.children[1];
   this.loading    = this.wrapper.children[0];
-  this.buttons    = panelbar.panelbar.querySelector(".panelbar-iframe__btns");
+  this.buttons    = PanelBar.bar.querySelector(".panelbar-iframe__btns");
   this.returnBtn  = this.buttons.children[0];
   this.refreshBtn = this.buttons.children[1];
-  this.elements   = panelbar.wrapper.querySelectorAll('.panelbar__bar > div');
+  this.elements   = PanelBar.wrapper.querySelectorAll('.panelbar__bar > div');
   this.position   = null;
   this.supported  = true;
 
 
   this.init = function(elements) {
     self.support();
-    var iframelinks = panelbar.panelbar.querySelectorAll(elements.join());
+    var iframelinks = PanelBar.bar.querySelectorAll(elements.join());
     var i;
     for(i = 0; i < iframelinks.length; i++) {
       iframelinks[i].addEventListener('click', function(e) {
@@ -54,7 +54,7 @@ var PanelbarIframe = function() {
   this.activate = function(link) {
     self.link     = link;
     self.href     = self.link.href;
-    self.position = panelbar.position;
+    self.position = PanelBar.position;
     self.active   = true;
 
     self.load();
@@ -88,7 +88,7 @@ var PanelbarIframe = function() {
     self.buttons.style.display   = 'inline-block';
     self.wrapper.style.display   = 'block';
     document.body.style.overflow = 'hidden';
-    addClass(panelbar.wrapper, 'panelbar--iframe');
+    addClass(PanelBar.wrapper, 'panelbar--iframe');
 
     self.loading.innerHTML   = 'Loading…';
     setTimeout(function() {
@@ -103,7 +103,7 @@ var PanelbarIframe = function() {
     self.buttons.style.display   = 'none';
     self.wrapper.style.display   = 'none';
     document.body.style.overflow = 'auto';
-    removeClass(panelbar.wrapper, 'panelbar--iframe');
+    removeClass(PanelBar.wrapper, 'panelbar--iframe');
     self.loading.innerHTML       = '';
 
     self.returnBtn.removeEventListener('click', self.deactivate);
@@ -113,14 +113,14 @@ var PanelbarIframe = function() {
 
   this.clearPanelbar = function() {
     self._elements('none');
-    panelbar.posBtn.style.display = 'none';
-    panelbar.visBtn.addEventListener('click', self.redirectClose);
+    PanelBar.posBtn.style.display = 'none';
+    PanelBar.visBtn.addEventListener('click', self.redirectClose);
   };
 
   this.restorePanelbar = function() {
     self._elements('inline-block');
-    panelbar.posBtn.style.display = '';
-    panelbar.visBtn.removeEventListener('click', self.redirectClose);
+    PanelBar.posBtn.style.display = '';
+    PanelBar.visBtn.removeEventListener('click', self.redirectClose);
   };
 
   this._elements = function(display) {
@@ -132,18 +132,20 @@ var PanelbarIframe = function() {
 
   this.redirectClose = function() {
     location.href = self.iframe.src;
-    panelbar.show();
+    PanelBar.show();
   };
 
   this.clearPosition = function() {
-    panelbar.top();
+    PanelBar.top();
   };
 
   this.restorePosition = function() {
     if(self.position === 'bottom') {
-      panelbar.bottom();
+      PanelBar.bottom();
     }
   };
+
+  this.init(elements);
 };
 
 
@@ -156,6 +158,5 @@ if ('querySelector' in document && 'addEventListener' in window) {
                   '.panelbar-fileviewer__more',
                   '.panelbar-filelist__item',
                   '.panelbar-filelist__more',];
-  var panelbarIframe = new PanelbarIframe();
-  panelbarIframe.init(elements);
+  var pbIframe = new PanelBarIframe(elements);
 }

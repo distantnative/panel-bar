@@ -6,14 +6,10 @@ use C;
 
 class Assets extends Hooks {
 
-  public $css;
-  public $js;
-
+  public $css = array();
+  public $js  = array();
 
   public function __construct($external) {
-    $this->css   = array();
-    $this->js    = array();
-
     $this->defaults();
     $this->setHooks($external);
   }
@@ -43,19 +39,19 @@ class Assets extends Hooks {
         tools::load('css', 'panelbar.css'),
       ),
       'js'  => array(
-        'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
+        'var PanelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
         tools::load('js', 'panelbar.min.js'),
       ),
     ));
 
     // JS: Responsive
     if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', tools::load('js', 'components' . DS . 'responsive.min.js'));
+      $this->setHook('js', tools::load('js', 'components/responsive.min.js'));
     }
 
     // JS: State - localStorage
     if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', tools::load('js', 'components' . DS . 'localstorage.min.js'));
+      $this->setHook('js', tools::load('js', 'components/localstorage.min.js'));
     }
   }
 

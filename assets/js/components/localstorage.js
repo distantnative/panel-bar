@@ -1,5 +1,5 @@
 
-var PanelbarState = function() {
+var PanelBarState = function() {
 
   var self = this;
 
@@ -13,14 +13,14 @@ var PanelbarState = function() {
         self.restore();
       }
       self.save();
-      panelbar.controls.addEventListener('click', self.save);
+      PanelBar.controls.addEventListener('click', self.save);
     }
   };
 
   this.save = function() {
     localStorage.setItem('panelbar.expires',  Date.now() + self.validTime);
-    localStorage.setItem('panelbar.position', panelbar.position);
-    localStorage.setItem('panelbar.visible',  panelbar.visible);
+    localStorage.setItem('panelbar.position', PanelBar.position);
+    localStorage.setItem('panelbar.visible',  PanelBar.visible);
   };
 
   this.restore = function() {
@@ -36,17 +36,17 @@ var PanelbarState = function() {
 
   this.setPosition = function() {
     if(localStorage.getItem('panelbar.position') === 'top') {
-      panelbar.top();
+      PanelBar.top();
     } else {
-      panelbar.bottom();
+      PanelBar.bottom();
     }
   };
 
   this.setVisibility = function() {
     if(localStorage.getItem('panelbar.visible') === 'true') {
-      panelbar.show();
+      PanelBar.show();
     } else {
-      panelbar.hide();
+      PanelBar.hide();
     }
   };
 
@@ -69,8 +69,8 @@ var PanelbarState = function() {
     }
   };
 
+  this.init();
 };
 
 
-var pbState = new PanelbarState();
-pbState.init();
+var pbState = new PanelBarState();

@@ -4,7 +4,7 @@
 [![Moral License](https://img.shields.io/badge/buy-moral_license-8dae28.svg)](https://gumroad.com/l/kirby-panelbar)
 
 
-This plugin enables you to include a panel bar on top of your site which gives you direct access to some administrative functions. The panel bar will only be visible to logged in users who are eligible to access the panel.
+This plugin enables you to include a PanelBar on top of your site which gives you direct access to [some administrative functions](#StandardElements). The PanelBar will only be visible to logged in users who are eligible to access the panel.
 
 *Requires PHP 5.3+ and Kirby 2.1 or higher*
 
@@ -389,7 +389,7 @@ c::set('panelbar.keys', false);
 &nbsp;  
 
 # Known Problems <a id="Problems"></a>
-** X-Frame-Options **  
+**X-Frame-Options**  
 If you have set the `X-Frame-Options` in your `.htaccess` to `DENY`, PanelBar will not be able to display the panel in its embedded iFrame mode. PanelBar tries to detect this barrier and then switch to plain links.
 
 &nbsp;  

@@ -1,11 +1,11 @@
 
-var PanelbarResponsive = function() {
+var PanelBarResponsive = function() {
 
   var self = this;
 
-  this.wrapper  = panelbar.wrapper;
-  this.panelbar = panelbar.panelbar;
-  this.controls = panelbar.controls;
+  this.wrapper  = PanelBar.wrapper;
+  this.bar      = PanelBar.bar;
+  this.controls = PanelBar.controls;
   this.resize   = null;
   this.mobile   = null;
   this.desktop  = null;
@@ -53,8 +53,8 @@ var PanelbarResponsive = function() {
   this.width = function() {
     var width    = self.controls.offsetWidth + 40;
     var i;
-    for (i = 0; i < self.panelbar.children.length; i++) {
-      width = width + self.panelbar.children[i].offsetWidth;
+    for (i = 0; i < self.bar.children.length; i++) {
+      width = width + self.bar.children[i].offsetWidth;
     }
     return width;
   };
@@ -62,7 +62,7 @@ var PanelbarResponsive = function() {
 
   // OVERLAP
   this.overlap = function() {
-    var drops = panelbar.panelbar.querySelectorAll('.js-overlap');
+    var drops = self.bar.querySelectorAll('.js-overlap');
     var i;
     for(i = 0; i < drops.length; i++) {
       removeClass(drops[i], 'panelbar-element--overlapLeft');
@@ -76,10 +76,11 @@ var PanelbarResponsive = function() {
       }
     }
   };
+
+  this.init();
 }
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var panelbarResponsive = new PanelbarResponsive();
-  panelbarResponsive.init();
+  var pbResponsive = new PanelBarResponsive();
 }

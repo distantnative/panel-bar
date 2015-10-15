@@ -14,9 +14,10 @@ class Build {
 
   public static function label($args) {
     return array(
-      'element' => self::_element('panelbar-label', null, $args)
+      'element' => self::_element('panelbar-label', null, $args),
     );
   }
+
 
   public static function link($args) {
     return array(
@@ -25,14 +26,15 @@ class Build {
     );
   }
 
-  public static function dropdown($args) {
-    $drop = tools::load('html', 'elements/drop.php' , array('items' =>$args['items']));
 
+  public static function dropdown($args) {
+    $drop = tools::load('html', 'elements/drop.php', array('items' =>$args['items']));
     return array(
       'element' => self::_element('panelbar-drop', $drop, $args),
       'assets'  => array('css' => tools::load('css', 'elements/drop.css')),
     );
   }
+
 
   public static function fileviewer($args) {
     $grid = tools::load('html', 'elements/fileviewer.php', array(
@@ -43,12 +45,12 @@ class Build {
         'url'   => $args['all'],
       ),
     ));
-
     return array(
       'element' => self::_element('panelbar-fileviewer', $grid, $args),
       'assets'  => array('css' => tools::load('css', 'elements/fileviewer.css')),
     );
   }
+
 
   public static function filelist($args) {
     $list = tools::load('html', 'elements/filelist.php', array(
@@ -58,19 +60,18 @@ class Build {
         'url'   => $args['all'],
       ),
     ));
-
     return array(
       'element' => self::_element('panelbar-filelist', $list, $args),
       'assets'  => array('css' => tools::load('css', 'elements/filelist.css')),
     );
   }
 
+
   public static function box($args) {
     $box = tools::load('html', 'elements/box.php', array(
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
-
     return array(
       'element' => self::_element('panelbar-box', $box, $args),
       'assets'  => array('css' => tools::load('css', 'elements/box.css')),
@@ -78,15 +79,16 @@ class Build {
   }
 
 
+
+
   /**
    *  HELPER METHODS
    */
 
-  protected static function _element($class = null, $content = null, $args = array()) {
+  public static function _element($class = null, $content = null, $args = array()) {
     if(is_null($content)) {
       $content = isset($args['content']) ? $args['content'] : '';
     }
-
     return tools::load('html', 'elements/base.php', array(
       'class'   => self::_class($class, $args),
       'id'      => isset($args['id'])      ? $args['id']      : '',
@@ -100,6 +102,7 @@ class Build {
     ));
   }
 
+
   protected static function _class($class, $args) {
     if(isset($args['class'])) {
       $class .= ' ' . $args['class'];
@@ -109,6 +112,7 @@ class Build {
     }
     return $class;
   }
+
 
   protected static function _style($args) {
     $style = '';

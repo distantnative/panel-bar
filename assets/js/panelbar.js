@@ -1,16 +1,16 @@
 
 // @codekit-prepend "helpers/_classes.js";
 
-var Panelbar = function() {
+var PanelBar = function() {
 
   var self = this;
 
   this.wrapper  = document.getElementById('panelbar');
-  this.panelbar = document.getElementById('panelbar_bar');
+  this.bar      = document.getElementById('panelbar_bar');
   this.controls = document.getElementById('panelbar_controls');
   this.posBtn   = this.controls.children[0];
   this.visBtn   = this.controls.children[1];
-  this.visible  = !hasClass(this.panelbar, 'panelbar__bar--hidden');
+  this.visible  = !hasClass(this.bar, 'panelbar__bar--hidden');
   this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
   this.map      = [];
 
@@ -25,15 +25,15 @@ var Panelbar = function() {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
 
-      if (panelbarKEYS === true) {
+      if (PanelBarKEYS === true) {
         document.addEventListener('keydown', self.keys);
         document.addEventListener('keyup',   self.keys);
       }
 
     } else {
       self.controls.remove();
-      self.panelbar.style.paddingRight = 0;
-      self.panelbar.classList.remove("panelbar--hidden");
+      self.bar.style.paddingRight = 0;
+      self.bar.classList.remove("panelbar--hidden");
     }
   };
 
@@ -108,17 +108,17 @@ var Panelbar = function() {
 
     } else if(self.map[18] && self.map[80]) {                 // alt + P
       self.map      = [];
-      location.href = self.panelbar.querySelector('.panelbar--panel a').href;
+      location.href = self.bar.querySelector('.panelbar--panel a').href;
 
     } else if(self.map[18] && self.map[77]) {                 // alt + M
-      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === false) {
-        self.panelbar.querySelector('.panelbar--edit a').click();
+      if(typeof pbIframe !== 'undefined' && pbIframe.active === false) {
+        self.bar.querySelector('.panelbar--edit a').click();
       }
     }
   };
+
+  this.init();
 };
 
 
-
-var panelbar = new Panelbar();
-panelbar.init();
+var PanelBar = new PanelBar();
