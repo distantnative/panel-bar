@@ -7,23 +7,48 @@ var PanelbarIframe = function() {
   this.link       = null;
   this.href       = null;
   this.wrapper    = panelbar.wrapper.querySelector(".panelbar-iframe__iframe");
-  this.iframe     = this.wrapper.children[0];
+  this.iframe     = this.wrapper.children[1];
+  this.loading    = this.wrapper.children[0];
   this.buttons    = panelbar.panelbar.querySelector(".panelbar-iframe__btns");
   this.returnBtn  = this.buttons.children[0];
   this.refreshBtn = this.buttons.children[1];
   this.elements   = panelbar.wrapper.querySelectorAll('.panelbar__bar > div');
   this.position   = null;
+  this.supported  = true;
 
 
   this.init = function(elements) {
+    self.support();
     var iframelinks = panelbar.panelbar.querySelectorAll(elements.join());
     var i;
     for(i = 0; i < iframelinks.length; i++) {
       iframelinks[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        self.activate(this);
+        if(self.supported) {
+          e.preventDefault();
+          self.activate(this);
+        }
       });
     }
+  };
+
+  this.support = function() {
+    var testFrame = document.createElement('iframe');
+    testFrame.style.display = 'none';
+    testFrame.id            = 'PanelBarJStestFrame'
+    testFrame.src           = siteURL + '/panel/';
+    document.body.appendChild(testFrame);
+    testFrame.addEventListener("load", function() {
+      document.body.removeChild(testFrame);
+    });
+
+    setTimeout(function() {
+      var testFrame = document.getElementById('PanelBarJStestFrame');
+      if(testFrame === null) {
+        self.supported = true;
+      } else {
+        self.supported = false;
+      }
+    }, 2500);
   };
 
   this.activate = function(link) {
@@ -65,6 +90,11 @@ var PanelbarIframe = function() {
     document.body.style.overflow = 'hidden';
     addClass(panelbar.wrapper, 'panelbar--iframe');
 
+    self.loading.innerHTML   = 'Loading…';
+    setTimeout(function() {
+      self.loading.innerHTML = 'Seems like something is blocking access to the panel inside an iframe.';
+    }, 3000);
+
     self.returnBtn.addEventListener('click', self.deactivate);
     self.refreshBtn.addEventListener('click', self.refresh);
   };
@@ -74,6 +104,7 @@ var PanelbarIframe = function() {
     self.wrapper.style.display   = 'none';
     document.body.style.overflow = 'auto';
     removeClass(panelbar.wrapper, 'panelbar--iframe');
+    self.loading.innerHTML       = '';
 
     self.returnBtn.removeEventListener('click', self.deactivate);
     self.refreshBtn.removeEventListener('click', self.refresh);

@@ -39,8 +39,9 @@ This plugin enables you to include a panel bar on top of your site which gives y
   3. [Remember State](#OptionState)
   4. [Enhanced JS](#OptionEnhancedJS)
   5. [Keyboard Shortcuts](#OptionKeyboard)
-5. [Help & Improve](#Help)
-6. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
+6. [Known Problems](#Problems)
+7. [Help & Improve](#Help)
+8. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
 
 &nbsp;  
 
@@ -384,6 +385,12 @@ If you want to deactivate these keyboard shortcuts, you have to include:
 ```php
 c::set('panelbar.keys', false);
 ```
+
+&nbsp;  
+
+# Known Problems <a id="Problems"></a>
+** X-Frame-Options **  
+If you have set the `X-Frame-Options` in your `.htaccess` to `DENY`, PanelBar will not be able to display the panel in its embedded iFrame mode. PanelBar tries to detect this barrier and then switch to plain links.
 
 &nbsp;  
 

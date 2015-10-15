@@ -307,6 +307,7 @@ class Elements {
   private function _registerIframe() {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
+      $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
       $this->assets->setHook('js',  tools::load('js',  'components/iframe.min.js'));
       $this->assets->setHook('css', tools::load('css', 'components/iframe.css'));
       // register output

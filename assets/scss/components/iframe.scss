@@ -19,10 +19,23 @@
     width:      100%;
     height:     100%;
     overflow:   hidden;
+    background: #efefef;
 
     body.rtl & {
       left:  auto;
       right: 0;
+    }
+
+    & > span {
+      position:       absolute;
+      top:            40%;
+      left:           50%;
+      transform:      translate(-50%, -50%);
+      max-width:      350px;
+      font-size:      .95em;
+      line-height:    1.4;
+      text-align:     center;
+      text-transform: uppercase;
     }
 
     & > iframe {
