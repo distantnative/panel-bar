@@ -155,10 +155,11 @@ echo panelbar::show(array('elements' => $elements));
 The panel bar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
 ```php
 panelbar::builder(array(
-  'id'     => 'theID',
-  'icon'   => 'heart',
-  'label'  => 'Just the label',
-  'mobile' => 'label',
+  'id'      => 'theID',             // unique identifier
+  'icon'    => 'heart',             // FontAwesome icon (without fa-)
+  'label'   => 'Just the label',    // text used as label
+  'mobile'  => 'label',             // what's showed in mobile view (default: icon)
+  'compact' => false                // show it in compact view (default: false)
 ));
 ```
 
@@ -177,7 +178,7 @@ The following element builders are available and require additional parameters i
     ```php
     panelbar::link(array(
       …,
-      'url' => site()->url().'/panel',
+      'url' => site()->url().'/panel',  // URL to which the button links
     ));
     ```
 
@@ -186,10 +187,10 @@ The following element builders are available and require additional parameters i
     ```php
     panelbar::dropdown(array(
       …,
-      'items' => array(
+      'items' => array(     // array of dropdown elements
         0 => array(
-          'url'   => …,
-          'label' => …,
+          'label' => …,     // label of the dropdown element
+          'url'   => …,     // URL to which dropdown element links
         ),
         …
        ),
@@ -201,7 +202,7 @@ The following element builders are available and require additional parameters i
     ```php
     panelbar::box(array(
       …,
-      'content' => '<b>Important information</b>',
+      'content' => '<b>Important information</b>', // (HTML) content of the textbox
     ));
     ```
 &nbsp;
