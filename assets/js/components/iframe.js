@@ -113,10 +113,14 @@ var PanelbarIframe = function() {
 
   this.clearPanelbar = function() {
     self._elements('none');
+    panelbar.posBtn.style.display = 'none';
+    panelbar.visBtn.addEventListener('click', self.redirectClose);
   };
 
   this.restorePanelbar = function() {
     self._elements('inline-block');
+    panelbar.posBtn.style.display = '';
+    panelbar.visBtn.removeEventListener('click', self.redirectClose);
   };
 
   this._elements = function(display) {
@@ -124,9 +128,12 @@ var PanelbarIframe = function() {
     for (i = 0; i < self.elements.length; i++) {
       self.elements[i].style.display = display;
     }
-    panelbar.controls.style.display = display;
   };
 
+  this.redirectClose = function() {
+    location.href = self.iframe.src;
+    panelbar.show();
+  };
 
   this.clearPosition = function() {
     panelbar.top();

@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.8
+- Feature: Close button in iFrame mode which redirects to current panel page
+- Improved: iFrame mode detects `X-Frame-Options = DENY` and deativates
+- Internal: Renamed toolkit `pb::` to `tools::`, redundant namespace references removed
+
 ## Version 0.7
 - Feature: Added Filelist and Imagelist standard element 
 - Feature: Added Index standard element
