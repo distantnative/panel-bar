@@ -13,9 +13,7 @@ var Panelbar = function() {
   this.visible  = !hasClass(this.panelbar, 'panelbar__bar--hidden');
   this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
   this.map      = [];
-  this.resize   = null;
-  this.mobile   = null;
-  this.desktop  = null;
+
 
 
   /**
@@ -26,8 +24,6 @@ var Panelbar = function() {
     if ('querySelector' in document && 'addEventListener' in window) {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
-      self.responsive();
-      self.overlap();
 
       if (panelbarKEYS === true) {
         document.addEventListener('keydown', self.keys);
@@ -89,70 +85,6 @@ var Panelbar = function() {
     self.visible = false;
   };
 
-  /**
-   *  RESPONSIVENESS
-   */
-
-  this.overlap = function() {
-    setTimeout(self.fixOverlap, 250);
-    window.addEventListener('resize', self.fixOverlap);
-  };
-
-  this.fixOverlap = function() {
-    var drops = panelbar.panelbar.querySelectorAll('.js-overlap');
-    var i;
-    for(i = 0; i < drops.length; i++) {
-      removeClass(drops[i], 'panelbar-element--overlapLeft');
-      removeClass(drops[i], 'panelbar-element--overlapRight');
-      var position = drops[i].getBoundingClientRect();
-      if(position.left < 0) {
-        addClass(drops[i], 'panelbar-element--overlapLeft');
-      } else if (position.right < 0) {
-        addClass(drops[i], 'panelbar-element--overlapRight');
-      }
-    }
-  };
-
-  this.responsive = function() {
-    setTimeout(self.setupResponsive, 100);
-    setTimeout(self.setupResponsive, 250);
-    window.addEventListener('resize', self.adaptResponsive);
-  };
-
-  this.setupResponsive = function() {
-    self.measureResponsive();
-    self.adaptResponsive();
-  };
-
-  this.measureResponsive = function() {
-    removeClass(self.wrapper, 'panelbar--compact');
-    addClass(self.wrapper, 'panelbar--mobile');
-    self.mobile  = self.widthResponsive();
-    removeClass(self.wrapper, 'panelbar--mobile');
-    self.desktop = self.widthResponsive();
-  };
-
-  this.adaptResponsive = function() {
-    if(self.wrapper.offsetWidth < self.mobile) {
-      addClass(self.wrapper, 'panelbar--compact');
-      addClass(self.wrapper, 'panelbar--mobile');
-    } else if(self.wrapper.offsetWidth < self.desktop) {
-      removeClass(self.wrapper, 'panelbar--compact');
-      addClass(self.wrapper, 'panelbar--mobile');
-    } else {
-      removeClass(self.wrapper, 'panelbar--compact');
-      removeClass(self.wrapper, 'panelbar--mobile');
-    }
-  };
-
-  this.widthResponsive = function() {
-    var width    = self.controls.offsetWidth + 40;
-    var i;
-    for (i = 0; i < self.panelbar.children.length; i++) {
-      width = width + self.panelbar.children[i].offsetWidth;
-    }
-    return width;
-  };
 
   /**
    *  KEYBINDINGS
