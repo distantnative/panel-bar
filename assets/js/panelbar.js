@@ -141,6 +141,8 @@ var Panelbar = function() {
     e = e || event;
     self.map[e.keyCode] = e.type === 'keydown';
 
+    console.log(self.map);
+
 
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();
@@ -159,14 +161,9 @@ var Panelbar = function() {
       location.href = self.panelbar.querySelector('.panelbar--panel a').href;
 
     } else if(self.map[18] && self.map[77]) {                 // alt + M
-      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === true) {
-        panelbarIframe.returnBtn.click();
-      } else {
+      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === false) {
         self.panelbar.querySelector('.panelbar--edit a').click();
       }
-
-    } else if(self.map[18] && self.map[82] && typeof panelbarIframe !== 'undefined' && panelbarIframe.active === true) {                      // alt + R
-      panelbarIframe.refreshBtn.click();
     }
   };
 };
