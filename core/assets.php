@@ -56,7 +56,7 @@ class Assets extends Hooks {
     }
 
     // JS: State - localStorage
-    if(c::get('panelbar.rembember', false)) {
+    if(c::get('panelbar.remember', false)) {
       $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
     }
   }
