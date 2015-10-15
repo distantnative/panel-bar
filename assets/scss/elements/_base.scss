@@ -5,14 +5,15 @@
 
 .panelbar-element {
   display:      inline-block;
+  float:        left;
   color:        #fff;
 
   > a,
   > span {
     display: inline-block;
-    padding: 16px 14px 15px 18px;
+    padding: 16px 14px 16px 18px;
 
-    body.rtl & { padding: 16px 18px 15px 14px; }
+    body.rtl & { padding: 16px 18px 16px 14px; }
   }
 
   border-left: 1px solid #555;
