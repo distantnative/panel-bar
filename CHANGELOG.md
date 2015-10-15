@@ -3,10 +3,14 @@
 ## Version 0.7
 - Feature: Added Filelist and Imagelist standard element 
 - Feature: Added Index standard element
+- Feature: Added Toggle element to default set of elements
+- Feature: Scrollable drop elements (dropdown, textbox, fileviewer etc.)
 - Feature: Lots of improvements for fileviewers (Files and Images standard element)
 - Feature: Added RTL language support ([set up](http://getkirby.com/docs/languages/supporting-RTL-languages) in your theme)
+- Feature: `panelbar.enhancedJS` option to disable element js (default: true)
 - Feature: Better control over responsive display
-- Improved: Mobile responsiveness
+- Improved: Mobile responsiveness (as own JS object)
+- Fixed: `panelbar.remember` option works now (+ default: true)
 - Fixed `::css()` and `::js()` with custom set of elements
 - Fixed: Panel Keyboard Shortcut (Alt + P)
 - Fixed: Lots of small styling fixes
