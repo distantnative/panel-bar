@@ -35,8 +35,10 @@ This plugin enables you to include a panel bar on top of your site which gives y
   6. [Output CSS/JS](#OutputCSSJS)
 5. Options
   1. [Default Position](#OptionPosition)
-  2. [Remember State](#OptionState)
-  3. [Keyboard Shortcuts](#OptionKeyboard)
+  2. [Responsiveness](#OptionResposnive)
+  3. [Remember State](#OptionState)
+  4. [Enhanced JS](#OptionEnhancedJS)
+  5. [Keyboard Shortcuts](#OptionKeyboard)
 5. [Help & Improve](#Help)
 6. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
 
@@ -331,15 +333,29 @@ c::set('panelbar.position', 'bottom');
 ```
 
 
-### Remember State <a id="OptionState"></a>
-The panel bar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. If you want the panel bar to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link), you need to include:
+### Responsivesness <a id="OptionResponsive"></a>
+To deactivate the javascript that makes the PanelBar responsive to mobile devices include:
 ```php
-c::set('panelbar.remember', true);
+c::set('panelbar.responsive', false);
+```
+
+
+### Remember State <a id="OptionState"></a>
+The PanelBar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. But it also tries to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link) via your browser's local storage. If you want to disable this, you need to include:
+```php
+c::set('panelbar.remember', false);
+```
+
+
+### Enhanced Javascript <a id="OptionEnhancedJS"></a>
+By default, the PanelBar comes with some javascript functionalities (e.g. loading the edit mode in an iFrame). If you want to disable these functionalities and just use the PanelBar elements as plain links, you need to include:
+```php
+c::set('panelbar.enhancedJS', false);
 ```
 
 
 ### Keyboard Shortcuts <a id="OptionKeyboard"></a>
-By default the panel bar features a few keyboard shortcuts:  
+By default the PanelBar features a few keyboard shortcuts:  
 
 Keyboard Shortcut    | Effect
 -------------------- | -------------
