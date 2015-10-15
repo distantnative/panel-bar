@@ -152,7 +152,9 @@ if ('querySelector' in document && 'addEventListener' in window) {
                   '.panelbar--edit a',
                   '.panelbar--user a',
                   '.panelbar-fileviewer__item',
-                  '.panelbar-fileviewer__more'];
+                  '.panelbar-fileviewer__more',
+                  '.panelbar-filelist__item',
+                  '.panelbar-filelist__more',];
   var panelbarIframe = new PanelbarIframe();
   panelbarIframe.init(elements);
 }

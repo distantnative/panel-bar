@@ -173,6 +173,7 @@ class Elements {
 
   public function files($type = null, $function = null) {
     if ($files = $this->_files($type)) {
+      $this->_registerIframe();
 
       if    (count($files) > 12)    $count = '12more';
       elseif(count($files) == 2)    $count = 2;
@@ -206,6 +207,8 @@ class Elements {
 
   public function filelist($type = null, $function = null) {
     if ($files = $this->_files($type)) {
+      $this->_registerIframe();
+
       return Build::filelist(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => 'th-list',
