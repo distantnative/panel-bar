@@ -15,14 +15,23 @@
     body.rtl & { padding: 16px 18px 15px 14px; }
   }
 
-  &:not(:first-of-type):not(.panelbar-element--right:last-of-type) {
-    border-left: 1px solid #555;
+  border-left: 1px solid #555;
 
-    body.rtl & {
-      border-left:  none;
-      border-right: 1px solid #555;
-    }
+  body.rtl & {
+    border-left:  none;
+    border-right: 1px solid #555;
   }
+
+  &:first-of-type {
+    border-left:  none;
+    border-right: none;
+  }
+
+  &:last-of-type.panelbar-element--right {
+    border-left:  none;
+    border-right: none;
+  }
+
 
   &--right {
     float: right;
