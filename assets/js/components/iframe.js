@@ -148,7 +148,8 @@ var PanelbarIframe = function() {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var elements = ['.panelbar--add a',
+  var elements = ['.panelbar--panel a',
+                  '.panelbar--add a',
                   '.panelbar--edit a',
                   '.panelbar--user a',
                   '.panelbar-fileviewer__item',
