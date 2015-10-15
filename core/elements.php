@@ -2,6 +2,8 @@
 
 namespace PanelBar;
 
+use C;
+
 use PanelBar\PB;
 use PanelBar\Build;
 
@@ -306,12 +308,14 @@ class Elements {
    */
 
   private function _registerIframe() {
-    // register assets
-    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-    // register output
-    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+    if(c::get('panelbar.enhancedJS', true)) {
+      // register assets
+      $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+      $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+      // register output
+      $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+      $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+    }
   }
 
 
