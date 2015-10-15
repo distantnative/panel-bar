@@ -1,28 +1,45 @@
 
-// Controls
+/*------------------------------------*\
+   Controls
+\*------------------------------------*/
 
 .panelbar-controls {
-  position: absolute;
-  z-index:  2147483200;
-  right:    0;
+  position:       absolute;
+  z-index:        2147483200;
+  right:          0;
+  padding-top:    15px;
+  padding-bottom: 15px;
+  padding-right:  15px;
+  padding-left:   12px;
 
-  font-size:   17px;
-  line-height: 1;
-  color:       #fff;
+  font-size:        17px;
+  line-height:      1;
+  color:            #fff;
+  background-color: #000;
+  border-left:    1px solid #555;
 
-  padding:     15px 15px 15px 12px;
-  border-left: 1px solid #555;
+  body.rtl & {
+    right:          auto;
+    left:           0;
+    padding-right:  12px;
+    padding-left:   15px;
 
-  height: 100%;
+    border-left:    none;
+    border-right:   1px solid #555;
+  }
 
   .panelbar--top &    { top:    0; }
   .panelbar--bottom & { bottom: 0; }
 
-  .panelbar__bar--hidden + & {
-    color:       #000;
-    border-left: none;
-    height:      auto;
+  .panelbar--hidden & {
+    color:            #000;
+    background-color: transparent;
+    border-left:      none;
+    height:           auto;
 
+    body.rtl & {
+      border-right: none;
+    }
   }
 
   i:hover {
@@ -36,10 +53,14 @@
     display:      inline-block;
     margin-right: 7px;
 
-    .panelbar__bar--hidden + .panelbar-controls & { display: none; }
+    body.rtl & {
+      margin-right: 0;
+      margin-left:  7px;
+    }
 
-    .panelbar--top    .panelbar-controls &--top    { display: none; }
-    .panelbar--bottom .panelbar-controls &--bottom { display: none; }
+    .panelbar--hidden &         { display: none; }
+    .panelbar--top    &--top    { display: none; }
+    .panelbar--bottom &--bottom { display: none; }
   }
 
 
@@ -59,14 +80,19 @@
       display:  none;
       position: absolute;
       top:      17px;
-      right:    18px;
+      right:    16px;
       z-index:  2147483210;
 
       color:      #fff;
       font-size:  .8em;
+
+      body.rtl & {
+        right: auto;
+        left:  16px;
+      }
     }
 
-    .panelbar__bar--hidden + .panelbar-controls & {
+    .panelbar--hidden & {
       &--visible { display: none; }
       &--hidden  { display: block; }
       &--bg      { display: block; }

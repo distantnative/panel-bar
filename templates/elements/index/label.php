@@ -1,0 +1,1 @@
+<span class="<?php e($visible === false, 'panelbar-index--invisible') ?> panelbar-index--depth-<?php echo $depth ?>"><span class="panelbar-index__depth"><?php echo str_repeat('–', $depth) ?></span><?php echo $num . r(!empty($num), '. ') ?><?php echo $title ?></span>

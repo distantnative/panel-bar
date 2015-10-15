@@ -50,8 +50,13 @@ class Assets extends Hooks {
       ),
     ));
 
+    // JS: Responsive
+    if(c::get('panelbar.responsive', true)) {
+      $this->setHook('js', pb::load('js', 'components' . DS . 'responsive.min.js'));
+    }
+
     // JS: State - localStorage
-    if(c::get('panelbar.rembember', false)) {
+    if(c::get('panelbar.remember', true)) {
       $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
     }
   }

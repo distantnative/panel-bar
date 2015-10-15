@@ -15,6 +15,7 @@ var Panelbar = function() {
   this.map      = [];
 
 
+
   /**
    *  INIT
    */
@@ -42,8 +43,11 @@ var Panelbar = function() {
    */
 
   this.switchPosition = function() {
-    if (self.position === 'top') { self.bottom(); }
-    else                         { self.top();    }
+    if (self.position === 'top') {
+      self.bottom();
+    } else {
+      self.top();
+    }
   };
 
   this.top = function() {
@@ -55,7 +59,6 @@ var Panelbar = function() {
   this.bottom = function() {
     removeClass(self.wrapper, 'panelbar--top');
     addClass(self.wrapper, 'panelbar--bottom');
-
     self.position = 'bottom';
   };
 
@@ -65,17 +68,20 @@ var Panelbar = function() {
    */
 
   this.switchVisibility = function() {
-    if (self.visible) { self.hide(); }
-    else              { self.show(); }
+    if (self.visible) {
+      self.hide();
+    } else {
+      self.show();
+    }
   };
 
   this.show = function() {
-    removeClass(self.panelbar, 'panelbar__bar--hidden');
+    removeClass(self.wrapper, 'panelbar--hidden');
     self.visible = true;
   };
 
   this.hide = function() {
-    addClass(self.panelbar, 'panelbar__bar--hidden');
+    addClass(self.wrapper, 'panelbar--hidden');
     self.visible = false;
   };
 
@@ -84,34 +90,34 @@ var Panelbar = function() {
    *  KEYBINDINGS
    */
 
-  this.keys = function (e) {
+  this.keys = function(e) {
     e = e || event;
-    self.map[e.keyCode] = e.type == 'keydown';
+    self.map[e.keyCode] = e.type === 'keydown';
 
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();
+
     } else if(self.map[18] && self.map[189]) {                // alt + -
       self.switchPosition();
+
     } else if(self.map[18] && self.map[38]) {                 // alt + up
       self.top();
+
     } else if(self.map[18] && self.map[40]) {                 // alt + down
       self.bottom();
-    } else if(self.map[18] && self.map[69]) {                 // alt + E
-      if(panelbarIframe.active === false) {
-        document.querySelector('.panelbar--edit a').click();
-      } else {
-        document.querySelector('.js_panelbar-iframe-close').click();
-      }
-    } else if(self.map[18] && self.map[82]) {                 // alt + R
-      if(panelbarIframe.active === true) {
-        document.querySelector('.js_panelbar-iframe-closerefresh').click();
-      }
+
     } else if(self.map[18] && self.map[80]) {                 // alt + P
-      document.querySelector('.panelbar--panel a').click();
+      self.map      = [];
+      location.href = self.panelbar.querySelector('.panelbar--panel a').href;
+
+    } else if(self.map[18] && self.map[77]) {                 // alt + M
+      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === false) {
+        self.panelbar.querySelector('.panelbar--edit a').click();
+      }
     }
   };
-
 };
+
 
 
 var panelbar = new Panelbar();

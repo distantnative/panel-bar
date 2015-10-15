@@ -1,6 +1,7 @@
 <?php
 
 require_once 'core/core.php';
+
 use PanelBar\Core;
 
 class PanelBar extends Core {
@@ -9,6 +10,7 @@ class PanelBar extends Core {
     'panel',
     'add',
     'edit',
+    'toggle',
     'files',
     'logout',
     'user'
@@ -36,16 +38,18 @@ class PanelBar extends Core {
    *  ASSETS OUTPUT
    */
 
-  public static function css($css) {
-    $self = new self();
-    $self->assets->setHook('css', $css);
-    return $self->assets->css();
+  public static function css($args = array()) {
+    return self::assets('css', $args);
   }
 
-  public static function js($js) {
-    $self = new self();
-    $self->assets->setHook('js', $js);
-    return $self->assets->js();
+  public static function js($args = array()) {
+    return self::assets('js', $args);
+  }
+
+  protected static function assets($type, $args = array()) {
+    $self = new self($args);
+    $self->_elements();
+    return $self->assets->{$type}();
   }
 
 

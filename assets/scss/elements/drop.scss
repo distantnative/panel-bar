@@ -1,48 +1,38 @@
 
-@import "../helpers/variables";
+/*------------------------------------*\
+   Dropdown elements
+\*------------------------------------*/
+
 @import "../helpers/mixins";
 
-// Dropdowns
-
 .panelbar-drop {
-  position: relative;
-  cursor: pointer;
-
   @include dropdownArrow;
 
   &__list {
-    display: none;
-    position: absolute;
-    min-width: 100%;
+    visibility:   hidden;
 
-    left: 50%;
-    transform: translateX(-50%);
-
-    background: #fff;
-    box-shadow: rgba(0,0,0, .2) 0px 2px 10px;
-
-    .panelbar--top    & { top: 100%; }
+    .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
+
+    @include      dropdown;
 
     > a       { color: #000; }
     > a:hover { color: #777; }
 
-    .panelbar-drop:hover & { display: block; }
+    .panelbar-drop:hover & { visibility: visible; }
   }
 
   &__item {
-    display: block;
+    display:  block;
+    padding:  .75em 1.5em;
 
-    padding: .75em 1.5em;
+    color:         #000;
     text-overflow: ellipsis;
-    text-align: center;
-    overflow: hidden;
-
-    color: #000;
-    transition: none;
+    text-align:    center;
+    overflow:      hidden;
+    transition:    none;
 
     .panelbar--top    & { border-bottom: 1px solid #efefef; }
-    .panelbar--bottom & { border-top: 1px solid #efefef; }
+    .panelbar--bottom & { border-top:    1px solid #efefef; }
   }
-
 }

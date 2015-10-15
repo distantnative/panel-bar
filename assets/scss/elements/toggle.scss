@@ -1,25 +1,29 @@
 
+/*------------------------------------*\
+   Toggle element
+\*------------------------------------*/
 
 .panelbar--toggle {
-
   a.panelbar-drop__item {
-    padding: .25em 1.5em .3em;
+    padding:          .25em 1.5em .3em;
     background-color: #efefef;
+    direction:         ltr;
 
+    &:hover{
+      color:  #8dae28 ;
+      .gap { width:  8px; }
+    }
   }
 
   .gap {
-    display: inline-block;
-    width: 15px;
-    transition: all .2s ease-in-out;
+    display:    inline-block;
+    width:      14px;
+    transition: width .25s ease-in-out;
   }
 
-  .panelbar-drop__item:hover .gap {
-    width: 8px;
-  }
 
   span.panelbar-drop__item {
-    cursor: default;
-    padding: .6em 1.5em;
+    cursor:   default;
+    padding:  .6em 1.5em;
   }
 }

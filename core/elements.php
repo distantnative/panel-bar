@@ -2,6 +2,8 @@
 
 namespace PanelBar;
 
+use C;
+
 use PanelBar\PB;
 use PanelBar\Build;
 
@@ -34,10 +36,42 @@ class Elements {
       'id'      => __FUNCTION__,
       'icon'    => 'cogs',
       'url'     => pb::url(''),
-      'label'   => 'Panel',
+      'label'   => '<span class="in-compact">Go to </span>Panel',
       'title'   => 'Alt + P',
-      'mobile'  => 'icon',
+      'compact' => true,
     ));
+  }
+
+  public function index() {
+    // register assets
+    $this->assets->setHook('css', pb::load('css', 'elements/index.css'));
+
+    // prepare output
+    $items = array();
+    $home  = $this->site->homePage();
+    $index = $this->site->index()->prepend($home->id(), $home);
+
+    foreach($index as $page) {
+      array_push($items, array(
+        'label' => pb::load('html', 'elements/index/label.php', array(
+          'title'   => $page->title(),
+          'num'     => $page->num(),
+          'depth'   => $page->depth() - 1,
+          'visible' => $page->isVisible()
+        )),
+        'url'   => $page->url(),
+      ));
+    }
+
+    return Build::dropdown(array(
+      'id'     => __FUNCTION__,
+      'icon'   => 'th',
+      'label'  => 'Index',
+      'items'  => $items,
+      'class'  => 'panelbar-index',
+    ));
+
+
   }
 
 
@@ -53,16 +87,15 @@ class Elements {
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => array(
-          'child' => array(
-              'url'   => pb::url('add', $this->page),
-              'label' => 'Child',
-            ),
-          'sibling' => array(
-              'url'   => pb::url('add', $this->page->parent()),
-              'label' => 'Sibling',
-            ),
+        'child' => array(
+          'url'   => pb::url('add', $this->page),
+          'label' => 'Child',
         ),
-      'mobile' => 'icon'
+        'sibling' => array(
+          'url'   => pb::url('add', $this->page->parent()),
+          'label' => 'Sibling',
+        ),
+      ),
     ));
   }
 
@@ -80,7 +113,6 @@ class Elements {
       'url'    => pb::url('show', $this->page),
       'label'  => 'Edit',
       'title'  => 'Alt + E',
-      'mobile' => 'icon',
     ));
   }
 
@@ -108,13 +140,15 @@ class Elements {
       $siblings = array();
       array_push($siblings, array(
         'url'   => pb::url('toggle', $this->page),
-        'label' => '&rarr;<span class="gap"></span>&larr;'
+        'label' => '&rarr;<span class="gap"></span>&larr;',
+        'title' => 'Publish page at this position'
       ));
       foreach ($this->page->siblings()->visible() as $sibling) {
         array_push($siblings, array('label' => $sibling->title()));
         array_push($siblings, array(
           'url'   => pb::url('toggle', $this->page),
-          'label' => '&rarr;<span class="gap"></span>&larr;'
+          'label' => '&rarr;<span class="gap"></span>&larr;',
+          'title' => 'Publish page at this position'
         ));
       }
 
@@ -123,7 +157,6 @@ class Elements {
         'icon'   => 'toggle-off',
         'label'  => 'Invisible',
         'items'  => $siblings,
-        'mobile' => 'icon',
       ));
 
     } else {
@@ -132,7 +165,6 @@ class Elements {
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
         'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
         'url'    => pb::url('toggle', $this->page),
-        'mobile' => 'icon',
       ));
     }
   }
@@ -143,33 +175,20 @@ class Elements {
    */
 
   public function files($type = null, $function = null) {
-     // prepare output
-    $files = $this->page->files();
-    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-    $files = $files->limit(15);
+    if ($files = $this->_files($type)) {
 
-    if ($files->count() > 0) {
-      $items = array();
-      foreach($files as $file) {
-        $args = array(
-          'type'      => $file->type(),
-          'url'       => pb::url('show', $file),
-          'label'     => $file->filename(),
-          'extension' => $file->extension(),
-        );
-
-        if ($file->type() == 'image') $args['image']  = $file->url();
-        array_push($items, $args);
-      }
+      if    (count($files) > 12)    $count = '12more';
+      elseif(count($files) == 2)    $count = 2;
+      elseif(count($files) == 1)    $count = 1;
+      else                          $count = 'default';
 
       return Build::fileviewer(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
-        'items'  => $items,
-        'count'  => count($items),
-        'all'    => pb::url('index', $file),
-        'mobile' => 'icon'
+        'items'  => $files,
+        'count'  => $count,
+        'all'    => pb::url('index', $this->page->files()->first()),
       ));
     }
   }
@@ -185,6 +204,32 @@ class Elements {
 
 
   /**
+   *  FILELIST
+   */
+
+  public function filelist($type = null, $function = null) {
+    if ($files = $this->_files($type)) {
+      return Build::filelist(array(
+        'id'     => is_null($function) ? __FUNCTION__ : $function,
+        'icon'   => 'th-list',
+        'label'  => ($type == 'image') ? 'Images' : 'Files',
+        'items'  => $files,
+        'all'    => pb::url('index', $this->page->files()->first()),
+      ));
+    }
+  }
+
+
+  /**
+   *  IMAGELIST
+   */
+
+  public function imagelist() {
+    return $this->filelist('image', __FUNCTION__);
+  }
+
+
+  /**
    *  LANGUAGES
    */
 
@@ -195,17 +240,17 @@ class Elements {
       foreach($languages->not($this->site->language()->code()) as $language) {
         array_push($items, array(
           'url'   => $language->url() . '/' . $this->page->uri(),
-          'label' => strtoupper($language->code())
+          'label' => strtoupper($language->code()),
         ));
       }
 
       // register output
       return Build::dropdown(array(
-        'id'     => __FUNCTION__,
-        'icon'   => 'flag',
-        'label'  => strtoupper($this->site->language()->code()),
-        'items'  => $items,
-        'mobile' => 'label'
+        'id'      => __FUNCTION__,
+        'icon'    => 'flag',
+        'label'   => strtoupper($this->site->language()->code()),
+        'items'   => $items,
+        'mobile'  => 'label',
       ));
     }
   }
@@ -219,7 +264,7 @@ class Elements {
     return Build::label(array(
       'id'     => __FUNCTION__,
       'icon'   => 'clock-o',
-      'label'  => number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'] ), 2 ),
+      'label'  => number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 2),
       'mobile' => 'label',
     ));
   }
@@ -237,7 +282,6 @@ class Elements {
       'icon'   => 'user',
       'url'    => pb::url('edit', $this->site->user()),
       'label'  => $this->site->user(),
-      'mobile' => 'icon',
       'float'  => 'right',
     ));
   }
@@ -253,24 +297,57 @@ class Elements {
       'icon'   => 'power-off',
       'url'    => pb::url('logout'),
       'label'  => 'Logout',
-      'mobile' => 'icon',
       'float'  => 'right',
     ));
   }
+
 
 
   /**
    *  TOOL: iFrame
    */
 
-  protected function _registerIframe() {
-    // register assets
-    $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
-    $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
-
-    // register output
-    $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
-    $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+  private function _registerIframe() {
+    if(c::get('panelbar.enhancedJS', true)) {
+      // register assets
+      $this->assets->setHook('js',  pb::load('js',  'components/iframe.min.js'));
+      $this->assets->setHook('css', pb::load('css', 'components/iframe.css'));
+      // register output
+      $this->output->setHook('before',   pb::load('html', 'iframe/iframe.php'));
+      $this->output->setHook('elements', pb::load('html', 'iframe/btn.php'));
+    }
   }
+
+
+  /**
+   *  TOOL: Files
+   */
+
+  private function _files($type = null) {
+    $files = $this->page->files();
+    if (!is_null($type)) {
+      $files = $files->filterBy('type', '==', $type);
+    }
+
+    if ($files->count() > 0) {
+      $items = array();
+      foreach($files as $file) {
+        $args = array(
+          'type'      => $file->type(),
+          'url'       => pb::url('show', $file),
+          'label'     => $file->name(),
+          'extension' => $file->extension(),
+          'size'      => $file->niceSize(),
+        );
+        if ($file->type() == 'image') $args['image']  = $file->url();
+        array_push($items, $args);
+      }
+      return $items;
+
+    } else {
+      return false;
+    }
+  }
+
 
 }

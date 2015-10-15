@@ -1,12 +1,1 @@
-.panelbar--toggle a.panelbar-drop__item {
-  padding: .25em 1.5em .3em;
-  background-color: #efefef; }
-.panelbar--toggle .gap {
-  display: inline-block;
-  width: 15px;
-  transition: all .2s ease-in-out; }
-.panelbar--toggle .panelbar-drop__item:hover .gap {
-  width: 8px; }
-.panelbar--toggle span.panelbar-drop__item {
-  cursor: default;
-  padding: .6em 1.5em; }
+.panelbar--toggle a.panelbar-drop__item{padding:0.25em 1.5em 0.3em;background-color:#efefef;direction:ltr}.panelbar--toggle a.panelbar-drop__item:hover{color:#8dae28}.panelbar--toggle a.panelbar-drop__item:hover .gap{width:8px}.panelbar--toggle .gap{display:inline-block;width:14px;-webkit-transition:width 0.25s ease-in-out;transition:width 0.25s ease-in-out}.panelbar--toggle span.panelbar-drop__item{cursor:default;padding:0.6em 1.5em}
