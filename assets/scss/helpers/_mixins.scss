@@ -1,9 +1,8 @@
 
 /*------------------------------------*\
-   Mixins
+   Mixin: absoluteFill
 \*------------------------------------*/
 
-// Absolute positioned, fill parent
 @mixin absoluteFill() {
   position:   absolute;
   top:        0;
@@ -13,17 +12,58 @@
 }
 
 
-// Panel-like dropdown
-@mixin dropdown() {
+/*------------------------------------*\
+   Mixin: moreFiles
+\*------------------------------------*/
 
+@mixin moreFiles($padding) {
+  display:        block;
+  padding:        $padding;
+
+  color:          #000 !important;
+  font-size:      .95rem;
+  text-transform: uppercase;
+  text-align:     center;
+
+  &:hover { color: #999 !important; }
 }
 
-// center-positioned dropdown arrow
-@mixin dropdownArrow() {
 
+/*------------------------------------*\
+   Mixin: textEllipsis
+\*------------------------------------*/
+
+@mixin textEllipsis() {
+  text-overflow:  ellipsis;
+  overflow:       hidden;
 }
 
-// responsiveGridItem
+
+/*------------------------------------*\
+   Mixin: backgroundContainCenter
+\*------------------------------------*/
+
+@mixin backgroundContainCenter() {
+  background-size:      contain;
+  background-position:  50% 50%;
+  background-repeat:    no-repeat;
+}
+
+
+/*------------------------------------*\
+   Mixin: mosaicBackground
+\*------------------------------------*/
+
+@mixin mosaicBackground($size) {
+  background-image:     linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8);
+  background-size:      $size $size;
+  background-position:  0 0, $size/2 $size/2;
+}
+
+/*------------------------------------*\
+   Mixin: responsiveGridItem
+\*------------------------------------*/
+
 @mixin responsiveGridItem($min, $max, $count) {
   @media (min-width: $min) and (max-width: $max) {
     min-width: 100% / $count;
@@ -33,7 +73,11 @@
   }
 }
 
-// clearfix
+
+/*------------------------------------*\
+   Mixin: Clearfix
+\*------------------------------------*/
+
 @mixin clearfix() {
   &:after {
     content:  "";

@@ -6,22 +6,17 @@
 @import "../helpers/mixins";
 
 .panelBar-drop {
-
   &__list {
-
     > a       { color: #000; }
     > a:hover { color: #777; }
   }
 
   &__item {
-    display:  block;
-    padding:  .75em 1.5em;
-
-    color:         #000;
-    text-overflow: ellipsis;
-    text-align:    center;
-    overflow:      hidden;
-    transition:    none;
+    display:    block;
+    padding:    .75em 1.5em;
+    color:      #000;
+    text-align: center;
+    @include    textEllipsis;
 
     .panelBar--top    & { border-bottom: 1px solid #efefef; }
     .panelBar--bottom & { border-top:    1px solid #efefef; }
