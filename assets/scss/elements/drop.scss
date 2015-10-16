@@ -6,20 +6,11 @@
 @import "../helpers/mixins";
 
 .panelBar-drop {
-  @include dropdownArrow;
 
   &__list {
-    visibility:   hidden;
-
-    .panelBar--top    & { top:    100%; }
-    .panelBar--bottom & { bottom: 100%; }
-
-    @include      dropdown;
 
     > a       { color: #000; }
     > a:hover { color: #777; }
-
-    .panelBar-drop:hover & { visibility: visible; }
   }
 
   &__item {

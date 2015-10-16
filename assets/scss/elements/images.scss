@@ -6,30 +6,22 @@
 @import "../helpers/mixins";
 
 .panelBar-images {
-  @include dropdownArrow;
 
   &__grid {
-    visibility:   hidden;
     font-size:    0;
     padding:      10px;
     white-space:  normal;
     cursor:       default;
-
-    .panelBar--top    & { top:    100%; }
-    .panelBar--bottom & { bottom: 100%; }
 
     &.panelBar-images--2       { width: 340px; }
     &.panelBar-images--default { width: 500px; }
     &.panelBar-images--12more  {
       position:   fixed;
       width:      95vw;
+
       .panelBar--top    & { top:    48px; }
       .panelBar--bottom & { bottom: 48px; }
     }
-
-    @include      dropdown;
-
-    .panelBar-images:hover & { visibility: visible; }
   }
 
   &__item {

@@ -62,7 +62,7 @@ var panelBarResponsive = function() {
 
   // OVERLAP
   this.overlap = function() {
-    var drops = self.bar.querySelectorAll('.js-overlap');
+    var drops = self.bar.querySelectorAll('.panelBar-mDrop');
     var i;
     for(i = 0; i < drops.length; i++) {
       removeClass(drops[i], 'panelBar-element--overlapLeft');

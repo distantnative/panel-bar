@@ -6,22 +6,12 @@
 @import "../helpers/mixins";
 
 .panelBar-box {
-  @include dropdownArrow;
-
   &__content{
-    visibility:   hidden;
     padding:      .75em 1.5em;
     color:        #000;
 
-    .panelBar--top    & { top:    100%; }
-    .panelBar--bottom & { bottom: 100%; }
-
-    @include      dropdown;
-
     > a       { color: #000; }
     > a:hover { color: #777; }
-
-    .panelBar-box:hover & { visibility: visible; }
   }
 }
 

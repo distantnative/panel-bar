@@ -29,9 +29,13 @@ class Build {
 
   public static function dropdown($args) {
     $drop = tools::load('html', 'elements/drop', array('items' =>$args['items']));
+    $args['class'] = self::_class('panelBar-mDropParent', $args);
     return array(
       'element' => self::_element('panelBar-drop', $drop, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/drop')),
+      'assets'  => array('css' => array(
+                    tools::load('css', 'elements/drop'),
+                    tools::load('css', 'modules/drop'),
+                  )),
     );
   }
 
@@ -45,9 +49,13 @@ class Build {
       ),
       'count'   => $args['count'],
     ));
+    $args['class'] = self::_class('panelBar-mDropParent', $args);
     return array(
       'element' => self::_element('panelBar-images', $grid, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/images')),
+      'assets'  => array('css' => array(
+                    tools::load('css', 'elements/images'),
+                    tools::load('css', 'modules/drop'),
+                  )),
     );
   }
 
@@ -60,9 +68,13 @@ class Build {
         'url'   => $args['all'],
       ),
     ));
+    $args['class'] = self::_class('panelBar-mDropParent', $args);
     return array(
       'element' => self::_element('panelBar-files', $list, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/files')),
+      'assets'  => array('css' => array(
+                    tools::load('css', 'elements/files'),
+                    tools::load('css', 'modules/drop'),
+                  )),
     );
   }
 
@@ -72,9 +84,13 @@ class Build {
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
+    $args['class'] = self::_class('panelBar-mDropParent', $args);
     return array(
       'element' => self::_element('panelBar-box', $box, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/box')),
+      'assets'  => array('css' => array(
+                    tools::load('css', 'elements/box'),
+                    tools::load('css', 'modules/drop'),
+                  )),
     );
   }
 
