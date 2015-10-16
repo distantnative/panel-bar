@@ -29,6 +29,8 @@ class Elements {
    */
 
   public function panel() {
+    $this->_registerIframe(__FUNCTION__);
+
     return Build::link(array(
       'id'      => __FUNCTION__,
       'icon'    => 'cogs',
@@ -77,7 +79,7 @@ class Elements {
    */
 
   public function add() {
-    $this->_registerIframe();
+    $this->_registerIframe(__FUNCTION__);
 
     return Build::dropdown(array(
       'id'     => __FUNCTION__,
@@ -102,7 +104,7 @@ class Elements {
    */
 
   public function edit() {
-    $this->_registerIframe();
+    $this->_registerIframe(__FUNCTION__);
 
     return Build::link(array(
       'id'     => __FUNCTION__,
@@ -127,8 +129,7 @@ class Elements {
       $this->assets->setHook('js',  tools::load('js', 'elements/toggle.min'));
       $this->assets->setHook('js',  $js);
     } else {
-      $this->_registerIframe();
-      $this->assets->setHook('js',  'pbIframe.add([".panelBar--toggle a"]);');
+      $this->_registerIframe(__FUNCTION__);
     }
 
 
@@ -170,9 +171,9 @@ class Elements {
    *  IMAGES
    */
 
-  public function images($type = 'image', $function = null) {
+  public function images($type = 'image', $function = __FUNCTION__) {
     if ($images = $this->_files($type)) {
-      $this->_registerIframe();
+      $this->_registerIframe($function);
 
       if    (count($images) > 12)  $count = '12more';
       elseif(count($images) > 2)   $count = 'default';
@@ -180,7 +181,7 @@ class Elements {
       elseif(count($images) == 1)  $count = '1';
 
       return Build::images(array(
-        'id'     => is_null($function) ? __FUNCTION__ : $function,
+        'id'     => $function,
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $images,
@@ -204,12 +205,12 @@ class Elements {
    *  FILES
    */
 
-  public function files($type = null, $function = null) {
+  public function files($type = null, $function = __FUNCTION__) {
     if ($files = $this->_files($type)) {
-      $this->_registerIframe();
+      $this->_registerIframe($function);
 
       return Build::files(array(
-        'id'     => is_null($function) ? __FUNCTION__ : $function,
+        'id'     => $function,
         'icon'   => 'th-list',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $files,
@@ -274,7 +275,7 @@ class Elements {
    */
 
   public function user() {
-    $this->_registerIframe();
+    $this->_registerIframe(__FUNCTION__);
 
     return Build::link(array(
       'id'     => __FUNCTION__,
@@ -306,11 +307,12 @@ class Elements {
    *  TOOL: iFrame
    */
 
-  private function _registerIframe() {
+  private function _registerIframe($element) {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
       $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
       $this->assets->setHook('js',  tools::load('js',  'components/iframe.min'));
+      $this->assets->setHook('js',  'pbIframe.add([".panelBar--' . $element . ' a"]);');
       $this->assets->setHook('css', tools::load('css', 'components/iframe'));
       // register output
       $this->output->setHook('before',   tools::load('html', 'iframe/iframe'));

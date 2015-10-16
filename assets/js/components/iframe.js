@@ -4,8 +4,8 @@ var panelBarIframe = function(elements) {
   var self = this;
 
   this.active     = false;
-  this.link       = null;
-  this.href       = null;
+  this.position   = null;
+  this.supported  = true;
   this.wrapper    = panelBar.wrapper.querySelector(".panelBar-iframe__iframe");
   this.iframe     = this.wrapper.children[1];
   this.loading    = this.wrapper.children[0];
@@ -13,13 +13,10 @@ var panelBarIframe = function(elements) {
   this.returnBtn  = this.buttons.children[0];
   this.refreshBtn = this.buttons.children[1];
   this.elements   = panelBar.wrapper.querySelectorAll('.panelBar__bar > div');
-  this.position   = null;
-  this.supported  = true;
 
 
-  this.init = function(elements) {
+  this.init = function() {
     self.support();
-    self.add(elements);
   };
 
   this.add = function(elements) {
@@ -56,12 +53,10 @@ var panelBarIframe = function(elements) {
   };
 
   this.activate = function(link) {
-    self.link     = link;
-    self.href     = self.link.href;
     self.position = panelBar.position;
     self.active   = true;
 
-    self.load();
+    self.load(link.href);
     self.clearPosition();
     self.clearPanelbar();
     self.buildOverlay();
@@ -80,8 +75,8 @@ var panelBarIframe = function(elements) {
     location.reload();
   };
 
-  this.load = function() {
-    self.iframe.src = self.href;
+  this.load = function(href) {
+    self.iframe.src = href;
   };
 
   this.unload = function() {
@@ -154,13 +149,5 @@ var panelBarIframe = function(elements) {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var elements = ['.panelBar--panel a',
-                  '.panelBar--add a',
-                  '.panelBar--edit a',
-                  '.panelBar--user a',
-                  '.panelBar-fileviewer__item',
-                  '.panelBar-fileviewer__more',
-                  '.panelBar-filelist__item',
-                  '.panelBar-filelist__more',];
-  var pbIframe = new panelBarIframe(elements);
+  var pbIframe = new panelBarIframe();
 }
