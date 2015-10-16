@@ -4,10 +4,10 @@
 All of panelBar's CSS is pre-processed from several [SCSS](http://sass-lang.com) files (you can find them in `assets/scss/` and the processed CSS files in `assets/css/`). Moreover, panelBar's CSS is split up in several files to only load the CSS necessary for the active [set of elements](../README.md#CustomSet) and functions.
 
 ```css
-.panelBar         { }
-.panelBar--top    { }
-.panelBar--bottom { }
-.panelBar--hidden { }
+.panelBar           { }
+.panelBar--top      { }
+.panelBar--bottom   { }
+.panelBar--hidden   { }
 ```
 
 ```css
@@ -29,19 +29,21 @@ All of panelBar's CSS is pre-processed from several [SCSS](http://sass-lang.com)
 
 ## Javascript
 
-### panelBar (type panelBarObj)
+### panelBar (class panelBarObj)
 [Keyboard Shortcuts](../README.md#OptionKeyboard)
 
+Selected properties which might be useful for you:
 ```javascript
-panelBar.wrapper  // outer wrapper
-panelBar.bar      // inner wrapper for all elements
-panelBar.controls // wrapper for position and visibility buttons
-panelBar.posBtn   // position button
-panelBar.visBtn   // visibility button
-panelBar.visible  // current visibility status (true/false)
-panelBar.position // current position ('top'/'bottom')
+panelBar.wrapper    // outer wrapper
+panelBar.bar        // inner wrapper for all elements
+panelBar.controls   // wrapper for position and visibility buttons
+panelBar.posBtn     // position button
+panelBar.visBtn     // visibility button
+panelBar.visible    // current visibility status (true/false)
+panelBar.position   // current position ('top'/'bottom')
 ```
 
+Selected methods which might be useful for you:
 ```javascript
 panelBar.switchPosition()     // toggles position
 panelBar.top()                // sets position to top
@@ -52,16 +54,17 @@ panelBar.hide()               // hides panelBar
 ```
 
 
-### pbResponsive (type panelBarResponsive)
+### pbResponsive (class panelBarResponsive)
 [Responsiveness](../README.md#OptionResponsive)
 
 
-### pbState (type panelBarState)
+### pbState (class panelBarState)
 [localStorage](../README.md#OptionState)
 
 
-### pbIframe (type panelBarIframe)
+### pbIframe (class panelBarIframe)
 
+Selected properties which might be useful for you:
 ```javascript
 pbIframe.active       // status if iFrame mode is activated (true/false)
 pbIframe.supported    // status if iFrame mode is supported (true/false)
@@ -73,6 +76,7 @@ pbIframe.returnBtn    // 'Return to Page' button
 pbIframe.refreshBtn   // 'Return and Refresh' button
 ```
 
+Selected methods which might be useful for you:
 ```javascript
 pbIframe.add(link)      // adds iFrame mode functionality to a link
 pbIframe.activate(url)  // activates iFrame mode
@@ -80,4 +84,4 @@ pbIframe.deactivate()   // deactivates iFrame mode
 pbIframe.load(url)      // loads url in iFrame mode
 ```
 
-### pbToggle (type panelBarToggle)
+### pbToggle (class panelBarToggle)

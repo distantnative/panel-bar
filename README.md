@@ -154,7 +154,7 @@ echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
-For more complex custom elements, have a look at panelBar's [assets guide](https://github.com/distantnative/panel-bar/blob/master/assets/GUIDE.md) on its core CSS and Javascript elements.
+For more complex custom elements, have a look at panelBar's [assets guide](assets/GUIDE.md) on its core CSS and Javascript elements.
 
 ### Element Builders <a id="Builders"></a>
 The panelBar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
