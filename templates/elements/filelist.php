@@ -4,11 +4,10 @@
       <a href="<?php echo $item['url'] ?>" class="panelbar-filelist__item panelbar-filelist__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'].'.'.$item['extension'] ?>">
 
         <div class="panelbar-filelist__preview">
-          <?php if ($item['type'] == 'image') : ?>
-            <div class="panelbar-filelist__image" style="background-image:url('<?php echo $item['image'] ?>');"></div>
-          <?php else : ?>
-            <div class="panelbar-filelist__image"></div>
-          <?php endif ?>
+          <div class="panelbar-filelist__image" <?php if($item['type'] == 'image' and isset($item['image'])) echo 'style="background-image:url(' . $item['image'] . ');"' ?>>
+            <div class="panelbar-filelist__overlay"></div>
+          </div>
+
         </div>
 
 

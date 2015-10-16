@@ -49,9 +49,6 @@
       background-size:      10px 10px;
       background-position:  0 0, 5px 5px;
     }
-    .panelbar-filelist__item--image:hover & {
-      background:   #8dae28;
-    }
   }
 
   &__image {
@@ -60,9 +57,18 @@
     background-size:      contain;
     background-position:  50% 50%;
     background-repeat:    no-repeat;
-
-    .panelbar-filelist__item:hover & { opacity: .5; }
   }
+
+  &__overlay {
+    display:    none;
+    width:      100%;
+    height:     100%;
+    background: #8dae28;
+    opacity:    .5;
+
+    .panelbar-filelist__item:hover.panelbar-filelist__item--image & { display: block; }
+  }
+
 
   &__item > span {
     display:        inline-block;

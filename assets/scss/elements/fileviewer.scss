@@ -46,8 +46,6 @@
       background-position:  0 0, 10px 10px;
     }
 
-    &:hover { background:   #8dae28; }
-
     body.rtl & { float: right; }
   }
 
@@ -68,7 +66,7 @@
     @include    absoluteFill();
     display:    none;
     background: #8dae28;
-    opacity:    .7;
+    opacity:    .75;
 
     .panelbar-fileviewer__item:hover & { display: block; }
   }
