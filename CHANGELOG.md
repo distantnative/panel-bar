@@ -1,9 +1,14 @@
 # Changelog
 
 ## Version 1.0
+- Changed consitent naming to panelBar
 - Feature: Close button in iFrame mode which redirects to current panel page
 - Improved: iFrame mode detects `X-Frame-Options = DENY` and deativates
-- Fixed: Panel, Filelist and Imagelist elements also open in iFrame mode
+- Improved: Filelist is now Files, sorted files
+- Improved: File icons in Files
+- Improved: Panel, Files and Imagelist elements also open in iFrame mode
+- Fixed: Images layout and margins
+- Fixed: Images background on hover
 - Internal: Renamed toolkit `pb::` to `tools::`, redundant namespace references removed
 
 ## Version 0.7
