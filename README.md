@@ -41,7 +41,7 @@ This plugin enables you to include a panelBar on top of your site which gives yo
   5. [Keyboard Shortcuts](#OptionKeyboard)
 6. [Known Problems](#Problems)
 7. [Help & Improve](#Help)
-8. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
+8. [Changelog](CHANGELOG.md)
 
 &nbsp;  
 
@@ -154,6 +154,7 @@ echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
+For more complex custom elements, have a look at panelBar's [assets guide](https://github.com/distantnative/panel-bar/blob/master/assets/GUIDE.md) on its core CSS and Javascript elements.
 
 ### Element Builders <a id="Builders"></a>
 The panelBar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:

@@ -26,7 +26,7 @@ var panelBarIframe = function(elements) {
       iframelinks[i].addEventListener('click', function(e) {
         if(self.supported) {
           e.preventDefault();
-          self.activate(this);
+          self.activate(this.href);
         }
       });
     }
@@ -52,11 +52,11 @@ var panelBarIframe = function(elements) {
     }, 2500);
   };
 
-  this.activate = function(link) {
+  this.activate = function(url) {
     self.position = panelBar.position;
     self.active   = true;
 
-    self.load(link.href);
+    self.load(url);
     self.clearPosition();
     self.clearPanelbar();
     self.buildOverlay();
@@ -75,8 +75,8 @@ var panelBarIframe = function(elements) {
     location.reload();
   };
 
-  this.load = function(href) {
-    self.iframe.src = href;
+  this.load = function(url) {
+    self.iframe.src = url;
   };
 
   this.unload = function() {
