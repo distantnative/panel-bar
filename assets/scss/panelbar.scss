@@ -53,17 +53,6 @@
 
       &:hover { color: #999; }
     }
-
-    i {
-      margin-right: 7px;
-
-      .panelbar--hidden & { margin-right: 0; }
-
-      body.rtl & {
-        margin-right: 0;
-        margin-left: 7px
-      }
-    }
   }
 }
 

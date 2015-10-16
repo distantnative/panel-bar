@@ -14,6 +14,17 @@
     padding: 16px 14px 16px 18px;
 
     body.rtl & { padding: 16px 18px 16px 14px; }
+
+    > i {
+      margin-right: 7px;
+
+      .panelbar--hidden & { margin-right: 0; }
+
+      body.rtl & {
+        margin-right: 0;
+        margin-left: 7px
+      }
+    }
   }
 
   border-left: 1px solid #555;
