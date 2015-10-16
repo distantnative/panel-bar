@@ -3,9 +3,7 @@
    Index element
 \*------------------------------------*/
 
-
 .panelBar-index {
-
   .panelBar-drop__item {
     font-size:  .9em;
     text-align: left;
@@ -27,8 +25,5 @@
     font-weight: 700;
   }
 
-  &--invisible {
-    color: #999;
-  }
-
+  &--invisible { color: #999; }
 }

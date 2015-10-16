@@ -20,6 +20,9 @@ class Assets extends Hooks {
    */
 
   public function css() {
+    if($site->language()->direction() === 'rtl') {
+      $this->assets->setHook('css', tools::load('css', 'components/rtl'));
+    }
     return '<style>'.$this->fontPaths($this->getHooks('css')).'</style>';
   }
 
