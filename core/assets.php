@@ -1,6 +1,6 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use C;
 
@@ -36,22 +36,22 @@ class Assets extends Hooks {
   protected function defaults() {
     $this->setHooks(array(
       'css' => array(
-        tools::load('css', 'panelbar.css'),
+        tools::load('css', 'panelbar'),
       ),
       'js'  => array(
-        'var PanelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        tools::load('js', 'panelbar.min.js'),
+        'var panelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
+        tools::load('js', 'panelbar.min'),
       ),
     ));
 
     // JS: Responsive
     if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', tools::load('js', 'components/responsive.min.js'));
+      $this->setHook('js', tools::load('js', 'components/responsive.min'));
     }
 
     // JS: State - localStorage
     if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', tools::load('js', 'components/localstorage.min.js'));
+      $this->setHook('js', tools::load('js', 'components/localstorage.min'));
     }
   }
 

@@ -1,10 +1,9 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use A;
 use Tpl;
-use Panel;
 
 class Tools {
 
@@ -23,11 +22,11 @@ class Tools {
 
   public static function path($type, $append) {
     $paths = array(
-      'css'       => DS . 'assets' . DS . 'css' . DS,
-      'js'        => DS . 'assets' . DS . 'js' . DS,
-      'html'      => DS . 'templates' . DS,
+      'css'       => DS . 'assets' . DS . 'css' . DS . $append . '.css',
+      'js'        => DS . 'assets' . DS . 'js' . DS . $append . '.js',
+      'html'      => DS . 'templates' . DS . $append . '.php',
     );
-    return realpath(__DIR__ . '/..') . $paths[$type] . $append;
+    return realpath(__DIR__ . '/..') . $paths[$type];
   }
 
   public static function font($append) {

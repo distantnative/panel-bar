@@ -4,15 +4,15 @@
 \*------------------------------------*/
 
 
-.panelbar-index {
+.panelBar-index {
 
-  .panelbar-drop__item {
+  .panelBar-drop__item {
     font-size:  .9em;
     text-align: left;
     padding:    .6em 1.2em;
 
     &:hover,
-    &:hover .panelbar-index--invisible {
+    &:hover .panelBar-index--invisible {
       color:  #8dae28;
     }
   }

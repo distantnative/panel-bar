@@ -1,5 +1,5 @@
 
-var PanelBarState = function() {
+var panelBarState = function() {
 
   var self = this;
 
@@ -13,14 +13,14 @@ var PanelBarState = function() {
         self.restore();
       }
       self.save();
-      PanelBar.controls.addEventListener('click', self.save);
+      panelBar.controls.addEventListener('click', self.save);
     }
   };
 
   this.save = function() {
-    localStorage.setItem('panelbar.expires',  Date.now() + self.validTime);
-    localStorage.setItem('panelbar.position', PanelBar.position);
-    localStorage.setItem('panelbar.visible',  PanelBar.visible);
+    localStorage.setItem('panelBar.expires',  Date.now() + self.validTime);
+    localStorage.setItem('panelBar.position', panelBar.position);
+    localStorage.setItem('panelBar.visible',  panelBar.visible);
   };
 
   this.restore = function() {
@@ -29,36 +29,36 @@ var PanelBarState = function() {
   };
 
   this.reset = function() {
-    localStorage.removeItem('panelbar.expires');
-    localStorage.removeItem('panelbar.position');
-    localStorage.removeItem('panelbar.visibile');
+    localStorage.removeItem('panelBar.expires');
+    localStorage.removeItem('panelBar.position');
+    localStorage.removeItem('panelBar.visibile');
   };
 
   this.setPosition = function() {
-    if(localStorage.getItem('panelbar.position') === 'top') {
-      PanelBar.top();
+    if(localStorage.getItem('panelBar.position') === 'top') {
+      panelBar.top();
     } else {
-      PanelBar.bottom();
+      panelBar.bottom();
     }
   };
 
   this.setVisibility = function() {
-    if(localStorage.getItem('panelbar.visible') === 'true') {
-      PanelBar.show();
+    if(localStorage.getItem('panelBar.visible') === 'true') {
+      panelBar.show();
     } else {
-      PanelBar.hide();
+      panelBar.hide();
     }
   };
 
 
   this.expired = function() {
-    return Date.now() > localStorage.getItem('panelbar.expires');
+    return Date.now() > localStorage.getItem('panelBar.expires');
   };
 
 
   this.support = function() {
     try {
-      var x = '__storage_test__';
+      var x = '__panelBar_storage_test__';
       localStorage.setItem(x, x);
       localStorage.getItem(x);
       localStorage.removeItem(x);
@@ -73,4 +73,4 @@ var PanelBarState = function() {
 };
 
 
-var pbState = new PanelBarState();
+var pbState = new panelBarState();

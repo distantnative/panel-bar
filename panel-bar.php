@@ -1,10 +1,9 @@
 <?php
-
 require_once 'core/core.php';
 
-use PanelBar\Core;
+use panelBar\Core;
 
-class PanelBar extends Core {
+class panelBar extends Core {
 
   public $defaults = array(
     'panel',

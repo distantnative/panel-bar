@@ -1,6 +1,6 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use A;
 
@@ -14,30 +14,30 @@ class Build {
 
   public static function label($args) {
     return array(
-      'element' => self::_element('panelbar-label', null, $args),
+      'element' => self::_element('panelBar-label', null, $args),
     );
   }
 
 
   public static function link($args) {
     return array(
-      'element' => self::_element('panelbar-btn', null, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/btn.css')),
+      'element' => self::_element('panelBar-btn', null, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/btn')),
     );
   }
 
 
   public static function dropdown($args) {
-    $drop = tools::load('html', 'elements/drop.php', array('items' =>$args['items']));
+    $drop = tools::load('html', 'elements/drop', array('items' =>$args['items']));
     return array(
-      'element' => self::_element('panelbar-drop', $drop, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/drop.css')),
+      'element' => self::_element('panelBar-drop', $drop, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/drop')),
     );
   }
 
 
   public static function images($args) {
-    $grid = tools::load('html', 'elements/images.php', array(
+    $grid = tools::load('html', 'elements/images', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -46,14 +46,14 @@ class Build {
       'count'   => $args['count'],
     ));
     return array(
-      'element' => self::_element('panelbar-images', $grid, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/images.css')),
+      'element' => self::_element('panelBar-images', $grid, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/images')),
     );
   }
 
 
   public static function files($args) {
-    $list = tools::load('html', 'elements/files.php', array(
+    $list = tools::load('html', 'elements/files', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -61,20 +61,20 @@ class Build {
       ),
     ));
     return array(
-      'element' => self::_element('panelbar-files', $list, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/files.css')),
+      'element' => self::_element('panelBar-files', $list, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/files')),
     );
   }
 
 
   public static function box($args) {
-    $box = tools::load('html', 'elements/box.php', array(
+    $box = tools::load('html', 'elements/box', array(
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
     return array(
-      'element' => self::_element('panelbar-box', $box, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/box.css')),
+      'element' => self::_element('panelBar-box', $box, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/box')),
     );
   }
 
@@ -89,7 +89,7 @@ class Build {
     if(is_null($content)) {
       $content = isset($args['content']) ? $args['content'] : '';
     }
-    return tools::load('html', 'elements/base.php', array(
+    return tools::load('html', 'elements/base', array(
       'class'   => self::_class($class, $args),
       'id'      => isset($args['id'])      ? $args['id']      : '',
       'title'   => isset($args['title'])   ? $args['title']   : '',
@@ -108,7 +108,7 @@ class Build {
       $class .= ' ' . $args['class'];
     }
     if(isset($args['float']) and $args['float']) {
-      $class .= ' panelbar-element--right';
+      $class .= ' panelBar-element--right';
     }
     return $class;
   }

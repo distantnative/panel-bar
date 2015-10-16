@@ -3,7 +3,7 @@
    Element base
 \*------------------------------------*/
 
-.panelbar-element {
+.panelBar-element {
   display:      inline-block;
   float:        left;
   color:        #fff;
@@ -18,7 +18,7 @@
     > i {
       margin-right: 7px;
 
-      .panelbar--hidden & { margin-right: 0; }
+      .panelBar--hidden & { margin-right: 0; }
 
       body.rtl & {
         margin-right: 0;
@@ -39,7 +39,7 @@
     border-right: none;
   }
 
-  &:last-of-type.panelbar-element--right {
+  &:last-of-type.panelBar-element--right {
     border-left:  none;
     border-right: none;
   }

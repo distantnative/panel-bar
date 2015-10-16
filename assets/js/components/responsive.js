@@ -1,11 +1,11 @@
 
-var PanelBarResponsive = function() {
+var panelBarResponsive = function() {
 
   var self = this;
 
-  this.wrapper  = PanelBar.wrapper;
-  this.bar      = PanelBar.bar;
-  this.controls = PanelBar.controls;
+  this.wrapper  = panelBar.wrapper;
+  this.bar      = panelBar.bar;
+  this.controls = panelBar.controls;
   this.resize   = null;
   this.mobile   = null;
   this.desktop  = null;
@@ -27,11 +27,11 @@ var PanelBarResponsive = function() {
   }
 
   this.measureViews = function() {
-    removeClass(self.wrapper, 'panelbar--compact');
-    addClass(self.wrapper, 'panelbar--mobile');
+    removeClass(self.wrapper, 'panelBar--compact');
+    addClass(self.wrapper, 'panelBar--mobile');
     self.mobile  = self.width();
 
-    removeClass(self.wrapper, 'panelbar--mobile');
+    removeClass(self.wrapper, 'panelBar--mobile');
     self.desktop = self.width();
 
     self.setView();
@@ -39,14 +39,14 @@ var PanelBarResponsive = function() {
 
   this.setView = function() {
     if(self.wrapper.offsetWidth < self.mobile) {
-      addClass(self.wrapper, 'panelbar--compact');
-      addClass(self.wrapper, 'panelbar--mobile');
+      addClass(self.wrapper, 'panelBar--compact');
+      addClass(self.wrapper, 'panelBar--mobile');
     } else if(self.wrapper.offsetWidth < self.desktop) {
-      removeClass(self.wrapper, 'panelbar--compact');
-      addClass(self.wrapper, 'panelbar--mobile');
+      removeClass(self.wrapper, 'panelBar--compact');
+      addClass(self.wrapper, 'panelBar--mobile');
     } else {
-      removeClass(self.wrapper, 'panelbar--compact');
-      removeClass(self.wrapper, 'panelbar--mobile');
+      removeClass(self.wrapper, 'panelBar--compact');
+      removeClass(self.wrapper, 'panelBar--mobile');
     }
   };
 
@@ -65,14 +65,14 @@ var PanelBarResponsive = function() {
     var drops = self.bar.querySelectorAll('.js-overlap');
     var i;
     for(i = 0; i < drops.length; i++) {
-      removeClass(drops[i], 'panelbar-element--overlapLeft');
-      removeClass(drops[i], 'panelbar-element--overlapRight');
+      removeClass(drops[i], 'panelBar-element--overlapLeft');
+      removeClass(drops[i], 'panelBar-element--overlapRight');
       var position = drops[i].getBoundingClientRect();
 
       if(position.left < 0) {
-        addClass(drops[i], 'panelbar-element--overlapLeft');
+        addClass(drops[i], 'panelBar-element--overlapLeft');
       } else if (position.right < 0) {
-        addClass(drops[i], 'panelbar-element--overlapRight');
+        addClass(drops[i], 'panelBar-element--overlapRight');
       }
     }
   };
@@ -82,5 +82,5 @@ var PanelBarResponsive = function() {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var pbResponsive = new PanelBarResponsive();
+  var pbResponsive = new panelBarResponsive();
 }

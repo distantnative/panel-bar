@@ -1,6 +1,6 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use C;
 
@@ -41,7 +41,7 @@ class Elements {
 
   public function index() {
     // register assets
-    $this->assets->setHook('css', tools::load('css', 'elements/index.css'));
+    $this->assets->setHook('css', tools::load('css', 'elements/index'));
 
     // prepare output
     $items = array();
@@ -50,7 +50,7 @@ class Elements {
 
     foreach($index as $page) {
       array_push($items, array(
-        'label' => tools::load('html', 'elements/index/label.php', array(
+        'label' => tools::load('html', 'elements/index/label', array(
           'title'   => $page->title(),
           'num'     => $page->num(),
           'depth'   => $page->depth() - 1,
@@ -65,7 +65,7 @@ class Elements {
       'icon'   => 'th',
       'label'  => 'Index',
       'items'  => $items,
-      'class'  => 'panelbar-index',
+      'class'  => 'panelBar-index',
     ));
 
 
@@ -120,20 +120,19 @@ class Elements {
 
   public function toggle() {
     // register assets
-    $this->assets->setHook('css', tools::load('css', 'elements/toggle.css'));
+    $this->assets->setHook('css', tools::load('css', 'elements/toggle'));
 
     if(!tools::version("2.2.0")) {
       $js = 'currentURI="'.$this->page->uri().'";siteURL="'.$this->site->url().'";';
-      $this->assets->setHook('js',  tools::load('js', 'elements/toggle.min.js'));
+      $this->assets->setHook('js',  tools::load('js', 'elements/toggle.min'));
       $this->assets->setHook('js',  $js);
     } else {
       $this->_registerIframe();
-      $this->assets->setHook('js',  'panelbarIframe.init([".panelbar--toggle a"]);');
+      $this->assets->setHook('js',  'pbIframe.add([".panelBar--toggle a"]);');
     }
 
 
     if($this->page->isInvisible() and !tools::version("2.2.0")) {
-      // prepare output
       $siblings = array();
       array_push($siblings, array(
         'url'   => tools::url('toggle', $this->page),
@@ -160,7 +159,7 @@ class Elements {
       return Build::link(array(
         'id'     => __FUNCTION__,
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-        'label'  => $this->page->isVisible() ? 'Visible' : 'Invisible',
+        'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
         'url'    => tools::url('toggle', $this->page),
       ));
     }
@@ -185,7 +184,7 @@ class Elements {
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $images,
-        'count'  => 'panelbar-images--' . $count,
+        'count'  => 'panelBar-images--' . $count,
         'all'    => tools::url('index', $this->page->files()->first()),
       ));
     }
@@ -199,7 +198,6 @@ class Elements {
   public function fileview() {
     return $this->images(null, __FUNCTION__);
   }
-
 
 
   /**
@@ -312,11 +310,11 @@ class Elements {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
       $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
-      $this->assets->setHook('js',  tools::load('js',  'components/iframe.min.js'));
-      $this->assets->setHook('css', tools::load('css', 'components/iframe.css'));
+      $this->assets->setHook('js',  tools::load('js',  'components/iframe.min'));
+      $this->assets->setHook('css', tools::load('css', 'components/iframe'));
       // register output
-      $this->output->setHook('before',   tools::load('html', 'iframe/iframe.php'));
-      $this->output->setHook('elements', tools::load('html', 'iframe/btn.php'));
+      $this->output->setHook('before',   tools::load('html', 'iframe/iframe'));
+      $this->output->setHook('elements', tools::load('html', 'iframe/btn'));
     }
   }
 

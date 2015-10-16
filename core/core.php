@@ -1,6 +1,6 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 require_once(__DIR__ . '/../lib/tools.php');
 require_once(__DIR__ . '/../lib/hooks.php');
@@ -81,7 +81,7 @@ class Core extends Build {
   }
 
   protected function _controls() {
-    $this->output->setHook('after', tools::load('html', 'controls.php'));
+    $this->output->setHook('after', tools::load('html', 'controls'));
   }
 
   protected function _assets() {

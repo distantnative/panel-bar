@@ -1,10 +1,10 @@
 
-var PanelBarToggle = function(element) {
+var panelBarToggle = function(element) {
 
   var self = this;
 
   this.button    = element.children[0];
-  this.droplinks = element.querySelectorAll(".panelbar-drop__list > a");
+  this.droplinks = element.querySelectorAll(".panelBar-drop__list > a");
   this.icon      = this.button.children[0];
   this.text      = this.button.children[1];
   this.status    = this.text.innerHTML === 'Visible' ? 'hide' : 'sort';
@@ -57,5 +57,5 @@ var PanelBarToggle = function(element) {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var pbToggle = new PanelBarToggle(document.querySelector(".panelbar--toggle"));
+  var pbToggle = new panelBarToggle(document.querySelector(".panelBar--toggle"));
 }

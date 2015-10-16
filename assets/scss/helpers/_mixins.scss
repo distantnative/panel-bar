@@ -28,8 +28,8 @@
     position:   fixed;
     width:      95vw;
 
-    .panelbar--top    & { top:    48px; }
-    .panelbar--bottom & { bottom: 48px; }
+    .panelBar--top    & { top:    48px; }
+    .panelBar--bottom & { bottom: 48px; }
   }
 
   body.rtl & {
@@ -60,11 +60,11 @@
       margin-right: -8px;
     }
 
-    .panelbar--top & {
+    .panelBar--top & {
       bottom: 0;
       border-bottom: 8px solid #fff;
     }
-    .panelbar--bottom & {
+    .panelBar--bottom & {
       top: 0;
       border-top: 8px solid #fff;
     }

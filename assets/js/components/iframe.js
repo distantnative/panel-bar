@@ -1,25 +1,29 @@
 
-var PanelBarIframe = function(elements) {
+var panelBarIframe = function(elements) {
 
   var self = this;
 
   this.active     = false;
   this.link       = null;
   this.href       = null;
-  this.wrapper    = PanelBar.wrapper.querySelector(".panelbar-iframe__iframe");
+  this.wrapper    = panelBar.wrapper.querySelector(".panelBar-iframe__iframe");
   this.iframe     = this.wrapper.children[1];
   this.loading    = this.wrapper.children[0];
-  this.buttons    = PanelBar.bar.querySelector(".panelbar-iframe__btns");
+  this.buttons    = panelBar.bar.querySelector(".panelBar-iframe__btns");
   this.returnBtn  = this.buttons.children[0];
   this.refreshBtn = this.buttons.children[1];
-  this.elements   = PanelBar.wrapper.querySelectorAll('.panelbar__bar > div');
+  this.elements   = panelBar.wrapper.querySelectorAll('.panelBar__bar > div');
   this.position   = null;
   this.supported  = true;
 
 
   this.init = function(elements) {
     self.support();
-    var iframelinks = PanelBar.bar.querySelectorAll(elements.join());
+    self.add(elements);
+  };
+
+  this.add = function(elements) {
+    var iframelinks = panelBar.bar.querySelectorAll(elements.join());
     var i;
     for(i = 0; i < iframelinks.length; i++) {
       iframelinks[i].addEventListener('click', function(e) {
@@ -34,7 +38,7 @@ var PanelBarIframe = function(elements) {
   this.support = function() {
     var testFrame = document.createElement('iframe');
     testFrame.style.display = 'none';
-    testFrame.id            = 'PanelBarJStestFrame'
+    testFrame.id            = 'panelBarJStestFrame'
     testFrame.src           = siteURL + '/panel/';
     document.body.appendChild(testFrame);
     testFrame.addEventListener("load", function() {
@@ -42,7 +46,7 @@ var PanelBarIframe = function(elements) {
     });
 
     setTimeout(function() {
-      var testFrame = document.getElementById('PanelBarJStestFrame');
+      var testFrame = document.getElementById('panelBarJStestFrame');
       if(testFrame === null) {
         self.supported = true;
       } else {
@@ -54,7 +58,7 @@ var PanelBarIframe = function(elements) {
   this.activate = function(link) {
     self.link     = link;
     self.href     = self.link.href;
-    self.position = PanelBar.position;
+    self.position = panelBar.position;
     self.active   = true;
 
     self.load();
@@ -88,7 +92,7 @@ var PanelBarIframe = function(elements) {
     self.buttons.style.display   = 'inline-block';
     self.wrapper.style.display   = 'block';
     document.body.style.overflow = 'hidden';
-    addClass(PanelBar.wrapper, 'panelbar--iframe');
+    addClass(panelBar.wrapper, 'panelBar--iframe');
 
     self.loading.innerHTML   = 'Loading…';
     setTimeout(function() {
@@ -103,7 +107,7 @@ var PanelBarIframe = function(elements) {
     self.buttons.style.display   = 'none';
     self.wrapper.style.display   = 'none';
     document.body.style.overflow = 'auto';
-    removeClass(PanelBar.wrapper, 'panelbar--iframe');
+    removeClass(panelBar.wrapper, 'panelBar--iframe');
     self.loading.innerHTML       = '';
 
     self.returnBtn.removeEventListener('click', self.deactivate);
@@ -113,14 +117,14 @@ var PanelBarIframe = function(elements) {
 
   this.clearPanelbar = function() {
     self._elements('none');
-    PanelBar.posBtn.style.display = 'none';
-    PanelBar.visBtn.addEventListener('click', self.redirectClose);
+    panelBar.posBtn.style.display = 'none';
+    panelBar.visBtn.addEventListener('click', self.redirectClose);
   };
 
   this.restorePanelbar = function() {
     self._elements('inline-block');
-    PanelBar.posBtn.style.display = '';
-    PanelBar.visBtn.removeEventListener('click', self.redirectClose);
+    panelBar.posBtn.style.display = '';
+    panelBar.visBtn.removeEventListener('click', self.redirectClose);
   };
 
   this._elements = function(display) {
@@ -132,16 +136,16 @@ var PanelBarIframe = function(elements) {
 
   this.redirectClose = function() {
     location.href = self.iframe.src;
-    PanelBar.show();
+    panelBar.show();
   };
 
   this.clearPosition = function() {
-    PanelBar.top();
+    panelBar.top();
   };
 
   this.restorePosition = function() {
     if(self.position === 'bottom') {
-      PanelBar.bottom();
+      panelBar.bottom();
     }
   };
 
@@ -150,13 +154,13 @@ var PanelBarIframe = function(elements) {
 
 
 if ('querySelector' in document && 'addEventListener' in window) {
-  var elements = ['.panelbar--panel a',
-                  '.panelbar--add a',
-                  '.panelbar--edit a',
-                  '.panelbar--user a',
-                  '.panelbar-fileviewer__item',
-                  '.panelbar-fileviewer__more',
-                  '.panelbar-filelist__item',
-                  '.panelbar-filelist__more',];
-  var pbIframe = new PanelBarIframe(elements);
+  var elements = ['.panelBar--panel a',
+                  '.panelBar--add a',
+                  '.panelBar--edit a',
+                  '.panelBar--user a',
+                  '.panelBar-fileviewer__item',
+                  '.panelBar-fileviewer__more',
+                  '.panelBar-filelist__item',
+                  '.panelBar-filelist__more',];
+  var pbIframe = new panelBarIframe(elements);
 }

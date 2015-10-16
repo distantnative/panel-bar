@@ -1,17 +1,17 @@
 
 // @codekit-prepend "helpers/_classes.js";
 
-var PanelBar = function() {
+var panelBarObj = function() {
 
   var self = this;
 
-  this.wrapper  = document.getElementById('panelbar');
-  this.bar      = document.getElementById('panelbar_bar');
-  this.controls = document.getElementById('panelbar_controls');
+  this.wrapper  = document.getElementById('panelBar');
+  this.bar      = document.getElementById('panelBar_bar');
+  this.controls = document.getElementById('panelBar_controls');
   this.posBtn   = this.controls.children[0];
   this.visBtn   = this.controls.children[1];
-  this.visible  = !hasClass(this.bar, 'panelbar__bar--hidden');
-  this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
+  this.visible  = !hasClass(this.bar, 'panelBar__bar--hidden');
+  this.position = hasClass(this.wrapper, 'panelBar--top') ? 'top' : 'bottom';
   this.map      = [];
 
 
@@ -25,7 +25,7 @@ var PanelBar = function() {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
 
-      if (PanelBarKEYS === true) {
+      if (panelBarKEYS === true) {
         document.addEventListener('keydown', self.keys);
         document.addEventListener('keyup',   self.keys);
       }
@@ -33,7 +33,7 @@ var PanelBar = function() {
     } else {
       self.controls.remove();
       self.bar.style.paddingRight = 0;
-      self.bar.classList.remove("panelbar--hidden");
+      self.bar.classList.remove("panelBar--hidden");
     }
   };
 
@@ -51,14 +51,14 @@ var PanelBar = function() {
   };
 
   this.top = function() {
-    removeClass(self.wrapper, 'panelbar--bottom');
-    addClass(self.wrapper, 'panelbar--top');
+    removeClass(self.wrapper, 'panelBar--bottom');
+    addClass(self.wrapper, 'panelBar--top');
     self.position = 'top';
   };
 
   this.bottom = function() {
-    removeClass(self.wrapper, 'panelbar--top');
-    addClass(self.wrapper, 'panelbar--bottom');
+    removeClass(self.wrapper, 'panelBar--top');
+    addClass(self.wrapper, 'panelBar--bottom');
     self.position = 'bottom';
   };
 
@@ -76,12 +76,12 @@ var PanelBar = function() {
   };
 
   this.show = function() {
-    removeClass(self.wrapper, 'panelbar--hidden');
+    removeClass(self.wrapper, 'panelBar--hidden');
     self.visible = true;
   };
 
   this.hide = function() {
-    addClass(self.wrapper, 'panelbar--hidden');
+    addClass(self.wrapper, 'panelBar--hidden');
     self.visible = false;
   };
 
@@ -108,11 +108,11 @@ var PanelBar = function() {
 
     } else if(self.map[18] && self.map[80]) {                 // alt + P
       self.map      = [];
-      location.href = self.bar.querySelector('.panelbar--panel a').href;
+      location.href = self.bar.querySelector('.panelBar--panel a').href;
 
     } else if(self.map[18] && self.map[77]) {                 // alt + M
       if(typeof pbIframe !== 'undefined' && pbIframe.active === false) {
-        self.bar.querySelector('.panelbar--edit a').click();
+        self.bar.querySelector('.panelBar--edit a').click();
       }
     }
   };
@@ -121,4 +121,4 @@ var PanelBar = function() {
 };
 
 
-var PanelBar = new PanelBar();
+var panelBar = new panelBarObj();

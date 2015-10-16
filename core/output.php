@@ -1,6 +1,6 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use C;
 
@@ -25,9 +25,9 @@ class Output extends Hooks {
 
 
   public function get() {
-    return tools::load('html', 'main.php', array(
-      'class'    => 'panelbar panelbar--' . $this->position .
-                    ($this->visible === false ? ' panelbar--hidden' : ''),
+    return tools::load('html', 'main', array(
+      'class'    => 'panelBar panelBar--' . $this->position .
+                    ($this->visible === false ? ' panelBar--hidden' : ''),
       'before'   => $this->getHooks('before'),
       'elements' => $this->getHooks('elements'),
       'after'    => $this->getHooks('after'),

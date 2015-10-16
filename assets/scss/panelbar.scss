@@ -1,13 +1,13 @@
 
 /*------------------------------------*\
-   Panel Bar
+   panelBar
 \*------------------------------------*/
 
 @import 'helpers/mixins';
 @import 'base/_fonts';
 
 
-.panelbar {
+.panelBar {
   position: fixed;
   left:     0;
   right:    0;
@@ -44,7 +44,7 @@
     font-size:   16px;
     font-weight: normal;
 
-    .panelbar--hidden & { display: none; }
+    .panelBar--hidden & { display: none; }
 
     a {
       color:           #fff;

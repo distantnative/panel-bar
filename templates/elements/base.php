@@ -1,4 +1,4 @@
-<div class="panelbar-element <?php echo $class ?> panelbar--<?php echo $id ?> <?php echo r($mobile === false, 'not-mobile') ?> <?php echo r($compact === false, 'not-compact') ?>" id="panelbar--<?php echo $id ?>">
+<div class="panelBar-element <?php echo $class ?> panelBar--<?php echo $id ?> <?php echo r($mobile === false, 'not-mobile') ?> <?php echo r($compact === false, 'not-compact') ?>" id="panelBar--<?php echo $id ?>">
 
   <?php if($url) : ?>
     <a href="<?php echo $url ?>" title="<?php echo $title ?>">
