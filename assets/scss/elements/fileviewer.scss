@@ -4,35 +4,54 @@
 \*------------------------------------*/
 
 @import "../helpers/mixins";
-@import "../helpers/fileviewer";
 
 .panelbar-fileviewer {
   @include dropdownArrow;
 
   &__grid {
     visibility:   hidden;
-
     padding:      .5em;
-    white-space:  normal;
     cursor:       default;
 
     .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
 
     @include      dropdown;
-    @include      gridResponsive();
 
     .panelbar-fileviewer:hover & { visibility: visible; }
-
-
   }
 
-  &__item {
-    display:        inline-block;
-    margin-right:   -4px;
-    margin-bottom:  3px;
-    @include        itemResponsive();
+  &__items {
+    font-size:    0;
+    display:      inline-block;
+  }
 
+
+  &__item {
+    display:    inline-block;
+    min-width:  160px;
+
+    &:nth-last-child(n+3),
+    &:nth-last-child(n+3) ~ & {
+
+    }
+
+    &:nth-last-child(n+12),
+    &:nth-last-child(n+12) ~ & {
+
+    }
+
+
+
+
+    @media (max-width: 550px) {
+      min-width: 0;
+      width: 50%;
+    }
+
+
+
+    font-size:      1rem;
     text-align:     center;
     text-overflow:  ellipsis;
     overflow:       hidden;
@@ -108,7 +127,7 @@
     bottom:         0;
     left:           0;
     right:          0;
-    padding:        4px 5px 5px;
+    padding:        4px 7px 5px;
 
     font-size:      .8em;
     color:          #fff;
@@ -135,6 +154,3 @@
     &:hover { color: #999 !important; }
   }
 }
-
-
-

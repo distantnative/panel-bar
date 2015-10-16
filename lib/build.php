@@ -39,7 +39,6 @@ class Build {
   public static function fileviewer($args) {
     $grid = tools::load('html', 'elements/fileviewer.php', array(
       'items'   => $args['items'],
-      'count'   => $args['count'],
       'all'     => array(
         'label' => $args['label'],
         'url'   => $args['all'],
