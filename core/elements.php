@@ -175,11 +175,17 @@ class Elements {
     if ($files = $this->_files($type)) {
       $this->_registerIframe();
 
+      if    (count($files) > 12)  $count = '12more';
+      elseif(count($files) > 2)   $count = 'default';
+      elseif(count($files) == 2)  $count = '2';
+      elseif(count($files) == 1)  $count = '1';
+
       return Build::fileviewer(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => ($type == 'image') ? 'photo' : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $files,
+        'count'  => 'panelbar-fileviewer--' . $count,
         'all'    => tools::url('index', $this->page->files()->first()),
       ));
     }

@@ -71,13 +71,21 @@
   }
 }
 
+// responsiveGridItem
+@mixin responsiveGridItem($min, $max, $count) {
+  @media (min-width: $min) and (max-width: $max) {
+    min-width: 100% / $count;
+    &:nth-child(#{$count}n+#{$count}) {
+      border-right: none;
+    }
+  }
+}
+
 // clearfix
 @mixin clearfix() {
-  *zoom: 1;
-  &::before,
-  &::after {
-    content: " ";
-    display: table;
+  &:after {
+    content:  "";
+    display:  table;
+    clear:    both;
   }
-  &::after { clear: both; }
 }

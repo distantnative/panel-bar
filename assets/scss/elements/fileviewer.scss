@@ -10,52 +10,57 @@
 
   &__grid {
     visibility:   hidden;
-    padding:      .5em;
+    font-size:    0;
+    padding:      10px;
+    white-space:  normal;
     cursor:       default;
 
     .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
+
+    &.panelbar-fileviewer--2       { width: 340px; }
+    &.panelbar-fileviewer--default { width: 500px; }
+    &.panelbar-fileviewer--12more  {
+      position:   fixed;
+      width:      95vw;
+      .panelbar--top    & { top:    48px; }
+      .panelbar--bottom & { bottom: 48px; }
+    }
 
     @include      dropdown;
 
     .panelbar-fileviewer:hover & { visibility: visible; }
   }
 
-  &__items {
-    font-size:    0;
-    display:      inline-block;
-  }
-
-
   &__item {
-    display:    inline-block;
-    min-width:  160px;
-
-    &:nth-last-child(n+3),
-    &:nth-last-child(n+3) ~ & {
-
-    }
-
-    &:nth-last-child(n+12),
-    &:nth-last-child(n+12) ~ & {
-
-    }
-
-
-
-
-    @media (max-width: 550px) {
-      min-width: 0;
-      width: 50%;
-    }
-
-
-
+    display:        inline-block;
+    min-width:      160px;
     font-size:      1rem;
     text-align:     center;
-    text-overflow:  ellipsis;
-    overflow:       hidden;
     transition:     none;
+
+    border-bottom: 3px solid #fff;
+    border-right:  2px solid #fff;
+
+    &.panelbar-fileviewer--1,
+    &.panelbar-fileviewer--2:last-child,
+    &.panelbar-fileviewer--default:nth-child(3n+3) {
+      border-right: none;
+    }
+
+    .panelbar-fileviewer--12more & {
+      @include responsiveGridItem(0px,    549px,    2);
+      @include responsiveGridItem(550px,  749px,    3);
+      @include responsiveGridItem(750px,  899px,    4);
+      @include responsiveGridItem(900px,  999px,    5);
+      @include responsiveGridItem(1000px, 1199px,   6);
+      @include responsiveGridItem(1200px, 1349px,   7);
+      @include responsiveGridItem(1350px, 999999px, 8);
+    }
+
+    @media (max-width: 550px) {
+      min-width: 50%;
+    }
 
     background-color:       #000;
     &--image {
@@ -147,7 +152,7 @@
     padding:        8px 5px 2px;
 
     color:          #000 !important;
-    font-size:      .95em;
+    font-size:      .95rem;
     text-transform: uppercase;
     text-align:     center;
 

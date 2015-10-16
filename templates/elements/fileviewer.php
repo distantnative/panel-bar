@@ -1,6 +1,5 @@
-<div class="panelbar-fileviewer__grid js-overlap">
+<div class="panelbar-fileviewer__grid <?php echo $count ?> js-overlap">
 
-  <div class="panelbar-fileviewer__items">
   <?php foreach($items as $item) : ?>
     <a href="<?php echo $item['url'] ?>" class="panelbar-fileviewer__item panelbar-fileviewer__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'] . '.' . $item['extension'] ?>">
       <div class="panelbar-fileviewer__preview">
@@ -19,7 +18,6 @@
       </div>
     </a>
   <?php endforeach ?>
-  </div>
 
   <a href="<?php echo $all['url'] ?>" class="panelbar-fileviewer__more">
     All <?php echo $all['label'] ?>

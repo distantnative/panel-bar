@@ -43,6 +43,7 @@ class Build {
         'label' => $args['label'],
         'url'   => $args['all'],
       ),
+      'count'   => $args['count'],
     ));
     return array(
       'element' => self::_element('panelbar-fileviewer', $grid, $args),
