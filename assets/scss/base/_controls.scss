@@ -4,35 +4,28 @@
 \*------------------------------------*/
 
 .panelBar-controls {
-  position:       absolute;
-  z-index:        2147483200;
-  right:          0;
-  padding-top:    15px;
-  padding-bottom: 15px;
-  padding-right:  15px;
-  padding-left:   12px;
+  position:   absolute;
+  z-index:    2147483200;
+  right:      0;
+  padding:    15px 15px 15px 12px;
 
-  font-size:        17px;
-  line-height:      1;
-  color:            #fff;
-  background-color: #000;
-  border-left:    1px solid #555;
+  color:        #fff;
+  background:   #000;
+  border-left:  1px solid #555;
 
   .panelBar--top    & { top:    0; }
   .panelBar--bottom & { bottom: 0; }
 
   .panelBar--hidden & {
-    color:            #000;
-    background-color: transparent;
-    border-left:      none;
-    height:           auto;
+    color:        #000;
+    background:   transparent;
+    border-left:  none;
   }
 
   i:hover {
     cursor: pointer;
     color:  #999;
   }
-
 
   // Position
   &__position {
@@ -44,36 +37,31 @@
     .panelBar--bottom &--bottom { display: none; }
   }
 
-
   // Visibility
   &__visibility {
     display: inline-block;
 
     &--visible,
-    &--hidden {
+    &--invisible {
       position: relative;
       z-index:  2147483250;
     }
 
-    &--hidden { display: none; }
+    &--invisible { display: none; }
 
     &--bg {
-      display:  none;
-      position: absolute;
-      top:      17px;
-      right:    16px;
-      z-index:  2147483210;
-
+      display:    none;
+      position:   absolute;
+      top:        17px;
+      right:      16px;
       color:      #fff;
       font-size:  .8em;
     }
 
     .panelBar--hidden & {
-      &--visible { display: none; }
-      &--hidden  { display: block; }
-      &--bg      { display: block; }
+      &--visible    { display: none; }
+      &--invisible  { display: block; }
+      &--bg         { display: block; }
     }
-
   }
-
 }
