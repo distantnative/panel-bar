@@ -168,24 +168,24 @@ class Elements {
 
 
   /**
-   *  FILES
+   *  IMAGES
    */
 
-  public function files($type = null, $function = null) {
-    if ($files = $this->_files($type)) {
+  public function images($type = 'image', $function = null) {
+    if ($images = $this->_files($type)) {
       $this->_registerIframe();
 
-      if    (count($files) > 12)  $count = '12more';
-      elseif(count($files) > 2)   $count = 'default';
-      elseif(count($files) == 2)  $count = '2';
-      elseif(count($files) == 1)  $count = '1';
+      if    (count($images) > 12)  $count = '12more';
+      elseif(count($images) > 2)   $count = 'default';
+      elseif(count($images) == 2)  $count = '2';
+      elseif(count($images) == 1)  $count = '1';
 
-      return Build::fileviewer(array(
+      return Build::images(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
-        'icon'   => ($type == 'image') ? 'photo' : 'file',
+        'icon'   => ($type == 'image') ? 'photo'  : 'file',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
-        'items'  => $files,
-        'count'  => 'panelbar-fileviewer--' . $count,
+        'items'  => $images,
+        'count'  => 'panelbar-images--' . $count,
         'all'    => tools::url('index', $this->page->files()->first()),
       ));
     }
@@ -193,23 +193,24 @@ class Elements {
 
 
   /**
-   *  IMAGES
+   *  FILEVIEW
    */
 
-  public function images() {
-    return $this->files('image', __FUNCTION__);
+  public function fileview() {
+    return $this->images(null, __FUNCTION__);
   }
 
 
+
   /**
-   *  FILELIST
+   *  FILES
    */
 
-  public function filelist($type = null, $function = null) {
+  public function files($type = null, $function = null) {
     if ($files = $this->_files($type)) {
       $this->_registerIframe();
 
-      return Build::filelist(array(
+      return Build::files(array(
         'id'     => is_null($function) ? __FUNCTION__ : $function,
         'icon'   => 'th-list',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
@@ -225,7 +226,7 @@ class Elements {
    */
 
   public function imagelist() {
-    return $this->filelist('image', __FUNCTION__);
+    return $this->files('image', __FUNCTION__);
   }
 
 
@@ -326,9 +327,7 @@ class Elements {
 
   private function _files($type = null) {
     $files = $this->page->files();
-    if (!is_null($type)) {
-      $files = $files->filterBy('type', '==', $type);
-    }
+    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
 
     if ($files->count() > 0) {
       $items = array();
@@ -340,8 +339,6 @@ class Elements {
           'extension' => $file->extension(),
           'size'      => $file->niceSize(),
         );
-
-
 
         if($file->type() == 'image') $args['image']  = $file->url();
         else                         $args['icon']   = $this->_fileicon($file);
@@ -360,7 +357,7 @@ class Elements {
         return 'file-archive-o';
         break;
       case 'code':
-        return 'file-archive-o';
+        return 'code';
         break;
       case 'audio':
         return 'volume-up';

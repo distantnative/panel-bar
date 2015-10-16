@@ -1,11 +1,11 @@
 
 /*------------------------------------*\
-   Filelist elements
+   Files element
 \*------------------------------------*/
 
 @import "../helpers/mixins";
 
-.panelbar-filelist {
+.panelbar-files {
   @include dropdownArrow;
 
   &__list {
@@ -22,7 +22,7 @@
     > a       { color: #000; }
     > a:hover { color: #777; }
 
-    .panelbar-filelist:hover & { visibility: visible; }
+    .panelbar-files:hover & { visibility: visible; }
   }
 
   &__item {
@@ -44,7 +44,7 @@
     text-align:   left;
 
     background-color:       #fff;
-    .panelbar-filelist__item--image & {
+    .panelbar-files__item--image & {
       background-image:     linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8);
       background-size:      10px 10px;
       background-position:  0 0, 5px 5px;
@@ -66,7 +66,7 @@
     color:      #aaa;
     padding-top: 2px;
 
-    .panelbar-filelist__item:hover & { color: #8dae28; }
+    .panelbar-files__item:hover & { color: #8dae28; }
   }
 
   &__overlay {
@@ -76,7 +76,7 @@
     background: #8dae28;
     opacity:    .5;
 
-    .panelbar-filelist__item:hover.panelbar-filelist__item--image & { display: block; }
+    .panelbar-files__item:hover.panelbar-files__item--image & { display: block; }
   }
 
 
@@ -112,7 +112,7 @@
     text-align:     right;
 
     vertical-align: 10%;
-    .panelbar-filelist__item--image & {
+    .panelbar-files__item--image & {
       vertical-align: text-top;
     }
   }

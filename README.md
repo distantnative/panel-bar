@@ -81,9 +81,9 @@ Name        | Description
 `add`       | Add page as sibling or child
 `edit`      | Edit current page
 `toggle`    | Change the visibility of the current page (hide/publish)
-`files`     | Viewer for files of the current page
+`files`     | List of files of the current page
+`fileview`  | Viewer for files of the current page
 `images`    | Viewer for images of the current page
-`filelist`  | List of files of the current page
 `imagelist` | List of images of the current page
 `loadtime`  | Info label for loading time
 `language`  | Dropdown to switch between site languages

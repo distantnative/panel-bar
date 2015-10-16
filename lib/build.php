@@ -36,8 +36,8 @@ class Build {
   }
 
 
-  public static function fileviewer($args) {
-    $grid = tools::load('html', 'elements/fileviewer.php', array(
+  public static function images($args) {
+    $grid = tools::load('html', 'elements/images.php', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -46,14 +46,14 @@ class Build {
       'count'   => $args['count'],
     ));
     return array(
-      'element' => self::_element('panelbar-fileviewer', $grid, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/fileviewer.css')),
+      'element' => self::_element('panelbar-images', $grid, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/images.css')),
     );
   }
 
 
-  public static function filelist($args) {
-    $list = tools::load('html', 'elements/filelist.php', array(
+  public static function files($args) {
+    $list = tools::load('html', 'elements/files.php', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -61,8 +61,8 @@ class Build {
       ),
     ));
     return array(
-      'element' => self::_element('panelbar-filelist', $list, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/filelist.css')),
+      'element' => self::_element('panelbar-files', $list, $args),
+      'assets'  => array('css' => tools::load('css', 'elements/files.css')),
     );
   }
 

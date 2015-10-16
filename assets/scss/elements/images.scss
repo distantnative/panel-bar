@@ -1,11 +1,11 @@
 
 /*------------------------------------*\
-   Fileviewer elements
+   Images element
 \*------------------------------------*/
 
 @import "../helpers/mixins";
 
-.panelbar-fileviewer {
+.panelbar-images {
   @include dropdownArrow;
 
   &__grid {
@@ -18,9 +18,9 @@
     .panelbar--top    & { top:    100%; }
     .panelbar--bottom & { bottom: 100%; }
 
-    &.panelbar-fileviewer--2       { width: 340px; }
-    &.panelbar-fileviewer--default { width: 500px; }
-    &.panelbar-fileviewer--12more  {
+    &.panelbar-images--2       { width: 340px; }
+    &.panelbar-images--default { width: 500px; }
+    &.panelbar-images--12more  {
       position:   fixed;
       width:      95vw;
       .panelbar--top    & { top:    48px; }
@@ -29,7 +29,7 @@
 
     @include      dropdown;
 
-    .panelbar-fileviewer:hover & { visibility: visible; }
+    .panelbar-images:hover & { visibility: visible; }
   }
 
   &__item {
@@ -42,13 +42,13 @@
     border-bottom: 3px solid #fff;
     border-right:  2px solid #fff;
 
-    &.panelbar-fileviewer--1,
-    &.panelbar-fileviewer--2:last-child,
-    &.panelbar-fileviewer--default:nth-child(3n+3) {
+    &.panelbar-images--1,
+    &.panelbar-images--2:last-child,
+    &.panelbar-images--default:nth-child(3n+3) {
       border-right: none;
     }
 
-    .panelbar-fileviewer--12more & {
+    .panelbar-images--12more & {
       @include responsiveGridItem(0px,    549px,    2);
       @include responsiveGridItem(550px,  749px,    3);
       @include responsiveGridItem(750px,  899px,    4);
@@ -92,7 +92,7 @@
     background: #8dae28;
     opacity:    .75;
 
-    .panelbar-fileviewer__item:hover & { display: block; }
+    .panelbar-images__item:hover & { display: block; }
   }
 
   &__info {
@@ -107,8 +107,8 @@
       color:          #fff;
       text-transform: uppercase;
 
-      .panelbar-fileviewer__item--image & { display: none; }
-      .panelbar-fileviewer__item:hover  & { display: block; }
+      .panelbar-images__item--image & { display: none; }
+      .panelbar-images__item:hover  & { display: block; }
   }
 
   &__extension {
@@ -124,7 +124,7 @@
     margin-top: 4px;
     border-top: 1px solid #fff;
 
-    .panelbar-fileviewer__item:hover  & { display: block; }
+    .panelbar-images__item:hover  & { display: block; }
   }
 
   &__label {
@@ -141,9 +141,7 @@
     text-overflow:  ellipsis;
     background:     rgba(0, 0, 0, .75);
 
-    .panelbar-fileviewer__item:hover & {
-      color: #fff;
-    }
+    .panelbar-images__item:hover & { color: #fff; }
   }
 
 
