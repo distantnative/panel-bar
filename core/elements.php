@@ -326,7 +326,7 @@ class Elements {
    */
 
   private function _files($type = null) {
-    $files = $this->page->files();
+    $files = $this->page->files()->sortBy('extension', 'asc', 'name', 'asc');
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
 
     if ($files->count() > 0) {
