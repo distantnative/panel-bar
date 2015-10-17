@@ -15,7 +15,6 @@ var panelBarObj = function() {
   this.map      = [];
 
 
-
   /**
    *  INIT
    */
@@ -33,7 +32,7 @@ var panelBarObj = function() {
     } else {
       self.controls.remove();
       self.bar.style.paddingRight = 0;
-      self.bar.classList.remove("panelBar--hidden");
+      removeClass(self.bar, "panelBar--hidden");
     }
   };
 
@@ -42,48 +41,30 @@ var panelBarObj = function() {
    *  POSITION
    */
 
-  this.switchPosition = function() {
-    if (self.position === 'top') {
-      self.bottom();
-    } else {
-      self.top();
-    }
+  this.pos = function(top) {
+    self.position = top ? 'top' : 'bottom';
+    addClass   (self.wrapper, 'panelBar--' + self.position);
+    removeClass(self.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
+
   };
 
-  this.top = function() {
-    removeClass(self.wrapper, 'panelBar--bottom');
-    addClass(self.wrapper, 'panelBar--top');
-    self.position = 'top';
-  };
-
-  this.bottom = function() {
-    removeClass(self.wrapper, 'panelBar--top');
-    addClass(self.wrapper, 'panelBar--bottom');
-    self.position = 'bottom';
-  };
+  this.top            = function() { self.pos(true);                    };
+  this.bottom         = function() { self.pos(false);                   };
+  this.switchPosition = function() { self.pos(self.position !== 'top'); };
 
 
   /**
    *  VISIBILITY
    */
 
-  this.switchVisibility = function() {
-    if (self.visible) {
-      self.hide();
-    } else {
-      self.show();
-    }
-  };
+  this.vis = function(vis) {
+    self.visible = vis;
+    window[vis ? 'removeClass' : 'addClass'](self.wrapper, 'panelBar--hidden');
+  }
 
-  this.show = function() {
-    removeClass(self.wrapper, 'panelBar--hidden');
-    self.visible = true;
-  };
-
-  this.hide = function() {
-    addClass(self.wrapper, 'panelBar--hidden');
-    self.visible = false;
-  };
+  this.show             = function() { self.vis(true);          };
+  this.hide             = function() { self.vis(false);         };
+  this.switchVisibility = function() { self.vis(!self.visible); };
 
 
   /**
@@ -101,10 +82,10 @@ var panelBarObj = function() {
       self.switchPosition();
 
     } else if(self.map[18] && self.map[38]) {                 // alt + up
-      self.top();
+      self.pos(true);
 
     } else if(self.map[18] && self.map[40]) {                 // alt + down
-      self.bottom();
+      self.pos(false);
 
     } else if(self.map[18] && self.map[80]) {                 // alt + P
       self.map      = [];
