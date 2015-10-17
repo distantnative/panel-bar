@@ -6,14 +6,11 @@ use C;
 
 class Elements {
 
-  public $site;
-  public $page;
-
-  protected $output;
-  protected $templates;
-  protected $assets;
-  protected $css;
-  protected $js;
+  private $output;
+  private $templates;
+  private $assets;
+  private $css;
+  private $js;
 
   public function __construct($output, $assets) {
     $this->site   = site();
@@ -29,14 +26,15 @@ class Elements {
    */
 
   public function panel() {
+    // register assets
     $this->_registerIframe(__FUNCTION__);
 
+    // return output
     return Build::link(array(
       'id'      => __FUNCTION__,
       'icon'    => 'cogs',
       'url'     => tools::url(''),
       'label'   => '<span class="in-compact">Go to </span>Panel',
-      'title'   => 'Alt + P',
       'compact' => true,
     ));
   }
@@ -46,9 +44,9 @@ class Elements {
     $this->assets->setHook('css', tools::load('css', 'elements/index'));
 
     // prepare output
-    $items = array();
     $home  = $this->site->homePage();
     $index = $this->site->index()->prepend($home->id(), $home);
+    $items = array();
 
     foreach($index as $page) {
       array_push($items, array(
@@ -62,6 +60,7 @@ class Elements {
       ));
     }
 
+    // return output
     return Build::dropdown(array(
       'id'     => __FUNCTION__,
       'icon'   => 'th',
@@ -79,8 +78,10 @@ class Elements {
    */
 
   public function add() {
+    // register assets
     $this->_registerIframe(__FUNCTION__);
 
+    // return output
     return Build::dropdown(array(
       'id'     => __FUNCTION__,
       'icon'   => 'plus',
@@ -104,8 +105,10 @@ class Elements {
    */
 
   public function edit() {
+    // register assets
     $this->_registerIframe(__FUNCTION__);
 
+    // return output
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'pencil',
@@ -132,7 +135,7 @@ class Elements {
       $this->_registerIframe(__FUNCTION__);
     }
 
-
+    // prepare output
     if($this->page->isInvisible() and !tools::version("2.2.0")) {
       $siblings = array();
       array_push($siblings, array(
@@ -149,6 +152,7 @@ class Elements {
         ));
       }
 
+      // return output
       return Build::dropdown(array(
         'id'     => __FUNCTION__,
         'icon'   => 'toggle-off',
@@ -156,7 +160,9 @@ class Elements {
         'items'  => $siblings,
       ));
 
+
     } else {
+      // return output
       return Build::link(array(
         'id'     => __FUNCTION__,
         'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
@@ -173,13 +179,16 @@ class Elements {
 
   public function images($type = 'image', $function = __FUNCTION__) {
     if ($images = $this->_files($type)) {
+      // register assets
       $this->_registerIframe($function);
 
+      // prepare output
       if    (count($images) > 12)  $count = '12more';
       elseif(count($images) > 2)   $count = 'default';
       elseif(count($images) == 2)  $count = '2';
       elseif(count($images) == 1)  $count = '1';
 
+      // return output
       return Build::images(array(
         'id'     => $function,
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
@@ -207,8 +216,10 @@ class Elements {
 
   public function files($type = null, $function = __FUNCTION__) {
     if ($files = $this->_files($type)) {
+      // register assets
       $this->_registerIframe($function);
 
+      // return output
       return Build::files(array(
         'id'     => $function,
         'icon'   => 'th-list',
@@ -244,7 +255,7 @@ class Elements {
         ));
       }
 
-      // register output
+      // return output
       return Build::dropdown(array(
         'id'      => __FUNCTION__,
         'icon'    => 'flag',
@@ -261,6 +272,7 @@ class Elements {
    */
 
   public function loadtime() {
+    // return output
     return Build::label(array(
       'id'     => __FUNCTION__,
       'icon'   => 'clock-o',
@@ -275,8 +287,10 @@ class Elements {
    */
 
   public function user() {
+    // register assets
     $this->_registerIframe(__FUNCTION__);
 
+    // return output
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'user',
@@ -292,6 +306,7 @@ class Elements {
    */
 
   public function logout() {
+    // return output
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'power-off',
@@ -326,10 +341,12 @@ class Elements {
    */
 
   private function _files($type = null) {
+    // get files collection
     $files = $this->page->files()->sortBy('extension', 'asc', 'name', 'asc');
     if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
 
     if ($files->count() > 0) {
+      // prepare output
       $items = array();
       foreach($files as $file) {
         $args = array(
@@ -352,7 +369,7 @@ class Elements {
   }
 
   private function _fileicon($file) {
-    switch ($file->type()) {
+    switch($file->type()) {
       case 'archive':
         return 'file-archive-o';
         break;

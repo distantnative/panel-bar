@@ -36,7 +36,7 @@ class Assets extends Hooks {
    *  DEFAULTS
    */
 
-  protected function defaults() {
+  private function defaults() {
     $this->setHooks(array(
       'css' => array(
         tools::load('css', 'panelbar'),
@@ -64,7 +64,7 @@ class Assets extends Hooks {
    *  FONTS
    */
 
-  protected function fontPaths($css) {
+  private function fontPaths($css) {
     $fonts = array(
       array('{{FA}}',        tools::font('fontawesome-webfont.woff?v=4.2', false)),
       array('{{SSP400}}',    tools::font('sourcesanspro-400.woff')),

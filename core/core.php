@@ -10,7 +10,6 @@ require_once('elements.php');
 require_once('output.php');
 require_once('assets.php');
 
-use A;
 use C;
 
 class Core extends Build {

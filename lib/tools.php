@@ -2,7 +2,6 @@
 
 namespace panelBar;
 
-use A;
 use Tpl;
 
 class Tools {
@@ -22,9 +21,9 @@ class Tools {
 
   public static function path($type, $append) {
     $paths = array(
-      'css'       => DS . 'assets' . DS . 'css' . DS . $append . '.css',
-      'js'        => DS . 'assets' . DS . 'js' . DS . $append . '.js',
-      'html'      => DS . 'templates' . DS . $append . '.php',
+      'css'       => DS . 'assets'    . DS . 'css' . DS . $append . '.css',
+      'js'        => DS . 'assets'    . DS . 'js'  . DS . $append . '.js',
+      'html'      => DS . 'templates' . DS .              $append . '.php',
     );
     return realpath(__DIR__ . '/..') . $paths[$type];
   }
@@ -39,9 +38,7 @@ class Tools {
    */
 
   public static function url($action, $obj = null) {
-    if(is_null($obj)) {
-      $url = $action;
-    }
+    if(is_null($obj)) $url = $action;
 
     // Panel version < 2.2.0
     elseif(!self::version('2.2.0')) {
@@ -79,7 +76,7 @@ class Tools {
 
 
   public static function version($version) {
-    switch ($version) {
+    switch($version) {
       case '2.2.0':
         return !file_exists('panel/app/panel.php') and
                file_exists('panel/app/src/panel.php');

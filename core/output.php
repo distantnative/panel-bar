@@ -10,8 +10,8 @@ class Output extends Hooks {
   public $elements;
   public $after;
 
-  protected $visible;
-  protected $position;
+  private $visible;
+  private $position;
 
 
   public function __construct($visible) {

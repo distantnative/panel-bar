@@ -2,11 +2,7 @@
 
 namespace panelBar;
 
-use A;
-
 class Build {
-
-  public $buildAssets = array();
 
   /**
    *  PUBLIC CONSTRUCTORS
@@ -119,7 +115,7 @@ class Build {
   }
 
 
-  protected static function _class($class, $args) {
+  private static function _class($class, $args) {
     if(isset($args['class'])) {
       $class .= ' ' . $args['class'];
     }
@@ -130,14 +126,15 @@ class Build {
   }
 
 
-  protected static function _style($args) {
+  private static function _style($args) {
     $style = '';
     if(isset($args['style'])) {
       foreach($args['style'] as $key => $value) {
         $style .= $key . ': ' . $value . ';';
       }
-      return ' style="' . $style . '"';
+      $style .= ' style="' . $style . '"';
     }
+    return $style;
   }
 
 }
