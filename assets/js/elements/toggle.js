@@ -1,26 +1,26 @@
 
-var panelBarToggle = function(element) {
+var panelBarToggle = function(toggle) {
 
   var self = this;
 
-  this.button    = element.children[0];
-  this.droplinks = element.querySelectorAll(".panelBar-drop__list > a");
-  this.icon      = this.button.children[0];
-  this.text      = this.button.children[1];
-  this.status    = this.text.innerHTML === 'Visible' ? 'hide' : 'sort';
+  this.button  = toggle.children[0];
+  this.icon    = this.button.children[0];
+  this.text    = this.button.children[1];
+  this.links   = toggle.querySelectorAll(".panelBar-drop__list > a");
+  this.status  = this.text.innerHTML === 'Visible';
+  this.action  = this.status ? 'hide' : 'sort';
 
 
   this.init = function() {
-    if(self.status == 'hide') {
+    if(self.status) {
       self.button.addEventListener('click', self.click);
+
     } else {
       self.button.style.cursor = 'default';
       var i;
-      for (i = 0; i < self.droplinks.length; i++) {
-        self.droplinks[i].setAttribute('data-num' , (i + 1));
-        self.droplinks[i].addEventListener('click', function(e){
-          self.click(e);
-        });
+      for (i = 0; i < self.links.length; i++) {
+        self.links[i].setAttribute('data-num' , (i + 1));
+        self.links[i].addEventListener('click', self.click);
       }
     }
   };
@@ -28,21 +28,15 @@ var panelBarToggle = function(element) {
   this.click = function(e) {
     e.preventDefault();
 
-    if(self.status === 'sort') {
-      removeClass(self.icon, 'fa-toggle-off');
-      addClass(self.icon, 'fa-toggle-on');
-      self.text.innerHTML = "Visible";
-    } else {
-      removeClass(self.icon, 'fa-toggle-on');
-      addClass(self.icon, 'fa-toggle-off');
-      self.text.innerHTML = "Invisible";
-    }
+    addClass   (self.icon, 'fa-toggle-' + (self.status ? 'off' : 'on'));
+    removeClass(self.icon, 'fa-toggle-' + (self.status ? 'on'  : 'off'));
+    self.text.innerHTML = self.status ? "Invisible" : "Visible";
 
     self.request(e.target.getAttribute('data-num'));
   };
 
   this.request = function(num) {
-    var url     = siteURL + "/panel/api/pages/" + self.status + "/" + currentURI;
+    var url     = siteURL + "/panel/api/pages/" + self.action + "/" + currentURI;
     var request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
