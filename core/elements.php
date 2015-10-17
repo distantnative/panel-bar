@@ -312,7 +312,7 @@ class Elements {
       // register assets
       $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
       $this->assets->setHook('js',  tools::load('js',  'components/iframe.min'));
-      $this->assets->setHook('js',  'pbIframe.add([".panelBar--' . $element . ' a"]);');
+      $this->assets->setHook('js',  'pbIframe.add(".panelBar--' . $element . ' a");');
       $this->assets->setHook('css', tools::load('css', 'components/iframe'));
       // register output
       $this->output->setHook('before',   tools::load('html', 'iframe/iframe'));

@@ -30,8 +30,6 @@ All of panelBar's CSS is pre-processed from several [SCSS](http://sass-lang.com)
 ## Javascript
 
 ### panelBar (class panelBarObj)
-[Keyboard Shortcuts](../README.md#OptionKeyboard)
-
 Selected properties which might be useful for you:
 ```javascript
 panelBar.wrapper    // outer wrapper
@@ -53,13 +51,19 @@ panelBar.show()               // shows panelBar
 panelBar.hide()               // hides panelBar
 ```
 
+Options:  
+- [Keyboard Shortcuts](../README.md#OptionKeyboard)
 
 ### pbResponsive (class panelBarResponsive)
-[Responsiveness](../README.md#OptionResponsive)
+
+Options:  
+- [Responsiveness](../README.md#OptionResponsive)
 
 
 ### pbState (class panelBarState)
-[localStorage](../README.md#OptionState)
+
+Options:  
+- [localStorage](../README.md#OptionState)
 
 
 ### pbIframe (class panelBarIframe)
@@ -79,8 +83,7 @@ pbIframe.refreshBtn   // 'Return and Refresh' button
 Selected methods which might be useful for you:
 ```javascript
 pbIframe.add(link)      // adds iFrame mode functionality to a link
-pbIframe.activate(url)  // activates iFrame mode
-pbIframe.deactivate()   // deactivates iFrame mode
+pbIframe.show(url)      // activates iFrame mode (deactivate with empty url)
 pbIframe.load(url)      // loads url in iFrame mode
 ```
 

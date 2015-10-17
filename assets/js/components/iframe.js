@@ -1,5 +1,5 @@
 
-var panelBarIframe = function(elements) {
+var panelBarIframe = function() {
 
   var self = this;
 
@@ -15,136 +15,104 @@ var panelBarIframe = function(elements) {
   this.elements   = panelBar.wrapper.querySelectorAll('.panelBar__bar > div');
 
 
-  this.init = function() {
-    self.support();
-  };
+  /**
+   *  add - binds elements to iFrame mode
+   */
 
-  this.add = function(elements) {
-    var iframelinks = panelBar.bar.querySelectorAll(elements.join());
-    var i;
-    for(i = 0; i < iframelinks.length; i++) {
-      iframelinks[i].addEventListener('click', function(e) {
-        if(self.supported) {
-          e.preventDefault();
-          self.activate(this.href);
-        }
-      });
-    }
-  };
-
-  this.support = function() {
-    var testFrame = document.createElement('iframe');
-    testFrame.style.display = 'none';
-    testFrame.id            = 'panelBarJStestFrame'
-    testFrame.src           = siteURL + '/panel/';
-    document.body.appendChild(testFrame);
-    testFrame.addEventListener("load", function() {
-      document.body.removeChild(testFrame);
-    });
-
-    setTimeout(function() {
-      var testFrame = document.getElementById('panelBarJStestFrame');
-      if(testFrame === null) {
-        self.supported = true;
-      } else {
-        self.supported = false;
+  this.add = function(element) {
+    panelBar.bar.querySelector(element).addEventListener('click', function(e) {
+      if(self.supported) {
+        e.preventDefault();
+        self.show(this.href);
       }
-    }, 2500);
+    });
   };
 
-  this.activate = function(url) {
-    self.position = panelBar.position;
-    self.active   = true;
 
+  /**
+   *  show/hide iFrame mode
+   */
+
+  this.show = function(url) {
+    self.active = /^(f|ht)tps?:\/\//i.test(url);
+    self.setPosition(self.active)
+    self.setPanelbar(self.active);
+    self.setOverlay(self.active);
     self.load(url);
-    self.clearPosition();
-    self.clearPanelbar();
-    self.buildOverlay();
+  }
+
+  this.setOverlay = function(show) {
+    self.buttons.style.display   = show ? 'inline-block'  : 'none';
+    self.wrapper.style.display   = show ? 'block'         : 'none';
+    document.body.style.overflow = show ? 'hidden'        : 'auto';
+
+    self.loadingScreen(show ? 'Loading…' : '');
+
+    var event = show ? 'addEventListener' : 'removeEventListener';
+    self.returnBtn[event]('click', self.show);
+    self.refreshBtn[event]('click', self.refresh);
   };
 
-  this.deactivate = function() {
-    self.restorePanelbar();
-    self.removeOverlay();
-    self.restorePosition();
-    self.unload();
-
-    self.active = false;
-  };
-
-  this.refresh = function() {
-    location.reload();
-  };
-
-  this.load = function(url) {
-    self.iframe.src = url;
-  };
-
-  this.unload = function() {
-    self.iframe.src = "";
-  };
-
-  this.buildOverlay = function() {
-    self.buttons.style.display   = 'inline-block';
-    self.wrapper.style.display   = 'block';
-    document.body.style.overflow = 'hidden';
-    addClass(panelBar.wrapper, 'panelBar--iframe');
-
-    self.loading.innerHTML   = 'Loading…';
-    setTimeout(function() {
-      self.loading.innerHTML = 'Seems like something is blocking access to the panel inside an iframe.';
-    }, 3000);
-
-    self.returnBtn.addEventListener('click', self.deactivate);
-    self.refreshBtn.addEventListener('click', self.refresh);
-  };
-
-  this.removeOverlay = function() {
-    self.buttons.style.display   = 'none';
-    self.wrapper.style.display   = 'none';
-    document.body.style.overflow = 'auto';
-    removeClass(panelBar.wrapper, 'panelBar--iframe');
-    self.loading.innerHTML       = '';
-
-    self.returnBtn.removeEventListener('click', self.deactivate);
-    self.refreshBtn.removeEventListener('click', self.refresh);
-  };
-
-
-  this.clearPanelbar = function() {
-    self._elements('none');
-    panelBar.posBtn.style.display = 'none';
-    panelBar.visBtn.addEventListener('click', self.redirectClose);
-  };
-
-  this.restorePanelbar = function() {
-    self._elements('inline-block');
-    panelBar.posBtn.style.display = '';
-    panelBar.visBtn.removeEventListener('click', self.redirectClose);
-  };
-
-  this._elements = function(display) {
+  this.setPanelbar = function(clear) {
     var i;
     for (i = 0; i < self.elements.length; i++) {
-      self.elements[i].style.display = display;
+      self.elements[i].style.display = clear ? 'none' : 'inline-block';
+    }
+    panelBar.posBtn.style.display    = clear ? 'none' : '';
+    panelBar.visBtn[clear ? 'addEventListener' : 'removeEventListener']('click', self.redirect);
+  };
+
+  this.setPosition = function(clear) {
+   var position = panelBar.position;
+    panelBar[clear ? 'top' : self.position]();
+    self.position = clear ? position : null;
+  }
+
+  /**
+   *  loading and fail screen
+   */
+
+  this.loadingScreen = function(message) {
+    self.loading.innerHTML   = message;
+    if(message !== '') {
+      setTimeout(function() {
+        self.loading.innerHTML = 'Seems like something is blocking access to the panel inside an iframe.';
+      }, 3000);
     }
   };
 
-  this.redirectClose = function() {
+  /**
+   *  iframe & window loading
+   */
+
+  this.load     = function(url) { self.iframe.src = self.active ? url : ''; };
+  this.refresh  = function()    { location.reload(); };
+  this.redirect = function()    {
     location.href = self.iframe.src;
     panelBar.show();
   };
 
-  this.clearPosition = function() {
-    panelBar.top();
+
+  /**
+   *  support - checks if panel urls can be opened in iFrame
+   */
+
+  this.support = function() {
+    var testFrame = document.createElement('iframe');
+    testFrame.id            = 'panelBarJStestFrame'
+    testFrame.src           = siteURL + '/panel/';
+    testFrame.style.display = 'none';
+
+    document.body.appendChild(testFrame);
+    testFrame.addEventListener("load", document.body.removeChild(testFrame));
+
+    setTimeout(function() {
+      self.supported = document.getElementById('panelBarJStestFrame') === null;
+    }, 2500);
   };
 
-  this.restorePosition = function() {
-    if(self.position === 'bottom') {
-      panelBar.bottom();
-    }
-  };
 
-  this.init(elements);
+  this.support();
 };
 
 
