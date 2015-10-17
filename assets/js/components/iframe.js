@@ -20,12 +20,16 @@ var panelBarIframe = function() {
    */
 
   this.add = function(element) {
-    panelBar.bar.querySelector(element).addEventListener('click', function(e) {
-      if(self.supported) {
-        e.preventDefault();
-        self.show(this.href);
-      }
-    });
+    var links = panelBar.bar.querySelectorAll(element);
+    var i;
+    for (i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function(e) {
+        if(self.supported) {
+          e.preventDefault();
+          self.show(this.href);
+        }
+      });
+    }
   };
 
 
