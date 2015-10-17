@@ -56,9 +56,9 @@ class panelBar extends Core {
    *  DEFAULT ELEMENTS
    */
 
-  public static function defaults() {
+  public static function defaults($customs = array()) {
     $self = new self();
-    return $self->defaults;
+    return array_merge($self->defaults, $customs);
   }
 
 }

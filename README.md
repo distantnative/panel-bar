@@ -118,13 +118,13 @@ c::set('panelbar.elements', array(
 ));
 ```
 
-Or you can merge your custom set of elements with the [default set of elements](#DefaultSet) using `::defaults():
+Or you can add your custom set of elements to the [default set of elements](#DefaultSet) using `::defaults()` which returns either just the default set or merges it with any array of elements if provided as a parameter:
 ```php
 <?php
-$elements = a::merge(array(
-  'custom1',
-  'custom2',
-), panelBar::defaults()));
+$elements = panelBar::defaults(array(
+  'customDropdown',
+  'custom2'
+));
 
 echo panelBar::show(array('elements' => $elements));
 ?>
