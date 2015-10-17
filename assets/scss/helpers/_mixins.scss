@@ -3,6 +3,19 @@
    Mixin: absoluteFill
 \*------------------------------------*/
 
+@mixin dropFullwidth() {
+  position:   fixed;
+  width:      95vw;
+
+  .panelBar--top    & { top:    48px; }
+  .panelBar--bottom & { bottom: 48px; }
+}
+
+
+/*------------------------------------*\
+   Mixin: absoluteFill
+\*------------------------------------*/
+
 @mixin absoluteFill() {
   position:   absolute;
   top:        0;

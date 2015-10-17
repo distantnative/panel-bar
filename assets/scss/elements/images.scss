@@ -13,15 +13,9 @@
     white-space:  normal;
     cursor:       default;
 
-    &.panelBar-images--2       { width: 340px; }
-    &.panelBar-images--default { width: 500px; }
-    &.panelBar-images--12more  {
-      position:   fixed;
-      width:      95vw;
-
-      .panelBar--top    & { top:    48px; }
-      .panelBar--bottom & { bottom: 48px; }
-    }
+    &.panelBar-images--2       { width: 340px;           }
+    &.panelBar-images--default { width: 500px;           }
+    &.panelBar-images--12more  { @include dropFullwidth; }
   }
 
   &__item {
@@ -29,7 +23,6 @@
     min-width:      160px;
     font-size:      1rem;
     text-align:     center;
-    transition:     none;
 
     border-bottom:  3px solid #fff;
     border-right:   2px solid #fff;
@@ -95,9 +88,7 @@
       .panelBar-images__item:hover  & { display: block; }
   }
 
-  &__extension {
-    display:       block;
-  }
+  &__extension { display: block; }
 
   &__size {
     display:      none;
@@ -120,10 +111,9 @@
 
     font-size:      .8em;
     color:          #fff;
-    white-space:    nowrap;
-    overflow:       hidden;
-    text-overflow:  ellipsis;
     background:     rgba(0, 0, 0, .75);
+    white-space:    nowrap;
+    @include        textEllipsis;
 
     .panelBar-images__item:hover & { color: #fff; }
   }
@@ -141,7 +131,7 @@ body.rtl {
   .panelBar-images {
     &__item {
       border-right:   none;
-      border-left:  2px solid #fff;
+      border-left:    2px solid #fff;
 
       &.panelBar-images--1,
       &.panelBar-images--2:last-child,

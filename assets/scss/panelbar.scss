@@ -4,8 +4,6 @@
 \*------------------------------------*/
 
 @import 'helpers/mixins';
-@import 'base/_fonts';
-
 
 .panelBar {
   position: fixed;
@@ -50,6 +48,8 @@
   }
 }
 
-@import 'base/controls';
 @import 'elements/base';
+@import 'base/controls';
 @import 'base/responsive';
+@import 'base/fonts';
+

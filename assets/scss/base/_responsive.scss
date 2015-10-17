@@ -5,10 +5,8 @@
 
 .panelBar {
 
-  &__bar {
-    .in-mobile   { display: none; }
-    .in-compact  { display: none; }
-  }
+  .in-mobile   { display: none; }
+  .in-compact  { display: none; }
 
   // mobile view
   &--mobile .not-mobile { display: none; }
@@ -25,17 +23,13 @@
   &-element--overlapLeft,
   &-element--overlapRight {
     position:   fixed !important;
-    transform:  none !important;
+    transform:  none  !important;
 
     .panelBar--top    & { top:    48px !important; }
     .panelBar--bottom & { bottom: 48px !important; }
-
   }
 
-  &-element--overlapLeft {
-    left:       5px !important;
-  }
-
+  &-element--overlapLeft  { left: 5px !important; }
   &-element--overlapRight {
     left:       auto !important;
     right:      5px;

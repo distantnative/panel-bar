@@ -6,10 +6,7 @@
 @import "../helpers/mixins";
 
 .panelBar-drop {
-  &__list {
-    > a       { color: #000; }
-    > a:hover { color: #777; }
-  }
+  &__list > a { color: #000; }
 
   &__item {
     display:    block;

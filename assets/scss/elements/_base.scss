@@ -10,9 +10,7 @@
   border-left:  1px solid #555;
 
   &:first-of-type,
-  &:last-of-type.panelBar-element--right {
-    border:  none;
-  }
+  &:last-of-type.panelBar-element--right { border:  none; }
 
   &--right { float: right; }
 
@@ -25,7 +23,7 @@
     > i {
       margin-right: 7px;
 
-      .panelBar--hidden & { margin-right: 0; }
+      .panelBar--mobile & { margin-right: 0; }
     }
   }
 }

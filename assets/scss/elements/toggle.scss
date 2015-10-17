@@ -10,15 +10,15 @@
     direction:         ltr;
 
     &:hover{
-      color:  #8dae28 ;
-      .gap { width:  8px; }
+      color: #8dae28 ;
+      .gap { width: 8px; }
     }
   }
 
   .gap {
     display:    inline-block;
     width:      14px;
-    transition: width .25s ease-in-out;
+    transition: width .25s;
   }
 
   span.panelBar-drop__item {

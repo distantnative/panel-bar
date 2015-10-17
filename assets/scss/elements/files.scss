@@ -11,28 +11,19 @@
     max-width:    340px;
     text-align:   center;
 
-    > a       { color: #000; }
-    > a:hover { color: #777; }
+    > a { color: #000; }
   }
 
   &__item {
-    display:  block;
-    padding:  .35em .5em;
-
-    color:         #000;
-    transition:    none;
+    display:    block;
+    padding:    .35em .5em;
 
     .panelBar--top    & { border-bottom: 1px solid #efefef; }
     .panelBar--bottom & { border-top:    1px solid #efefef; }
-
-    > span { display: inline-block; }
-
-    &:hover {
-      > span                                            { color: #8dae28; }
-      .panelBar-files__icon                             { color: #8dae28; }
-      &.panelBar-files--image .panelBar-files__overlay  { display: block; }
-    }
   }
+
+  &__item       > span { display: inline-block; }
+  &__item:hover > span { color:   #8dae28;      }
 
   &__preview {
     display:      inline-block;
@@ -41,7 +32,7 @@
     margin-right: 3px;
     text-align:   initial;
 
-    background-color:       #fff;
+    background-color: #fff;
     .panelBar-files--image & { @include mosaicBackground(10px); }
   }
 
@@ -52,10 +43,12 @@
   }
 
   &__icon {
-    width:      100%;
-    text-align: center;
-    color:      #aaa;
-    padding-top: 2px;
+    width:        100%;
+    text-align:   center;
+    color:        #aaa;
+    padding-top:  2px;
+
+    .panelBar-files__item:hover & { color: #8dae28; }
   }
 
   &__overlay {
@@ -64,6 +57,8 @@
     height:           100%;
     background-color: #8dae28;
     opacity:          .5;
+
+    .panelBar-files--image:hover & { display: block; }
   }
 
   &__label {
@@ -77,9 +72,7 @@
     line-height:    1.2;
     @include        textEllipsis;
 
-    @media (max-width: 550px) {
-      width: calc(95vw - 150px);
-    }
+    @media (max-width: 550px) { width: calc(95vw - 150px); }
   }
 
   &__info {

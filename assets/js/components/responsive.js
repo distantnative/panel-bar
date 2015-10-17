@@ -43,7 +43,7 @@ var panelBarResponsive = function(wrapper) {
   };
 
   this.width = function() {
-    var width    = panelBar.controls.offsetWidth + 40;
+    var width    = panelBar.controls.offsetWidth + 20;
     var i;
     for (i = 0; i < panelBar.bar.children.length; i++) {
       var width = width + panelBar.bar.children[i].offsetWidth;
