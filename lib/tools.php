@@ -38,10 +38,11 @@ class Tools {
    */
 
   public static function url($action, $obj = null) {
-    if(is_null($obj)) $url = $action;
+    if(is_null($obj)) {
+      $url = $action;
 
     // Panel version < 2.2.0
-    elseif(!self::version('2.2.0')) {
+    } elseif(!self::version('2.2.0')) {
       if(is_a($obj, 'File')) {
         if($action == 'index') {
           $url = '#/files/' . $action . '/' . $obj->page()->id() . '/';
@@ -70,6 +71,8 @@ class Tools {
         $url = 'users/' . $obj->username() . '/' . $action;
       }
     }
+
+    if(!isset($url)) $url = '';
 
     return site()->url() . '/panel/' . $url;
   }
