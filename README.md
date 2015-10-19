@@ -9,11 +9,11 @@ This plugin enables you to include a panelBar on top of your site which gives yo
 *Requires PHP 5.3+ and Kirby 2.1 or higher*
 
 
-![panelBar in action](assets/screens/screen.png)  
-![panelBar - Add element](assets/screens/screen2.png)  
+![panelBar - Files element](assets/screens/screen.png)  
+![panelBar - Images element](assets/screens/screen2.png)  
 ![panelBar - Edit in iFrame view](assets/screens/screen3.png)  
 ![panelBar - Toggle element](assets/screens/screen4.png)
-![panelBar - Files element](assets/screens/screen5.png)  
+![panelBar - Add element](assets/screens/screen5.png)  
 
 
 **Please support the development by buying a [moral license](https://gumroad.com/l/kirby-panelbar)!**
