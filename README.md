@@ -33,6 +33,7 @@ This plugin enables you to include a panelBar on top of your site which gives yo
   4. [Custom CSS/JS](#CustomCSSJS)
   5. [Hooks](#Hooks)
   6. [Output CSS/JS](#OutputCSSJS)
+  7. [Assets Guide](assets/GUIDE.md)
 5. Options
   1. [Default Position](#OptionPosition)
   2. [Responsiveness](#OptionResponsive)
