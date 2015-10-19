@@ -3,39 +3,41 @@
    iFrame mode
 \*------------------------------------*/
 
-.panelbar-iframe {
-
+.panelBar-iframe {
   &__btns {
-    display: none;
-
-    > span { cursor: pointer; }
+    display:  none;
+    cursor:   pointer;
   }
 
   &__iframe {
-    display:    none;
-    position:   fixed;
-    top:        48px;
-    left:       0;
-    width:      100%;
-    height:     100%;
-    overflow:   hidden;
+    display:      none;
+    position:     fixed;
+    top:          48px;
+    left:         0;
+    width:        100%;
+    height:       100%;
+    overflow:     hidden;
+    background:   #efefef;
 
-    body.rtl & {
-      left:  auto;
-      right: 0;
-    }
-
-    & > iframe {
+    > iframe {
       position: absolute;
       top:      -48px;
       left:     0;
       width:    100%;
       height:   100%;
+    }
 
-      body.rtl & {
-        left:  auto;
-        right: 0;
-      }
+    > span {
+      position:       absolute;
+      top:            40%;
+      left:           50%;
+      transform:      translate(-50%, -50%);
+      max-width:      350px;
+
+      font-size:      .95em;
+      line-height:    1.4;
+      text-align:     center;
+      text-transform: uppercase;
     }
   }
 }

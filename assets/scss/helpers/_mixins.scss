@@ -1,9 +1,21 @@
 
 /*------------------------------------*\
-   Mixins
+   Mixin: absoluteFill
 \*------------------------------------*/
 
-// Absolute positioned, fill parent
+@mixin dropFullwidth() {
+  position:   fixed;
+  width:      95vw;
+
+  .panelBar--top    & { top:    48px; }
+  .panelBar--bottom & { bottom: 48px; }
+}
+
+
+/*------------------------------------*\
+   Mixin: absoluteFill
+\*------------------------------------*/
+
 @mixin absoluteFill() {
   position:   absolute;
   top:        0;
@@ -13,71 +25,76 @@
 }
 
 
-// Panel-like dropdown
-@mixin dropdown() {
-  position:     absolute;
-  left:         50%;
-  transform:    translateX(-50%);
-  max-height:   80vh;
-  max-height:   calc(100vh - 80px);
-  overflow-y:   auto;
-  background:   #fff;
-  box-shadow:   rgba(0,0,0, .2) 0px 2px 10px;
+/*------------------------------------*\
+   Mixin: moreFiles
+\*------------------------------------*/
 
-  @media (max-width: 550px) {
-    position:   fixed;
-    width:      95vw;
+@mixin moreFiles($padding) {
+  display:        block;
+  padding:        $padding;
 
-    .panelbar--top    & { top:    48px; }
-    .panelbar--bottom & { bottom: 48px; }
-  }
+  color:          #000 !important;
+  font-size:      .95rem;
+  text-transform: uppercase;
+  text-align:     center;
 
-  body.rtl & {
-    left:      auto;
-    right:     50%;
-    transform: translateX(50%);
+  &:hover { color: #999 !important; }
+}
+
+
+/*------------------------------------*\
+   Mixin: textEllipsis
+\*------------------------------------*/
+
+@mixin textEllipsis() {
+  text-overflow:  ellipsis;
+  overflow:       hidden;
+}
+
+
+/*------------------------------------*\
+   Mixin: backgroundContainCenter
+\*------------------------------------*/
+
+@mixin backgroundContainCenter() {
+  background-size:      contain;
+  background-position:  50% 50%;
+  background-repeat:    no-repeat;
+}
+
+
+/*------------------------------------*\
+   Mixin: mosaicBackground
+\*------------------------------------*/
+
+@mixin mosaicBackground($size) {
+  background-image:     linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 75%, #e8e8e8 75%, #e8e8e8);
+  background-size:      $size $size;
+  background-position:  0 0, $size/2 $size/2;
+}
+
+/*------------------------------------*\
+   Mixin: responsiveGridItem
+\*------------------------------------*/
+
+@mixin responsiveGridItem($min, $max, $count) {
+  @media (min-width: $min) and (max-width: $max) {
+    min-width: 100% / $count;
+    &:nth-child(#{$count}n+#{$count}) {
+      border-right: none;
+    }
   }
 }
 
-// center-positioned dropdown arrow
-@mixin dropdownArrow() {
-  position:   relative;
-  cursor:     pointer;
 
-  &:hover:after {
-    content:     "";
-    position:    absolute;
-    left:        50%;
-    margin-left: -8px;
+/*------------------------------------*\
+   Mixin: Clearfix
+\*------------------------------------*/
 
-    border-left:  8px solid transparent;
-    border-right: 8px solid transparent;
-
-    body.rtl & {
-      left:         auto;
-      right:        50%;
-      margin-left:  0;
-      margin-right: -8px;
-    }
-
-    .panelbar--top & {
-      bottom: 0;
-      border-bottom: 8px solid #fff;
-    }
-    .panelbar--bottom & {
-      top: 0;
-      border-top: 8px solid #fff;
-    }
-  }
-}
-
-// clearfix
 @mixin clearfix() {
-  *zoom: 1;
-  &::before,
-  &::after {
-    content: " ";
-    display: table;
+  &:after {
+    content:  "";
+    display:  table;
+    clear:    both;
   }
-  &::after { clear: both; }
 }

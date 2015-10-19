@@ -1,10 +1,9 @@
 <?php
-
 require_once 'core/core.php';
 
-use PanelBar\Core;
+use panelBar\Core;
 
-class PanelBar extends Core {
+class panelBar extends Core {
 
   public $defaults = array(
     'panel',
@@ -57,9 +56,9 @@ class PanelBar extends Core {
    *  DEFAULT ELEMENTS
    */
 
-  public static function defaults() {
+  public static function defaults($customs = array()) {
     $self = new self();
-    return $self->defaults;
+    return array_merge($self->defaults, $customs);
   }
 
 }

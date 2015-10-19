@@ -5,34 +5,17 @@
 
 @import "../helpers/mixins";
 
-.panelbar-drop {
-  @include dropdownArrow;
-
-  &__list {
-    visibility:   hidden;
-
-    .panelbar--top    & { top:    100%; }
-    .panelbar--bottom & { bottom: 100%; }
-
-    @include      dropdown;
-
-    > a       { color: #000; }
-    > a:hover { color: #777; }
-
-    .panelbar-drop:hover & { visibility: visible; }
-  }
+.panelBar-drop {
+  &__list > a { color: #000; }
 
   &__item {
-    display:  block;
-    padding:  .75em 1.5em;
+    display:    block;
+    padding:    .75em 1.5em;
+    color:      #000;
+    text-align: center;
+    @include    textEllipsis;
 
-    color:         #000;
-    text-overflow: ellipsis;
-    text-align:    center;
-    overflow:      hidden;
-    transition:    none;
-
-    .panelbar--top    & { border-bottom: 1px solid #efefef; }
-    .panelbar--bottom & { border-top:    1px solid #efefef; }
+    .panelBar--top    & { border-bottom: 1px solid #efefef; }
+    .panelBar--bottom & { border-top:    1px solid #efefef; }
   }
 }

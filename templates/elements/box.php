@@ -1,3 +1,1 @@
-<div class="panelbar-box__content js-overlap" <?php echo $style ?>>
-  <?php echo $content ?>
-</div>
+<div class="panelBar-box__content panelBar-mDrop" <?php echo $style ?>><?php echo $content ?></div>

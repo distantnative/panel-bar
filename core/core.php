@@ -1,46 +1,41 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
-require_once 'toolkit.php';
-require_once 'hooks.php';
-require_once 'build.php';
-require_once 'elements.php';
-require_once 'output.php';
-require_once 'assets.php';
+require_once(__DIR__ . '/../lib/tools.php');
+require_once(__DIR__ . '/../lib/hooks.php');
+require_once(__DIR__ . '/../lib/build.php');
 
-use A;
+require_once('elements.php');
+require_once('output.php');
+require_once('assets.php');
+
 use C;
-
-use PanelBar\PB;
-use PanelBar\Elements;
-use PanelBar\Output;
-use PanelBar\Assets;
 
 class Core extends Build {
 
   public $elements;
-  public $position;
-
+  public $standards;
   public $output;
   public $assets;
-  public $css = true;
-  public $js  = true;
+  public $css;
+  public $js;
 
 
-  public function __construct($args = array()) {
-    // Elements
-    $this->elements = (isset($args['elements']) and is_array($args['elements'])) ?
-                      $args['elements'] : c::get('panelbar.elements', $this->defaults);
+  public function __construct($opt = array()) {
+    // Assets
+    $this->css    = isset($opt['css']) ? $opt['css'] : true;
+    $this->js     = isset($opt['js'])  ? $opt['js']  : true;
+    $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
 
     // Output
-    $visible      = !(isset($args['hide']) and $args['hide'] === true);
+    $visible      = !(isset($opt['hide']) and $opt['hide'] === true);
     $this->output = new Output($visible);
 
-    // Assets
-    $this->css    = isset($args['css']) ? $args['css'] : true;
-    $this->js     = isset($args['js'])  ? $args['js']  : true;
-    $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
+    // Elements
+    $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ?
+                       $opt['elements'] : c::get('panelbar.elements',$this->defaults);
+    $this->standards = new Elements($this->output, $this->assets);
   }
 
 
@@ -57,38 +52,35 @@ class Core extends Build {
 
   // get all elements
   protected function _elements() {
-    foreach ($this->elements as $id => $element) {
+    foreach ($this->elements as $id => $el) {
 
       // $element is default function
-      if($ref = new Elements($this->output, $this->assets) and
-         is_callable(array($ref, $element)) and
-         substr($element, 0, 1) !== '_') {
-        $element = call_user_func(array($ref, $element));
+      if(is_callable(array($this->standards, $el)) and
+         substr($el, 0, 1) !== '_') {
+        $el = call_user_func(array($this->standards, $el));
 
       // $element is callable
-      } elseif(is_callable($element)) {
-        $element = call_user_func_array($element, array($this->output, $this->assets));
+      } elseif(is_callable($el)) {
+        $el = call_user_func_array($el, array($this->output, $this->assets));
 
       // $element is string
-      } elseif(is_string($element)) {
-        $element = build::_element(null, $element, array(
-          'id' => $id
-        ));
+      } elseif(is_string($el)) {
+        $el = build::_element(null, $el, array('id' => $id));
       }
 
-      if(is_array($element)) {
-        if(isset($element['assets']))  $this->assets->setHooks($element['assets']);
-        if(isset($element['html']))    $this->output->setHooks($element['html']);
-        if(isset($element['element'])) $this->output->setHook('elements', $element['element']);;
+      if(is_array($el)) {
+        if(isset($el['assets']))  $this->assets->setHooks($el['assets']);
+        if(isset($el['html']))    $this->output->setHooks($el['html']);
+        if(isset($el['element'])) $this->output->setHook('elements', $el['element']);
       } else {
-        $this->output->setHook('elements', $element);
+        $this->output->setHook('elements', $el);
       }
 
     }
   }
 
   protected function _controls() {
-    $this->output->setHook('after', pb::load('html', 'controls.php'));
+    $this->output->setHook('after', tools::load('html', 'controls'));
   }
 
   protected function _assets() {

@@ -1,19 +1,18 @@
 
 // @codekit-prepend "helpers/_classes.js";
 
-var Panelbar = function() {
+var panelBarObj = function() {
 
   var self = this;
 
-  this.wrapper  = document.getElementById('panelbar');
-  this.panelbar = document.getElementById('panelbar_bar');
-  this.controls = document.getElementById('panelbar_controls');
+  this.wrapper  = document.getElementById('panelBar');
+  this.bar      = document.getElementById('panelBar_bar');
+  this.controls = document.getElementById('panelBar_controls');
   this.posBtn   = this.controls.children[0];
   this.visBtn   = this.controls.children[1];
-  this.visible  = !hasClass(this.panelbar, 'panelbar__bar--hidden');
-  this.position = hasClass(this.wrapper, 'panelbar--top') ? 'top' : 'bottom';
+  this.visible  = !hasClass(this.bar, 'panelBar__bar--hidden');
+  this.position = hasClass(this.wrapper, 'panelBar--top') ? 'top' : 'bottom';
   this.map      = [];
-
 
 
   /**
@@ -25,15 +24,15 @@ var Panelbar = function() {
       self.posBtn.addEventListener('click', self.switchPosition);
       self.visBtn.addEventListener('click', self.switchVisibility);
 
-      if (panelbarKEYS === true) {
+      if (panelBarKEYS === true) {
         document.addEventListener('keydown', self.keys);
         document.addEventListener('keyup',   self.keys);
       }
 
     } else {
       self.controls.remove();
-      self.panelbar.style.paddingRight = 0;
-      self.panelbar.classList.remove("panelbar--hidden");
+      self.bar.style.paddingRight = 0;
+      removeClass(self.bar, "panelBar--hidden");
     }
   };
 
@@ -42,48 +41,30 @@ var Panelbar = function() {
    *  POSITION
    */
 
-  this.switchPosition = function() {
-    if (self.position === 'top') {
-      self.bottom();
-    } else {
-      self.top();
-    }
+  this.pos = function(top) {
+    self.position = top ? 'top' : 'bottom';
+    addClass   (self.wrapper, 'panelBar--' + self.position);
+    removeClass(self.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
+
   };
 
-  this.top = function() {
-    removeClass(self.wrapper, 'panelbar--bottom');
-    addClass(self.wrapper, 'panelbar--top');
-    self.position = 'top';
-  };
-
-  this.bottom = function() {
-    removeClass(self.wrapper, 'panelbar--top');
-    addClass(self.wrapper, 'panelbar--bottom');
-    self.position = 'bottom';
-  };
+  this.top            = function() { self.pos(true);                    };
+  this.bottom         = function() { self.pos(false);                   };
+  this.switchPosition = function() { self.pos(self.position !== 'top'); };
 
 
   /**
    *  VISIBILITY
    */
 
-  this.switchVisibility = function() {
-    if (self.visible) {
-      self.hide();
-    } else {
-      self.show();
-    }
-  };
+  this.vis = function(vis) {
+    self.visible = vis;
+    window[vis ? 'removeClass' : 'addClass'](self.wrapper, 'panelBar--hidden');
+  }
 
-  this.show = function() {
-    removeClass(self.wrapper, 'panelbar--hidden');
-    self.visible = true;
-  };
-
-  this.hide = function() {
-    addClass(self.wrapper, 'panelbar--hidden');
-    self.visible = false;
-  };
+  this.show             = function() { self.vis(true);          };
+  this.hide             = function() { self.vis(false);         };
+  this.switchVisibility = function() { self.vis(!self.visible); };
 
 
   /**
@@ -101,24 +82,24 @@ var Panelbar = function() {
       self.switchPosition();
 
     } else if(self.map[18] && self.map[38]) {                 // alt + up
-      self.top();
+      self.pos(true);
 
     } else if(self.map[18] && self.map[40]) {                 // alt + down
-      self.bottom();
+      self.pos(false);
 
     } else if(self.map[18] && self.map[80]) {                 // alt + P
       self.map      = [];
-      location.href = self.panelbar.querySelector('.panelbar--panel a').href;
+      location.href = self.bar.querySelector('.panelBar--panel a').href;
 
     } else if(self.map[18] && self.map[77]) {                 // alt + M
-      if(typeof panelbarIframe !== 'undefined' && panelbarIframe.active === false) {
-        self.panelbar.querySelector('.panelbar--edit a').click();
+      if(typeof pbIframe !== 'undefined' && pbIframe.active === false) {
+        self.bar.querySelector('.panelBar--edit a').click();
       }
     }
   };
+
+  this.init();
 };
 
 
-
-var panelbar = new Panelbar();
-panelbar.init();
+var panelBar = new panelBarObj();

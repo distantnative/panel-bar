@@ -3,12 +3,10 @@
    Responsiveness
 \*------------------------------------*/
 
-.panelbar {
+.panelBar {
 
-  &__bar {
-    .in-mobile   { display: none; }
-    .in-compact  { display: none; }
-  }
+  .in-mobile   { display: none; }
+  .in-compact  { display: none; }
 
   // mobile view
   &--mobile .not-mobile { display: none; }
@@ -17,25 +15,21 @@
   &--compact {
     .not-compact { display: none; }
 
-    .panelbar--panel .not-mobile { display: inline-block; }
-    .panelbar--panel .in-compact { display: inline; }
+    .panelBar--panel .not-mobile { display: inline-block; }
+    .panelBar--panel .in-compact { display: inline; }
   }
 
   // Drop-items fix overlap
   &-element--overlapLeft,
   &-element--overlapRight {
     position:   fixed !important;
-    transform:  none !important;
+    transform:  none  !important;
 
-    .panelbar--top    & { top:    48px !important; }
-    .panelbar--bottom & { bottom: 48px !important; }
-
+    .panelBar--top    & { top:    48px !important; }
+    .panelBar--bottom & { bottom: 48px !important; }
   }
 
-  &-element--overlapLeft {
-    left:       5px !important;
-  }
-
+  &-element--overlapLeft  { left: 5px !important; }
   &-element--overlapRight {
     left:       auto !important;
     right:      5px;

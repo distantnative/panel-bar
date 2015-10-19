@@ -1,64 +1,38 @@
 
-var PanelbarState = function() {
+var panelBarState = function() {
 
   var self = this;
 
-  this.validTime = 24 * 60 * 60 * 1000;
-
-  self.init = function() {
-    if(self.support()) {
-      if(self.expired()) {
+  this.init = function() {
+      if(Date.now() > localStorage.getItem('panelBar.expires')) {
         self.reset();
       } else {
         self.restore();
       }
       self.save();
-      panelbar.controls.addEventListener('click', self.save);
-    }
+      panelBar.controls.addEventListener('click', self.save);
   };
 
   this.save = function() {
-    localStorage.setItem('panelbar.expires',  Date.now() + self.validTime);
-    localStorage.setItem('panelbar.position', panelbar.position);
-    localStorage.setItem('panelbar.visible',  panelbar.visible);
+    localStorage.setItem('panelBar.expires',  Date.now() + (24 * 60 * 60 * 1000));
+    localStorage.setItem('panelBar.position', panelBar.position);
+    localStorage.setItem('panelBar.visible',  panelBar.visible ? 'show' : 'hide');
   };
 
   this.restore = function() {
-    self.setPosition();
-    self.setVisibility();
+    panelBar[localStorage.getItem('panelBar.position')]();
+    panelBar[localStorage.getItem('panelBar.visible')]();
   };
 
   this.reset = function() {
-    localStorage.removeItem('panelbar.expires');
-    localStorage.removeItem('panelbar.position');
-    localStorage.removeItem('panelbar.visibile');
+    localStorage.removeItem('panelBar.expires');
+    localStorage.removeItem('panelBar.position');
+    localStorage.removeItem('panelBar.visibile');
   };
-
-  this.setPosition = function() {
-    if(localStorage.getItem('panelbar.position') === 'top') {
-      panelbar.top();
-    } else {
-      panelbar.bottom();
-    }
-  };
-
-  this.setVisibility = function() {
-    if(localStorage.getItem('panelbar.visible') === 'true') {
-      panelbar.show();
-    } else {
-      panelbar.hide();
-    }
-  };
-
-
-  this.expired = function() {
-    return Date.now() > localStorage.getItem('panelbar.expires');
-  };
-
 
   this.support = function() {
     try {
-      var x = '__storage_test__';
+      var x = '__panelBar_storage_test__';
       localStorage.setItem(x, x);
       localStorage.getItem(x);
       localStorage.removeItem(x);
@@ -69,8 +43,7 @@ var PanelbarState = function() {
     }
   };
 
+  if(this.support()) { this.init(); }
 };
 
-
-var pbState = new PanelbarState();
-pbState.init();
+var pbState = new panelBarState();

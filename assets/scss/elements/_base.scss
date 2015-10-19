@@ -3,42 +3,27 @@
    Element base
 \*------------------------------------*/
 
-.panelbar-element {
+.panelBar-element {
   display:      inline-block;
   float:        left;
   color:        #fff;
+  border-left:  1px solid #555;
+
+  &:first-of-type,
+  &:last-of-type.panelBar-element--right { border:  none; }
+
+  &--right { float: right; }
+
 
   > a,
   > span {
     display: inline-block;
     padding: 16px 14px 16px 18px;
 
-    body.rtl & { padding: 16px 18px 16px 14px; }
-  }
+    > i {
+      margin-right: 7px;
 
-  border-left: 1px solid #555;
-
-  body.rtl & {
-    border-left:  none;
-    border-right: 1px solid #555;
-  }
-
-  &:first-of-type {
-    border-left:  none;
-    border-right: none;
-  }
-
-  &:last-of-type.panelbar-element--right {
-    border-left:  none;
-    border-right: none;
-  }
-
-
-  &--right {
-    float: right;
-
-    body.rtl & {
-     float: left;
+      .panelBar--mobile & { margin-right: 0; }
     }
   }
 }

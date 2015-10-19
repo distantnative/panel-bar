@@ -3,43 +3,23 @@
    Controls
 \*------------------------------------*/
 
-.panelbar-controls {
-  position:       absolute;
-  z-index:        2147483200;
-  right:          0;
-  padding-top:    15px;
-  padding-bottom: 15px;
-  padding-right:  15px;
-  padding-left:   12px;
+.panelBar-controls {
+  position:   absolute;
+  z-index:    2147483200;
+  right:      0;
+  padding:    15px 15px 15px 12px;
 
-  font-size:        17px;
-  line-height:      1;
-  color:            #fff;
-  background-color: #000;
-  border-left:    1px solid #555;
+  color:        #fff;
+  background:   #000;
+  border-left:  1px solid #555;
 
-  body.rtl & {
-    right:          auto;
-    left:           0;
-    padding-right:  12px;
-    padding-left:   15px;
+  .panelBar--top    & { top:    0; }
+  .panelBar--bottom & { bottom: 0; }
 
-    border-left:    none;
-    border-right:   1px solid #555;
-  }
-
-  .panelbar--top &    { top:    0; }
-  .panelbar--bottom & { bottom: 0; }
-
-  .panelbar--hidden & {
-    color:            #000;
-    background-color: transparent;
-    border-left:      none;
-    height:           auto;
-
-    body.rtl & {
-      border-right: none;
-    }
+  .panelBar--hidden & {
+    color:        #000;
+    background:   transparent;
+    border-left:  none;
   }
 
   i:hover {
@@ -47,57 +27,41 @@
     color:  #999;
   }
 
-
   // Position
   &__position {
     display:      inline-block;
     margin-right: 7px;
 
-    body.rtl & {
-      margin-right: 0;
-      margin-left:  7px;
-    }
-
-    .panelbar--hidden &         { display: none; }
-    .panelbar--top    &--top    { display: none; }
-    .panelbar--bottom &--bottom { display: none; }
+    .panelBar--hidden &         { display: none; }
+    .panelBar--top    &--top    { display: none; }
+    .panelBar--bottom &--bottom { display: none; }
   }
-
 
   // Visibility
   &__visibility {
     display: inline-block;
 
     &--visible,
-    &--hidden {
+    &--invisible {
       position: relative;
       z-index:  2147483250;
     }
 
-    &--hidden { display: none; }
+    &--invisible { display: none !important; }
 
     &--bg {
-      display:  none;
-      position: absolute;
-      top:      17px;
-      right:    16px;
-      z-index:  2147483210;
-
+      display:    none !important;
+      position:   absolute;
+      top:        17px;
+      right:      16px;
       color:      #fff;
       font-size:  .8em;
-
-      body.rtl & {
-        right: auto;
-        left:  16px;
-      }
     }
 
-    .panelbar--hidden & {
-      &--visible { display: none; }
-      &--hidden  { display: block; }
-      &--bg      { display: block; }
+    .panelBar--hidden & {
+      &--visible    { display: none  !important; }
+      &--invisible  { display: block !important; }
+      &--bg         { display: block !important; }
     }
-
   }
-
 }

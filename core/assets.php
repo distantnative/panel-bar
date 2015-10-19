@@ -1,21 +1,15 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
 use C;
 
-use PanelBar\PB;
-
 class Assets extends Hooks {
 
-  public $css;
-  public $js;
-
+  public $css = array();
+  public $js  = array();
 
   public function __construct($external) {
-    $this->css   = array();
-    $this->js    = array();
-
     $this->defaults();
     $this->setHooks($external);
   }
@@ -26,6 +20,9 @@ class Assets extends Hooks {
    */
 
   public function css() {
+    if($language = site()->language() and $language->direction() === 'rtl') {
+      $this->assets->setHook('css', tools::load('css', 'components/rtl'));
+    }
     return '<style>'.$this->fontPaths($this->getHooks('css')).'</style>';
   }
 
@@ -39,25 +36,25 @@ class Assets extends Hooks {
    *  DEFAULTS
    */
 
-  protected function defaults() {
+  private function defaults() {
     $this->setHooks(array(
       'css' => array(
-        pb::load('css', 'panelbar.css'),
+        tools::load('css', 'panelbar'),
       ),
       'js'  => array(
-        'var panelbarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        pb::load('js', 'panelbar.min.js'),
+        'var panelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
+        tools::load('js', 'panelbar.min'),
       ),
     ));
 
     // JS: Responsive
     if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', pb::load('js', 'components' . DS . 'responsive.min.js'));
+      $this->setHook('js', tools::load('js', 'components/responsive.min'));
     }
 
     // JS: State - localStorage
     if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', pb::load('js', 'components' . DS . 'localstorage.min.js'));
+      $this->setHook('js', tools::load('js', 'components/localstorage.min'));
     }
   }
 
@@ -67,12 +64,12 @@ class Assets extends Hooks {
    *  FONTS
    */
 
-  protected function fontPaths($css) {
+  private function fontPaths($css) {
     $fonts = array(
-      array('{{FA}}',        pb::font('fontawesome-webfont.woff?v=4.2', false)),
-      array('{{SSP400}}',    pb::font('sourcesanspro-400.woff')),
-      array('{{SSP600}}',    pb::font('sourcesanspro-600.woff')),
-      array('{{SSPitalic}}', pb::font('sourcesanspro-400-italic.woff')),
+      array('{{FA}}',        tools::font('fontawesome-webfont.woff?v=4.2', false)),
+      array('{{SSP400}}',    tools::font('sourcesanspro-400.woff')),
+      array('{{SSP600}}',    tools::font('sourcesanspro-600.woff')),
+      array('{{SSPitalic}}', tools::font('sourcesanspro-400-italic.woff')),
     );
     foreach($fonts as $font) {
       $css = str_ireplace($font[0], $font[1], $css);

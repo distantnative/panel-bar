@@ -1,19 +1,19 @@
-![PanelBar for Kirby CMS](http://distantnative.com/remote/github/kirby-panelbar.png)  
+![panelBar for Kirby CMS](http://distantnative.com/remote/github/kirby-panelbar.png)  
 
 [![Release](https://img.shields.io/github/release/distantnative/panel-bar.svg)](https://github.com/distantnative/panel-bar/releases)  [![Issues](https://img.shields.io/github/issues/distantnative/panel-bar.svg)](https://github.com/distantnative/panel-bar/issues) [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://raw.githubusercontent.com/distantnative/panel-bar/master/LICENSE)
 [![Moral License](https://img.shields.io/badge/buy-moral_license-8dae28.svg)](https://gumroad.com/l/kirby-panelbar)
 
 
-This plugin enables you to include a panel bar on top of your site which gives you direct access to some administrative functions. The panel bar will only be visible to logged in users who are eligible to access the panel.
+This plugin enables you to include a panelBar on top of your site which gives you direct access to [some administrative functions](#StandardElements). The panelBar will only be visible to logged in users who are eligible to access the panel.
 
 *Requires PHP 5.3+ and Kirby 2.1 or higher*
 
 
-![PanelBar in action](assets/screens/screen.png)  
-![PanelBar - Add element](assets/screens/screen2.png)  
-![PanelBar - Edit in iFrame view](assets/screens/screen3.png)  
-![PanelBar - Toggle element](assets/screens/screen4.png)
-![PanelBar - Files element](assets/screens/screen5.png)  
+![panelBar - Files element](assets/screens/screen.png)  
+![panelBar - Images element](assets/screens/screen2.png)  
+![panelBar - Edit in iFrame view](assets/screens/screen3.png)  
+![panelBar - Toggle element](assets/screens/screen4.png)
+![panelBar - Add element](assets/screens/screen5.png)  
 
 
 **Please support the development by buying a [moral license](https://gumroad.com/l/kirby-panelbar)!**
@@ -33,19 +33,21 @@ This plugin enables you to include a panel bar on top of your site which gives y
   4. [Custom CSS/JS](#CustomCSSJS)
   5. [Hooks](#Hooks)
   6. [Output CSS/JS](#OutputCSSJS)
+  7. [Assets Guide](assets/GUIDE.md)
 5. Options
   1. [Default Position](#OptionPosition)
   2. [Responsiveness](#OptionResponsive)
   3. [Remember State](#OptionState)
   4. [Enhanced JS](#OptionEnhancedJS)
   5. [Keyboard Shortcuts](#OptionKeyboard)
-5. [Help & Improve](#Help)
-6. [Changelog](https://github.com/distantnative/panel-bar/blob/master/CHANGELOG.md)
+6. [Known Problems](#Problems)
+7. [Help & Improve](#Help)
+8. [Changelog](CHANGELOG.md)
 
 &nbsp;  
 
 # Setup<a id="Setup"></a>
-1. Download the [PanelBar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
+1. Download the [panelBar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
 &nbsp;  
@@ -53,12 +55,12 @@ This plugin enables you to include a panel bar on top of your site which gives y
 # Usage <a id="Usage"></a>
 Include in your `site/snippets/footer.php` (or equivalent) before the `</body>` tag:
 ```php
-<?php echo panelbar::show() ?>
+<?php echo panelBar::show() ?>
 ```
 
-If you want the PanelBar hidden when the page loads:
+If you want the panelBar hidden when the page loads:
 ```php
-<?php echo panelbar::hide() ?>
+<?php echo panelBar::hide() ?>
 ```
 
 If you want to use **caching with Kirby**, please make sure to only activate it if the visitor is not a logged-in user:
@@ -71,7 +73,7 @@ if(!site()->user()) c::set('cache', true);
 # Elements
 
 ### Standard Elements <a id="StandardElements"></a>
-The PanelBar provides several standard elements:  
+The panelBar provides several standard elements:  
 
 Name        | Description
 ----------- | ---------------------------------------------------------
@@ -80,9 +82,9 @@ Name        | Description
 `add`       | Add page as sibling or child
 `edit`      | Edit current page
 `toggle`    | Change the visibility of the current page (hide/publish)
-`files`     | Viewer for files of the current page
+`files`     | List of files of the current page
+`fileview`  | Viewer for files of the current page
 `images`    | Viewer for images of the current page
-`filelist`  | List of files of the current page
 `imagelist` | List of images of the current page
 `loadtime`  | Info label for loading time
 `language`  | Dropdown to switch between site languages
@@ -105,7 +107,7 @@ c::set('panelbar.elements', array(…));
 
 Or pass them as a parameter when calling `::show()` or `::hide()`:
 ```php
-<?php echo panelbar::show(array('elements' => array(…))) ?>
+<?php echo panelBar::show(array('elements' => array(…))) ?>
 ```
 
 To include [standard elements](#StandardElements) in your custom set, simply name them:
@@ -117,21 +119,21 @@ c::set('panelbar.elements', array(
 ));
 ```
 
-Or you can merge your custom set of elements with the [default set of elements](#DefaultSet) using `::defaults():
+Or you can add your custom set of elements to the [default set of elements](#DefaultSet) using `::defaults()` which returns either just the default set or merges it with any array of elements if provided as a parameter:
 ```php
 <?php
-$elements = a::merge(array(
-  'custom1',
-  'custom2',
-), panelbar::defaults()));
+$elements = panelBar::defaults(array(
+  'customDropdown',
+  'custom2'
+));
 
-echo panelbar::show(array('elements' => $elements));
+echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
 
 ### Custom Elements <a id="CustomElements"></a>
-The PanelBar can include custom elements. You can either include the custom element's output code directly in the elements array or use the name of a callable function in the array, which returns the output code:
+The panelBar can include custom elements. You can either include the custom element's output code directly in the elements array or use the name of a callable function in the array, which returns the output code:
 ```php
 <?php
 // custom callable element
@@ -148,16 +150,17 @@ $elements = array(
   'customSongs',
 );
 
-// output PanelBar
-echo panelbar::show(array('elements' => $elements));
+// output panelBar
+echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
+For more complex custom elements, have a look at panelBar's [assets guide](assets/GUIDE.md) on its core CSS and Javascript elements.
 
 ### Element Builders <a id="Builders"></a>
-The PanelBar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
+The panelBar plugin includes four builder method, which can be used to create custom elements. All builders require some basic parameters:
 ```php
-panelbar::builder(array(
+panelBar::builder(array(
   'id'      => 'theID',             // unique identifier
   'icon'    => 'heart',             // FontAwesome icon (without fa-)
   'label'   => 'Just the label',    // text used as label
@@ -171,7 +174,7 @@ The following element builders are available and require additional parameters i
 1. **Label**  
 
     ```php
-    panelbar::label(array(
+    panelBar::label(array(
       …,
     ));
     ```
@@ -179,7 +182,7 @@ The following element builders are available and require additional parameters i
 2. **Link**  
 
     ```php
-    panelbar::link(array(
+    panelBar::link(array(
       …,
       'url' => site()->url().'/panel',  // URL to which the button links
     ));
@@ -188,7 +191,7 @@ The following element builders are available and require additional parameters i
 3. **Dropdown**  
 
     ```php
-    panelbar::dropdown(array(
+    panelBar::dropdown(array(
       …,
       'items' => array(     // array of dropdown elements
         0 => array(
@@ -203,7 +206,7 @@ The following element builders are available and require additional parameters i
 4. **Textbox**  
 
     ```php
-    panelbar::box(array(
+    panelBar::box(array(
       …,
       'content' => '<b>Important information</b>', // (HTML) content of the textbox
     ));
@@ -215,7 +218,7 @@ With the builders you can easily create [custom elements](#CustomElements) and a
 <?php
 // custom callable element using the dropdown builder
 function customDropdown() {
-  return panelbar::dropdown(array(
+  return panelBar::dropdown(array(
     'id'    => 'songs',
     'icon'  => 'headphones',
     'label' => 'Songs',
@@ -235,7 +238,7 @@ function customDropdown() {
 // array of elements
 $elements = array(
   'panel',
-  panelbar::link(array(
+  panelBar::link(array(
     'id'    => 'mum',
     'icon'  => 'heart',
     'label' => 'Mum',
@@ -244,8 +247,8 @@ $elements = array(
   'customDropdown',
 );
 
-// output PanelBar
-echo panelbar::show(array('elements' => $elements));
+// output panelBar
+echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
@@ -257,21 +260,21 @@ kirby()->plugin('panel-bar');
 
 
 ### Custom CSS/JS <a id="CustomCSSJS"></a>
-To include your custom CSS and JS with PanelBar (e.g. for a [custom element](#CustomElement)), the best way would be to use [asset hooks](#Hooks) in your custom element function. However, you can also pass custom CSS and JS as parameters to the `::show()` and `::hide()` methods:
+To include your custom CSS and JS with panelBar (e.g. for a [custom element](#CustomElement)), the best way would be to use [asset hooks](#Hooks) in your custom element function. However, you can also pass custom CSS and JS as parameters to the `::show()` and `::hide()` methods:
 ```php
-<?php echo panelbar::show(array('css' => '.mylove{}', 'js' => 'console.log("hello");')) ?>
+<?php echo panelBar::show(array('css' => '.mylove{}', 'js' => 'console.log("hello");')) ?>
 ```
 
 
 ### Hooks for Assets/Output <a id="Hooks"></a>
-There are two types of hooks in PanelBar: asset hooks and output hooks. Asset hooks are divided into `css` and `js`. Output hooks all refer to HTML but are included at different positions in the panel bar: as `element`, `before` and `after`. To make use of assets and output hooks, the plugin passes the `$output` and `$assets` objects to callable custom element functions:
+There are two types of hooks in panelBar: asset hooks and output hooks. Asset hooks are divided into `css` and `js`. Output hooks all refer to HTML but are included at different positions in the panel bar: as `element`, `before` and `after`. To make use of assets and output hooks, the plugin passes the `$output` and `$assets` objects to callable custom element functions:
 ```php
 <?php
 // custom callable element using assets and output hooks
 function customHelpElement($output, $assets) {
   $assets->setHook('css',      '.mylove{}');
   $assets->setHook('js',       'console.log("hello");');
-  $output->setHook('elements', panelbar::label(…));
+  $output->setHook('elements', panelBar::label(…));
 }
 
 // array of elements
@@ -280,12 +283,12 @@ $elements = array(
   'customHelpElement',
 );
 
-// output PanelBar
-echo panelbar::show(array('elements' => $elements));
+// output panelBar
+echo panelBar::show(array('elements' => $elements));
 ?>
 ```
 
-If you do not want to directly set hooks, you can return an array instead and the plugin will take care of hooking the CSS, JS and/or HTML into the PanelBar:
+If you do not want to directly set hooks, you can return an array instead and the plugin will take care of hooking the CSS, JS and/or HTML into the panelBar:
 ```php
 // custom callable elements returning array to register hooks
 function customHelpElement() {
@@ -308,30 +311,30 @@ $elements = array(
   'customHelpElement',
 );
 
-// output PanelBar
-echo panelbar::show(array('elements' => $elements));
+// output panelBar
+echo panelBar::show(array('elements' => $elements));
 ```
 
 
 ### Output CSS/JS separately <a id="OutputCSSJS"></a>
-At default, PanelBar includes the necessary CSS styles and JS scripts in its output. If you not want to output the CSS and/or JS directly with the PanelBar (e.g. separately within the `<head>` section), you first have to disable their output:
+At default, panelBar includes the necessary CSS styles and JS scripts in its output. If you not want to output the CSS and/or JS directly with the panelBar (e.g. separately within the `<head>` section), you first have to disable their output:
 ```php
-<?php echo panelbar::show(array('css' => false, 'js' => false) ?>
+<?php echo panelBar::show(array('css' => false, 'js' => false) ?>
 ```
 
 To output the CSS and/or JS wherever you want it, just use `::css()` or `::js()`:
 ```php
-<?php echo panelbar::js() ?>
+<?php echo panelBar::js() ?>
 ```
 
 If you use a [custom set of elements](#CustomSet), please make sure to also pass the array of elements:
 ```php
-<?php echo panelbar::js(array('elements' => $elements)) ?>
+<?php echo panelBar::js(array('elements' => $elements)) ?>
 ```
 
 You can also still pass your [custom CSS/JS](#CustomCSSJS) to these methods:  
 ```php
-<?php echo panelbar::css(array('elements' => $elements, 'css' => '.mylove{}') ?>
+<?php echo panelBar::css(array('elements' => $elements, 'css' => '.mylove{}') ?>
 ```
 
 &nbsp;  
@@ -340,35 +343,35 @@ You can also still pass your [custom CSS/JS](#CustomCSSJS) to these methods:
 All options refer to settings in the `site/config/config.php` if not stated otherwise.
 
 ### Default Position <a id="OptionPosition"></a>
-To change the default position of the PanelBar to bottom include:
+To change the default position of the panelBar to bottom include:
 ```php
 c::set('panelbar.position', 'bottom');
 ```
 
 
 ### Responsivesness <a id="OptionResponsive"></a>
-To deactivate the javascript that makes the PanelBar responsive to mobile devices include:
+To deactivate the javascript that makes the panelBar responsive to mobile devices include:
 ```php
 c::set('panelbar.responsive', false);
 ```
 
 
 ### Remember State <a id="OptionState"></a>
-The PanelBar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. But it also tries to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link) via your browser's local storage. If you want to disable this, you need to include:
+The panelBar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. But it also tries to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link) via your browser's local storage. If you want to disable this, you need to include:
 ```php
 c::set('panelbar.remember', false);
 ```
 
 
 ### Enhanced Javascript <a id="OptionEnhancedJS"></a>
-By default, the PanelBar comes with some javascript functionalities (e.g. loading the edit mode in an iFrame). If you want to disable these functionalities and just use the PanelBar elements as plain links, you need to include:
+By default, the panelBar comes with some javascript functionalities (e.g. loading the edit mode in an iFrame). If you want to disable these functionalities and just use the panelBar elements as plain links, you need to include:
 ```php
 c::set('panelbar.enhancedJS', false);
 ```
 
 
 ### Keyboard Shortcuts <a id="OptionKeyboard"></a>
-By default the PanelBar features a few keyboard shortcuts:  
+By default the panelBar features a few keyboard shortcuts:  
 
 Keyboard Shortcut    | Effect
 -------------------- | -------------
@@ -376,14 +379,19 @@ Keyboard Shortcut    | Effect
 `alt` + `-` (dash)   | Toggle position (top/bottom)
 `alt`+ `up arrow`    | Set position to top
 `alt` + `down arrow` | Set position to bottom
-`alt` + `E`          | Toggle Edit mode
-`alt` + `R`          | Close Panel iFrame and Refresh
-`alt` + `P`          | Go to the Kirby panel
+`alt` + `M`          | Open Edit mode
+`alt` + `P`          | Open the Kirby panel
 
 If you want to deactivate these keyboard shortcuts, you have to include:
 ```php
 c::set('panelbar.keys', false);
 ```
+
+&nbsp;  
+
+# Known Problems <a id="Problems"></a>
+**X-Frame-Options**  
+If you have set the `X-Frame-Options` in your `.htaccess` to `DENY`, panelBar will not be able to display the panel in its embedded iFrame mode. panelBar tries to detect this barrier and then switch to plain links.
 
 &nbsp;  
 

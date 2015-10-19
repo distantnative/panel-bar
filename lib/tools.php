@@ -1,12 +1,10 @@
 <?php
 
-namespace PanelBar;
+namespace panelBar;
 
-use A;
 use Tpl;
-use Panel;
 
-class PB {
+class Tools {
 
   /**
    *  LOAD
@@ -23,11 +21,11 @@ class PB {
 
   public static function path($type, $append) {
     $paths = array(
-      'css'       => DS . 'assets' . DS . 'css' . DS,
-      'js'        => DS . 'assets' . DS . 'js' . DS,
-      'html'      => DS . 'templates' . DS,
+      'css'       => DS . 'assets'    . DS . 'css' . DS . $append . '.css',
+      'js'        => DS . 'assets'    . DS . 'js'  . DS . $append . '.js',
+      'html'      => DS . 'templates' . DS .              $append . '.php',
     );
-    return realpath(__DIR__ . '/..') . $paths[$type] . $append;
+    return realpath(__DIR__ . '/..') . $paths[$type];
   }
 
   public static function font($append) {
@@ -42,10 +40,9 @@ class PB {
   public static function url($action, $obj = null) {
     if(is_null($obj)) {
       $url = $action;
-    }
 
     // Panel version < 2.2.0
-    elseif(!self::version('2.2.0')) {
+    } elseif(!self::version('2.2.0')) {
       if(is_a($obj, 'File')) {
         if($action == 'index') {
           $url = '#/files/' . $action . '/' . $obj->page()->id() . '/';
@@ -75,12 +72,14 @@ class PB {
       }
     }
 
+    if(!isset($url)) $url = '';
+
     return site()->url() . '/panel/' . $url;
   }
 
 
   public static function version($version) {
-    switch ($version) {
+    switch($version) {
       case '2.2.0':
         return !file_exists('panel/app/panel.php') and
                file_exists('panel/app/src/panel.php');
