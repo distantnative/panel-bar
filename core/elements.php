@@ -6,18 +6,19 @@ use C;
 
 class Elements {
 
+  private $panel;
   private $output;
-  private $templates;
   private $assets;
   private $css;
   private $js;
 
-  public function __construct($output, $assets) {
-    $this->site   = site();
-    $this->page   = page();
-
+  public function __construct($page, $output, $assets) {
     $this->output = $output;
     $this->assets = $assets;
+
+    $this->panel  = panel();
+    $this->site   = $this->panel->site();
+    $this->page   = $this->panel->page($page->id());
   }
 
 
@@ -33,7 +34,7 @@ class Elements {
     return Build::link(array(
       'id'      => __FUNCTION__,
       'icon'    => 'cogs',
-      'url'     => tools::url(''),
+      'url'     => purl(),
       'label'   => '<span class="in-compact">Go to </span>Panel',
       'compact' => true,
     ));
@@ -88,11 +89,11 @@ class Elements {
       'label'  => 'Add',
       'items'  => array(
         'child' => array(
-          'url'   => tools::url('add', $this->page),
+          'url'   => $this->page->url('add'),
           'label' => 'Child',
         ),
         'sibling' => array(
-          'url'   => tools::url('add', $this->page->parent()),
+          'url'   => $this->page->parent()->url('add'),
           'label' => 'Sibling',
         ),
       ),
@@ -112,7 +113,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'pencil',
-      'url'    => tools::url('show', $this->page),
+      'url'    => $this->page->url('edit'),
       'label'  => 'Edit',
       'title'  => 'Alt + E',
     ));
@@ -127,49 +128,13 @@ class Elements {
     // register assets
     $this->assets->setHook('css', tools::load('css', 'elements/toggle'));
 
-    if(!tools::version("2.2.0")) {
-      $js = 'currentURI="'.$this->page->uri().'";siteURL="'.$this->site->url().'";';
-      $this->assets->setHook('js',  tools::load('js', 'elements/toggle.min'));
-      $this->assets->setHook('js',  $js);
-    } else {
-      $this->_registerIframe(__FUNCTION__);
-    }
-
-    // prepare output
-    if($this->page->isInvisible() and !tools::version("2.2.0")) {
-      $siblings = array();
-      array_push($siblings, array(
-        'url'   => tools::url('toggle', $this->page),
-        'label' => '&rarr;<span class="gap"></span>&larr;',
-        'title' => 'Publish page at this position'
-      ));
-      foreach ($this->page->siblings()->visible() as $sibling) {
-        array_push($siblings, array('label' => $sibling->title()));
-        array_push($siblings, array(
-          'url'   => tools::url('toggle', $this->page),
-          'label' => '&rarr;<span class="gap"></span>&larr;',
-          'title' => 'Publish page at this position'
-        ));
-      }
-
-      // return output
-      return Build::dropdown(array(
-        'id'     => __FUNCTION__,
-        'icon'   => 'toggle-off',
-        'label'  => 'Invisible',
-        'items'  => $siblings,
-      ));
-
-
-    } else {
-      // return output
-      return Build::link(array(
-        'id'     => __FUNCTION__,
-        'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
-        'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
-        'url'    => tools::url('toggle', $this->page),
-      ));
-    }
+    // return output
+    return Build::link(array(
+      'id'     => __FUNCTION__,
+      'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
+      'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
+      'url'    =>$this->page->url('toggle'),
+    ));
   }
 
 
@@ -178,7 +143,7 @@ class Elements {
    */
 
   public function images($type = 'image', $function = __FUNCTION__) {
-    if ($images = $this->_files($type)) {
+    if($images = $this->_files($type)) {
       // register assets
       $this->_registerIframe($function);
 
@@ -195,7 +160,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $images,
         'count'  => 'panelBar-images--' . $count,
-        'all'    => tools::url('index', $this->page->files()->first()),
+        'all'    => $this->page->files()->first()->url('index'),
       ));
     }
   }
@@ -215,7 +180,7 @@ class Elements {
    */
 
   public function files($type = null, $function = __FUNCTION__) {
-    if ($files = $this->_files($type)) {
+    if($files = $this->_files($type)) {
       // register assets
       $this->_registerIframe($function);
 
@@ -225,7 +190,7 @@ class Elements {
         'icon'   => 'th-list',
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $files,
-        'all'    => tools::url('index', $this->page->files()->first()),
+        'all'    => $this->page->url('files'),
       ));
     }
   }
@@ -294,7 +259,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'user',
-      'url'    => tools::url('edit', $this->site->user()),
+      'url'    => $this->site->user()->url('edit'),
       'label'  => $this->site->user(),
       'float'  => 'right',
     ));
@@ -310,7 +275,7 @@ class Elements {
     return Build::link(array(
       'id'     => __FUNCTION__,
       'icon'   => 'power-off',
-      'url'    => tools::url('logout'),
+      'url'    => $this->panel->urls()->logout(),
       'label'  => 'Logout',
       'float'  => 'right',
     ));
@@ -351,7 +316,7 @@ class Elements {
       foreach($files as $file) {
         $args = array(
           'type'      => $file->type(),
-          'url'       => tools::url('show', $file),
+          'url'       => $file->url('edit'),
           'label'     => $file->name(),
           'extension' => $file->extension(),
           'size'      => $file->niceSize(),

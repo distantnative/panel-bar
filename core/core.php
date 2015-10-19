@@ -21,8 +21,13 @@ class Core extends Build {
   public $css;
   public $js;
 
+  protected $page;
+  protected $panel;
 
   public function __construct($opt = array()) {
+    $this->page   = page();
+    $this->panel  = require_once(__DIR__ . '/../lib/integration.php');
+
     // Assets
     $this->css    = isset($opt['css']) ? $opt['css'] : true;
     $this->js     = isset($opt['js'])  ? $opt['js']  : true;
@@ -35,7 +40,8 @@ class Core extends Build {
     // Elements
     $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ?
                        $opt['elements'] : c::get('panelbar.elements',$this->defaults);
-    $this->standards = new Elements($this->output, $this->assets);
+    $this->standards = new Elements($this->page, $this->output, $this->assets);
+
   }
 
 

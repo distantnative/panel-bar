@@ -65,11 +65,12 @@ class Assets extends Hooks {
    */
 
   private function fontPaths($css) {
+    $base  = panel()->urls()->assets() . '/fonts/';
     $fonts = array(
-      array('{{FA}}',        tools::font('fontawesome-webfont.woff?v=4.2', false)),
-      array('{{SSP400}}',    tools::font('sourcesanspro-400.woff')),
-      array('{{SSP600}}',    tools::font('sourcesanspro-600.woff')),
-      array('{{SSPitalic}}', tools::font('sourcesanspro-400-italic.woff')),
+      array('{{FA}}',        $base . 'fontawesome-webfont.woff?v=4.2'),
+      array('{{SSP400}}',    $base . 'sourcesanspro-400.woff'),
+      array('{{SSP600}}',    $base . 'sourcesanspro-600.woff'),
+      array('{{SSPitalic}}', $base . 'sourcesanspro-400-italic.woff'),
     );
     foreach($fonts as $font) {
       $css = str_ireplace($font[0], $font[1], $css);
