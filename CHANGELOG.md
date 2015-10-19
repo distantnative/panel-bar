@@ -1,14 +1,19 @@
 # Changelog
 
 ## Version 1.0
-- Changed consitent naming to panelBar
 - Feature: Close button in iFrame mode which redirects to current panel page
+- Feature: Added a first draft of the [assets guide](assets/GUIDE.md)
 - Improved: iFrame mode detects `X-Frame-Options = DENY` and deativates
 - Improved: Filelist is now Files, sorted files
 - Improved: File icons in Files
 - Improved: Panel, Files and Imagelist elements also open in iFrame mode
+- Improved: Only load right-to-left styles if RTL language active
+- Improved: Code clean-up and removed redundancies
+- Fixed: Using `::defaults()`
+- Fixed: `tools::url` for certain objects
 - Fixed: Images layout and margins
 - Fixed: Images background on hover
+- Internal: Changed consitent naming to panelBar
 - Internal: Renamed toolkit `pb::` to `tools::`, redundant namespace references removed
 
 ## Version 0.7
