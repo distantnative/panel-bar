@@ -126,7 +126,7 @@ class Elements {
 
   public function toggle() {
     // register assets
-    $this->assets->setHook('css', tools::load('css', 'elements/toggle'));
+    $this->_registerIframe(__FUNCTION__);
 
     // return output
     return Build::link(array(

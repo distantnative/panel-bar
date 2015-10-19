@@ -74,15 +74,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/assets\/css\/elements\/toggle.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/css\/elements\/toggle.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/assets\/css\/files.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -515,22 +506,6 @@
 		"shouldRunBless": 1,
 		"useLibsass": 1
 		},
-	"\/assets\/scss\/elements\/toggle.scss": {
-		"createSourceMap": 0,
-		"debugStyle": 0,
-		"decimalPrecision": 10,
-		"fileType": 4,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/scss\/elements\/toggle.scss",
-		"outputAbbreviatedPath": "\/assets\/css\/elements\/toggle.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 3,
-		"shouldRunAutoprefixer": 1,
-		"shouldRunBless": 1,
-		"useLibsass": 1
-		},
 	"\/assets\/scss\/helpers\/_mixins.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -654,11 +629,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/integration.php": {
+	"\/lib\/integrate.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/integration.php",
+		"inputAbbreviatedPath": "\/lib\/integrate.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
