@@ -379,9 +379,8 @@ Keyboard Shortcut    | Effect
 `alt` + `-` (dash)   | Toggle position (top/bottom)
 `alt`+ `up arrow`    | Set position to top
 `alt` + `down arrow` | Set position to bottom
-`alt` + `E`          | Toggle Edit mode
-`alt` + `R`          | Close Panel iFrame and Refresh
-`alt` + `P`          | Go to the Kirby panel
+`alt` + `M`          | Open Edit mode
+`alt` + `P`          | Open the Kirby panel
 
 If you want to deactivate these keyboard shortcuts, you have to include:
 ```php
