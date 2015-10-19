@@ -82,21 +82,27 @@ class Elements {
     // register assets
     $this->_registerIframe(__FUNCTION__);
 
+    // prepare output
+    $items = array();
+    if($this->page->canHaveSubpages()) {
+      array_push($items, array(
+        'url'   => $this->page->url('add'),
+        'label' => 'Child',
+      ));
+    }
+    if($parent = $this->page->parent() and $parent->canHaveSubpages()) {
+      array_push($items, array(
+        'url'   => $parent->url('add'),
+        'label' => 'Sibling',
+      ));
+    }
+
     // return output
     return Build::dropdown(array(
       'id'     => __FUNCTION__,
       'icon'   => 'plus',
       'label'  => 'Add',
-      'items'  => array(
-        'child' => array(
-          'url'   => $this->page->url('add'),
-          'label' => 'Child',
-        ),
-        'sibling' => array(
-          'url'   => $this->page->parent()->url('add'),
-          'label' => 'Sibling',
-        ),
-      ),
+      'items'  => $items,
     ));
   }
 
@@ -133,7 +139,7 @@ class Elements {
       'id'     => __FUNCTION__,
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
-      'url'    =>$this->page->url('toggle'),
+      'url'    => $this->page->url('toggle'),
     ));
   }
 
@@ -143,7 +149,7 @@ class Elements {
    */
 
   public function images($type = 'image', $function = __FUNCTION__) {
-    if($images = $this->_files($type)) {
+    if($images = $this->_files($type) and $this->page->canShowFiles()) {
       // register assets
       $this->_registerIframe($function);
 
@@ -180,7 +186,7 @@ class Elements {
    */
 
   public function files($type = null, $function = __FUNCTION__) {
-    if($files = $this->_files($type)) {
+    if($files = $this->_files($type) and $this->page->canShowFiles()) {
       // register assets
       $this->_registerIframe($function);
 
