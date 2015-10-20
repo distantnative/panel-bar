@@ -27,9 +27,9 @@
     border-bottom:  3px solid #fff;
     border-right:   2px solid #fff;
 
-    &.panelBar-images--1,
-    &.panelBar-images--2:last-child,
-    &.panelBar-images--default:nth-child(3n+3) {
+    .panelBar-images--1 &,
+    .panelBar-images--2 &:nth-child(2n+2),
+    .panelBar-images--default &:nth-child(3n+3) {
       border-right: none;
     }
 
