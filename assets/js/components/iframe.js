@@ -5,6 +5,7 @@ var panelBarIframe = function() {
 
   this.active     = false;
   this.position   = null;
+  this.supported  = true;
   this.wrapper    = panelBar.wrapper.querySelector(".panelBar-iframe__iframe");
   this.iframe     = this.wrapper.children[1];
   this.loading    = this.wrapper.children[0];
@@ -23,8 +24,10 @@ var panelBarIframe = function() {
     var i;
     for (i = 0; i < links.length; i++) {
       links[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        self.show(this.href);
+        if(self.supported) {
+          e.preventDefault();
+          self.show(this.href);
+        }
       });
     }
   };
@@ -92,7 +95,7 @@ var panelBarIframe = function() {
           location.href = url;
         }, 2000);
       }
-    }, 3500);
+    }, 1500);
   };
 
   this.refresh  = function()    {
@@ -103,6 +106,30 @@ var panelBarIframe = function() {
     location.href = self.iframe.src;
     panelBar.show();
   };
+
+  /**
+   *  support - checks if panel urls can be opened in iFrame
+   */
+
+  this.support = function() {
+    var testFrame = document.createElement('iframe');
+    testFrame.id            = 'panelBarJStestFrame'
+    testFrame.src           = siteURL + '/panel/';
+    testFrame.style.display = 'none';
+
+    document.body.appendChild(testFrame);
+    testFrame.addEventListener("load", function() {
+      var body = testFrame.contentDocument.querySelector('body.app');
+      if(typeof body !== undefined) document.body.removeChild(testFrame);
+    });
+
+    setTimeout(function() {
+      self.supported = document.getElementById('panelBarJStestFrame') === null;
+    }, 1000);
+  };
+
+
+  self.support();
 };
 
 
