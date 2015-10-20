@@ -5,7 +5,6 @@ var panelBarIframe = function() {
 
   this.active     = false;
   this.position   = null;
-  this.supported  = true;
   this.wrapper    = panelBar.wrapper.querySelector(".panelBar-iframe__iframe");
   this.iframe     = this.wrapper.children[1];
   this.loading    = this.wrapper.children[0];
@@ -24,10 +23,8 @@ var panelBarIframe = function() {
     var i;
     for (i = 0; i < links.length; i++) {
       links[i].addEventListener('click', function(e) {
-        if(self.supported) {
-          e.preventDefault();
-          self.show(this.href);
-        }
+        e.preventDefault();
+        self.show(this.href);
       });
     }
   };
@@ -49,8 +46,6 @@ var panelBarIframe = function() {
     self.buttons.style.display   = show ? 'inline-block'  : 'none';
     self.wrapper.style.display   = show ? 'block'         : 'none';
     document.body.style.overflow = show ? 'hidden'        : 'auto';
-
-    self.loadingScreen(show ? 'Loading…' : '');
 
     var event = show ? 'addEventListener' : 'removeEventListener';
     self.returnBtn[event]('click', self.show);
@@ -75,50 +70,39 @@ var panelBarIframe = function() {
   }
 
   /**
-   *  loading and fail screen
-   */
-
-  this.loadingScreen = function(message) {
-    self.loading.innerHTML   = message;
-    if(message !== '') {
-      setTimeout(function() {
-        self.loading.innerHTML = 'Seems like something is blocking access to the panel inside an iframe.';
-      }, 3000);
-    }
-  };
-
-  /**
    *  iframe & window loading
    */
 
-  this.load     = function(url) { self.iframe.src = self.active ? url : ''; };
-  this.refresh  = function()    { location.reload(); };
+  this.load     = function(url) {
+    // start loading
+    self.loading.innerHTML = 'Loading…';
+    self.iframe.src = self.active ? url : '';
+
+    // clear if panel got loaded
+    self.iframe.addEventListener("load", function() {
+      var body = self.iframe.contentDocument.querySelector('body.app');
+      if(typeof body !== undefined) self.loading.innerHTML = '';
+    });
+
+    // wait and check if loading got cleared, if not redirect
+    setTimeout(function() {
+      if(self.loading.innerHTML !== '') {
+        self.loading.innerHTML = 'Seems like something is blocking access to the panel inside an iframe. Redirecting…';
+        setTimeout(function() {
+          location.href = url;
+        }, 2000);
+      }
+    }, 3500);
+  };
+
+  this.refresh  = function()    {
+    location.reload();
+  };
+
   this.redirect = function()    {
     location.href = self.iframe.src;
     panelBar.show();
   };
-
-
-  /**
-   *  support - checks if panel urls can be opened in iFrame
-   */
-
-  this.support = function() {
-    var testFrame = document.createElement('iframe');
-    testFrame.id            = 'panelBarJStestFrame'
-    testFrame.src           = siteURL + '/panel/';
-    testFrame.style.display = 'none';
-
-    document.body.appendChild(testFrame);
-    testFrame.addEventListener("load", document.body.removeChild(testFrame));
-
-    setTimeout(function() {
-      self.supported = document.getElementById('panelBarJStestFrame') === null;
-    }, 2500);
-  };
-
-
-  this.support();
 };
 
 
