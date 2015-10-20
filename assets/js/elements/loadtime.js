@@ -7,13 +7,7 @@ var panelBarLoadtime = function() {
   this.label = this.btn.children[0].children[1];
 
   this.init = function() {
-    setTimeout(function() {
-      self.label.innerHTML = '…';
-      setTimeout(self.load, 1000)
-    }, 1000);
-  };
-
-  this.load = function() {
+    self.label.innerHTML = '…';
     var start   = new Date().getTime();
     var request = new XMLHttpRequest();
     request.open('POST', window.location.href , true);
