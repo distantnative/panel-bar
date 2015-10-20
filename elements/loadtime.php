@@ -2,11 +2,14 @@
 
 namespace panelBar\Elements;
 
+use panelBar\Tools;
 use panelBar\Build;
 
 class Loadtime extends Base {
 
   public function loadtime() {
+    // register assets
+    $this->assets->setHook('js', tools::load('js', 'elements/loadtime.min'));
     // return output
     return Build::label(array(
       'id'     => __FUNCTION__,

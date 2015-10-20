@@ -4,13 +4,13 @@ var panelBarState = function() {
   var self = this;
 
   this.init = function() {
-      if(Date.now() > localStorage.getItem('panelBar.expires')) {
-        self.reset();
-      } else {
-        self.restore();
-      }
-      self.save();
-      panelBar.controls.addEventListener('click', self.save);
+    if(Date.now() > localStorage.getItem('panelBar.expires')) {
+      self.reset();
+    } else {
+      self.restore();
+    }
+    self.save();
+    panelBar.controls.addEventListener('click', self.save);
   };
 
   this.get = function(key) {

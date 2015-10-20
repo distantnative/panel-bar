@@ -188,23 +188,23 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/elements\/toggle.js": {
+	"\/assets\/js\/elements\/loadtime.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/toggle.js",
-		"outputAbbreviatedPath": "\/assets\/js\/elements\/toggle.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.js",
+		"outputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/elements\/toggle.min.js": {
+	"\/assets\/js\/elements\/loadtime.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/toggle.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/toggle.min.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.min.js",
+		"outputAbbreviatedPath": "\/assets\/scripts\/loadtime.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

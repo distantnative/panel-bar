@@ -96,6 +96,3 @@ pbIframe.add(link)      // adds iFrame mode functionality to a link
 pbIframe.show(url)      // activates iFrame mode (deactivate with empty url)
 pbIframe.load(url)      // loads url in iFrame mode
 ```
-
-### pbToggle (class panelBarToggle)
-The `var pbToggle` includes the main instance of the `panelBarToggle` class, which is used for AJAX functionality of the toggle standard element.
