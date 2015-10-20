@@ -63,6 +63,8 @@ var panelBarIframe = function() {
       self.elements[i].style.display = clear ? 'none' : 'inline-block';
     }
     panelBar.posBtn.style.display    = clear ? 'none' : '';
+    addClass(panelBar.visBtn.children[0], clear ? 'fa-thumb-tack' : 'fa-times-circle');
+    removeClass(panelBar.visBtn.children[0], clear ? 'fa-times-circle' : 'fa-thumb-tack');
     panelBar.visBtn[clear ? 'addEventListener' : 'removeEventListener']('click', self.redirect);
   };
 
