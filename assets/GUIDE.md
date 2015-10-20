@@ -68,6 +68,12 @@ The `var pbResponsive` includes the main instance of the `panelBarResponsive` cl
 ### pbState (class panelBarState)
 The `var pbState` includes the main instance of the `panelBarState` class, which is used to store the current state of panelBar's position and visibility across page loads - if not [switched off](../README.md#OptionState).
 
+Selected methods which might be useful for you:
+```javascript
+pbState.set(key, value)   // saves key-value pair in localStorage
+pbState.get(key)          // returns value for key from localStorage
+pbState.unset(key)        // removes key-value pair from localStorage
+```
 
 ### pbIframe (class panelBarIframe)
 The `var pbIframe` includes the main instance of the `panelBarIframe` class, which is used for all elements that feature the iFrame mode (link click opens panel in an iFrame).

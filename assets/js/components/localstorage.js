@@ -13,21 +13,33 @@ var panelBarState = function() {
       panelBar.controls.addEventListener('click', self.save);
   };
 
+  this.get = function(key) {
+    return localStorage.getItem('panelBar.' + key);
+  };
+
+  this.set = function(key, value) {
+    return localStorage.setItem('panelBar.' + key, value);
+  };
+
+  this.unset = function(key) {
+    return localStorage.removeItem('panelBar.' + key);
+  };
+
   this.save = function() {
-    localStorage.setItem('panelBar.expires',  Date.now() + (24 * 60 * 60 * 1000));
-    localStorage.setItem('panelBar.position', panelBar.position);
-    localStorage.setItem('panelBar.visible',  panelBar.visible ? 'show' : 'hide');
+    self.set('expires',  Date.now() + (24 * 60 * 60 * 1000));
+    self.set('position', panelBar.position);
+    self.set('visible',  panelBar.visible ? 'show' : 'hide');
   };
 
   this.restore = function() {
-    panelBar[localStorage.getItem('panelBar.position')]();
-    panelBar[localStorage.getItem('panelBar.visible')]();
+    panelBar[self.get('position')]();
+    panelBar[self.get('visible')]();
   };
 
   this.reset = function() {
-    localStorage.removeItem('panelBar.expires');
-    localStorage.removeItem('panelBar.position');
-    localStorage.removeItem('panelBar.visibile');
+    self.unset('expires');
+    self.unset('position');
+    self.unset('visibile');
   };
 
   this.support = function() {

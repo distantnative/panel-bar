@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 2.0
+- Improved: Added methods to use localStorage for custom elements
+
 ## Version 1.0
 - Feature: Close button in iFrame mode which redirects to current panel page
 - Feature: Added a first draft of the [assets guide](assets/GUIDE.md)
