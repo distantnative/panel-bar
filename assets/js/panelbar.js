@@ -75,6 +75,9 @@ var panelBarObj = function() {
     e = e || event;
     self.map[e.keyCode] = e.type === 'keydown';
 
+    // deactivate if in panel mode
+    if(typeof pbIframe !== 'undefined' && pbIframe.active === true) return;
+
     if(self.map[18] && self.map[88]) {                        // alt + x
       self.switchVisibility();
 
@@ -92,9 +95,7 @@ var panelBarObj = function() {
       location.href = self.bar.querySelector('.panelBar--panel a').href;
 
     } else if(self.map[18] && self.map[77]) {                 // alt + M
-      if(typeof pbIframe !== 'undefined' && pbIframe.active === false) {
-        self.bar.querySelector('.panelBar--edit a').click();
-      }
+      self.bar.querySelector('.panelBar--edit a').click();
     }
   };
 
