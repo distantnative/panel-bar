@@ -166,7 +166,7 @@ class Elements {
         'label'  => ($type == 'image') ? 'Images' : 'Files',
         'items'  => $images,
         'count'  => 'panelBar-images--' . $count,
-        'all'    => $this->page->files()->first()->url('index'),
+        'all'    => $this->page->url('files'),
       ));
     }
   }
