@@ -2,20 +2,13 @@
 
 namespace panelBar;
 
-require_once(__DIR__ . '/../lib/tools.php');
-require_once(__DIR__ . '/../lib/hooks.php');
-require_once(__DIR__ . '/../lib/build.php');
-
-require_once('elements.php');
-require_once('output.php');
-require_once('assets.php');
+require_once('bootstrap.php');
 
 use C;
 
 class Core extends Build {
 
   public $elements;
-  public $standards;
   public $output;
   public $assets;
   public $css;
@@ -40,7 +33,6 @@ class Core extends Build {
     // Elements
     $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ?
                        $opt['elements'] : c::get('panelbar.elements',$this->defaults);
-    $this->standards = new Elements($this->page, $this->output, $this->assets);
 
   }
 
@@ -60,10 +52,11 @@ class Core extends Build {
   protected function _elements() {
     foreach ($this->elements as $id => $el) {
 
-      // $element is default function
-      if(is_callable(array($this->standards, $el)) and
-         substr($el, 0, 1) !== '_') {
-        $el = call_user_func(array($this->standards, $el));
+      // $element is standard element
+      $class = 'panelBar\Elements\\' . $el;
+      if(class_exists($class)) {
+        $class = new $class($this->page, $this->output, $this->assets);
+        $el    = $class->$el();
 
       // $element is callable
       } elseif(is_callable($el)) {
