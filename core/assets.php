@@ -67,7 +67,12 @@ class Assets extends Hooks {
   private function fontPaths($css) {
     $base  = panel()->urls()->assets() . '/fonts/';
     $fonts = array(
-      array('{{FA}}',        $base . 'fontawesome-webfont.woff?v=4.2'),
+      array('{{FA.eot}}',    $base . 'fontawesome-webfont.eot?v=4.4.0'),
+      array('{{FA.iefix}}',  $base . 'fontawesome-webfont.eot?#iefix&v=4.4.0'),
+      array('{{FA.woff2}}',  $base . 'fontawesome-webfont.woff2?v=4.4.0'),
+      array('{{FA.woff}}',   $base . 'fontawesome-webfont.woff?v=4.4.0'),
+      array('{{FA.ttf}}',    $base . 'fontawesome-webfont.ttf?v=4.4.0'),
+      array('{{FA.svg}}',    $base . 'fontawesome-webfont.svg?v=4.4.0#fontawesomeregular'),
       array('{{SSP400}}',    $base . 'sourcesanspro-400.woff'),
       array('{{SSP600}}',    $base . 'sourcesanspro-600.woff'),
       array('{{SSPitalic}}', $base . 'sourcesanspro-400-italic.woff'),
