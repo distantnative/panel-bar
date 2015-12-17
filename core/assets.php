@@ -43,18 +43,18 @@ class Assets extends Hooks {
       ),
       'js'  => array(
         'var panelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        tools::load('js', 'panelbar.min'),
+        tools::load('js', 'panelbar'),
       ),
     ));
 
     // JS: Responsive
     if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', tools::load('js', 'components/responsive.min'));
+      $this->setHook('js', tools::load('js', 'components/responsive'));
     }
 
     // JS: State - localStorage
     if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', tools::load('js', 'components/localstorage.min'));
+      $this->setHook('js', tools::load('js', 'components/localstorage'));
     }
   }
 

@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "19076",
+"creatorBuild": "19102",
 "files": {
 	"\/assets\/css\/components\/iframe.css": {
 		"fileType": 16,
@@ -74,15 +74,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/assets\/css\/files.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/css\/files.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/assets\/css\/modules\/drop.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -122,122 +113,122 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
-	"\/assets\/js\/components\/iframe.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/iframe.js",
-		"outputAbbreviatedPath": "\/assets\/js\/components\/iframe.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/components\/iframe.min.js": {
+	"\/assets\/js\/dist\/components\/iframe.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/iframe.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/iframe.min.js",
 		"outputAbbreviatedPath": "\/assets\/scripts\/iframe.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/components\/localstorage.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/localstorage.js",
-		"outputAbbreviatedPath": "\/assets\/js\/components\/localstorage.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/components\/localstorage.min.js": {
+	"\/assets\/js\/dist\/components\/localstorage.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/localstorage.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/localstorage.min.js",
 		"outputAbbreviatedPath": "\/assets\/scripts\/localstorage.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/components\/responsive.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/responsive.js",
-		"outputAbbreviatedPath": "\/assets\/js\/components\/responsive.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/components\/responsive.min.js": {
+	"\/assets\/js\/dist\/components\/responsive.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/components\/responsive.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/responsive.min.js",
 		"outputAbbreviatedPath": "\/assets\/scripts\/responsive.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/elements\/loadtime.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.js",
-		"outputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/assets\/js\/elements\/loadtime.min.js": {
+	"\/assets\/js\/dist\/elements\/loadtime.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/elements\/loadtime.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/elements\/loadtime.min.js",
 		"outputAbbreviatedPath": "\/assets\/scripts\/loadtime.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/helpers\/_classes.js": {
+	"\/assets\/js\/dist\/panelbar.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/helpers\/_classes.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/_classes.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/panelbar.min.js",
+		"outputAbbreviatedPath": "\/assets\/scripts\/panelbar.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/panelbar.js": {
+	"\/assets\/js\/src\/components\/iframe.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/panelbar.js",
-		"outputAbbreviatedPath": "\/assets\/js\/panelbar.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/iframe.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/iframe.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/assets\/js\/panelbar.min.js": {
+	"\/assets\/js\/src\/components\/localstorage.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/localstorage.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/localstorage.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/assets\/js\/src\/components\/responsive.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/responsive.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/responsive.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/assets\/js\/src\/elements\/loadtime.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/src\/elements\/loadtime.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/elements\/loadtime.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/assets\/js\/src\/panelbar.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/src\/panelbar.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/panelbar.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/assets\/js\/src\/util\/_class.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/assets\/js\/panelbar.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/panelbar.min.min.js",
+		"inputAbbreviatedPath": "\/assets\/js\/src\/util\/_class.js",
+		"outputAbbreviatedPath": "\/assets\/scripts\/_class.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1017,8 +1008,16 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_nested_string_interpolation": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"no_plusplus": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"no_private_function_fat_arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"no_stand_alone_at": {
@@ -1027,6 +1026,10 @@
 			},
 		"no_tabs": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_this": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_throwing_strings": {

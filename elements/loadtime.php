@@ -9,7 +9,7 @@ class Loadtime extends Base {
 
   public function loadtime() {
     // register assets
-    $this->assets->setHook('js', tools::load('js', 'elements/loadtime.min'));
+    $this->assets->setHook('js', tools::load('js', 'elements/loadtime'));
     // return output
     return Build::label(array(
       'id'     => __FUNCTION__,

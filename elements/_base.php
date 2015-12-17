@@ -21,7 +21,7 @@ class Base {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
       $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
-      $this->assets->setHook('js',  tools::load('js',  'components/iframe.min'));
+      $this->assets->setHook('js',  tools::load('js',  'components/iframe'));
       $this->assets->setHook('js',  'pbIframe.add(".panelBar--' . $element . ' a");');
       $this->assets->setHook('css', tools::load('css', 'components/iframe'));
       // register output

@@ -1,5 +1,5 @@
 
-// @codekit-prepend "helpers/_classes.js";
+// @codekit-prepend "util/_class.js";
 
 var panelBarObj = function() {
 
