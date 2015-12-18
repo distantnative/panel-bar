@@ -1,106 +1,70 @@
 
-// @codekit-prepend "util/_class.js";
+var panelBar = (function (panelBar) {
 
-var panelBarObj = function() {
+  var _ = {};
 
-  var self = this;
+  _.elements = {};
 
-  this.wrapper  = document.getElementById('panelBar');
-  this.bar      = document.getElementById('panelBar_bar');
-  this.controls = document.getElementById('panelBar_controls');
-  this.posBtn   = this.controls.children[0];
-  this.visBtn   = this.controls.children[1];
-  this.visible  = !hasClass(this.bar, 'panelBar__bar--hidden');
-  this.position = hasClass(this.wrapper, 'panelBar--top') ? 'top' : 'bottom';
-  this.map      = [];
+  _.dom = {
+    wrapper:  document.getElementById('panelBar'),
+    bar:      document.getElementById('panelBar_bar'),
+    controls: document.getElementById('panelBar_controls'),
+  };
 
+  _.dom.buttons = {
+    position: _.dom.controls.children[0],
+    visible:  _.dom.controls.children[1],
+  };
 
-  /**
-   *  INIT
-   */
+  _.status = {
+    visible:   !cl.has(_.dom.bar, 'panelBar__bar--hidden'),
+    position:  cl.has(_.dom.wrapper, 'panelBar--top') ? 'top' : 'bottom',
+  };
 
-  this.init = function() {
-    if ('querySelector' in document && 'addEventListener' in window) {
-      self.posBtn.addEventListener('click', self.switchPosition);
-      self.visBtn.addEventListener('click', self.switchVisibility);
-
-      if (panelBarKEYS === true) {
-        document.addEventListener('keydown', self.keys);
-        document.addEventListener('keyup',   self.keys);
-      }
-
-    } else {
-      self.controls.remove();
-      self.bar.style.paddingRight = 0;
-      removeClass(self.bar, "panelBar--hidden");
+  _.init = function() {
+    if (isSupported()) {
+      activateControls();
+    } else  {
+      _.deactivate();
     }
   };
 
-
-  /**
-   *  POSITION
-   */
-
-  this.pos = function(top) {
-    self.position = top ? 'top' : 'bottom';
-    addClass   (self.wrapper, 'panelBar--' + self.position);
-    removeClass(self.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
-
+  var activateControls = function() {
+    _.dom.buttons.position.addEventListener('click', _.togglePosition);
+    _.dom.buttons.visible.addEventListener('click', _.toggleVisibility);
   };
 
-  this.top            = function() { self.pos(true);                    };
-  this.bottom         = function() { self.pos(false);                   };
-  this.switchPosition = function() { self.pos(self.position !== 'top'); };
 
-
-  /**
-   *  VISIBILITY
-   */
-
-  this.vis = function(vis) {
-    self.visible = vis;
-    window[vis ? 'removeClass' : 'addClass'](self.wrapper, 'panelBar--hidden');
-  }
-
-  this.show             = function() { self.vis(true);          };
-  this.hide             = function() { self.vis(false);         };
-  this.switchVisibility = function() { self.vis(!self.visible); };
-
-
-  /**
-   *  KEYBINDINGS
-   */
-
-  this.keys = function(e) {
-    e = e || event;
-    self.map[e.keyCode] = e.type === 'keydown';
-
-    // deactivate if in panel mode
-    if(typeof pbIframe !== 'undefined' && pbIframe.active === true) return;
-
-    if(self.map[18] && self.map[88]) {                        // alt + x
-      self.switchVisibility();
-
-    } else if(self.map[18] && self.map[189]) {                // alt + -
-      self.switchPosition();
-
-    } else if(self.map[18] && self.map[38]) {                 // alt + up
-      self.pos(true);
-
-    } else if(self.map[18] && self.map[40]) {                 // alt + down
-      self.pos(false);
-
-    } else if(self.map[18] && self.map[80]) {                 // alt + P
-      self.map      = [];
-      location.href = self.bar.querySelector('.panelBar--panel a').href;
-
-    } else if(self.map[18] && self.map[77]) {                 // alt + M
-      self.bar.querySelector('.panelBar--edit a').click();
-    }
+  var pos = function(top) {
+    _.status.position = top ? 'top' : 'bottom';
+    cl.add   (_.dom.wrapper, 'panelBar--' + _.status.position);
+    cl.remove(_.dom.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
   };
 
-  this.init();
-};
+  _.top =            function() { pos(true);                        };
+  _.bottom =         function() { pos(false);                       };
+  _.togglePosition = function() { pos(_.status.position !== 'top'); };
 
+  var vis = function(vis) {
+    _.status.visible = vis;
+    cl[vis ? 'remove' : 'add'](_.dom.wrapper, 'panelBar--hidden');
+  };
 
-var panelBar = new panelBarObj();
+  _.show =             function() { vis(true);              };
+  _.hide =             function() { vis(false);             };
+  _.toggleVisibility = function() { vis(!_.status.visible); };
+
+  var isSupported = function() {
+    return 'querySelector' in document && 'addEventListener' in window;
+  };
+
+  _.deactivate = function() {
+    _.dom.controls.remove();
+    _.dom.bar.style.paddingRight = 0;
+    cl.remove(_.dom.bar, "panelBar--hidden");
+  };
+
+  return _;
+})();
+
+panelBar.init();

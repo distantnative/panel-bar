@@ -38,26 +38,29 @@ class Assets extends Hooks {
 
   private function defaults() {
     $this->setHooks(array(
-      'css' => array(
-        tools::load('css', 'panelbar'),
-      ),
+      'css' => array(tools::load('css', 'panelbar')),
       'js'  => array(
-        'var panelBarKEYS=' . (c::get('panelbar.keys', true) ? 'true;' : 'false;'),
-        tools::load('js', 'panelbar'),
+        tools::load('js',  'util/classes'),
+        tools::load('js',  'panelbar')
       ),
     ));
 
-    // JS: Responsive
-    if(c::get('panelbar.responsive', true)) {
-      $this->setHook('js', tools::load('js', 'components/responsive'));
-    }
-
-    // JS: State - localStorage
-    if(c::get('panelbar.remember', true)) {
-      $this->setHook('js', tools::load('js', 'components/localstorage'));
-    }
+    $this->bundles();
   }
 
+  private function bundles() {
+    $bundles = array(
+      'panelbar.responsive' => array('js', 'components/responsive'),
+      'panelbar.keys'       => array('js', 'components/keybindings'),
+      'panelbar.remember'   => array('js', 'components/localstorage'),
+    );
+
+    foreach ($bundles as $option => $asset) {
+      if(c::get($option, true)) {
+        $this->setHook($asset[0], tools::load($asset[0], $asset[1]));
+      }
+    }
+  }
 
 
   /**
@@ -67,12 +70,8 @@ class Assets extends Hooks {
   private function fontPaths($css) {
     $base  = panel()->urls()->assets() . '/fonts/';
     $fonts = array(
-      array('{{FA.eot}}',    $base . 'fontawesome-webfont.eot?v=4.4.0'),
-      array('{{FA.iefix}}',  $base . 'fontawesome-webfont.eot?#iefix&v=4.4.0'),
-      array('{{FA.woff2}}',  $base . 'fontawesome-webfont.woff2?v=4.4.0'),
-      array('{{FA.woff}}',   $base . 'fontawesome-webfont.woff?v=4.4.0'),
-      array('{{FA.ttf}}',    $base . 'fontawesome-webfont.ttf?v=4.4.0'),
-      array('{{FA.svg}}',    $base . 'fontawesome-webfont.svg?v=4.4.0#fontawesomeregular'),
+      array('{FA.woff2}',  $base . 'fontawesome-webfont.woff2?v=4.4.0'),
+      array('{FA.woff}',   $base . 'fontawesome-webfont.woff?v=4.4.0'),
       array('{{SSP400}}',    $base . 'sourcesanspro-400.woff'),
       array('{{SSP600}}',    $base . 'sourcesanspro-600.woff'),
       array('{{SSPitalic}}', $base . 'sourcesanspro-400-italic.woff'),

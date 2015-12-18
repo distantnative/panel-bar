@@ -1,61 +1,59 @@
+(function (panelBar) {
 
-var panelBarState = function() {
-
-  var self = this;
-
-  this.init = function() {
-    if(Date.now() > localStorage.getItem('panelBar.expires')) {
-      self.reset();
-    } else {
-      self.restore();
-    }
-    self.save();
-    panelBar.controls.addEventListener('click', self.save);
+  var save = function() {
+    panelBar.state.set('expires',  Date.now() + (24 * 60 * 60 * 1000));
+    panelBar.state.set('position', panelBar.status.position);
+    panelBar.state.set('visible',  panelBar.status.visible ? 'show' : 'hide');
   };
 
-  this.get = function(key) {
-    return localStorage.getItem('panelBar.' + key);
+  var restore = function() {
+    panelBar[panelBar.state.get('position')]();
+    panelBar[panelBar.state.get('visible')]();
   };
 
-  this.set = function(key, value) {
-    return localStorage.setItem('panelBar.' + key, value);
+  var reset = function() {
+    panelBar.state.unset('expires');
+    panelBar.state.unset('position');
+    panelBar.state.unset('visibile');
   };
 
-  this.unset = function(key) {
-    return localStorage.removeItem('panelBar.' + key);
+  var expired = function() {
+    return Date.now() > panelBar.state.get('expires');
   };
 
-  this.save = function() {
-    self.set('expires',  Date.now() + (24 * 60 * 60 * 1000));
-    self.set('position', panelBar.position);
-    self.set('visible',  panelBar.visible ? 'show' : 'hide');
-  };
-
-  this.restore = function() {
-    panelBar[self.get('position')]();
-    panelBar[self.get('visible')]();
-  };
-
-  this.reset = function() {
-    self.unset('expires');
-    self.unset('position');
-    self.unset('visibile');
-  };
-
-  this.support = function() {
+  var isSupported = function() {
     try {
       var x = '__panelBar_storage_test__';
       localStorage.setItem(x, x);
       localStorage.getItem(x);
       localStorage.removeItem(x);
       return true;
-    }
-    catch(e) {
+    } catch(e) {
       return false;
     }
   };
 
-  if(this.support()) { this.init(); }
-};
+  panelBar.state = {
+    init: function() {
+      if(!isSupported()) return;
 
-var pbState = new panelBarState();
+      if(expired()) reset();
+      else restore();
+
+      save();
+      panelBar.dom.controls.addEventListener('click', save);
+    },
+
+    get: function(key) {
+      return localStorage.getItem('panelBar.' + key);
+    },
+    set: function(key, value) {
+      return localStorage.setItem('panelBar.' + key, value);
+    },
+    unset: function(key) {
+      return localStorage.removeItem('panelBar.' + key);
+    },
+  };
+})(panelBar);
+
+panelBar.state.init();

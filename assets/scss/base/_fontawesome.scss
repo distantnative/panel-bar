@@ -6,12 +6,7 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('{{FA.eot}}');
-  src: url('{{FA.iefix}}') format('embedded-opentype'),
-       url('{{FA.woff2}}') format('woff2'),
-       url('{{FA.woff}}') format('woff'),
-       url('{{FA.ttf}}') format('truetype'),
-       url('{{FA.svg}}') format('svg');
+  src: url("{FA.woff2}") format("woff2"), url("{FA.woff}") format("woff");
   font-weight: normal;
   font-style: normal;
 }

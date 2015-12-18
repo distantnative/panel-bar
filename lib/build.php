@@ -127,14 +127,13 @@ class Build {
 
 
   private static function _style($args) {
-    $style = '';
-    if(isset($args['style'])) {
-      foreach($args['style'] as $key => $value) {
-        $style .= $key . ': ' . $value . ';';
-      }
-      $style .= ' style="' . $style . '"';
+    if(!isset($args['style'])) return;
+
+    $style = array();
+    foreach($args['style'] as $key => $value) {
+      $style[] = $key . ': ' . $value . ';';
     }
-    return $style;
+    return !empty($style) ? ' style="' . implode(' ', $style) . '"' : '';
   }
 
 }
