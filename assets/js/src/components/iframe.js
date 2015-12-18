@@ -90,6 +90,7 @@
     _.dom.iframe.addEventListener("load", function() {
       var body = _.dom.iframe.contentDocument.querySelector('body.app');
       if(typeof body !== undefined) _.dom.loading.innerHTML = '';
+      else setTimeout(redirect, 4000);
     });
 
     // wait and check if loading got cleared, if not redirect
