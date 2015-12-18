@@ -1,24 +1,24 @@
 (function (panelBar) {
 
   var save = function() {
-    panelBar.state.set('expires',  Date.now() + (24 * 60 * 60 * 1000));
-    panelBar.state.set('position', panelBar.status.position);
-    panelBar.state.set('visible',  panelBar.status.visible ? 'show' : 'hide');
+    _.set('expires',  Date.now() + (24 * 60 * 60 * 1000));
+    _.set('position', panelBar.status.position);
+    _.set('visible',  panelBar.status.visible ? 'show' : 'hide');
   };
 
   var restore = function() {
-    panelBar[panelBar.state.get('position')]();
-    panelBar[panelBar.state.get('visible')]();
+    panelBar[_.get('position')]();
+    panelBar[_.get('visible')]();
   };
 
   var reset = function() {
-    panelBar.state.unset('expires');
-    panelBar.state.unset('position');
-    panelBar.state.unset('visibile');
+    _.unset('expires');
+    _.unset('position');
+    _.unset('visibile');
   };
 
   var expired = function() {
-    return Date.now() > panelBar.state.get('expires');
+    return Date.now() > _.get('expires');
   };
 
   var isSupported = function() {
@@ -41,7 +41,7 @@
       else restore();
 
       save();
-      panelBar.dom.controls.addEventListener('click', save);
+      panelBar.dom.controls.all.addEventListener('click', save);
     },
 
     get: function(key) {
@@ -54,6 +54,9 @@
       return localStorage.removeItem('panelBar.' + key);
     },
   };
+
+  var _ = panelBar.state;
+
 })(panelBar);
 
 panelBar.state.init();

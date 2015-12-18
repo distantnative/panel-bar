@@ -5,15 +5,16 @@ var panelBar = (function (panelBar) {
 
   _.elements = {};
 
-  _.dom = {
-    wrapper:  document.getElementById('panelBar'),
-    bar:      document.getElementById('panelBar_bar'),
-    controls: document.getElementById('panelBar_controls'),
-  };
+  var controls = document.getElementById('panelBar_controls');
 
-  _.dom.buttons = {
-    position: _.dom.controls.children[0],
-    visible:  _.dom.controls.children[1],
+  _.dom = {
+    wrapper:    document.getElementById('panelBar'),
+    bar:        document.getElementById('panelBar_bar'),
+    controls: {
+      all:      controls,
+      position: controls.children[0],
+      visible:  controls.children[1],
+    },
   };
 
   _.status = {
@@ -30,8 +31,8 @@ var panelBar = (function (panelBar) {
   };
 
   var activateControls = function() {
-    _.dom.buttons.position.addEventListener('click', _.togglePosition);
-    _.dom.buttons.visible.addEventListener('click', _.toggleVisibility);
+    _.dom.controls.position.addEventListener('click', _.togglePosition);
+    _.dom.controls.visible.addEventListener('click', _.toggleVisibility);
   };
 
 
@@ -41,8 +42,8 @@ var panelBar = (function (panelBar) {
     cl.remove(_.dom.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
   };
 
-  _.top =            function() { pos(true);                        };
-  _.bottom =         function() { pos(false);                       };
+  _.top            = function() { pos(true);                        };
+  _.bottom         = function() { pos(false);                       };
   _.togglePosition = function() { pos(_.status.position !== 'top'); };
 
   var vis = function(vis) {
@@ -50,8 +51,8 @@ var panelBar = (function (panelBar) {
     cl[vis ? 'remove' : 'add'](_.dom.wrapper, 'panelBar--hidden');
   };
 
-  _.show =             function() { vis(true);              };
-  _.hide =             function() { vis(false);             };
+  _.show             = function() { vis(true);              };
+  _.hide             = function() { vis(false);             };
   _.toggleVisibility = function() { vis(!_.status.visible); };
 
   var isSupported = function() {
@@ -59,7 +60,7 @@ var panelBar = (function (panelBar) {
   };
 
   _.deactivate = function() {
-    _.dom.controls.remove();
+    _.dom.controls.all.remove();
     _.dom.bar.style.paddingRight = 0;
     cl.remove(_.dom.bar, "panelBar--hidden");
   };

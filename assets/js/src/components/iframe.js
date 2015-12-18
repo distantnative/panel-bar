@@ -2,8 +2,8 @@
 
   var setOverlay = function(show) {
     _.dom.buttons.all.style.display = show ? 'inline-block' : 'none';
-    _.dom.wrapper.style.display = show ? 'block': 'none';
-    document.body.style.overflow = show ? 'hidden' : 'auto';
+    _.dom.wrapper.style.display     = show ? 'block': 'none';
+    document.body.style.overflow    = show ? 'hidden' : 'auto';
 
     var event = show ? 'addEventListener' : 'removeEventListener';
     _.dom.buttons.return[event]('click', _.show);
@@ -16,11 +16,11 @@
     for (i = 0; i < elements.length; i++) {
       elements[i].style.display = clear ? 'none' : 'inline-block';
     }
-    var buttons = panelBar.dom.buttons;
-    buttons.position.style.display = clear ? 'none' : '';
-    cl.add(buttons.visible.children[0], 'fa-' + (clear ? 'thumb-tack' : 'times-circle'));
-    cl.remove(buttons.visible.children[0], 'fa-' + (!clear ? 'thumb-tack' : 'times-circle'));
-    buttons.visible[clear ? 'addEventListener' : 'removeEventListener']('click', redirect);
+    var controls = panelBar.dom.controls;
+    controls.position.style.display = clear ? 'none' : '';
+    cl.add(controls.visible.children[0], 'fa-' + (clear ? 'thumb-tack' : 'times-circle'));
+    cl.remove(controls.visible.children[0], 'fa-' + (!clear ? 'thumb-tack' : 'times-circle'));
+    controls.visible[clear ? 'addEventListener' : 'removeEventListener']('click', redirect);
   };
 
   var setPosition = function(clear) {
@@ -29,28 +29,30 @@
     _.status.position = clear ? position : null;
   };
 
-  var refresh = function() { location.reload(); };
-
+  var refresh  = function() { location.reload(); };
   var redirect = function() {
-    location.href = self.iframe.src;
+    location.href = _.dom.iframe.src;
     panelBar.show();
   };
 
 
   panelBar.iframe = {};
 
+  var parent  = panelBar.dom;
+  var wrapper = parent.wrapper.querySelector(".panelBar-iframe__iframe");
+  var buttons = parent.bar.querySelector(".panelBar-iframe__btns");
+
   panelBar.iframe.dom = {
-    wrapper: panelBar.dom.wrapper.querySelector(".panelBar-iframe__iframe"),
-    elements: panelBar.dom.wrapper.querySelectorAll('.panelBar__bar > div'),
+    wrapper:    wrapper,
+    iframe:     wrapper.children[1],
+    loading:    wrapper.children[0],
+    elements:   parent.wrapper.querySelectorAll('.panelBar__bar > div'),
     buttons: {
-      all: panelBar.dom.bar.querySelector(".panelBar-iframe__btns"),
+      all:      buttons,
+      return:   buttons.children[0],
+      refresh:  buttons.children[1],
     },
   };
-
-  panelBar.iframe.dom.iframe = panelBar.iframe.dom.wrapper.children[1];
-  panelBar.iframe.dom.loading = panelBar.iframe.dom.wrapper.children[0];
-  panelBar.iframe.dom.buttons.return = panelBar.iframe.dom.buttons.all.children[0];
-  panelBar.iframe.dom.buttons.refresh = panelBar.iframe.dom.buttons.all.children[1];
 
   panelBar.iframe.status = {
     active:     false,

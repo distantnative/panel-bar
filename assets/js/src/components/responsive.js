@@ -5,19 +5,19 @@
   var measure = function() {
     cl.add   (wrapper, 'panelBar--mobile');
     cl.remove(wrapper, 'panelBar--compact');
-    panelBar.responsive.data.mobile = width();
+    _.data.mobile = width();
 
     cl.remove(wrapper, 'panelBar--mobile');
-    panelBar.responsive.data.desktop = width();
+    _.data.desktop = width();
 
     set();
   };
 
   var set = function() {
-    if(wrapper.offsetWidth < panelBar.responsive.data.mobile) {
+    if(wrapper.offsetWidth < _.data.mobile) {
       cl.add(wrapper, 'panelBar--compact');
       cl.add(wrapper, 'panelBar--mobile');
-    } else if(wrapper.offsetWidth < panelBar.responsive.data.desktop) {
+    } else if(wrapper.offsetWidth < _.data.desktop) {
       cl.add   (wrapper, 'panelBar--mobile');
       cl.remove(wrapper, 'panelBar--compact');
     } else {
@@ -29,7 +29,7 @@
   };
 
   var width = function() {
-    var width = panelBar.dom.controls.offsetWidth + 20;
+    var width = panelBar.dom.controls.all.offsetWidth + 20;
     var i;
     for (i = 0; i < panelBar.dom.bar.children.length; i++) {
       width = width + panelBar.dom.bar.children[i].offsetWidth;
@@ -52,7 +52,6 @@
     }
   };
 
-
   var isSupported = function() {
     return 'querySelector' in document && 'addEventListener' in window;
   };
@@ -71,6 +70,8 @@
       window.addEventListener('resize', set);
     },
   };
+
+  var _ = panelBar.responsive;
 
 })(panelBar);
 
