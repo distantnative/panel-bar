@@ -5,7 +5,7 @@
   </div>
   <div class="panelBar-controls__visibility" id="panelBar_visibility">
     <i class="panelBar-controls__visibility--visible fa fa-times-circle" title="Hide (Alt + X)"></i>
-    <i class="panelBar-controls__visibility--invisible fa fa-plus-circle" title="Show (Alt + X)"></i>
+    <i class="panelBar-controls__visibility--invisible fa fa-cog" title="Show (Alt + X)"></i>
     <i class="panelBar-controls__visibility--bg fa fa-circle"></i>
   </div>
 </div>
