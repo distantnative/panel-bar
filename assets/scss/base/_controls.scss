@@ -4,19 +4,23 @@
 \*------------------------------------*/
 
 .panelBar-controls {
-  position:   absolute;
+  position:   fixed;
   z-index:    2147483200;
   right:      0;
   padding:    15px 15px 15px 12px;
+
+  font-size:   16px;
+  font-weight: normal;
+  line-height: 1;
 
   color:        #fff;
   background:   #000;
   border-left:  1px solid #555;
 
-  .panelBar--top    & { top:    0; }
-  .panelBar--bottom & { bottom: 0; }
+  &.top    { top:    0; }
+  &.bottom { bottom: 0; }
 
-  .panelBar--hidden & {
+  &.hidden {
     color:        #000;
     background:   transparent;
     border-left:  none;
@@ -32,9 +36,9 @@
     display:      inline-block;
     margin-right: 7px;
 
-    .panelBar--hidden &         { display: none; }
-    .panelBar--top    &--top    { display: none; }
-    .panelBar--bottom &--bottom { display: none; }
+    .hidden &         { display: none; }
+    .top    &--top    { display: none; }
+    .bottom &--bottom { display: none; }
   }
 
   // Visibility
@@ -58,7 +62,7 @@
       font-size:  .8em;
     }
 
-    .panelBar--hidden & {
+    .hidden & {
       &--visible    { display: none  !important; }
       &--invisible  { display: block !important; }
       &--bg         { display: block !important; }

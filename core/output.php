@@ -9,18 +9,20 @@ class Output extends Hooks {
   public $before;
   public $elements;
   public $after;
+  public $next;
 
   private $visible;
   private $position;
 
 
   public function __construct($visible) {
-    $this->before    = array();
-    $this->elements  = array();
-    $this->after     = array();
+    $this->before   = array();
+    $this->elements = array();
+    $this->after    = array();
+    $this->next     = array();
 
-    $this->visible   = $visible;
-    $this->position  = c::get('panelbar.position', 'top');
+    $this->visible  = $visible;
+    $this->position = c::get('panelbar.position', 'top');
   }
 
 
@@ -31,6 +33,7 @@ class Output extends Hooks {
       'before'   => $this->getHooks('before'),
       'elements' => $this->getHooks('elements'),
       'after'    => $this->getHooks('after'),
+      'next'     => $this->getHooks('next'),
     ));
   }
 

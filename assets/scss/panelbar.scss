@@ -21,11 +21,7 @@
   background-color: #000;
   box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
 
-  &--hidden {
-    background-color: transparent;
-    box-shadow:       none;
-  }
-
+  &--hidden { display: none; }
   &--top    { top:    0; }
   &--bottom { bottom: 0; }
 

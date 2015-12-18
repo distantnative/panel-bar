@@ -38,8 +38,10 @@ var panelBar = (function (panelBar) {
 
   var pos = function(top) {
     _.status.position = top ? 'top' : 'bottom';
-    cl.add   (_.dom.wrapper, 'panelBar--' + _.status.position);
     cl.remove(_.dom.wrapper, 'panelBar--' + (top ? 'bottom' : 'top'));
+    cl.add   (_.dom.wrapper, 'panelBar--' + _.status.position);
+    cl.remove(_.dom.controls.all, (top ? 'bottom' : 'top'));
+    cl.add   (_.dom.controls.all, _.status.position);
   };
 
   _.top            = function() { pos(true);                        };
@@ -49,6 +51,7 @@ var panelBar = (function (panelBar) {
   var vis = function(vis) {
     _.status.visible = vis;
     cl[vis ? 'remove' : 'add'](_.dom.wrapper, 'panelBar--hidden');
+    cl[vis ? 'remove' : 'add'](_.dom.controls.all, 'hidden');
   };
 
   _.show             = function() { vis(true);              };

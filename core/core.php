@@ -31,8 +31,7 @@ class Core extends Build {
     $this->output = new Output($visible);
 
     // Elements
-    $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ?
-                       $opt['elements'] : c::get('panelbar.elements',$this->defaults);
+    $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ? $opt['elements'] : c::get('panelbar.elements',$this->defaults);
 
   }
 
@@ -79,7 +78,7 @@ class Core extends Build {
   }
 
   protected function _controls() {
-    $this->output->setHook('after', tools::load('html', 'controls'));
+    $this->output->setHook('next', tools::load('html', 'controls'));
   }
 
   protected function _assets() {
