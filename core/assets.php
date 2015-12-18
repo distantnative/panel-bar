@@ -3,6 +3,7 @@
 namespace panelBar;
 
 use C;
+use Str;
 
 class Assets extends Hooks {
 
@@ -70,16 +71,17 @@ class Assets extends Hooks {
   private function fontPaths($css) {
     $base  = panel()->urls()->assets() . '/fonts/';
     $fonts = array(
-      array('{FA.woff2}',  $base . 'fontawesome-webfont.woff2?v=4.4.0'),
-      array('{FA.woff}',   $base . 'fontawesome-webfont.woff?v=4.4.0'),
-      array('{{SSP400}}',    $base . 'sourcesanspro-400.woff'),
-      array('{{SSP600}}',    $base . 'sourcesanspro-600.woff'),
-      array('{{SSPitalic}}', $base . 'sourcesanspro-400-italic.woff'),
+      'FA.woff2'        => $base . 'fontawesome-webfont.woff2?v=4.4.0',
+      'FA.woff'         => $base . 'fontawesome-webfont.woff?v=4.4.0',
+      'SSP400.woff2'    => $base . 'sourcesanspro-400.woff2',
+      'SSP400.woff'     => $base . 'sourcesanspro-400.woff',
+      'SSP600.woff2'    => $base . 'sourcesanspro-600.woff2',
+      'SSP600.woff'     => $base . 'sourcesanspro-600.woff',
+      'SSPitalic.woff2' => $base . 'sourcesanspro-400-italic.woff2',
+      'SSPitalic.woff'  => $base . 'sourcesanspro-400-italic.woff',
     );
-    foreach($fonts as $font) {
-      $css = str_ireplace($font[0], $font[1], $css);
-    }
-    return $css;
+
+    return str::template($css, $fonts);
   }
 
 }
