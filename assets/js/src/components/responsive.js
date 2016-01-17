@@ -3,6 +3,9 @@
   var wrapper = panelBar.dom.wrapper;
 
   var measure = function() {
+    var visible = panelBar.status.visible;
+    if(!visible) panelBar.show();
+
     cl.add   (wrapper, 'panelBar--mobile');
     cl.remove(wrapper, 'panelBar--compact');
     _.data.mobile = width();
@@ -10,14 +13,23 @@
     cl.remove(wrapper, 'panelBar--mobile');
     _.data.desktop = width();
 
+    if(!visible) panelBar.hide();
+
     set();
   };
 
   var set = function() {
-    if(wrapper.offsetWidth < _.data.mobile) {
+    var space = wrapper.offsetWidth;
+    if(!panelBar.status.visible) {
+      panelBar.show();
+      space = wrapper.offsetWidth;
+      panelBar.hide();
+    }
+
+    if(space < _.data.mobile) {
       cl.add(wrapper, 'panelBar--compact');
       cl.add(wrapper, 'panelBar--mobile');
-    } else if(wrapper.offsetWidth < _.data.desktop) {
+    } else if(space < _.data.desktop) {
       cl.add   (wrapper, 'panelBar--mobile');
       cl.remove(wrapper, 'panelBar--compact');
     } else {
