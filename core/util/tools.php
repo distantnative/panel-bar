@@ -17,7 +17,7 @@ class Tools {
       'js'        => DS . 'assets'    . DS . 'js'  . DS . 'dist' . DS . $append . '.min.js',
       'html'      => DS . 'templates' . DS .              $append . '.php',
     );
-    return realpath(__DIR__ . '/..') . $paths[$type];
+    return realpath(__DIR__ . '/../..') . $paths[$type];
   }
 
 

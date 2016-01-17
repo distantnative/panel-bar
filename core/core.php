@@ -19,7 +19,7 @@ class Core extends Build {
 
   public function __construct($opt = array()) {
     $this->page   = page();
-    $this->panel  = require_once(__DIR__ . '/../lib/integrate.php');
+    $this->panel  = require_once(__DIR__ . '/lib/integrate.php');
 
     // Assets
     $this->css    = isset($opt['css']) ? $opt['css'] : true;

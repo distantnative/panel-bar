@@ -1,24 +1,31 @@
 <?php
 
-require_once(__DIR__ . '/../lib/tools.php');
-require_once(__DIR__ . '/../lib/hooks.php');
-require_once(__DIR__ . '/../lib/build.php');
+// Libraries
+require_once(__DIR__ . '/lib/hooks.php');
 
-require_once(__DIR__ . '/../elements/_base.php');
-require_once(__DIR__ . '/../elements/panel.php');
-require_once(__DIR__ . '/../elements/index.php');
-require_once(__DIR__ . '/../elements/add.php');
-require_once(__DIR__ . '/../elements/edit.php');
-require_once(__DIR__ . '/../elements/toggle.php');
-require_once(__DIR__ . '/../elements/files.php');
-require_once(__DIR__ . '/../elements/images.php');
-require_once(__DIR__ . '/../elements/fileview.php');
-require_once(__DIR__ . '/../elements/imagelist.php');
-require_once(__DIR__ . '/../elements/languages.php');
-require_once(__DIR__ . '/../elements/loadtime.php');
-require_once(__DIR__ . '/../elements/user.php');
-require_once(__DIR__ . '/../elements/logout.php');
-require_once(__DIR__ . '/../elements/system.php');
+// Helpers
+require_once(__DIR__ . '/util/tools.php');
+require_once(__DIR__ . '/util/build.php');
 
-require_once('output.php');
-require_once('assets.php');
+// Elements
+$dir = __DIR__ . '/../elements';
+foreach(array_diff(scandir($dir), array('.', '..')) as $file) {
+  if(substr($file, -4) === '.php') {
+    require_once($dir . '/' . $file);
+  }
+}
+
+// Plugins
+$dir = __DIR__ . '/../plugins';
+foreach(array_diff(scandir($dir), array('.', '..')) as $file) {
+  if(is_dir($file)) {
+    require_once($dir . '/' $file . '/' . $file . '.php');
+  } elseif(substr($file, -4) === '.php') {
+    require_once($dir . '/' . $file);
+  }
+}
+
+
+// Modules
+require_once(__DIR__ . '/modules/output.php');
+require_once(__DIR__ . '/modules/assets.php');
