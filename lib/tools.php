@@ -13,7 +13,7 @@ class Tools {
   public static function path($type, $append) {
     $paths = array(
       'css'       => DS . 'assets'    . DS . 'css' . DS . $append . '.css',
-      'js'        => DS . 'assets'    . DS . 'js'  . DS . 'src' . DS . $append . '.js',
+      'js'        => DS . 'assets'    . DS . 'js'  . DS . 'dist' . DS . $append . '.min.js',
       'html'      => DS . 'templates' . DS .              $append . '.php',
     );
     return realpath(__DIR__ . '/..') . $paths[$type];
