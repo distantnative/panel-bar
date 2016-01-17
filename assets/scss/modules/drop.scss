@@ -1,28 +1,28 @@
 
-/*------------------------------------*\
-   Drop modules
-\*------------------------------------*/
+//====================================
+//   Drop modules
+//====================================
 
-@import "../helpers/mixins";
+@import '../helpers/mixins';
 
 // Dropdown
 .panelBar-mDrop {
-  visibility:   hidden;
   position:     absolute;
   left:         50%;
-  transform:    translateX(-50%);
 
   max-height:   80vh;
   max-height:   calc(100vh - 80px);
-  overflow-y:   auto;
+  transform:    translateX(-50%);
 
-  background:   #fff;
-  box-shadow:   rgba(0,0,0, .2) 0px 2px 10px;
+  background:   $color-white;
+  box-shadow:   rgba($color-black, .2) 0 2px 10px;
+  visibility:   hidden;
+  overflow-y:   auto;
 
   .panelBar--top    & { top: 100%; }
   .panelBar--bottom & { bottom: 100%; }
 
-  @media (max-width: 550px) { @include dropFullwidth(); }
+  @media (max-width: 550px) { @include dropFullwidth; }
 }
 
 
@@ -31,47 +31,48 @@
   position:   relative;
   cursor:     pointer;
 
-  &:hover{
+  &:hover {
     .panelBar-mDrop { visibility: visible; }
 
     &:after {
-      content:     "";
       position:    absolute;
       left:        50%;
       margin-left: -8px;
 
-      border-left:  8px solid transparent;
       border-right: 8px solid transparent;
+      border-left:  8px solid transparent;
+
+      content:     '';
 
       .panelBar--top    & {
-        bottom: 0;
-        border-bottom: 8px solid #fff;
+        bottom:        0;
+        border-bottom: 8px solid $color-white;
       }
+
       .panelBar--bottom & {
-        top: 0;
-        border-top: 8px solid #fff;
+        top:        0;
+        border-top: 8px solid $color-white;
       }
     }
   }
 }
 
 
-/*------------------------------------*\
-   Drop modules - RTL
-\*------------------------------------*/
+//====================================
+//   Drop modules - RTL
+//====================================
 
 body.rtl {
   .panelBar-mDrop {
-    left:       auto;
     right:      50%;
+    left:       auto;
     transform:  translateX(50%);
   }
 
   .panelBar-mDropParent:hover:after {
-    left:         auto;
     right:        50%;
-    margin-left:  0;
+    left:         auto;
     margin-right: -8px;
+    margin-left:  0;
   }
 }
-

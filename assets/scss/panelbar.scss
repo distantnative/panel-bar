@@ -1,25 +1,26 @@
-/*------------------------------------*\
-   panelBar
-\*------------------------------------*/
+//====================================
+//   panelBar
+//====================================
 
 @import 'helpers/mixins';
 
 .panelBar {
   position: fixed;
-  left:     0;
   right:    0;
+  left:     0;
   height:   48px;
-  z-index:  2147483000;
 
-  line-height:   1;
   padding-right: 68px;
+
+  background-color: $color-black;
 
   font-family: 'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
   font-size:   16px;
   font-weight: normal;
+  line-height: 1;
 
-  background-color: #000;
-  box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
+  box-shadow:  rgba($color-black, .075) 0 0 4px;
+  z-index:     2147483000;
 
   &--hidden { display: none; }
   &--top    { top:    0; }
@@ -28,17 +29,17 @@
 
   // Elements bar
   &__bar {
-    white-space: nowrap;
     @include     clearfix;
+    white-space: nowrap;
 
     .panelBar--hidden & { display: none; }
 
     a {
-      color:           #fff;
       transition:      none;
+      color:           $color-white;
       text-decoration: none;
 
-      &:hover { color: #999; }
+      &:hover { color: $color-midgrey; }
     }
   }
 }

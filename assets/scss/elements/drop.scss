@@ -1,21 +1,21 @@
 
-/*------------------------------------*\
-   Dropdown elements
-\*------------------------------------*/
+//====================================
+//   Dropdown elements
+//====================================
 
-@import "../helpers/mixins";
+@import '../helpers/mixins';
 
 .panelBar-drop {
-  &__list > a { color: #000; }
+  &__list > a { color: $color-black; }
 
   &__item {
+    @include    textEllipsis;
     display:    block;
     padding:    .75em 1.5em;
-    color:      #000;
+    color:      $color-black;
     text-align: center;
-    @include    textEllipsis;
 
-    .panelBar--top    & { border-bottom: 1px solid #efefef; }
-    .panelBar--bottom & { border-top:    1px solid #efefef; }
+    .panelBar--top    & { border-bottom: 1px solid $color-almostwhite; }
+    .panelBar--bottom & { border-top:    1px solid $color-almostwhite; }
   }
 }

@@ -1,23 +1,25 @@
 
-/*------------------------------------*\
-   Index element
-\*------------------------------------*/
+//====================================
+//   Index element
+//====================================
+
+@import '../helpers/vars';
 
 .panelBar-index {
   .panelBar-drop__item {
+    padding:    .6em 1.2em;
     font-size:  .9em;
     text-align: left;
-    padding:    .6em 1.2em;
 
     &:hover,
     &:hover .panelBar-index--invisible {
-      color:  #8dae28;
+      color:  $color-brand-green;
     }
   }
 
   &__depth {
     margin-right: 3px;
-    color:        #000;
+    color:        $color-black;
   }
 
   &--depth-0 {
@@ -25,5 +27,5 @@
     font-weight: 700;
   }
 
-  &--invisible { color: #999; }
+  &--invisible { color: $color-midgrey; }
 }

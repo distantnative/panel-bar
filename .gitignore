@@ -1,3 +1,5 @@
 .DS_Store
 .sass-cache
 *.css.map
+
+.sass-lint.yml

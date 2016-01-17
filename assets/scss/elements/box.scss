@@ -1,17 +1,16 @@
 
-/*------------------------------------*\
-   Textbox elements
-\*------------------------------------*/
+//====================================
+//   Textbox elements
+//====================================
 
-@import "../helpers/mixins";
+@import '../helpers/mixins';
 
 .panelBar-box {
-  &__content{
+  &__content {
     padding:  .75em 1.5em;
-    color:    #000;
+    color:    $color-black;
 
-    > a       { color: #999; }
-    > a:hover { color: #ddd; }
+    > a       { color: $color-midgrey; }
+    > a:hover { color: $color-lightgrey; }
   }
 }
-

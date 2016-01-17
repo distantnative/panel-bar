@@ -1,7 +1,9 @@
 
-/*------------------------------------*\
-   panelBar - RTL support
-\*------------------------------------*/
+//====================================
+//   RTL support
+//====================================
+
+@import '../helpers/vars';
 
 body.rtl {
 
@@ -15,8 +17,8 @@ body.rtl {
       padding-right:  12px;
       padding-left:   15px;
 
+      border-right:   1px solid $color-middarkgrey;
       border-left:    none;
-      border-right:   1px solid #555;
 
       &__position {
         margin-right: 0;
@@ -30,8 +32,8 @@ body.rtl {
     }
 
     &-element {
+      border-right: 1px solid $color-middarkgrey;
       border-left:  none;
-      border-right: 1px solid #555;
 
       &--right { float: left; }
 
@@ -42,7 +44,7 @@ body.rtl {
 
       > i {
         margin-right: 0;
-        margin-left: 7px
+        margin-left: 7px;
       }
     }
 
@@ -57,4 +59,3 @@ body.rtl {
     }
   }
 }
-

@@ -1,9 +1,9 @@
 
-/*------------------------------------*\
-   Files element
-\*------------------------------------*/
+//====================================
+//   Files element
+//====================================
 
-@import "../helpers/mixins";
+@import '../helpers/mixins';
 
 .panelBar-files {
 
@@ -11,73 +11,74 @@
     max-width:    340px;
     text-align:   center;
 
-    > a { color: #000; }
+    > a { color: $color-black; }
   }
 
   &__item {
     display:    block;
     padding:    .35em .5em;
 
-    .panelBar--top    & { border-bottom: 1px solid #efefef; }
-    .panelBar--bottom & { border-top:    1px solid #efefef; }
+    .panelBar--top    & { border-bottom: 1px solid $color-almostwhite; }
+    .panelBar--bottom & { border-top:    1px solid $color-almostwhite; }
   }
 
   &__item       > span { display: inline-block; }
-  &__item:hover > span { color:   #8dae28;      }
+  &__item:hover > span { color:   $color-brand-green; }
 
   &__preview {
     display:      inline-block;
     width:        30px;
     height:       20px;
     margin-right: 3px;
-    text-align:   initial;
 
-    background-color: #fff;
+    background-color: $color-white;
+    text-align:       initial;
+
     .panelBar-files--image & { @include mosaicBackground(10px); }
   }
 
   &__image {
+    @include backgroundContainCenter;
     width:   100%;
     height:  100%;
-    @include backgroundContainCenter();
   }
 
   &__icon {
     width:        100%;
-    text-align:   center;
-    color:        #aaa;
     padding-top:  2px;
+    color:        $color-midlightgrey;
+    text-align:   center;
 
-    .panelBar-files__item:hover & { color: #8dae28; }
+    .panelBar-files__item:hover & { color: $color-brand-green; }
   }
 
   &__overlay {
     display:          none;
     width:            100%;
     height:           100%;
-    background-color: #8dae28;
+    background-color: $color-brand-green;
     opacity:          .5;
 
     .panelBar-files--image:hover & { display: block; }
   }
 
   &__label {
+    @include        textEllipsis;
     width:          160px;
     margin-right:   3px;
-    vertical-align: top;
     padding-top:    2px;
 
     font-size:      .9em;
-    text-align:     initial;
     line-height:    1.2;
-    @include        textEllipsis;
+    text-align:     initial;
+    vertical-align: top;
 
     @media (max-width: 550px) { width: calc(95vw - 150px); }
   }
 
   &__info {
     width:          80px;
-    color:          #999;
+    color:          $color-midgrey;
     font-size:      .75em;
     text-align:     right;
 
@@ -85,16 +86,15 @@
     .panelBar-files--image & { vertical-align: text-top; }
   }
 
-  &__size:before { content: " / "; }
+  &__size:before { content: ' / '; }
 
   &__more { @include moreFiles(.35em .5em .5em); }
 }
 
 
-
-/*------------------------------------*\
-   Files element - RTL
-\*------------------------------------*/
+//====================================
+//   Files element - RTL
+//====================================
 
 body.rtl {
   .panelBar-files {
@@ -109,5 +109,3 @@ body.rtl {
     }
   }
 }
-
-

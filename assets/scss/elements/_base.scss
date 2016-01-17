@@ -1,13 +1,13 @@
 
-/*------------------------------------*\
-   Element base
-\*------------------------------------*/
+//====================================
+//   Element base
+//====================================
 
 .panelBar-element {
   display:      inline-block;
   float:        left;
-  color:        #fff;
-  border-left:  1px solid #555;
+  border-left:  1px solid $color-middarkgrey;
+  color:        $color-white;
 
   &:first-of-type,
   &:last-of-type.panelBar-element--right { border:  none; }
