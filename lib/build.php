@@ -24,7 +24,7 @@ class Build {
 
 
   public static function dropdown($args) {
-    $drop = tools::load('html', 'elements/drop', array('items' =>$args['items']));
+    $drop = tools::load('html', 'build/drop', array('items' =>$args['items']));
     $args['class'] = self::_class('panelBar-mDropParent', $args);
     return array(
       'element' => self::_element('panelBar-drop', $drop, $args),
@@ -37,7 +37,7 @@ class Build {
 
 
   public static function images($args) {
-    $grid = tools::load('html', 'elements/images', array(
+    $grid = tools::load('html', 'elements/images/grid', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -57,7 +57,7 @@ class Build {
 
 
   public static function files($args) {
-    $list = tools::load('html', 'elements/files', array(
+    $list = tools::load('html', 'elements/files/list', array(
       'items'   => $args['items'],
       'all'     => array(
         'label' => $args['label'],
@@ -76,7 +76,7 @@ class Build {
 
 
   public static function box($args) {
-    $box = tools::load('html', 'elements/box', array(
+    $box = tools::load('html', 'build/box', array(
       'style'   => self::_style($args),
       'content' => $args['content'],
     ));
@@ -101,7 +101,7 @@ class Build {
     if(is_null($content)) {
       $content = isset($args['content']) ? $args['content'] : '';
     }
-    return tools::load('html', 'elements/base', array(
+    return tools::load('html', 'build/base', array(
       'class'   => self::_class($class, $args),
       'id'      => isset($args['id'])      ? $args['id']      : '',
       'title'   => isset($args['title'])   ? $args['title']   : '',
