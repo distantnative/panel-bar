@@ -17,7 +17,7 @@ class Images extends Base {
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
         'label'  => (($type == 'image') ? 'Images' : 'Files') . $this->bubble($images),
         'items'  => $images,
-        'count'  => 'panelBar-images--' . count($images),
+        'count'  => 'panelBar-images--' . $this->count($images),
         'all'    => $this->page->url('files'),
       ));
     }
