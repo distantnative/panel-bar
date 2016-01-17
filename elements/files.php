@@ -16,7 +16,7 @@ class Files extends Base {
       return Build::files(array(
         'id'     => $function,
         'icon'   => 'th-list',
-        'label'  => ($type == 'image') ? 'Images' : 'Files',
+        'label'  => (($type == 'image') ? 'Images' : 'Files') . $this->bubble($files),
         'items'  => $files,
         'all'    => $this->page->url('files'),
       ));

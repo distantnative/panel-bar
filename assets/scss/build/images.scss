@@ -41,7 +41,7 @@
     }
 
     .panelBar-images--12more & {
-      @include responsiveGridItem(0px,    549px,    2);
+      @include responsiveGridItem(0,      549px,    2);
       @include responsiveGridItem(550px,  749px,    3);
       @include responsiveGridItem(750px,  899px,    4);
       @include responsiveGridItem(900px,  999px,    5);

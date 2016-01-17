@@ -16,6 +16,9 @@ class Base {
     $this->page   = $this->panel->page($page->id());
   }
 
+  protected function bubble($el) {
+    return '<span class="panelBar-element__count-bubble">' . count($el) . '</span>';
+  }
 
   protected function _iframe($element) {
     if(c::get('panelbar.enhancedJS', true)) {

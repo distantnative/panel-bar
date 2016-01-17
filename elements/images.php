@@ -15,9 +15,9 @@ class Images extends Base {
       return Build::images(array(
         'id'     => $function,
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
-        'label'  => ($type == 'image') ? 'Images' : 'Files',
+        'label'  => (($type == 'image') ? 'Images' : 'Files') . $this->bubble($images),
         'items'  => $images,
-        'count'  => 'panelBar-images--' . $this->count($images),
+        'count'  => 'panelBar-images--' . count($images),
         'all'    => $this->page->url('files'),
       ));
     }
