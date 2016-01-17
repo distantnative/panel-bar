@@ -89,6 +89,7 @@ Name        | Description
 `imagelist` | List of images of the current page
 `loadtime`  | Info label for loading time
 `language`  | Dropdown to switch between site languages
+`system`    | Info box with version check of kirby, toolkit and the panel
 `user`      | Current user
 `logout`    | Sign out current user
 

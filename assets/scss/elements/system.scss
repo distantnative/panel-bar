@@ -1,0 +1,32 @@
+//====================================
+//   System element
+//====================================
+
+@import '../helpers/vars';
+
+.panelBar--system {
+  .panelBar-box__content {
+    li {
+      list-style-type: none;
+
+      > span {
+        display: inline-block;
+        width:   70px;
+      }
+
+      > em {
+        font-style: normal;
+      }
+    }
+  }
+
+  .version {
+    &--same {
+      color: $color-brand-green;
+    }
+
+    &--older {
+      color: $color-red;
+    }
+  }
+}

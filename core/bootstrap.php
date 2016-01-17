@@ -18,6 +18,7 @@ require_once(__DIR__ . '/../elements/languages.php');
 require_once(__DIR__ . '/../elements/loadtime.php');
 require_once(__DIR__ . '/../elements/user.php');
 require_once(__DIR__ . '/../elements/logout.php');
+require_once(__DIR__ . '/../elements/system.php');
 
 require_once('output.php');
 require_once('assets.php');

@@ -1,0 +1,13 @@
+.panelBar--system .panelBar-box__content li {
+  list-style-type: none; }
+  .panelBar--system .panelBar-box__content li > span {
+    display: inline-block;
+    width: 70px; }
+  .panelBar--system .panelBar-box__content li > em {
+    font-style: normal; }
+
+.panelBar--system .version--same {
+  color: #8dae28; }
+
+.panelBar--system .version--older {
+  color: #b12323; }

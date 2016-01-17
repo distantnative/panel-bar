@@ -18,7 +18,7 @@ class Build {
   public static function link($args) {
     return array(
       'element' => self::_element('panelBar-btn', null, $args),
-      'assets'  => array('css' => tools::load('css', 'elements/btn')),
+      'assets'  => array('css' => tools::load('css', 'build/btn')),
     );
   }
 
@@ -29,7 +29,7 @@ class Build {
     return array(
       'element' => self::_element('panelBar-drop', $drop, $args),
       'assets'  => array('css' => array(
-                    tools::load('css', 'elements/drop'),
+                    tools::load('css', 'build/drop'),
                     tools::load('css', 'modules/drop'),
                   )),
     );
@@ -49,7 +49,7 @@ class Build {
     return array(
       'element' => self::_element('panelBar-images', $grid, $args),
       'assets'  => array('css' => array(
-                    tools::load('css', 'elements/images'),
+                    tools::load('css', 'build/images'),
                     tools::load('css', 'modules/drop'),
                   )),
     );
@@ -68,7 +68,7 @@ class Build {
     return array(
       'element' => self::_element('panelBar-files', $list, $args),
       'assets'  => array('css' => array(
-                    tools::load('css', 'elements/files'),
+                    tools::load('css', 'build/files'),
                     tools::load('css', 'modules/drop'),
                   )),
     );
@@ -84,7 +84,7 @@ class Build {
     return array(
       'element' => self::_element('panelBar-box', $box, $args),
       'assets'  => array('css' => array(
-                    tools::load('css', 'elements/box'),
+                    tools::load('css', 'build/box'),
                     tools::load('css', 'modules/drop'),
                   )),
     );
