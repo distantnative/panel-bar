@@ -19,7 +19,7 @@ foreach(array_diff(scandir($dir), array('.', '..')) as $file) {
 $dir = __DIR__ . '/../plugins';
 foreach(array_diff(scandir($dir), array('.', '..')) as $file) {
   if(is_dir($file)) {
-    require_once($dir . '/' $file . '/' . $file . '.php');
+    require_once($dir . '/' . $file . '/' . $file . '.php');
   } elseif(substr($file, -4) === '.php') {
     require_once($dir . '/' . $file);
   }

@@ -6,13 +6,13 @@ use panelBar\Build;
 
 class Edit extends Base {
 
-  public function edit() {
+  public function html() {
     // register assets
-    $this->_iframe(__FUNCTION__);
+    $this->_iframe('edit');
 
     // return output
     return Build::link(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'edit',
       'icon'   => 'pencil',
       'url'    => $this->page->url('edit'),
       'label'  => 'Edit',

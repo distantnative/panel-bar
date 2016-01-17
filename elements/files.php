@@ -7,7 +7,7 @@ use panelBar\Build;
 
 class Files extends Base {
 
-  public function files($type = null, $function = __FUNCTION__) {
+  public function html($type = null, $function = 'files') {
     if($files = static::items($this->page, $type)) {
       // register assets
       $this->_iframe($function);

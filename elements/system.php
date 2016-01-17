@@ -12,13 +12,13 @@ use Kirby;
 
 class System extends Base {
 
-  public function system() {
+  public function html() {
     // register assets
     $this->assets->setHook('css', tools::load('css', 'elements/system'));
 
     // return output
     return Build::box(array(
-      'id'      => __FUNCTION__,
+      'id'      => 'system',
       'icon'    => 'info',
       'label'   => 'System',
       'content' => $this->content()

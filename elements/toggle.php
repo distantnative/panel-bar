@@ -6,13 +6,13 @@ use panelBar\Build;
 
 class Toggle extends Base {
 
-  public function toggle() {
+  public function html() {
     // register assets
-    $this->_iframe(__FUNCTION__);
+    $this->_iframe('toggle');
 
     // return output
     return Build::link(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
       'url'    => $this->page->url('toggle'),

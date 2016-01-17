@@ -41,6 +41,7 @@ class Core extends Build {
    */
 
   protected function _output() {
+    echo strtolower(__CLASS__);
     if($user = site()->user() and $user->hasPanelAccess()) {
       $this->_elements();
       $this->_controls();
@@ -55,11 +56,18 @@ class Core extends Build {
   protected function _elements() {
     foreach ($this->elements as $id => $el) {
 
+      $class  = 'panelBar\Elements\\' . $el;
+      $plugin = 'panelBar\Plugins\\' . $el;
+
       // $element is standard element
-      $class = 'panelBar\Elements\\' . $el;
       if(class_exists($class)) {
         $class = new $class($this->page, $this->output, $this->assets);
-        $el    = $class->$el();
+        $el    = $class->html();
+
+      // $element is plugin element
+      } elseif(class_exists($class)) {
+        $class = new $class($this->page, $this->output, $this->assets);
+        $el    = $class->html();
 
       // $element is callable
       } elseif(is_callable($el)) {

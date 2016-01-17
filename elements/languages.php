@@ -6,11 +6,11 @@ use panelBar\Build;
 
 class Languages extends Base {
 
-  public function languages() {
+  public function html() {
     if ($languages = $this->site->languages()) {
       // return output
       return Build::dropdown(array(
-        'id'      => __FUNCTION__,
+        'id'      => 'languages',
         'icon'    => 'flag',
         'label'   => strtoupper($this->site->language()->code()),
         'items'   => $this->items(),

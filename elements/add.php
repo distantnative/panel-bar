@@ -6,13 +6,13 @@ use panelBar\Build;
 
 class Add extends Base {
 
-  public function add() {
+  public function html() {
     // register assets
-    $this->_iframe(__FUNCTION__);
+    $this->_iframe('add');
 
     // return output
     return Build::dropdown(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => $this->items(),

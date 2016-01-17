@@ -7,13 +7,13 @@ use panelBar\Build;
 
 class Index extends Base {
 
-  public function index() {
+  public function html() {
     // register assets
     $this->assets->setHook('css', tools::load('css', 'elements/index'));
 
     // return output
     return Build::dropdown(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'index',
       'icon'   => 'th',
       'label'  => 'Index',
       'items'  => $this->items(),

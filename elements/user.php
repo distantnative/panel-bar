@@ -6,13 +6,13 @@ use panelBar\Build;
 
 class User extends Base {
 
-  public function user() {
+  public function html() {
     // register assets
-    $this->_iframe(__FUNCTION__);
+    $this->_iframe('user');
 
     // return output
     return Build::link(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'user',
       'icon'   => 'user',
       'url'    => $this->site->user()->url('edit'),
       'label'  => $this->site->user(),

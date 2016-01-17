@@ -6,7 +6,7 @@ use panelBar\Build;
 
 class Images extends Base {
 
-  public function images($type = 'image', $function = __FUNCTION__) {
+  public function html($type = 'image', $function = 'images') {
     if($images = Files::items($this->page, $type)) {
       // register assets
       $this->_iframe($function);

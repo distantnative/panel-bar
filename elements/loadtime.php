@@ -7,12 +7,12 @@ use panelBar\Build;
 
 class Loadtime extends Base {
 
-  public function loadtime() {
+  public function html() {
     // register assets
     $this->assets->setHook('js', tools::load('js', 'elements/loadtime'));
     // return output
     return Build::label(array(
-      'id'     => __FUNCTION__,
+      'id'     => 'loadtime',
       'icon'   => 'clock-o',
       'label'  => $this->time(),
       'mobile' => 'label',

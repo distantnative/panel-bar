@@ -3,10 +3,8 @@
 namespace panelBar\Elements;
 
 class Fileview extends Base {
-
-  public function fileview() {
+  public function html() {
     $view = new Images($this->page, $this->output, $this->assets);
-    return $view->images(null, __FUNCTION__);
+    return $view->images(null, 'fileview');
   }
-
 }
