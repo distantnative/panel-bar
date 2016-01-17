@@ -44,6 +44,8 @@
       panelBar.dom.controls.all.addEventListener('click', save);
     },
 
+    update: save,
+
     get: function(key) {
       return localStorage.getItem('panelBar.' + key);
     },

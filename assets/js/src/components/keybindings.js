@@ -4,14 +4,14 @@
     e = e || event;
     _.map[e.keyCode] = e.type === 'keydown';
 
-    if(isIframeActivated()) return;
+    if(iFrameIsActive()) return;
 
     for(var shortcut in _.bindings) {
       if(!_.bindings[shortcut](_.map)) break;
     }
   };
 
-  var isIframeActivated = function() {
+  var iFrameIsActive = function() {
     return typeof panelBar.iframe !== 'undefined' && panelBar.iframe.status.active === true;
   };
 
@@ -25,20 +25,36 @@
 
     bindings: {
       altX: function(map) {
-        if(map[18] && map[88]) panelBar.toggleVisibility();
-        else return false;
+        if(map[18] && map[88]) {
+          panelBar.toggleVisibility();
+          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
+        } else {
+          return false;
+        }
       },
       altdash: function(map) {
-        if(map[18] && map[189]) panelBar.togglePosition();
-        else return false;
+        if(map[18] && map[189]) {
+          panelBar.togglePosition();
+          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
+        } else {
+          return false;
+        }
       },
       altup: function(map) {
-        if(map[18] && map[38]) panelBar.top();
-        else return false;
+        if(map[18] && map[38]) {
+          panelBar.top();
+          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
+        } else {
+          return false;
+        }
       },
       altdown: function(map) {
-        if(map[18] && map[40]) panelBar.bottom();
-        else return false;
+        if(map[18] && map[40]) {
+          panelBar.bottom();
+          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
+        } else {
+          return false;
+        }
       },
       altM: function(map) {
         if(map[18] && map[77]) panelBar.dom.bar.querySelector('.panelBar--edit a').click();
