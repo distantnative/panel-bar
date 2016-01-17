@@ -2,6 +2,7 @@
 
 namespace panelBar;
 
+use Str;
 use Tpl;
 
 class Tools {
@@ -60,5 +61,21 @@ class Tools {
         return 'file-o';
         break;
     }
+  }
+
+  public static function fontPaths($css) {
+    $base  = panel()->urls()->assets() . '/fonts/';
+    $fonts = array(
+      'FA.woff2'        => $base . 'fontawesome-webfont.woff2?v=4.4.0',
+      'FA.woff'         => $base . 'fontawesome-webfont.woff?v=4.4.0',
+      'SSP400.woff2'    => $base . 'sourcesanspro-400.woff2',
+      'SSP400.woff'     => $base . 'sourcesanspro-400.woff',
+      'SSP600.woff2'    => $base . 'sourcesanspro-600.woff2',
+      'SSP600.woff'     => $base . 'sourcesanspro-600.woff',
+      'SSPitalic.woff2' => $base . 'sourcesanspro-400-italic.woff2',
+      'SSPitalic.woff'  => $base . 'sourcesanspro-400-italic.woff',
+    );
+
+    return str::template($css, $fonts);
   }
 }

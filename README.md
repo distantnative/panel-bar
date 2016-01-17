@@ -38,8 +38,9 @@ This plugin enables you to include a panelBar on top of your site which gives yo
   1. [Default Position](#OptionPosition)
   2. [Responsiveness](#OptionResponsive)
   3. [Remember State](#OptionState)
-  4. [Enhanced JS](#OptionEnhancedJS)
-  5. [Keyboard Shortcuts](#OptionKeyboard)
+  4. [Login Icon](#OptionLogin)
+  5. [Enhanced JS](#OptionEnhancedJS)
+  6. [Keyboard Shortcuts](#OptionKeyboard)
 6. [Known Problems](#Problems)
 7. [Help & Improve](#Help)
 8. [Changelog](CHANGELOG.md)
@@ -113,8 +114,8 @@ Or pass them as a parameter when calling `::show()` or `::hide()`:
 To include [standard elements](#StandardElements) in your custom set, simply name them:
 ```php
 c::set('panelbar.elements', array(
-  'panel', 
-  'edit', 
+  'panel',
+  'edit',
   'languages',
 ));
 ```
@@ -360,6 +361,12 @@ c::set('panelbar.responsive', false);
 The panelBar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. But it also tries to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link) via your browser's local storage. If you want to disable this, you need to include:
 ```php
 c::set('panelbar.remember', false);
+```
+
+### Login icon <a id="OptionLogin"></a>
+By default the panelBar will show a small icon that redirects to the panel login form if no user with panel access permission is logged in already but a former state is found in the local storage from the [Remember State option](#OptionState). If you want to disable this, you need to include:
+```php
+c::set('panelbar.login', false);
 ```
 
 

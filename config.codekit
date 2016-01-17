@@ -11,6 +11,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/assets\/css\/components\/login.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/css\/components\/login.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/assets\/css\/components\/rtl.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -118,77 +127,88 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/iframe.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/iframe.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/iframe.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/components\/keybindings.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/keybindings.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/keybindings.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/keybindings.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/components\/localstorage.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/localstorage.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/localstorage.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/localstorage.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
+		},
+	"\/assets\/js\/dist\/components\/login.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/login.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/login.min.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/components\/responsive.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/components\/responsive.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/responsive.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/responsive.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/elements\/loadtime.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/elements\/loadtime.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/loadtime.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/elements\/loadtime.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/panelbar.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/panelbar.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/panelbar.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/panelbar.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/dist\/util\/classes.min.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/dist\/util\/classes.min.js",
-		"outputAbbreviatedPath": "\/assets\/scripts\/classes.min.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/util\/classes.min.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/assets\/js\/src\/components\/iframe.js": {
 		"fileType": 64,
@@ -218,6 +238,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/localstorage.js",
 		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/localstorage.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
+	"\/assets\/js\/src\/components\/login.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/login.js",
+		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/login.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
@@ -259,7 +290,7 @@
 	"\/assets\/js\/src\/util\/classes.js": {
 		"fileType": 64,
 		"ignore": 0,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/src\/util\/classes.js",
 		"outputAbbreviatedPath": "\/assets\/js\/dist\/util\/classes.min.js",
 		"outputPathIsOutsideProject": 0,
@@ -330,13 +361,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/base\/_controls.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_controls.css",
+		"outputAbbreviatedPath": "\/assets\/css\/base\/_controls.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/base\/_fontawesome.scss": {
 		"createSourceMap": 0,
@@ -346,13 +377,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/base\/_fontawesome.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_fontawesome.css",
+		"outputAbbreviatedPath": "\/assets\/css\/base\/_fontawesome.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/base\/_fonts.scss": {
 		"createSourceMap": 0,
@@ -362,13 +393,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/base\/_fonts.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_fonts.css",
+		"outputAbbreviatedPath": "\/assets\/css\/base\/_fonts.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/base\/_responsive.scss": {
 		"createSourceMap": 0,
@@ -378,13 +409,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/base\/_responsive.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_responsive.css",
+		"outputAbbreviatedPath": "\/assets\/css\/base\/_responsive.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/components\/iframe.scss": {
 		"createSourceMap": 0,
@@ -392,12 +423,28 @@
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/components\/iframe.scss",
 		"outputAbbreviatedPath": "\/assets\/css\/components\/iframe.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 3,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
+		},
+	"\/assets\/scss\/components\/login.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/scss\/components\/login.scss",
+		"outputAbbreviatedPath": "\/assets\/css\/components\/login.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 1,
 		"useLibsass": 1
@@ -426,13 +473,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/elements\/_base.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_base.css",
+		"outputAbbreviatedPath": "\/assets\/css\/elements\/_base.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/elements\/box.scss": {
 		"createSourceMap": 0,
@@ -440,7 +487,7 @@
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/elements\/box.scss",
 		"outputAbbreviatedPath": "\/assets\/css\/elements\/box.css",
 		"outputPathIsOutsideProject": 0,
@@ -456,7 +503,7 @@
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/elements\/btn.scss",
 		"outputAbbreviatedPath": "\/assets\/css\/elements\/btn.css",
 		"outputPathIsOutsideProject": 0,
@@ -504,7 +551,7 @@
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/elements\/images.scss",
 		"outputAbbreviatedPath": "\/assets\/css\/elements\/images.css",
 		"outputPathIsOutsideProject": 0,
@@ -538,13 +585,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/helpers\/_mixins.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_mixins.css",
+		"outputAbbreviatedPath": "\/assets\/css\/helpers\/_mixins.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/helpers\/_vars.scss": {
 		"createSourceMap": 0,
@@ -554,13 +601,13 @@
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/scss\/helpers\/_vars.scss",
-		"outputAbbreviatedPath": "\/assets\/styles\/_vars.css",
+		"outputAbbreviatedPath": "\/assets\/css\/helpers\/_vars.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 0
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 1,
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/modules\/drop.scss": {
 		"createSourceMap": 0,
@@ -576,7 +623,7 @@
 		"outputStyle": 3,
 		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 1,
-		"useLibsass": 0
+		"useLibsass": 1
 		},
 	"\/assets\/scss\/panelbar.scss": {
 		"createSourceMap": 0,
@@ -945,6 +992,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/templates\/login.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/templates\/login.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/templates\/main.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -1147,13 +1203,13 @@
 	"jadeOutputStyle": 0,
 	"javascriptAutoOutputPathEnabled": 1,
 	"javascriptAutoOutputPathFilenamePattern": "*.min.js",
-	"javascriptAutoOutputPathRelativePath": "assets\/scripts\/",
-	"javascriptAutoOutputPathReplace1": "",
-	"javascriptAutoOutputPathReplace2": "",
-	"javascriptAutoOutputPathStyle": 1,
+	"javascriptAutoOutputPathRelativePath": "..\/..\/dist",
+	"javascriptAutoOutputPathReplace1": "src",
+	"javascriptAutoOutputPathReplace2": "dist",
+	"javascriptAutoOutputPathStyle": 3,
 	"javascriptCreateSourceMap": 1,
 	"javascriptOutputStyle": 1,
-	"javascriptSyntaxCheckerStyle": 1,
+	"javascriptSyntaxCheckerStyle": 0,
 	"jsCheckerReservedNamesString": "",
 	"jsHintFlags2": {
 		"asi": {
@@ -1554,16 +1610,16 @@
 	"sassAutoOutputPathEnabled": 1,
 	"sassAutoOutputPathFilenamePattern": "*.css",
 	"sassAutoOutputPathRelativePath": "assets\/styles\/",
-	"sassAutoOutputPathReplace1": "sass",
+	"sassAutoOutputPathReplace1": "scss",
 	"sassAutoOutputPathReplace2": "css",
-	"sassAutoOutputPathStyle": 1,
+	"sassAutoOutputPathStyle": 3,
 	"sassCreateSourceMap": 0,
 	"sassDebugStyle": 0,
 	"sassDecimalPrecision": 10,
 	"sassOutputStyle": 0,
-	"sassUseLibsass": 0,
-	"shouldRunAutoprefixer": 0,
-	"shouldRunBless": 0,
+	"sassUseLibsass": 1,
+	"shouldRunAutoprefixer": 1,
+	"shouldRunBless": 1,
 	"skippedItemsString": ".svn, .git, .hg, log, _logs, _cache, cache, logs, node_modules",
 	"slimAutoOutputPathEnabled": 1,
 	"slimAutoOutputPathFilenamePattern": "*.html",

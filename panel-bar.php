@@ -21,7 +21,7 @@ class panelBar extends Core {
    */
 
   public static function show($args = array()) {
-    if ($user = site()->user() and $user->hasPanelAccess() and get('panelBar') !== '0') {
+    if (get('panelBar') !== '0') {
       $self = new self($args);
       return $self->_output();
     }

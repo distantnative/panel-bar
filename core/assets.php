@@ -3,7 +3,6 @@
 namespace panelBar;
 
 use C;
-use Str;
 
 class Assets extends Hooks {
 
@@ -24,7 +23,7 @@ class Assets extends Hooks {
     if($language = site()->language() and $language->direction() === 'rtl') {
       $this->assets->setHook('css', tools::load('css', 'components/rtl'));
     }
-    return '<style>'.$this->fontPaths($this->getHooks('css')).'</style>';
+    return '<style>'.tools::fontPaths($this->getHooks('css')).'</style>';
   }
 
   public function js() {
@@ -61,27 +60,6 @@ class Assets extends Hooks {
         $this->setHook($asset[0], tools::load($asset[0], $asset[1]));
       }
     }
-  }
-
-
-  /**
-   *  FONTS
-   */
-
-  private function fontPaths($css) {
-    $base  = panel()->urls()->assets() . '/fonts/';
-    $fonts = array(
-      'FA.woff2'        => $base . 'fontawesome-webfont.woff2?v=4.4.0',
-      'FA.woff'         => $base . 'fontawesome-webfont.woff?v=4.4.0',
-      'SSP400.woff2'    => $base . 'sourcesanspro-400.woff2',
-      'SSP400.woff'     => $base . 'sourcesanspro-400.woff',
-      'SSP600.woff2'    => $base . 'sourcesanspro-600.woff2',
-      'SSP600.woff'     => $base . 'sourcesanspro-600.woff',
-      'SSPitalic.woff2' => $base . 'sourcesanspro-400-italic.woff2',
-      'SSPitalic.woff'  => $base . 'sourcesanspro-400-italic.woff',
-    );
-
-    return str::template($css, $fonts);
   }
 
 }

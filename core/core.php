@@ -41,10 +41,14 @@ class Core extends Build {
    */
 
   protected function _output() {
-    $this->_elements();
-    $this->_controls();
-    $this->_assets();
-    return $this->output->get();
+    if($user = site()->user() and $user->hasPanelAccess()) {
+      $this->_elements();
+      $this->_controls();
+      $this->_assets();
+      return $this->output->get();
+    } elseif(c::get('panelbar.login', true)) {
+      return $this->output->login($this->panel->urls()->index());
+    }
   }
 
   // get all elements

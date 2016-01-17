@@ -37,4 +37,11 @@ class Output extends Hooks {
     ));
   }
 
+  public function login($url) {
+    return tools::load('html', 'login', array(
+      'style'  => tools::fontPaths(tools::load('css', 'components/login')),
+      'script' => 'var PANEL_URL="' . $url . '";' . tools::load('js',  'components/login'),
+    ));
+  }
+
 }
