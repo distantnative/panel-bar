@@ -217,7 +217,7 @@
 		"inputAbbreviatedPath": "\/assets\/js\/src\/components\/iframe.js",
 		"outputAbbreviatedPath": "\/assets\/js\/dist\/components\/iframe.min.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
+		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
