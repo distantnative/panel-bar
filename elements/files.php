@@ -12,11 +12,15 @@ class Files extends Base {
       // register assets
       $this->_iframe($function);
 
+      // prepare output
+      $term = $type == 'image' ? 'Images' : 'Files';
+
       // return output
       return Build::files(array(
         'id'     => $function,
         'icon'   => 'th-list',
-        'label'  => (($type == 'image') ? 'Images' : 'Files') . $this->bubble($files),
+        'label'  => $term . $this->bubble($files),
+        'term'   => $term,
         'items'  => $files,
         'all'    => $this->page->url('files'),
       ));

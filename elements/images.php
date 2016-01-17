@@ -11,11 +11,15 @@ class Images extends Base {
       // register assets
       $this->_iframe($function);
 
+      // prepare output
+      $term = $type == 'image' ? 'Images' : 'Files';
+
       // return output
       return Build::images(array(
         'id'     => $function,
         'icon'   => ($type == 'image') ? 'photo'  : 'file',
-        'label'  => (($type == 'image') ? 'Images' : 'Files') . $this->bubble($images),
+        'label'  => $term . $this->bubble($images),
+        'term'   => $term,
         'items'  => $images,
         'count'  => 'panelBar-images--' . $this->count($images),
         'all'    => $this->page->url('files'),

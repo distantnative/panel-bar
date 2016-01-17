@@ -40,7 +40,7 @@ class Build {
     $grid = tools::load('html', 'elements/images/grid', array(
       'items'   => $args['items'],
       'all'     => array(
-        'label' => $args['label'],
+        'label' => $args['term'],
         'url'   => $args['all'],
       ),
       'count'   => $args['count'],
@@ -60,7 +60,7 @@ class Build {
     $list = tools::load('html', 'elements/files/list', array(
       'items'   => $args['items'],
       'all'     => array(
-        'label' => $args['label'],
+        'label' => $args['term'],
         'url'   => $args['all'],
       ),
     ));
