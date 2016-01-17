@@ -2,13 +2,16 @@
 
   var keys = function(e) {
     e = e || event;
-    _.map[e.keyCode] = e.type === 'keydown';
 
+    if(!e.altKey) return;
     if(iFrameIsActive()) return;
 
-    for(var shortcut in _.bindings) {
-      if(!_.bindings[shortcut](_.map)) break;
+    var shortcut = _.bindings[e.keyCode];
+    if(shortcut) {
+      shortcut();
+      if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
     }
+
   };
 
   var iFrameIsActive = function() {
@@ -18,55 +21,33 @@
   panelBar.keys = {
     init: function() {
       document.addEventListener('keydown', keys);
-      document.addEventListener('keyup',   keys);
     },
 
-    map: [],
-
     bindings: {
-      altX: function(map) {
-        if(map[18] && map[88]) {
-          panelBar.toggleVisibility();
-          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
-        } else {
-          return false;
-        }
+      // alt + X
+      88: function() {
+        panelBar.toggleVisibility();
+
       },
-      altdash: function(map) {
-        if(map[18] && map[189]) {
-          panelBar.togglePosition();
-          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
-        } else {
-          return false;
-        }
+      // alt + - (dash)
+      189: function() {
+        panelBar.togglePosition();
       },
-      altup: function(map) {
-        if(map[18] && map[38]) {
-          panelBar.top();
-          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
-        } else {
-          return false;
-        }
+      // alt + arrow-up
+      38: function() {
+        panelBar.top();
       },
-      altdown: function(map) {
-        if(map[18] && map[40]) {
-          panelBar.bottom();
-          if(typeof panelBar.iframe !== 'undefined') panelBar.state.update();
-        } else {
-          return false;
-        }
+      // alt + arrow-down
+      40: function() {
+        panelBar.bottom();
       },
-      altM: function(map) {
-        if(map[18] && map[77]) panelBar.dom.bar.querySelector('.panelBar--edit a').click();
-        else return false;
+      // alt + M
+      77: function() {
+        panelBar.dom.bar.querySelector('.panelBar--edit a').click();
       },
-      altP: function(map) {
-        if(map[18] && map[80]) {
-          panelBar.status.keys = [];
-          location.href = panelBar.dom.bar.querySelector('.panelBar--panel a').href;
-        } else {
-          return false;
-        }
+      // alt + P
+      80: function() {
+        location.href = panelBar.dom.bar.querySelector('.panelBar--panel a').href;
       },
     },
   };
