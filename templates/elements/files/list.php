@@ -4,7 +4,7 @@
     <div class="panelBar-files__preview">
       <div class="panelBar-files__image" <?php if($item['type'] === 'image' and isset($item['image'])) echo 'style="background-image:url(' . $item['image'] . ');"' ?>>
         <?php if($item['type'] !== 'image' and isset($item['icon'])) : ?>
-          <div class="panelBar-files__icon"><i class="fa fa-<?php echo $item['icon'] ?>"></i></div>
+          <div class="panelBar-files__icon"><?php echo $item['icon'] ?></div>
         <?php endif ?>
         <div class="panelBar-files__overlay"></div>
       </div>

@@ -24,15 +24,17 @@ class Core extends Build {
     // Assets
     $this->css    = isset($opt['css']) ? $opt['css'] : true;
     $this->js     = isset($opt['js'])  ? $opt['js']  : true;
-    $this->assets = new Assets(array('css' => $this->css, 'js'  => $this->js));
+    $this->assets = new Assets(array(
+      'css' => $this->css,
+      'js'  => $this->js
+    ));
 
     // Output
     $visible      = !(isset($opt['hide']) and $opt['hide'] === true);
     $this->output = new Output($visible);
 
     // Elements
-    $this->elements  = (isset($opt['elements']) and is_array($opt['elements'])) ? $opt['elements'] : c::get('panelbar.elements',$this->defaults);
-
+    $this->elements = $this->selectElements($opt);
   }
 
 
@@ -41,66 +43,106 @@ class Core extends Build {
    */
 
   protected function _output() {
-    echo strtolower(__CLASS__);
-    if($user = site()->user() and $user->hasPanelAccess()) {
-      $this->_elements();
-      $this->_controls();
-      $this->_assets();
+    if($this->hasPermission()) {
+      $this->hookControls();
+      $this->hookElements();
+      $this->hookAssets();
       return $this->output->get();
-    } elseif(c::get('panelbar.login', true)) {
-      return $this->output->login($this->panel->urls()->index());
+
+    } elseif($this->showLogin()) {
+      $url = $this->panel->urls()->index();
+      return $this->output->login($url);
     }
   }
 
-  // get all elements
-  protected function _elements() {
-    foreach ($this->elements as $id => $el) {
+  protected function selectElements($opt) {
+    if(isset($opt['elements']) and is_array($opt['elements'])) {
+      return $opt['elements'];
+    } else {
+      return c::get('panelbar.elements',$this->defaults);
+    }
+  }
 
-      $class  = 'panelBar\Elements\\' . $el;
-      $plugin = 'panelBar\Plugins\\' . $el;
+  protected function hookElements() {
+    foreach ($this->elements as $id => $element) {
 
       // $element is standard element
-      if(class_exists($class)) {
-        $class = new $class($this->page, $this->output, $this->assets);
-        $el    = $class->html();
+      if($class  = 'panelBar\\Elements\\'.$element and
+         class_exists($class)) {
+        $element = $this->getElementObj($class);
 
       // $element is plugin element
-      } elseif(class_exists($class)) {
-        $class = new $class($this->page, $this->output, $this->assets);
-        $el    = $class->html();
+      } elseif($class = 'panelBar\\Plugins\\'.$element and
+               class_exists($class)) {
+        $element = $this->getElementObj($class);
 
       // $element is callable
-      } elseif(is_callable($el)) {
-        $el = call_user_func_array($el, array($this->output, $this->assets));
+      } elseif(is_callable($element)) {
+        $element = $this->getElementCallable($element);
 
       // $element is string
-      } elseif(is_string($el)) {
-        $el = build::_element(null, $el, array('id' => $id));
+      } elseif(is_string($element)) {
+        $element = $this->getElementString($element, $id);
       }
 
-      if(is_array($el)) {
-        if(isset($el['assets']))  $this->assets->setHooks($el['assets']);
-        if(isset($el['html']))    $this->output->setHooks($el['html']);
-        if(isset($el['element'])) $this->output->setHook('elements', $el['element']);
-      } else {
-        $this->output->setHook('elements', $el);
-      }
-
+      $this->hookElement($element);
     }
   }
 
-  protected function _controls() {
-    $this->output->setHook('next', tools::load('html', 'controls'));
+  protected function hookElement($element) {
+    // element has specified various hooks
+    if(is_array($element)) {
+      if(isset($element['assets'])) {
+        $this->assets->setHooks($element['assets']);
+      }
+      if(isset($element['html'])) {    $this->output->setHooks($element['html']);
+      }
+      if(isset($element['element'])) {
+        $this->output->setHook('elements', $element['element']);
+      }
+
+    // element is only a string
+    } else {
+      $this->output->setHook('elements', $element);
+    }
   }
 
-  protected function _assets() {
-    if($this->css !== false) $this->output->setHook('after', $this->assets->css());
-    if($this->js  !== false) $this->output->setHook('after', $this->assets->js());
+  protected function getElementObj($class) {
+    $obj = new $class($this->page, $this->output, $this->assets);
+    return $obj->html();
+  }
+
+  protected function getElementCallable($callable) {
+    return call_user_func_array($callable, array($this->output, $this->assets));
+  }
+
+  protected function getElementString($string, $id) {
+    return build::_element(null, $string, array('id' => $id));
+  }
+
+  protected function hookControls() {
+    $this->output->setHook('next', tpl::load('controls'));
+  }
+
+  protected function hookAssets() {
+    foreach(array('css', 'js') as $type) {
+      if($this->$type !== false) {
+        $this->output->setHook('after', $this->assets->$type());
+      }
+    }
+  }
+
+  protected function hasPermission() {
+    return $user = site()->user() and $user->hasPanelAccess();
+  }
+
+  protected function showLogin() {
+    return c::get('panelbar.login', true);
   }
 
 
   /**
-   *  PLACEHOLDERS for static methods
+   *  PLACEHOLDERS for public static methods
    */
 
   public static function show()               { }

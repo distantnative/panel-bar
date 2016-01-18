@@ -11,7 +11,7 @@ class Toggle extends Base {
     $this->_iframe('toggle');
 
     // return output
-    return Build::link(array(
+    return build::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',

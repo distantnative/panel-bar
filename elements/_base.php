@@ -3,7 +3,8 @@
 namespace panelBar\Elements;
 
 use C;
-use panelBar\Tools;
+use panelBar\Tpl;
+use panelBar\Assets;
 
 class Base {
 
@@ -24,12 +25,12 @@ class Base {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
       $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
-      $this->assets->setHook('js',  tools::load('js',  'components/iframe'));
+      $this->assets->setHook('js',  assets::load('js',  'components/iframe'));
       $this->assets->setHook('js',  'panelBar.iframe.bind(".panelBar--' . $element . ' a");');
-      $this->assets->setHook('css', tools::load('css', 'components/iframe'));
+      $this->assets->setHook('css', assets::load('css', 'components/iframe'));
       // register output
-      $this->output->setHook('before',   tools::load('html', 'iframe/iframe'));
-      $this->output->setHook('elements', tools::load('html', 'iframe/btn'));
+      $this->output->setHook('before',   tpl::load('iframe/iframe'));
+      $this->output->setHook('elements', tpl::load('iframe/btn'));
     }
   }
 

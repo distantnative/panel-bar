@@ -8,7 +8,7 @@ class Logout extends Base {
 
   public function html() {
     // return output
-    return Build::link(array(
+    return build::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
       'url'    => $this->panel->urls()->logout(),

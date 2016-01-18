@@ -5,7 +5,7 @@ namespace panelBar\Elements;
 require_once(__DIR__ . '/../vendor/github/client/GitHubClient.php');
 
 use panelBar\Build;
-use panelBar\Tools;
+use panelBar\Assets;
 use C;
 use Toolkit;
 use Kirby;
@@ -14,10 +14,10 @@ class System extends Base {
 
   public function html() {
     // register assets
-    $this->assets->setHook('css', tools::load('css', 'elements/system'));
+    $this->assets->setHook('css', assets::load('css', 'elements/system'));
 
     // return output
-    return Build::box(array(
+    return build::box(array(
       'id'      => 'system',
       'icon'    => 'info',
       'label'   => 'System',

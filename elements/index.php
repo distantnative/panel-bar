@@ -2,17 +2,14 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Tools;
-use panelBar\Build;
-
 class Index extends Base {
 
   public function html() {
     // register assets
-    $this->assets->setHook('css', tools::load('css', 'elements/index'));
+    $this->assets->setHook('css', assets::load('css', 'elements/index'));
 
     // return output
-    return Build::dropdown(array(
+    return build::dropdown(array(
       'id'     => 'index',
       'icon'   => 'th',
       'label'  => 'Index',
@@ -28,7 +25,7 @@ class Index extends Base {
 
     foreach($index as $page) {
       array_push($items, array(
-        'label' => tools::load('html', 'elements/index/label', array(
+        'label' => tpl::load('elements/index/label', array(
           'title'   => $page->title(),
           'num'     => $page->num(),
           'depth'   => $page->depth() - 1,

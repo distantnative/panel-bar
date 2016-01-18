@@ -27,7 +27,7 @@ class Output extends Hooks {
 
 
   public function get() {
-    return tools::load('html', 'main', array(
+    return tpl::load('main', array(
       'class'    => 'panelBar panelBar--' . $this->position .
                     ($this->visible === false ? ' panelBar--hidden' : ''),
       'before'   => $this->getHooks('before'),
@@ -38,9 +38,9 @@ class Output extends Hooks {
   }
 
   public function login($url) {
-    return tools::load('html', 'login', array(
-      'style'  => tools::fontPaths(tools::load('css', 'components/login')),
-      'script' => 'var PANEL_URL="' . $url . '";' . tools::load('js',  'components/login'),
+    return tpl::load('login', array(
+      'style'  => assets::fontPaths(assets::load('css', 'components/login')),
+      'script' => 'var PANEL_URL="' . $url . '";' . assets::load('js',  'components/login'),
     ));
   }
 

@@ -11,7 +11,7 @@ class Edit extends Base {
     $this->_iframe('edit');
 
     // return output
-    return Build::link(array(
+    return build::link(array(
       'id'     => 'edit',
       'icon'   => 'pencil',
       'url'    => $this->page->url('edit'),

@@ -2,13 +2,12 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Tools;
 use panelBar\Build;
 
 class Files extends Base {
 
   public function html($type = null, $function = 'files') {
-    if($files = static::items($this->page, $type)) {
+    if($files = $this->items($this->page, $type)) {
       // register assets
       $this->_iframe($function);
 
@@ -16,7 +15,7 @@ class Files extends Base {
       $term = $type == 'image' ? 'Images' : 'Files';
 
       // return output
-      return Build::files(array(
+      return build::files(array(
         'id'     => $function,
         'icon'   => 'th-list',
         'label'  => $term . $this->bubble($files),
@@ -28,7 +27,7 @@ class Files extends Base {
   }
 
 
-  public static function items($page, $type = null) {
+  public function items($page, $type = null) {
     if(!$page->canShowFiles()) return false;
 
     // get files collection
@@ -49,7 +48,7 @@ class Files extends Base {
       );
 
       if($file->type() == 'image') $args['image']  = $file->url();
-      else                         $args['icon']   = tools::fileicon($file);
+      else                         $args['icon']   = $file->icon();
       array_push($items, $args);
     }
 

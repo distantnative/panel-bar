@@ -9,7 +9,7 @@ class Languages extends Base {
   public function html() {
     if ($languages = $this->site->languages()) {
       // return output
-      return Build::dropdown(array(
+      return build::dropdown(array(
         'id'      => 'languages',
         'icon'    => 'flag',
         'label'   => strtoupper($this->site->language()->code()),

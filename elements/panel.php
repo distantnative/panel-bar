@@ -11,7 +11,7 @@ class Panel extends Base {
     $this->_iframe('panel');
 
     // return output
-    return Build::link(array(
+    return build::link(array(
       'id'      => 'panel',
       'icon'    => 'cogs',
       'url'     => $this->panel->urls()->index(),

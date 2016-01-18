@@ -11,7 +11,7 @@ class User extends Base {
     $this->_iframe('user');
 
     // return output
-    return Build::link(array(
+    return build::link(array(
       'id'     => 'user',
       'icon'   => 'user',
       'url'    => $this->site->user()->url('edit'),

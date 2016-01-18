@@ -11,7 +11,7 @@ class Add extends Base {
     $this->_iframe('add');
 
     // return output
-    return Build::dropdown(array(
+    return build::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',
