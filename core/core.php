@@ -14,12 +14,11 @@ class Core extends Build {
   public $css;
   public $js;
 
-  protected $page;
-  protected $panel;
+  public $panel;
 
   public function __construct($opt = array()) {
-    $this->page   = page();
     $this->panel  = require_once(__DIR__ . '/lib/integrate.php');
+    $this->panel  = panel();
 
     // Assets
     $this->css    = isset($opt['css']) ? $opt['css'] : true;
@@ -108,7 +107,7 @@ class Core extends Build {
   }
 
   protected function getElementObj($class) {
-    $obj = new $class($this->page, $this->output, $this->assets);
+    $obj = new $class($this);
     return $obj->html();
   }
 

@@ -8,13 +8,13 @@ use panelBar\Assets;
 
 class Base {
 
-  public function __construct($page, $output, $assets) {
-    $this->output = $output;
-    $this->assets = $assets;
+  public function __construct($panelBar) {
+    $this->assets   = $panelBar->assets;
+    $this->output   = $panelBar->output;
 
-    $this->panel  = panel();
+    $this->panel  = $panelBar->panel;
     $this->site   = $this->panel->site();
-    $this->page   = $this->panel->page($page->id());
+    $this->page   = $this->panel->page(page()->id());
   }
 
   protected function bubble($el) {
