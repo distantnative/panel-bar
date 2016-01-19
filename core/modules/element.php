@@ -37,8 +37,8 @@ class Element {
       $this->assets->setHook('js',  'panelBar.iframe.bind(".panelBar--' . $element . ' a");');
       $this->assets->setHook('css', assets::load('css', 'components/iframe'));
       // register output
-      $this->output->setHook('before',   tpl::load('iframe/iframe'));
-      $this->output->setHook('elements', tpl::load('iframe/btn'));
+      $this->output->setHook('before',   tpl::load('components/iframe/frame'));
+      $this->output->setHook('elements', tpl::load('components/iframe/btn'));
     }
   }
 
