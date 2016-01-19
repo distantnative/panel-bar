@@ -82,14 +82,9 @@ class Core {
     foreach ($this->elements as $id => $element) {
       $this->loadElement($element);
 
-      // $element is standard element
+      // $element is standard or plugin element
       if($class  = 'panelBar\\Elements\\'.$element and
          class_exists($class)) {
-        $element = $this->getElementObj($class);
-
-      // $element is plugin element
-      } elseif($class = 'panelBar\\Plugins\\'.$element and
-               class_exists($class)) {
         $element = $this->getElementObj($class);
 
       // $element is callable
