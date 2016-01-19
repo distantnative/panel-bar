@@ -37,6 +37,10 @@ class Element {
   //   Custom templates & assets loading
   //====================================
 
+  protected function url($file) {
+    return $this->getElementDir() . $file;
+  }
+
   protected function tpl($file, $array = array()) {
     if($tpl = $this->load('templates' . DS . $file . '.php', $array)) {
       return $tpl;
@@ -54,7 +58,7 @@ class Element {
   }
 
   protected function js($file, $array = array()) {
-    if($js = $this->load('assets/js/dist' . DS . $file . '.min.js', $array)) {
+    if($js = $this->load('assets/js/' . DS . $file . '.js', $array)) {
       return $js;
     } else {
       return assets::load('js', $file, $array);

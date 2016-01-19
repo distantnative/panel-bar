@@ -13,7 +13,7 @@ class Loadtime extends \panelBar\Element {
 
   public function html() {
     // register assets
-    $this->assets->setHook('js', $this->js('loadtime'));
+    $this->assets->setHook('js', $this->js('dist/loadtime.min'));
     // return output
     return pattern::label(array(
       'id'     => $this->getElementName(),
