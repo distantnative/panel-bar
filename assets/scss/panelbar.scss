@@ -2,7 +2,7 @@
 //   panelBar
 //====================================
 
-@import 'helpers/mixins';
+@import 'tools/mixins';
 
 .panelBar {
   position: fixed;
@@ -44,7 +44,7 @@
   }
 }
 
-@import 'build/base';
+@import 'base/element';
 @import 'base/controls';
 @import 'base/responsive';
 @import 'base/fonts';

@@ -14,7 +14,7 @@ class System extends \panelBar\Element {
 
   public function html() {
     // register assets
-    $this->assets->setHook('css', assets::load('css', 'elements/system'));
+    $this->assets->setHook('css', $this->css('system'));
 
     // return output
     return pattern::box(array(

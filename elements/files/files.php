@@ -16,7 +16,7 @@ class Files extends \panelBar\Element {
       // register assets
       $this->_iframe($id);
       $this->assets->setHook('css', assets::load('css', 'modules/drop'));
-      $this->assets->setHook('css', assets::load('css', 'build/files'));
+      $this->assets->setHook('css', $this->css('files'));
 
       // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';

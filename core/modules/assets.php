@@ -55,7 +55,7 @@ class Assets extends Hooks {
     $this->setHooks(array(
       'css' => array(self::load('css', 'panelbar')),
       'js'  => array(
-        self::load('js',  'util/classes'),
+        self::load('js',  'tools/classes'),
         self::load('js',  'panelbar')
       ),
     ));

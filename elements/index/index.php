@@ -9,7 +9,7 @@ class Index extends \panelBar\Element {
 
   public function html() {
     // register assets
-    $this->assets->setHook('css', assets::load('css', 'elements/index'));
+    $this->assets->setHook('css', $this->css('index'));
 
     // return output
     return pattern::dropdown(array(

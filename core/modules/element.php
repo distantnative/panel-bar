@@ -18,11 +18,28 @@ class Element {
   }
 
   protected function tpl($file, $array = array()) {
-    $root    = realpath(__DIR__ . '/../..');
-    $element = strtolower(str_replace('panelBar\\Elements\\', '', get_class($this)));
-    $path = $root . DS . 'elements' . DS . $element . DS . 'templates' . DS . $file . '.php';
-    return \tpl::load($path, $array);
+    return $this->load('templates' . DS . $file . '.php', $array);
+  }
 
+  protected function css($file, $array = array()) {
+    return $this->load('assets/css' . DS . $file . '.css', $array);
+  }
+
+  protected function js($file, $array = array()) {
+    return $this->load('assets/js/dist' . DS . $file . '.min.js', $array);
+  }
+
+  protected function load($path, $array) {
+    return \tpl::load($this->dir() . $path, $array);
+  }
+
+  protected function dir() {
+    $root = realpath(__DIR__ . '/../..');
+    return $root . DS . 'elements' . DS . $this->name() . DS;
+  }
+
+  protected function name() {
+    return strtolower(str_replace('panelBar\\Elements\\', '', get_class($this)));
   }
 
   protected function bubble($el) {
