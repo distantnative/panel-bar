@@ -9,7 +9,8 @@ class Imagelist extends \panelBar\Element {
   //====================================
 
   public function html() {
-    $list = new Files($this->page, $this->output, $this->assets);
+    $this->core->loadElement('files');
+    $list = new Files($this->core);
     return $list->html('image');
   }
 

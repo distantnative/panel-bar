@@ -92,7 +92,7 @@ class Core {
     }
   }
 
-  protected function loadElement($name) {
+  public function loadElement($name) {
     $sources = array(
       __DIR__ . '/../elements' . DS,
       __DIR__ . '/../plugins'  . DS

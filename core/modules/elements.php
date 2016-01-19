@@ -9,12 +9,13 @@ use panelBar\Assets;
 class Element {
 
   public function __construct($panelBar) {
-    $this->assets   = $panelBar->assets;
-    $this->output   = $panelBar->output;
+    $this->core     = $panelBar;
+    $this->assets   = $this->core->assets;
+    $this->output   = $this->core->output;
 
-    $this->panel    = $panelBar->panel;
+    $this->panel    = $this->core->panel;
     $this->site     = $this->panel->site();
-    $this->page     = $this->panel->page($panelBar->page->id());
+    $this->page     = $this->panel->page($this->core->page->id());
   }
 
   //====================================

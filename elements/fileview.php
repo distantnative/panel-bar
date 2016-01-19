@@ -9,7 +9,8 @@ class Fileview extends \panelBar\Element {
   //====================================
 
   public function html() {
-    $view = new Images($this->page, $this->output, $this->assets);
+    $this->core->loadElement('images');
+    $view = new Images($this->core);
     return $view->html(null);
   }
 
