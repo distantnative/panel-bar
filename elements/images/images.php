@@ -21,7 +21,7 @@ class Images extends \panelBar\Element {
       // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
-      $grid = tpl::load('elements/images/grid', array(
+      $grid = $this->tpl('grid', array(
         'items'   => $images,
         'all'     => array(
           'label' => $term,

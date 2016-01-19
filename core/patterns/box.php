@@ -9,7 +9,7 @@ use panelBar\Assets;
 class Box {
 
   public static function html($arguments) {
-    $box = tpl::load('build/box', array(
+    $box = tpl::load('patterns/box', array(
       'content' => $arguments['content'],
     ));
 

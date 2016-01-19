@@ -21,7 +21,7 @@ class Files extends \panelBar\Element {
       // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
-      $list = tpl::load('elements/files/list', array(
+      $list = $this->tpl('list', array(
         'items'   => $files,
         'all'     => array(
           'label' => $term,

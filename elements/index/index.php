@@ -25,7 +25,7 @@ class Index extends \panelBar\Element {
 
     foreach($index as $page) {
       array_push($items, array(
-        'label' => tpl::load('elements/index/label', array(
+        'label' => $this->tpl('label', array(
           'title'   => $page->title(),
           'num'     => $page->num(),
           'depth'   => $page->depth() - 1,

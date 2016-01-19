@@ -32,11 +32,11 @@ class Pattern {
     $vars          = a::merge($vars, $arguments);
     $vars['class'] = self::classes($classes, $arguments);
 
-    return tpl::load('build/base', $vars);
+    return tpl::load('patterns/blank', $vars);
   }
 
 
   private static function classes($classes, $arguments) {
-     return ' ' . (isset($arguments['class']) ? $arguments['class']: null) . ' ' . ((isset($arguments['float']) and $arguments['float']) ? 'panelBar-element--right' : null);
+     return $classes . ' ' . (isset($arguments['class']) ? $arguments['class']: null) . ' ' . ((isset($arguments['float']) and $arguments['float']) ? 'panelBar-element--right' : null);
   }
 }

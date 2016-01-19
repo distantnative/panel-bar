@@ -17,6 +17,15 @@ class Element {
     $this->page   = $this->panel->page($panelBar->page->id());
   }
 
+  protected function tpl($file, $array = array()) {
+    $root    = realpath(__DIR__ . '/../..');
+    $element = strtolower(str_replace('panelBar\\Elements\\', '', get_class($this)));
+    $path = $root . DS . 'elements' . DS . $element . DS . 'templates' . DS . $file . '.php';
+    echo $path;
+    return \tpl::load($path, $array);
+
+  }
+
   protected function bubble($el) {
     return '<span class="panelBar-element__count-bubble">' . count($el) . '</span>';
   }

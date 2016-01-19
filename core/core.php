@@ -137,7 +137,7 @@ class Core {
   }
 
   protected function hookControls() {
-    $this->output->setHook('next', tpl::load('controls'));
+    $this->output->setHook('next', tpl::load('components/controls'));
   }
 
   protected function hookAssets() {
