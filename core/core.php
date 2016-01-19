@@ -21,7 +21,7 @@ class Core {
 
   public function __construct($opt = array()) {
     $this->page   = page();
-    $this->panel  = require_once(__DIR__ . '/lib/integrate.php');
+    $this->panel  = f::load(__DIR__ . '/lib/integrate.php');
     $this->panel  = panel();
 
     // Assets

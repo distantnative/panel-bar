@@ -2,7 +2,7 @@
 
 namespace panelBar\Elements;
 
-require_once(__DIR__ . '/../../vendors/github/client/GitHubClient.php');
+f::load(__DIR__ . '/../../vendors/github/client/GitHubClient.php');
 
 use panelBar\Pattern;
 use panelBar\Assets;
