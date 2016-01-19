@@ -12,9 +12,9 @@ class Dropdown {
     $dropdown = tpl::load('patterns/dropdown', array('items' => $arguments['items']));
 
     return array(
-      'element' => array('panelBar-drop panelBar-mDropParent', $dropdown, $arguments),
+      'element' => array('panelBar-dropdown panelBar-mDropParent', $dropdown, $arguments),
       'assets'  => array('css' => array(
-        assets::load('css', 'build/drop'),
+        assets::load('css', 'patterns/dropdown'),
         assets::load('css', 'modules/drop'),
       )),
     );

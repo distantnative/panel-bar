@@ -16,7 +16,7 @@ class Box {
     return array(
       'element' => array('panelBar-box panelBar-mDropParent', $box, $arguments),
       'assets'  => array('css' => array(
-        assets::load('css', 'build/box'),
+        assets::load('css', 'patterns/box'),
         assets::load('css', 'modules/drop'),
       )),
     );

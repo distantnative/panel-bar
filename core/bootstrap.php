@@ -4,7 +4,7 @@
 f::load(__DIR__ . '/lib/hooks.php');
 
 // Modules
-f::load(__DIR__ . '/modules/element.php');
+f::load(__DIR__ . '/modules/elements.php');
 f::load(__DIR__ . '/modules/patterns.php');
 f::load(__DIR__ . '/modules/templates.php');
 f::load(__DIR__ . '/modules/output.php');

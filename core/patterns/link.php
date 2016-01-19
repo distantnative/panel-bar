@@ -10,7 +10,7 @@ class Link {
   public static function html($arguments) {
     return array(
       'element' => array('panelBar-btn', null, $arguments),
-      'assets'  => array('css' => assets::load('css', 'build/btn')),
+      'assets'  => array('css' => assets::load('css', 'patterns/btn')),
     );
   }
 
