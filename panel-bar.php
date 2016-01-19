@@ -15,15 +15,14 @@ class panelBar extends Core {
     'user'
   );
 
-
-  /**
-   *  DISPLAY
-   */
+  //====================================
+  //   Display
+  //====================================
 
   public static function show($args = array()) {
     if (get('panelBar') !== '0') {
       $self = new self($args);
-      return $self->_output();
+      return $self->getOutput();
     }
   }
 
@@ -32,10 +31,9 @@ class panelBar extends Core {
     return self::show($args);
   }
 
-
-  /**
-   *  ASSETS OUTPUT
-   */
+  //====================================
+  //   Assets output
+  //====================================
 
   public static function css($args = array()) {
     return self::assets('css', $args);
@@ -47,14 +45,13 @@ class panelBar extends Core {
 
   protected static function assets($type, $args = array()) {
     $self = new self($args);
-    $self->_elements();
+    $self->hookElements();
     return $self->assets->{$type}();
   }
 
-
-  /**
-   *  DEFAULT ELEMENTS
-   */
+  //====================================
+  //   Default elements
+  //====================================
 
   public static function defaults($customs = array()) {
     $self = new self();

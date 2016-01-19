@@ -4,11 +4,19 @@ namespace panelBar;
 
 class Hooks {
 
+  //====================================
+  //   Add $hook to the $type queue
+  //====================================
+
   public function setHook($type, $hook) {
     if(!in_array($hook, $this->{$type}, true)) {
       array_push($this->{$type}, $hook);
     }
   }
+
+  //====================================
+  //   setHook on all elements of multi-dimensional array
+  //====================================
 
   public function setHooks($collection) {
     if(is_array($collection)) {
@@ -23,6 +31,10 @@ class Hooks {
       }
     }
   }
+
+  //====================================
+  //   Return all hooked partes from $type queue
+  //====================================
 
   protected function getHooks($type) {
     $return = '';

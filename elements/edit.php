@@ -6,13 +6,17 @@ use panelBar\Pattern;
 
 class Edit extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
-    $this->_iframe('edit');
+    $this->withIframe();
 
     // return output
     return pattern::link(array(
-      'id'     => 'edit',
+      'id'     => $this->getElementName(),
       'icon'   => 'pencil',
       'url'    => $this->page->url('edit'),
       'label'  => 'Edit',

@@ -7,19 +7,27 @@ use panelBar\Assets;
 
 class Index extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
     $this->assets->setHook('css', $this->css('index'));
 
     // return output
     return pattern::dropdown(array(
-      'id'     => 'index',
+      'id'     => $this->getElementName(),
       'icon'   => 'th',
       'label'  => 'Index',
       'items'  => $this->items(),
       'class'  => 'panelBar-index',
     ));
   }
+
+  //====================================
+  //   Items
+  //====================================
 
   private function items() {
     $home  = $this->site->homePage();

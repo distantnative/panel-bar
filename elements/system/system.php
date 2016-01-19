@@ -12,39 +12,62 @@ use Kirby;
 
 class System extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
     $this->assets->setHook('css', $this->css('system'));
 
     // return output
     return pattern::box(array(
-      'id'    => 'system',
+      'id'    => $this->getElementName(),
       'icon'  => 'info',
       'label' => 'System',
       'box'   => $this->content()
     ));
   }
 
+  //====================================
+  //   Box content
+  //====================================
+
   private function content() {
     $content  = '<ul>';
-    $content .= $this->version('Kirby');
-    $content .= $this->version('Toolkit');
-    $content .= $this->version('Panel');
-    $content .= '</ul>';
+    foreach(array('Kirby', 'Toolkit', 'Panel') as $system) {
+      $content .= $this->tpl('list-entry', array(
+        'system'  => $system,
+        'version' => $this->getVersionFrom($system)
+      ));
+    }
+        $content .= '</ul>';
     return $content;
   }
 
-  private function version($repo) {
+  //====================================
+  //   Helpers
+  //====================================
+
+  private function getVersionFrom($repo) {
+
+    // get from GitHub API if activated
     if(c::get('panelbar.system.api', true)) {
-      $this->github = isset($this->github) ? $this->github : new \GitHubClient();
+      if(!isset($this->github)) {
+        $this->github = new \GitHubClient();
+      }
+
       $api      = $this->github->repos->listTags('getkirby', $repo);
       $version  = $api[0]->getName();
-      $status   = ($version == $repo::version()) ? 'same' : 'older';
+      $status   = $version == $repo::version() ? 'same' : 'older';
     } else {
       $status   = 'unknown';
     }
 
-    return '<li><span>' . $repo . ':</span> <em class="version--' . $status . '">' . $repo::version() . '</em></li>';
+    return $this->tpl('version-number', array(
+      'status'  => $status,
+      'version' => $repo::version()
+    ));
   }
 
 }

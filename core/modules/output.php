@@ -25,11 +25,13 @@ class Output extends Hooks {
     $this->position = c::get('panelbar.position', 'top');
   }
 
+  //====================================
+  //   Return combined output
+  //====================================
 
   public function get() {
     return tpl::load('base', array(
-      'class'    => 'panelBar panelBar--' . $this->position .
-                    ($this->visible === false ? ' panelBar--hidden' : ''),
+      'class'    => 'panelBar' . $this->modifierClasses(),
       'before'   => $this->getHooks('before'),
       'elements' => $this->getHooks('elements'),
       'after'    => $this->getHooks('after'),
@@ -37,10 +39,24 @@ class Output extends Hooks {
     ));
   }
 
-  public function login($url) {
+  protected function modifierClasses() {
+    $classes  = ' panelBar--' . $this->position;
+    $classes .= $this->visible === false ? ' panelBar--hidden' : '';
+    return $classes;
+  }
+
+  //====================================
+  //   Login icon
+  //====================================
+
+  public function getLoginIcon($url) {
+    $css = assets::fontPaths(assets::load('css', 'components/login'));
+    $js  = 'var PANEL_URL="' . $url . '";';
+    $js .= assets::load('js',  'components/login');
+
     return tpl::load('components/login', array(
-      'style'  => assets::fontPaths(assets::load('css', 'components/login')),
-      'script' => 'var PANEL_URL="' . $url . '";' . assets::load('js',  'components/login'),
+      'style'  => $css,
+      'script' => $js,
     ));
   }
 

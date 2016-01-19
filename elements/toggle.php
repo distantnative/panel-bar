@@ -6,13 +6,17 @@ use panelBar\Pattern;
 
 class Toggle extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
-    $this->_iframe('toggle');
+    $this->withIframe();
 
     // return output
     return pattern::link(array(
-      'id'     => 'toggle',
+      'id'     => $this->getElementName(),
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
       'url'    => $this->page->url('toggle'),

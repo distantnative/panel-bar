@@ -17,6 +17,25 @@ class Element {
     $this->page     = $this->panel->page($panelBar->page->id());
   }
 
+  //====================================
+  //   Element characteristics
+  //====================================
+
+  protected function getElementDir() {
+    $root = realpath(__DIR__ . '/../..');
+    return $root . DS . 'elements' . DS . $this->getElementName() . DS;
+  }
+
+  protected function getElementName() {
+    $class     = get_class($this);
+    $namespace = 'panelBar\\Elements\\';
+    return strtolower(str_replace($namespace, '', $class));
+  }
+
+  //====================================
+  //   Custom templates & assets loading
+  //====================================
+
   protected function tpl($file, $array = array()) {
     if($tpl = $this->load('templates' . DS . $file . '.php', $array)) {
       return $tpl;
@@ -42,32 +61,34 @@ class Element {
   }
 
   protected function load($path, $array) {
-    return \tpl::load($this->dir() . $path, $array);
+    return \tpl::load($this->getElementDir() . $path, $array);
   }
 
-  protected function dir() {
-    $root = realpath(__DIR__ . '/../..');
-    return $root . DS . 'elements' . DS . $this->name() . DS;
+  //====================================
+  //   Features
+  //====================================
+
+  protected function withBubble($items) {
+    return '<span class="panelBar-element__count-bubble">' . count($items) . '</span>';
   }
 
-  protected function name() {
-    return strtolower(str_replace('panelBar\\Elements\\', '', get_class($this)));
-  }
-
-  protected function bubble($el) {
-    return '<span class="panelBar-element__count-bubble">' . count($el) . '</span>';
-  }
-
-  protected function _iframe($element) {
+  protected function withIframe($id = null) {
     if(c::get('panelbar.enhancedJS', true)) {
       // register assets
-      $this->assets->setHook('js', 'siteURL="'.$this->site->url().'";');
-      $this->assets->setHook('js',  $this->js('components/iframe'));
-      $this->assets->setHook('js',  'panelBar.iframe.bind(".panelBar--' . $element . ' a");');
-      $this->assets->setHook('css', $this->css('components/iframe'));
+      $this->assets->setHooks(array(
+        'js'  => array(
+          'siteURL="'.$this->site->url().'";',
+          $this->js('components/iframe'),
+          'panelBar.iframe.bind(".panelBar--' . (isset($id) ? $id : $this->getElementName()) . ' a");'
+        ),
+        'css' => $this->css('components/iframe')
+      ));
+
       // register output
-      $this->output->setHook('before',   $this->tpl('components/iframe/frame'));
-      $this->output->setHook('elements', $this->tpl('components/iframe/btn'));
+      $this->output->setHooks(array(
+        'before'   => $this->tpl('components/iframe/frame'),
+        'elements' => $this->tpl('components/iframe/btn')
+      ));
     }
   }
 

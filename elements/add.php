@@ -6,18 +6,26 @@ use panelBar\Pattern;
 
 class Add extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
-    $this->_iframe('add');
+    $this->withIframe();
 
     // return output
     return pattern::dropdown(array(
-      'id'     => 'add',
+      'id'     => $this->getElementName(),
       'icon'   => 'plus',
       'label'  => 'Add',
       'items'  => $this->items(),
     ));
   }
+
+  //====================================
+  //   Items
+  //====================================
 
   private function items() {
     $items = array();

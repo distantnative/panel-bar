@@ -41,40 +41,32 @@ class Core {
   }
 
 
-  /**
-   *  OUTPUT
-   */
+  //====================================
+  //   Output
+  //====================================
 
-  protected function _output() {
-    if($this->hasPermission()) {
+  protected function getOutput() {
+    if($this->canUsePanelBar()) {
       $this->hookControls();
       $this->hookElements();
       $this->hookAssets();
       return $this->output->get();
 
-    } elseif($this->showLogin()) {
+    } elseif($this->canLogin()) {
       $url = $this->panel->urls()->index();
-      return $this->output->login($url);
+      return $this->output->getLoginIcon($url);
     }
   }
+
+  //====================================
+  //   Elements
+  //====================================
 
   protected function selectElements($opt) {
     if(isset($opt['elements']) and is_array($opt['elements'])) {
       return $opt['elements'];
     } else {
       return c::get('panelbar.elements',$this->defaults);
-    }
-  }
-
-  protected function loadElement($name) {
-    $sources = array(
-      __DIR__ . '/../elements' . DS,
-      __DIR__ . '/../plugins'  . DS
-    );
-
-    foreach($sources as $source) {
-      f::load($source . $name . '.php');
-      f::load($source . $name . DS . $name . '.php');
     }
   }
 
@@ -100,21 +92,15 @@ class Core {
     }
   }
 
-  protected function hookElement($element) {
-    // element has specified various hooks
-    if(is_array($element)) {
-      if(isset($element['assets'])) {
-        $this->assets->setHooks($element['assets']);
-      }
-      if(isset($element['html'])) {    $this->output->setHooks($element['html']);
-      }
-      if(isset($element['element'])) {
-        $this->output->setHook('elements', $element['element']);
-      }
+  protected function loadElement($name) {
+    $sources = array(
+      __DIR__ . '/../elements' . DS,
+      __DIR__ . '/../plugins'  . DS
+    );
 
-    // element is only a string
-    } else {
-      $this->output->setHook('elements', $element);
+    foreach($sources as $source) {
+      f::load($source . $name . '.php');
+      f::load($source . $name . DS . $name . '.php');
     }
   }
 
@@ -131,9 +117,36 @@ class Core {
     return pattern::element(null, $string, array('id' => $id));
   }
 
+  protected function hookElement($element) {
+    // $element has specified various hooks
+    if(is_array($element)) {
+      if(isset($element['assets'])) {
+        $this->assets->setHooks($element['assets']);
+      }
+      if(isset($element['html'])) {    $this->output->setHooks($element['html']);
+      }
+      if(isset($element['element'])) {
+        $this->output->setHook('elements', $element['element']);
+      }
+
+    // $element is only a string
+    } else {
+      $this->output->setHook('elements', $element);
+    }
+  }
+
+
+  //====================================
+  //   Controls
+  //====================================
+
   protected function hookControls() {
     $this->output->setHook('next', tpl::load('components/controls'));
   }
+
+  //====================================
+  //   Assets
+  //====================================
 
   protected function hookAssets() {
     foreach(array('css', 'js') as $type) {
@@ -143,18 +156,22 @@ class Core {
     }
   }
 
-  protected function hasPermission() {
+  //====================================
+  //   Checks
+  //====================================
+
+  protected function canUsePanelBar() {
     return $user = site()->user() and $user->hasPanelAccess();
   }
 
-  protected function showLogin() {
+  protected function canLogin() {
     return c::get('panelbar.login', true);
   }
 
 
-  /**
-   *  PLACEHOLDERS for public static methods
-   */
+   //====================================
+   //   PLACEHOLDERS for public static methods
+   //====================================
 
   public static function show()               { }
   public static function hide()               { }

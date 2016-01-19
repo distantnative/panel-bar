@@ -6,11 +6,15 @@ use panelBar\Pattern;
 
 class Languages extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     if ($languages = $this->site->languages()) {
       // return output
       return pattern::dropdown(array(
-        'id'      => 'languages',
+        'id'      => $this->getElementName(),
         'icon'    => 'flag',
         'label'   => strtoupper($this->site->language()->code()),
         'items'   => $this->items(),
@@ -18,6 +22,10 @@ class Languages extends \panelBar\Element {
       ));
     }
   }
+
+  //====================================
+  //   Items
+  //====================================
 
   private function items() {
     $items = array();

@@ -15,21 +15,21 @@ class Assets extends Hooks {
     $this->setHooks($external);
   }
 
-
-  /**
-   *  DISPLAY
-   */
+  //====================================
+  //   Return combined assets
+  //====================================
 
   public function css() {
-    if($language = site()->language() and $language->direction() === 'rtl') {
-      $this->assets->setHook('css', self::load('css', 'components/rtl'));
-    }
     return '<style>'.self::fontPaths($this->getHooks('css')).'</style>';
   }
 
   public function js() {
     return '<script>'.$this->getHooks('js').'</script>';
   }
+
+  //====================================
+  //   Loading assets
+  //====================================
 
   public static function load($type, $file, $array = array()) {
     $root  = realpath(__DIR__ . '/../..');
@@ -46,10 +46,9 @@ class Assets extends Hooks {
     ));
   }
 
-
-  /**
-   *  DEFAULTS
-   */
+  //====================================
+  //   Default assets
+  //====================================
 
   private function defaults() {
     $this->setHooks(array(
@@ -61,6 +60,7 @@ class Assets extends Hooks {
     ));
 
     $this->bundles();
+    $this->rtl();
   }
 
   private function bundles() {
@@ -74,6 +74,12 @@ class Assets extends Hooks {
       if(c::get($option, true)) {
         $this->setHook($asset[0], self::load($asset[0], $asset[1]));
       }
+    }
+  }
+
+  private function rtl() {
+    if($language = site()->language() and $language->direction() === 'rtl') {
+      $this->assets->setHook('css', self::load('css', 'components/rtl'));
     }
   }
 

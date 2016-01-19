@@ -6,13 +6,17 @@ use panelBar\Pattern;
 
 class User extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html() {
     // register assets
-    $this->_iframe('user');
+    $this->withIframe();
 
     // return output
     return pattern::link(array(
-      'id'     => 'user',
+      'id'     => $this->getElementName(),
       'icon'   => 'user',
       'url'    => $this->site->user()->url('edit'),
       'label'  => $this->site->user(),

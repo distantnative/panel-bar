@@ -8,13 +8,15 @@ use panelBar\Assets;
 
 class Images extends \panelBar\Element {
 
+  //====================================
+  //   HTML output
+  //====================================
+
   public function html($type = 'image') {
     if($images = $this->items($this->page, $type)) {
 
-      $id = (is_null($type) ? 'image' : $type) . 's';
-
       // register assets
-      $this->_iframe($id);
+      $this->withIframe();
       $this->assets->setHook('css', $this->css('modules/drop'));
       $this->assets->setHook('css', $this->css('images'));
 
@@ -31,15 +33,19 @@ class Images extends \panelBar\Element {
       ));
 
       // return output
-      return pattern::element('panelBar-images', $grid, array(
-        'id'     => $id,
+      return pattern::blank('panelBar-images', $grid, array(
+        'id'     => $this->getElementName(),
         'icon'   => $type == 'image' ? 'photo'  : 'file',
-        'label'  => $term . $this->bubble($images),
+        'label'  => $term . $this->withBubble($images),
         'class'  => 'panelBar-mDropParent',
       ));
 
     }
   }
+
+  //====================================
+  //   Helpers
+  //====================================
 
   private function count($images) {
     if    (count($images) > 12)  return '12more';
@@ -48,7 +54,7 @@ class Images extends \panelBar\Element {
     elseif(count($images) == 1)  return '1';
   }
 
-  public function items($page, $type = null) {
+  private function items($page, $type = null) {
     if(!$page->canShowFiles()) return false;
 
     // get files collection
