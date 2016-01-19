@@ -38,11 +38,13 @@ class panelBar extends Core {
   //====================================
 
   public static function css($args = array()) {
-    return self::assets('css', $args);
+    if(get('panelBar') !== '0')
+      return self::assets('css', $args);
   }
 
   public static function js($args = array()) {
-    return self::assets('js', $args);
+    if(get('panelBar') !== '0')
+      return self::assets('js', $args);
   }
 
   protected static function assets($type, $args = array()) {
