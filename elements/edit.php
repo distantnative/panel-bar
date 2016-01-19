@@ -2,6 +2,7 @@
 
 namespace panelBar\Elements;
 
+use C;
 use panelBar\Pattern;
 
 class Edit extends \panelBar\Element {
@@ -20,7 +21,7 @@ class Edit extends \panelBar\Element {
       'icon'   => 'pencil',
       'url'    => $this->page->url('edit'),
       'label'  => 'Edit',
-      'title'  => 'Alt + E',
+      'title'  => c::get('panelbar.keys', true) ? 'Alt + M' : null,
     ));
   }
 

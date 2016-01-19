@@ -29,13 +29,23 @@ class Languages extends \panelBar\Element {
 
   private function items() {
     $items = array();
-    foreach($languages->not($this->site->language()->code()) as $language) {
-      array_push($items, array(
+
+    foreach($this->languages() as $language) {
+      $items[] = array(
         'url'   => $language->url() . '/' . $this->page->uri(),
         'label' => strtoupper($language->code()),
-      ));
+      );
     }
+
     return $items;
+  }
+
+  //====================================
+  //   Helpers
+  //====================================
+
+  private function languages() {
+    return $languages->not($this->site->language()->code());
   }
 
 }
