@@ -1,5 +1,7 @@
 <?php
-require_once('core/core.php');
+
+if(get('panelBar') !== '0') require_once('core/core.php');
+else                        require_once('core/lib/hide.php');
 
 use panelBar\Core;
 
@@ -20,7 +22,7 @@ class panelBar extends Core {
   //====================================
 
   public static function show($args = array()) {
-    if (get('panelBar') !== '0') {
+    if(get('panelBar') !== '0') {
       $self = new self($args);
       return $self->getOutput();
     }
