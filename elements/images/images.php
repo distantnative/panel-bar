@@ -15,7 +15,7 @@ class Images extends \panelBar\Element {
 
       // register assets
       $this->_iframe($id);
-      $this->assets->setHook('css', assets::load('css', 'modules/drop'));
+      $this->assets->setHook('css', $this->css('modules/drop'));
       $this->assets->setHook('css', $this->css('images'));
 
       // prepare output
