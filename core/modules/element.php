@@ -1,12 +1,12 @@
 <?php
 
-namespace panelBar\Elements;
+namespace panelBar;
 
 use C;
 use panelBar\Tpl;
 use panelBar\Assets;
 
-class Base {
+class Element {
 
   public function __construct($panelBar) {
     $this->assets   = $panelBar->assets;
@@ -14,7 +14,7 @@ class Base {
 
     $this->panel  = $panelBar->panel;
     $this->site   = $this->panel->site();
-    $this->page   = $this->panel->page(page()->id());
+    $this->page   = $this->panel->page($panelBar->page->id());
   }
 
   protected function bubble($el) {

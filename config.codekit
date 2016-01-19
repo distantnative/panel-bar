@@ -732,11 +732,29 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/core\/modules\/element.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/modules\/element.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/core\/modules\/output.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/core\/modules\/output.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/core\/modules\/patterns.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/modules\/patterns.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -750,20 +768,38 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/core\/util\/build.php": {
+	"\/core\/patterns\/box.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/core\/util\/build.php",
+		"inputAbbreviatedPath": "\/core\/patterns\/box.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/_base.php": {
+	"\/core\/patterns\/dropdown.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/_base.php",
+		"inputAbbreviatedPath": "\/core\/patterns\/dropdown.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/core\/patterns\/label.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/patterns\/label.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/core\/patterns\/link.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/core\/patterns\/link.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -786,11 +822,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/files.php": {
+	"\/elements\/files\/files.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/files.php",
+		"inputAbbreviatedPath": "\/elements\/files\/files.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -813,20 +849,20 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/images.php": {
+	"\/elements\/images\/images.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/images.php",
+		"inputAbbreviatedPath": "\/elements\/images\/images.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/index.php": {
+	"\/elements\/index\/index.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/index.php",
+		"inputAbbreviatedPath": "\/elements\/index\/index.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -840,11 +876,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/loadtime.php": {
+	"\/elements\/loadtime\/loadtime.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/loadtime.php",
+		"inputAbbreviatedPath": "\/elements\/loadtime\/loadtime.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -867,11 +903,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/elements\/system.php": {
+	"\/elements\/system\/system.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/elements\/system.php",
+		"inputAbbreviatedPath": "\/elements\/system\/system.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -1044,7 +1080,7 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client.md": {
+	"\/vendors\/github\/client.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
 		"enableLabels": 1,
@@ -1053,9 +1089,9 @@
 		"fileType": 4096,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client.md",
+		"inputAbbreviatedPath": "\/vendors\/github\/client.md",
 		"maskEmailAddresses": 1,
-		"outputAbbreviatedPath": "\/vendor\/github\/client.html",
+		"outputAbbreviatedPath": "\/vendors\/github\/client.html",
 		"outputFormat": 0,
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
@@ -1065,1332 +1101,1332 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
-	"\/vendor\/github\/client\/GitHubClient.php": {
+	"\/vendors\/github\/client\/GitHubClient.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/GitHubClient.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/GitHubClient.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/GitHubClientBase.php": {
+	"\/vendors\/github\/client\/GitHubClientBase.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/GitHubClientBase.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/GitHubClientBase.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/GitHubClientException.php": {
+	"\/vendors\/github\/client\/GitHubClientException.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/GitHubClientException.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/GitHubClientException.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/GitHubObject.php": {
+	"\/vendors\/github\/client\/GitHubObject.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/GitHubObject.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/GitHubObject.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/GitHubService.php": {
+	"\/vendors\/github\/client\/GitHubService.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/GitHubService.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/GitHubService.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubBlob.php": {
+	"\/vendors\/github\/client\/objects\/GitHubBlob.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubBlob.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubBlob.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubBranch.php": {
+	"\/vendors\/github\/client\/objects\/GitHubBranch.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubBranch.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubBranch.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubBranches.php": {
+	"\/vendors\/github\/client\/objects\/GitHubBranches.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubBranches.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubBranches.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommit.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommit.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommit.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommit.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitComment.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitComment.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitComment.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitComment.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitCommit.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitCommit.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitCommit.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitCommit.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitCommitAuthor.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitCommitAuthor.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitCommitAuthor.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitCommitAuthor.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitCommitCommitter.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitCommitCommitter.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitCommitCommitter.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitCommitCommitter.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitCommitTree.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitCommitTree.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitCommitTree.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitCommitTree.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitComparison.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitComparison.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitComparison.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitComparison.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubCommitParents.php": {
+	"\/vendors\/github\/client\/objects\/GitHubCommitParents.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubCommitParents.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubCommitParents.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubContentCrud.php": {
+	"\/vendors\/github\/client\/objects\/GitHubContentCrud.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubContentCrud.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubContentCrud.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubContributor.php": {
+	"\/vendors\/github\/client\/objects\/GitHubContributor.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubContributor.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubContributor.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubDownload.php": {
+	"\/vendors\/github\/client\/objects\/GitHubDownload.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubDownload.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubDownload.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeeds.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeeds.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeeds.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeeds.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinks.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserActor.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserActor.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserActor.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserActor.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserOrganization.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserOrganization.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserOrganization.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserOrganization.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserPublic.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserPublic.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksCurrentUserPublic.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksCurrentUserPublic.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksTimeline.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksTimeline.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksTimeline.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksTimeline.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFeedsLinksUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFeedsLinksUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFeedsLinksUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFeedsLinksUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFile.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFile.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFile.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFile.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullCommit.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullCommit.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullCommit.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullCommit.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullCommitFiles.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullCommitFiles.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullCommitFiles.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullCommitFiles.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullCommitStats.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullCommitStats.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullCommitStats.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullCommitStats.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullGist.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullGist.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullGist.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullGist.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullIssueEvent.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullIssueEvent.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullIssueEvent.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullIssueEvent.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullOrg.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullOrg.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullOrg.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullOrg.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullPull.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullPull.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullPull.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullPull.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullRepo.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullRepo.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullRepo.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullRepo.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullTeam.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullTeam.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullTeam.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullTeam.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubFullUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubFullUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubFullUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubFullUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGist.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGist.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGist.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGist.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGistComment.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGistComment.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGistComment.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGistComment.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGistForksForks.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGistForksForks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGistForksForks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGistForksForks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGistHistoryHistory.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGistHistoryHistory.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGistHistoryHistory.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGistHistoryHistory.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGitCommit.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGitCommit.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGitCommit.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGitCommit.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGitCommitAuthor.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGitCommitAuthor.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGitCommitAuthor.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGitCommitAuthor.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGitCommitCommitter.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGitCommitCommitter.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGitCommitCommitter.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGitCommitCommitter.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGitCommitParents.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGitCommitParents.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGitCommitParents.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGitCommitParents.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGitCommitTree.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGitCommitTree.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGitCommitTree.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGitCommitTree.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGittag.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGittag.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGittag.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGittag.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGittagObject.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGittagObject.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGittagObject.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGittagObject.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubGittagTagger.php": {
+	"\/vendors\/github\/client\/objects\/GitHubGittagTagger.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubGittagTagger.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubGittagTagger.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubHook.php": {
+	"\/vendors\/github\/client\/objects\/GitHubHook.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubHook.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubHook.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubIssue.php": {
+	"\/vendors\/github\/client\/objects\/GitHubIssue.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubIssue.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubIssue.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubIssueComment.php": {
+	"\/vendors\/github\/client\/objects\/GitHubIssueComment.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubIssueComment.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubIssueComment.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubIssueEvent.php": {
+	"\/vendors\/github\/client\/objects\/GitHubIssueEvent.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubIssueEvent.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubIssueEvent.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubIssuePullRequest.php": {
+	"\/vendors\/github\/client\/objects\/GitHubIssuePullRequest.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubIssuePullRequest.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubIssuePullRequest.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubLabel.php": {
+	"\/vendors\/github\/client\/objects\/GitHubLabel.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubLabel.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubLabel.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubMilestone.php": {
+	"\/vendors\/github\/client\/objects\/GitHubMilestone.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubMilestone.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubMilestone.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubOauthAccess.php": {
+	"\/vendors\/github\/client\/objects\/GitHubOauthAccess.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubOauthAccess.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubOauthAccess.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubOauthAccessApp.php": {
+	"\/vendors\/github\/client\/objects\/GitHubOauthAccessApp.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubOauthAccessApp.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubOauthAccessApp.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubOauthAccessWithUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubOauthAccessWithUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubOauthAccessWithUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubOauthAccessWithUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubOrg.php": {
+	"\/vendors\/github\/client\/objects\/GitHubOrg.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubOrg.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubOrg.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPrivateUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPrivateUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPrivateUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPrivateUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPublicKey.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPublicKey.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPublicKey.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPublicKey.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPull.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPull.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPull.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPull.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPullBranch.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPullBranch.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPullBranch.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPullBranch.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPullComment.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPullComment.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPullComment.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPullComment.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPullCommentLinks.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPullCommentLinks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPullCommentLinks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPullCommentLinks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubPullLinks.php": {
+	"\/vendors\/github\/client\/objects\/GitHubPullLinks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubPullLinks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubPullLinks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubReadmeContent.php": {
+	"\/vendors\/github\/client\/objects\/GitHubReadmeContent.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubReadmeContent.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubReadmeContent.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRef.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRef.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRef.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRef.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRefObject.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRefObject.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRefObject.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRefObject.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRepo.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRepo.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRepo.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRepo.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubReposRelease.php": {
+	"\/vendors\/github\/client\/objects\/GitHubReposRelease.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubReposRelease.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubReposRelease.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubReposReleaseAsset.php": {
+	"\/vendors\/github\/client\/objects\/GitHubReposReleaseAsset.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubReposReleaseAsset.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubReposReleaseAsset.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRepoStatsCommitActivity.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRepoStatsCommitActivity.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRepoStatsCommitActivity.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRepoStatsCommitActivity.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRepoStatsContributors.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRepoStatsContributors.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRepoStatsContributors.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRepoStatsContributors.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubRepoSubscription.php": {
+	"\/vendors\/github\/client\/objects\/GitHubRepoSubscription.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubRepoSubscription.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubRepoSubscription.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubSimplePublicKey.php": {
+	"\/vendors\/github\/client\/objects\/GitHubSimplePublicKey.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubSimplePublicKey.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubSimplePublicKey.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubSimpleRepo.php": {
+	"\/vendors\/github\/client\/objects\/GitHubSimpleRepo.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubSimpleRepo.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubSimpleRepo.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubStatus.php": {
+	"\/vendors\/github\/client\/objects\/GitHubStatus.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubStatus.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubStatus.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubSubscription.php": {
+	"\/vendors\/github\/client\/objects\/GitHubSubscription.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubSubscription.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubSubscription.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTag.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTag.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTag.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTag.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTeam.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTeam.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTeam.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTeam.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTemplate.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTemplate.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTemplate.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTemplate.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTemplates.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTemplates.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTemplates.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTemplates.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubThread.php": {
+	"\/vendors\/github\/client\/objects\/GitHubThread.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubThread.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubThread.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubThreadSubject.php": {
+	"\/vendors\/github\/client\/objects\/GitHubThreadSubject.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubThreadSubject.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubThreadSubject.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTree.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTree.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTree.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTree.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubTreeExtra.php": {
+	"\/vendors\/github\/client\/objects\/GitHubTreeExtra.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubTreeExtra.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubTreeExtra.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/objects\/GitHubUser.php": {
+	"\/vendors\/github\/client\/objects\/GitHubUser.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/objects\/GitHubUser.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/objects\/GitHubUser.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivity.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivity.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivity.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivity.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityEvents.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityEvents.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityEvents.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityEvents.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityEventsTypes.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityEventsTypes.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityEventsTypes.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityEventsTypes.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityFeeds.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityFeeds.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityFeeds.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityFeeds.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityNotifications.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityNotifications.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityNotifications.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityNotifications.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivitySettings.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivitySettings.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivitySettings.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivitySettings.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityStarring.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityStarring.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityStarring.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityStarring.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubActivityWatching.php": {
+	"\/vendors\/github\/client\/services\/GitHubActivityWatching.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubActivityWatching.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubActivityWatching.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubChangelog.php": {
+	"\/vendors\/github\/client\/services\/GitHubChangelog.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubChangelog.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubChangelog.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGists.php": {
+	"\/vendors\/github\/client\/services\/GitHubGists.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGists.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGists.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGistsComments.php": {
+	"\/vendors\/github\/client\/services\/GitHubGistsComments.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGistsComments.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGistsComments.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGit.php": {
+	"\/vendors\/github\/client\/services\/GitHubGit.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGit.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGit.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitBlobs.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitBlobs.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitBlobs.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitBlobs.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitCommits.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitCommits.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitCommits.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitCommits.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitignore.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitignore.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitignore.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitignore.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitImport.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitImport.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitImport.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitImport.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitRefs.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitRefs.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitRefs.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitRefs.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitTags.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitTags.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitTags.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitTags.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubGitTrees.php": {
+	"\/vendors\/github\/client\/services\/GitHubGitTrees.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubGitTrees.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubGitTrees.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssues.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssues.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssues.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssues.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssuesAssignees.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssuesAssignees.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssuesAssignees.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssuesAssignees.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssuesComments.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssuesComments.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssuesComments.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssuesComments.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssuesEvents.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssuesEvents.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssuesEvents.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssuesEvents.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssuesLabels.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssuesLabels.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssuesLabels.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssuesLabels.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubIssuesMilestones.php": {
+	"\/vendors\/github\/client\/services\/GitHubIssuesMilestones.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubIssuesMilestones.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubIssuesMilestones.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubLibraries.php": {
+	"\/vendors\/github\/client\/services\/GitHubLibraries.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubLibraries.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubLibraries.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubMarkdown.php": {
+	"\/vendors\/github\/client\/services\/GitHubMarkdown.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubMarkdown.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubMarkdown.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubMedia.php": {
+	"\/vendors\/github\/client\/services\/GitHubMedia.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubMedia.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubMedia.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubMeta.php": {
+	"\/vendors\/github\/client\/services\/GitHubMeta.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubMeta.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubMeta.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubOauth.php": {
+	"\/vendors\/github\/client\/services\/GitHubOauth.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubOauth.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubOauth.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubOrgs.php": {
+	"\/vendors\/github\/client\/services\/GitHubOrgs.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubOrgs.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubOrgs.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubOrgsMembers.php": {
+	"\/vendors\/github\/client\/services\/GitHubOrgsMembers.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubOrgsMembers.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubOrgsMembers.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubOrgsRepos.php": {
+	"\/vendors\/github\/client\/services\/GitHubOrgsRepos.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubOrgsRepos.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubOrgsRepos.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubOrgsTeams.php": {
+	"\/vendors\/github\/client\/services\/GitHubOrgsTeams.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubOrgsTeams.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubOrgsTeams.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubPulls.php": {
+	"\/vendors\/github\/client\/services\/GitHubPulls.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubPulls.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubPulls.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubPullsComments.php": {
+	"\/vendors\/github\/client\/services\/GitHubPullsComments.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubPullsComments.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubPullsComments.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubRepos.php": {
+	"\/vendors\/github\/client\/services\/GitHubRepos.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubRepos.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubRepos.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposCollaborators.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposCollaborators.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposCollaborators.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposCollaborators.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposComments.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposComments.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposComments.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposComments.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposCommits.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposCommits.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposCommits.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposCommits.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposContents.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposContents.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposContents.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposContents.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposDownloads.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposDownloads.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposDownloads.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposDownloads.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposForks.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposForks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposForks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposForks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposHooks.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposHooks.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposHooks.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposHooks.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposKeys.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposKeys.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposKeys.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposKeys.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposMerging.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposMerging.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposMerging.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposMerging.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposReleases.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposReleases.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposReleases.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposReleases.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposReleasesAssets.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposReleasesAssets.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposReleasesAssets.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposReleasesAssets.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposStatistics.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposStatistics.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposStatistics.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposStatistics.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubReposStatuses.php": {
+	"\/vendors\/github\/client\/services\/GitHubReposStatuses.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubReposStatuses.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubReposStatuses.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubSearch.php": {
+	"\/vendors\/github\/client\/services\/GitHubSearch.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubSearch.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubSearch.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubUsers.php": {
+	"\/vendors\/github\/client\/services\/GitHubUsers.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubUsers.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubUsers.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubUsersEmails.php": {
+	"\/vendors\/github\/client\/services\/GitHubUsersEmails.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubUsersEmails.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubUsersEmails.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubUsersFollowers.php": {
+	"\/vendors\/github\/client\/services\/GitHubUsersFollowers.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubUsersFollowers.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubUsersFollowers.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/client\/services\/GitHubUsersKeys.php": {
+	"\/vendors\/github\/client\/services\/GitHubUsersKeys.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/client\/services\/GitHubUsersKeys.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/client\/services\/GitHubUsersKeys.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/composer.json": {
+	"\/vendors\/github\/composer.json": {
 		"fileType": 524288,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/composer.json",
+		"inputAbbreviatedPath": "\/vendors\/github\/composer.json",
 		"orderOutput": 0,
-		"outputAbbreviatedPath": "\/vendor\/github\/composer-min.json",
+		"outputAbbreviatedPath": "\/vendors\/github\/composer-min.json",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
-	"\/vendor\/github\/generate.php": {
+	"\/vendors\/github\/generate.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/generate.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/generate.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/README.md": {
+	"\/vendors\/github\/README.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
 		"enableLabels": 1,
@@ -2399,9 +2435,9 @@
 		"fileType": 4096,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/README.md",
+		"inputAbbreviatedPath": "\/vendors\/github\/README.md",
 		"maskEmailAddresses": 1,
-		"outputAbbreviatedPath": "\/vendor\/github\/README.html",
+		"outputAbbreviatedPath": "\/vendors\/github\/README.html",
 		"outputFormat": 0,
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
@@ -2411,47 +2447,47 @@
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
 		},
-	"\/vendor\/github\/source\/GithubClientBase.php": {
+	"\/vendors\/github\/source\/GithubClientBase.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/source\/GithubClientBase.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/source\/GithubClientBase.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/source\/GithubClientException.php": {
+	"\/vendors\/github\/source\/GithubClientException.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/source\/GithubClientException.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/source\/GithubClientException.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/source\/GitHubObject.php": {
+	"\/vendors\/github\/source\/GitHubObject.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/source\/GitHubObject.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/source\/GitHubObject.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/source\/GithubService.php": {
+	"\/vendors\/github\/source\/GithubService.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/source\/GithubService.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/source\/GithubService.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/vendor\/github\/test.php": {
+	"\/vendors\/github\/test.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/vendor\/github\/test.php",
+		"inputAbbreviatedPath": "\/vendors\/github\/test.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0

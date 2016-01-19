@@ -2,28 +2,42 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
+use panelBar\Tpl;
+use panelBar\Assets;
 
-class Images extends Base {
+class Images extends \panelBar\Element {
 
-  public function html($type = 'image', $function = 'images') {
+  public function html($type = 'image') {
     if($images = $this->items($this->page, $type)) {
+
+      $id = (is_null($type) ? 'image' : $type) . 's';
+
       // register assets
-      $this->_iframe($function);
+      $this->_iframe($id);
+      $this->assets->setHook('css', assets::load('css', 'modules/drop'));
+      $this->assets->setHook('css', assets::load('css', 'build/images'));
 
       // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
-      // return output
-      return build::images(array(
-        'id'     => $function,
-        'icon'   => ($type == 'image') ? 'photo'  : 'file',
-        'label'  => $term . $this->bubble($images),
-        'term'   => $term,
-        'items'  => $images,
-        'count'  => 'panelBar-images--' . $this->count($images),
-        'all'    => $this->page->url('files'),
+      $grid = tpl::load('elements/images/grid', array(
+        'items'   => $images,
+        'all'     => array(
+          'label' => $term,
+          'url'   => $this->page->url('files'),
+        ),
+        'count'   => 'panelBar-images--' . $this->count($images),
       ));
+
+      // return output
+      return pattern::element('panelBar-images', $grid, array(
+        'id'     => $id,
+        'icon'   => $type == 'image' ? 'photo'  : 'file',
+        'label'  => $term . $this->bubble($images),
+        'class'  => 'panelBar-mDropParent',
+      ));
+
     }
   }
 

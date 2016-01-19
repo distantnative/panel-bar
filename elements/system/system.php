@@ -2,22 +2,22 @@
 
 namespace panelBar\Elements;
 
-require_once(__DIR__ . '/../vendor/github/client/GitHubClient.php');
+require_once(__DIR__ . '/../../vendors/github/client/GitHubClient.php');
 
-use panelBar\Build;
+use panelBar\Pattern;
 use panelBar\Assets;
 use C;
 use Toolkit;
 use Kirby;
 
-class System extends Base {
+class System extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->assets->setHook('css', assets::load('css', 'elements/system'));
 
     // return output
-    return build::box(array(
+    return pattern::box(array(
       'id'      => 'system',
       'icon'    => 'info',
       'label'   => 'System',

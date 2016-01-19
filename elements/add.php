@@ -2,16 +2,16 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 
-class Add extends Base {
+class Add extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->_iframe('add');
 
     // return output
-    return build::dropdown(array(
+    return pattern::dropdown(array(
       'id'     => 'add',
       'icon'   => 'plus',
       'label'  => 'Add',

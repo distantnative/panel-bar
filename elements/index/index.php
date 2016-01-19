@@ -2,14 +2,14 @@
 
 namespace panelBar\Elements;
 
-class Index extends Base {
+class Index extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->assets->setHook('css', assets::load('css', 'elements/index'));
 
     // return output
-    return build::dropdown(array(
+    return pattern::dropdown(array(
       'id'     => 'index',
       'icon'   => 'th',
       'label'  => 'Index',

@@ -5,8 +5,10 @@ namespace panelBar;
 require_once('bootstrap.php');
 
 use C;
+use F;
+use panelBar\Pattern;
 
-class Core extends Build {
+class Core {
 
   public $elements;
   public $output;
@@ -15,8 +17,10 @@ class Core extends Build {
   public $js;
 
   public $panel;
+  public $page;
 
   public function __construct($opt = array()) {
+    $this->page   = page();
     $this->panel  = require_once(__DIR__ . '/lib/integrate.php');
     $this->panel  = panel();
 
@@ -62,8 +66,21 @@ class Core extends Build {
     }
   }
 
+  protected function loadElement($name) {
+    $sources = array(
+      __DIR__ . '/../elements' . DS,
+      __DIR__ . '/../plugins'  . DS
+    );
+
+    foreach($sources as $source) {
+      f::load($source . $name . '.php');
+      f::load($source . $name . DS . $name . '.php');
+    }
+  }
+
   protected function hookElements() {
     foreach ($this->elements as $id => $element) {
+      $this->loadElement($element);
 
       // $element is standard element
       if($class  = 'panelBar\\Elements\\'.$element and
@@ -116,7 +133,7 @@ class Core extends Build {
   }
 
   protected function getElementString($string, $id) {
-    return build::_element(null, $string, array('id' => $id));
+    return pattern::element(null, $string, array('id' => $id));
   }
 
   protected function hookControls() {

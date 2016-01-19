@@ -2,26 +2,39 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
+use panelBar\Tpl;
+use panelBar\Assets;
 
-class Files extends Base {
+class Files extends \panelBar\Element {
 
-  public function html($type = null, $function = 'files') {
+  public function html($type = null) {
     if($files = $this->items($this->page, $type)) {
+
+      $id = (is_null($type) ? 'image' : $type) . 's';
+
       // register assets
-      $this->_iframe($function);
+      $this->_iframe($id);
+      $this->assets->setHook('css', assets::load('css', 'modules/drop'));
+      $this->assets->setHook('css', assets::load('css', 'build/files'));
 
       // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
+      $list = tpl::load('elements/files/list', array(
+        'items'   => $files,
+        'all'     => array(
+          'label' => $term,
+          'url'   => $this->page->url('files'),
+        ),
+      ));
+
       // return output
-      return build::files(array(
-        'id'     => $function,
+      return pattern::element('panelBar-files', $list, array(
+        'id'     => $id,
         'icon'   => 'th-list',
         'label'  => $term . $this->bubble($files),
-        'term'   => $term,
-        'items'  => $files,
-        'all'    => $this->page->url('files'),
+        'class'  => 'panelBar-mDropParent'
       ));
     }
   }

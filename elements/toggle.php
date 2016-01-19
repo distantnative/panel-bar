@@ -2,16 +2,16 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 
-class Toggle extends Base {
+class Toggle extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->_iframe('toggle');
 
     // return output
-    return build::link(array(
+    return pattern::link(array(
       'id'     => 'toggle',
       'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',

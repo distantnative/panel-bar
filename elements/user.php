@@ -2,16 +2,16 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 
-class User extends Base {
+class User extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->_iframe('user');
 
     // return output
-    return build::link(array(
+    return pattern::link(array(
       'id'     => 'user',
       'icon'   => 'user',
       'url'    => $this->site->user()->url('edit'),

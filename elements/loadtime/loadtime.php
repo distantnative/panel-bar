@@ -2,16 +2,16 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 use panelBar\Assets;
 
-class Loadtime extends Base {
+class Loadtime extends \panelBar\Element {
 
   public function html() {
     // register assets
     $this->assets->setHook('js', assets::load('js', 'elements/loadtime'));
     // return output
-    return build::label(array(
+    return pattern::label(array(
       'id'     => 'loadtime',
       'icon'   => 'clock-o',
       'label'  => $this->time(),

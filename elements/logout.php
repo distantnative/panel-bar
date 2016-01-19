@@ -2,13 +2,13 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 
-class Logout extends Base {
+class Logout extends \panelBar\Element {
 
   public function html() {
     // return output
-    return build::link(array(
+    return pattern::link(array(
       'id'     => 'logout',
       'icon'   => 'power-off',
       'url'    => $this->panel->urls()->logout(),

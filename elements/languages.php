@@ -2,14 +2,14 @@
 
 namespace panelBar\Elements;
 
-use panelBar\Build;
+use panelBar\Pattern;
 
-class Languages extends Base {
+class Languages extends \panelBar\Element {
 
   public function html() {
     if ($languages = $this->site->languages()) {
       // return output
-      return build::dropdown(array(
+      return pattern::dropdown(array(
         'id'      => 'languages',
         'icon'    => 'flag',
         'label'   => strtoupper($this->site->language()->code()),
