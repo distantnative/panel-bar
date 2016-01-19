@@ -9,7 +9,9 @@
   &__content {
     padding:      .75em 1.5em;
     color:        $color-black;
-    line-height:   1.4;
+    line-height:  1.4;
+
+    cursor:       default;
 
     > a       { color: $color-midgrey; }
     > a:hover { color: $color-lightgrey; }
