@@ -10,7 +10,7 @@ class Box {
 
   public static function html($arguments) {
     $box = tpl::load('patterns/box', array(
-      'content' => $arguments['content'],
+      'box' => $arguments['box'],
     ));
 
     return array(

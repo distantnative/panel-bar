@@ -2,6 +2,9 @@
 
 namespace panelBar\Elements;
 
+use panelBar\Pattern;
+use panelBar\Assets;
+
 class Index extends \panelBar\Element {
 
   public function html() {

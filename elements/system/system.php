@@ -2,7 +2,7 @@
 
 namespace panelBar\Elements;
 
-f::load(__DIR__ . '/../../vendors/github/client/GitHubClient.php');
+require_once(__DIR__ . '/../../vendors/github/client/GitHubClient.php');
 
 use panelBar\Pattern;
 use panelBar\Assets;
@@ -18,10 +18,10 @@ class System extends \panelBar\Element {
 
     // return output
     return pattern::box(array(
-      'id'      => 'system',
-      'icon'    => 'info',
-      'label'   => 'System',
-      'content' => $this->content()
+      'id'    => 'system',
+      'icon'  => 'info',
+      'label' => 'System',
+      'box'   => $this->content()
     ));
   }
 

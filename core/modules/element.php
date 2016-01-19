@@ -21,7 +21,6 @@ class Element {
     $root    = realpath(__DIR__ . '/../..');
     $element = strtolower(str_replace('panelBar\\Elements\\', '', get_class($this)));
     $path = $root . DS . 'elements' . DS . $element . DS . 'templates' . DS . $file . '.php';
-    echo $path;
     return \tpl::load($path, $array);
 
   }
