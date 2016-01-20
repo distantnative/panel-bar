@@ -17,8 +17,8 @@ class Toggle extends \panelBar\Element {
     // return output
     return pattern::link(array(
       'id'     => $this->getElementName(),
-      'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'label'  => $this->page->isVisible() ? 'Visible'   : 'Invisible',
+      'icon'   => $this->page->isVisible() ? 'toggle-on' : 'toggle-off',
       'url'    => $this->page->url('toggle'),
     ));
   }

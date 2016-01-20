@@ -15,8 +15,8 @@ class Languages extends \panelBar\Element {
       // return output
       return pattern::dropdown(array(
         'id'      => $this->getElementName(),
-        'icon'    => 'flag',
         'label'   => strtoupper($this->site->language()->code()),
+        'icon'    => 'flag',
         'items'   => $this->items(),
         'mobile'  => 'label',
       ));
@@ -30,7 +30,7 @@ class Languages extends \panelBar\Element {
   private function items() {
     $items = array();
 
-    foreach($this->languages() as $language) {
+    foreach($this->otherLanguages() as $language) {
       $items[] = array(
         'url'   => $language->url() . '/' . $this->page->uri(),
         'label' => strtoupper($language->code()),
@@ -44,7 +44,7 @@ class Languages extends \panelBar\Element {
   //   Helpers
   //====================================
 
-  private function languages() {
+  private function otherLanguages() {
     return $languages->not($this->site->language()->code());
   }
 

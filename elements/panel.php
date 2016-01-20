@@ -17,9 +17,9 @@ class Panel extends \panelBar\Element {
     // return output
     return pattern::link(array(
       'id'      => $this->getElementName(),
+      'label'   => '<span class="in-compact">Go to </span>Panel',
       'icon'    => 'cogs',
       'url'     => $this->panel->urls()->index(),
-      'label'   => '<span class="in-compact">Go to </span>Panel',
       'compact' => true,
     ));
   }

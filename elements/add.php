@@ -17,8 +17,8 @@ class Add extends \panelBar\Element {
     // return output
     return pattern::dropdown(array(
       'id'     => $this->getElementName(),
-      'icon'   => 'plus',
       'label'  => 'Add',
+      'icon'   => 'plus',
       'items'  => $this->items(),
     ));
   }

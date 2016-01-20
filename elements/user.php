@@ -17,9 +17,9 @@ class User extends \panelBar\Element {
     // return output
     return pattern::link(array(
       'id'     => $this->getElementName(),
+      'label'  => $this->site->user(),
       'icon'   => 'user',
       'url'    => $this->site->user()->url('edit'),
-      'label'  => $this->site->user(),
       'float'  => 'right',
     ));
   }

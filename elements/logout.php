@@ -13,9 +13,9 @@ class Logout extends \panelBar\Element {
   public function html() {
     return pattern::link(array(
       'id'     => $this->getElementName(),
+      'label'  => 'Logout',
       'icon'   => 'power-off',
       'url'    => $this->panel->urls()->logout(),
-      'label'  => 'Logout',
       'float'  => 'right',
     ));
   }
