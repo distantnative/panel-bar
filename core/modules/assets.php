@@ -35,7 +35,7 @@ class Assets extends Hooks {
     $root  = realpath(__DIR__ . '/../..');
     $paths = array(
       'css'       => 'assets' . DS . 'css' . DS . $file . '.css',
-      'js'        => 'assets' . DS . 'js'  . DS . 'dist' . DS . $file . '.min.js',
+      'js'        => 'assets' . DS . 'js'  . DS . 'src' . DS . $file . '.js',
     );
     return \tpl::load($root . DS . $paths[$type], $array);
   }

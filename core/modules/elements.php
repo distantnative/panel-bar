@@ -77,21 +77,28 @@ class Element {
     return '<span class="panelBar-element__count-bubble">' . count($items) . '</span>';
   }
 
-  protected function withIframe($id = null) {
+  protected function withIframe($modal = false, $id = null) {
     if(c::get('panelbar.enhancedJS', true)) {
+      // prepare assets
+      $id       =  isset($id) ? $id : $this->getElementName();
+      $selector = '.panelBar--' . $id . ' a';
+      $asModal  = $modal ? 'true' : 'false';
+
       // register assets
       $this->assets->setHooks(array(
         'js'  => array(
           'siteURL="'.$this->site->url().'";',
           $this->js('components/iframe'),
-          'panelBar.iframe.bind(".panelBar--' . (isset($id) ? $id : $this->getElementName()) . ' a");'
+          'panelBar.iframe.bind("' . $selector . '", ' . $asModal . ');'
         ),
         'css' => $this->css('components/iframe')
       ));
 
       // register output
       $this->output->setHooks(array(
-        'before'   => $this->tpl('components/iframe/frame'),
+        'before'   => $this->tpl('components/iframe/frame', array(
+          'modal' => $modal
+        )),
         'elements' => $this->tpl('components/iframe/btn')
       ));
     }

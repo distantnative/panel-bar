@@ -12,7 +12,7 @@ class Toggle extends \panelBar\Element {
 
   public function html() {
     // register assets
-    $this->withIframe();
+    $this->withIframe(true);
 
     // return output
     return pattern::link(array(

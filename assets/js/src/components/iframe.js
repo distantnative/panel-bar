@@ -3,6 +3,8 @@
   var rmv = 'removeEventListener';
 
   var setOverlay = function(show) {
+    setFrameStyle();
+
     _.dom.buttons.all.style.display = show ? 'inline-block' : 'none';
     _.dom.wrapper.style.display     = show ? 'block'        : 'none';
     document.body.style.overflow    = show ? 'hidden'       : 'auto';
@@ -10,6 +12,19 @@
     var event = show ? add : rmv;
     _.dom.buttons.return[event]('click', _.show);
     _.dom.buttons.refresh[event]('click', refresh);
+  };
+
+  var setFrameStyle = function() {
+    var modal   = _.status.modal;
+    var wrapper = _.dom.wrapper;
+    cl[ modal ? 'add' : 'remove'](wrapper, 'panelBar-iframe__iframe--modal');
+    cl[!modal ? 'add' : 'remove'](wrapper, 'panelBar-iframe__iframe--full');
+  };
+
+  var setModal = function() {
+    var frame = _.dom.iframe.contentDocument;
+    var inner = frame.querySelector('.modal-content');
+    _.dom.wrapper.style.height = 'calc(' + inner.scrollHeight + 'px + 3em)';
   };
 
   var setPanelbar = function(clear) {
@@ -40,11 +55,16 @@
   };
 
   var isLoaded = function() {
-    _.dom.iframe.addEventListener("load", function() {
+    _.dom.iframe.addEventListener('load', function() {
       var body = _.dom.iframe.contentDocument.querySelector('body.app');
 
-      if(typeof body !== undefined) loadingScreen('');
-      else setTimeout(redirect, 4000);
+      if(typeof body !== undefined) {
+        loadingScreen('');
+        if(_.status.modal) setModal();
+      }
+      else {
+        setTimeout(redirect, 4000);
+      }
     });
 
     // wait and check if loading got cleared, if not redirect
@@ -82,6 +102,7 @@
     },
 
     status : {
+      modal:      false,
       active:     false,
       position:   null,
       supported:  true,
@@ -91,13 +112,14 @@
       loadingFailed: 'Seems like something is blocking access to the panel inside an iframe. Redirecting…',
     },
 
-    bind : function(element) {
+    bind : function(element, modal) {
       var links = panelBar.dom.bar.querySelectorAll(element);
       var i;
       for (i = 0; i < links.length; i++) {
         links[i].addEventListener('click', function(e) {
           if(_.status.supported) {
             e.preventDefault();
+            _.status.modal = modal;
             _.show(this.href);
           }
         });
@@ -126,7 +148,7 @@
       testFrame.src           = siteURL + '/panel/';
       testFrame.style.display = 'none';
       document.body.appendChild(testFrame);
-      
+
       testFrame.addEventListener("load", function() {
         var body = testFrame.contentDocument.querySelector('body.app');
         if(typeof body !== undefined) document.body.removeChild(testFrame);
