@@ -1,0 +1,8 @@
+{
+  "name":     "panelBar",
+  "author":   "Nico Hoffmann",
+  "version":  "2.0",
+  "repository": {
+    "url": "https://github.com/distantnative/panel-bar"
+  }
+}
