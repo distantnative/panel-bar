@@ -1,65 +1,18 @@
 <?php
 
-if(get('panelBar') !== '0') require_once('core/core.php');
-else                        require_once('core/lib/hide.php');
+// =============================================
+//  Load class
+// =============================================
 
-use panelBar\Core;
+require_once('core/bootstrap.php');
 
-class panelBar extends Core {
 
-  public $defaults = array(
-    'panel',
-    'add',
-    'edit',
-    'toggle',
-    'files',
-    'logout',
-    'user'
-  );
+// =============================================
+//  Register snippets
+// =============================================
 
-  //====================================
-  //   Display
-  //====================================
-
-  public static function show($args = array()) {
-    if(get('panelBar') !== '0') {
-      $self = new self($args);
-      return $self->getOutput();
-    }
-  }
-
-  public static function hide($args = array()) {
-    $args['hide'] = true;
-    return self::show($args);
-  }
-
-  //====================================
-  //   Assets output
-  //====================================
-
-  public static function css($args = array()) {
-    if(get('panelBar') !== '0')
-      return self::assets('css', $args);
-  }
-
-  public static function js($args = array()) {
-    if(get('panelBar') !== '0')
-      return self::assets('js', $args);
-  }
-
-  protected static function assets($type, $args = array()) {
-    $self = new self($args);
-    $self->hookElements();
-    return $self->assets->{$type}();
-  }
-
-  //====================================
-  //   Default elements
-  //====================================
-
-  public static function defaults($customs = array()) {
-    $self = new self();
-    return array_merge($self->defaults, $customs);
-  }
-
-}
+$kirby    = kirby();
+$snippets = __DIR__ . DS . 'snippets' . DS;
+$kirby->set('snippet', 'plugin.panelBar', $snippets . 'show.php');
+$kirby->set('snippet', 'plugin.panelBar.hide', $snippets . 'hide.php');
+$kirby->set('snippet', 'plugin.panelBar.main', $snippets . 'panelBar.php');

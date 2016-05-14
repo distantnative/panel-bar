@@ -1,51 +1,42 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-
-class Languages extends \panelBar\Element {
+class Languages extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
+  public function render() {
     if ($languages = $this->site->languages()) {
-      // return output
-      return pattern::dropdown(array(
-        'id'      => $this->getElementName(),
-        'label'   => strtoupper($this->site->language()->code()),
-        'icon'    => 'flag',
-        'items'   => $this->items(),
-        'mobile'  => 'label',
-      ));
+      // return pattern output
+      return $this->pattern('dropdown', [
+        'id'     => $this->name(),
+        'label'  => strtoupper($this->site->language()->code()),
+        'icon'   => 'flag',
+        'items'  => $this->items($languages),
+        'mobile' => 'label'
+      ]);
     }
   }
+
 
   //====================================
   //   Items
   //====================================
 
-  private function items() {
-    $items = array();
+  protected function items($languages) {
+    $items = [];
 
-    foreach($this->otherLanguages() as $language) {
-      $items[] = array(
+    foreach($languages->not($this->site->language()->code()) as $language) {
+      $items[] = [
         'url'   => $language->url() . '/' . $this->page->uri(),
         'label' => strtoupper($language->code()),
-      );
+      ];
     }
 
     return $items;
-  }
-
-  //====================================
-  //   Helpers
-  //====================================
-
-  private function otherLanguages() {
-    return $languages->not($this->site->language()->code());
   }
 
 }

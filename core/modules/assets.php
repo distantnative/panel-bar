@@ -1,85 +1,97 @@
 <?php
 
-namespace panelBar;
+namespace Kirby\Plugins\distantnative\panelBar;
 
 use C;
 use Str;
+use Tpl;
 
-class Assets extends Hooks {
+class Assets {
 
-  public $css = array();
-  public $js  = array();
+  public $css = [];
+  public $js  = [];
 
-  public function __construct($external) {
+  public function __construct() {
     $this->defaults();
-    $this->setHooks($external);
   }
 
   //====================================
-  //   Return combined assets
+  //   Add asset
   //====================================
 
-  public function css() {
-    return '<style>'.self::fontPaths($this->getHooks('css')).'</style>';
+  public function add($type, $asset) {
+    if(is_array($asset)) {
+      foreach ($asset as $a) {
+        $this->add($type, $a);
+      }
+    } else {
+      $this->{$type}[] = $asset;
+      $this->{$type}   = array_unique($this->{$type});
+    }
   }
 
-  public function js() {
-    return '<script>'.$this->getHooks('js').'</script>';
-  }
 
   //====================================
-  //   Loading assets
+  //   Render combined assets
   //====================================
 
-  public static function load($type, $file, $array = array()) {
-    $root  = realpath(__DIR__ . '/../..');
-    $paths = array(
-      'css'       => 'assets' . DS . 'css' . DS . $file . '.css',
-      'js'        => 'assets' . DS . 'js'  . DS . 'src' . DS . $file . '.js',
-    );
-    return \tpl::load($root . DS . $paths[$type], $array);
+  public function render($type) {
+    if(!empty($this->{$type})) {
+      $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'assets';
+      return tpl::load($dir . DS . $type . '.php', [
+        $type => implode('', $this->{$type})
+      ]);
+    }
   }
 
-  public static function fontPaths($css) {
-    return str::template($css, array(
-      'fontPath' => panel()->urls()->assets() . '/fonts'
-    ));
+
+  //====================================
+  //   Load asset
+  //====================================
+
+  public function load($type, $asset, $args = []) {
+    $dir = dirname(__DIR__) . DS . '..' . DS . 'assets';
+    return tpl::load($dir . DS . $type . DS . $asset, $args);
   }
+
 
   //====================================
   //   Default assets
   //====================================
 
-  private function defaults() {
-    $this->setHooks(array(
-      'css' => array(self::load('css', 'panelbar')),
-      'js'  => array(
-        self::load('js',  'tools/classes'),
-        self::load('js',  'panelbar')
-      ),
-    ));
+  protected function defaults() {
 
+    // Default CSS
+    $css = $this->load('css', 'panelbar.css');
+    $css = str::template($css, [
+      'fontPath' => panel()->urls()->assets() . '/fonts'
+    ]);
+    $this->add('css', $css);
+
+    // Default JS
+    $this->add('js', $this->load('js', 'panelbar.js'));
+
+    // Optional additional assets
     $this->bundles();
     $this->rtl();
   }
 
-  private function bundles() {
-    $bundles = array(
-      'panelbar.responsive' => array('js', 'components/responsive'),
-      'panelbar.keys'       => array('js', 'components/keybindings'),
-      'panelbar.remember'   => array('js', 'components/localstorage'),
-    );
+  protected function bundles() {
+    $bundles = [
+      'panelbar.keys'       => 'components' . DS . 'keybindings.js',
+      'panelbar.remember'   => 'components' . DS . 'localstorage.js',
+    ];
 
     foreach ($bundles as $option => $asset) {
       if(c::get($option, true)) {
-        $this->setHook($asset[0], self::load($asset[0], $asset[1]));
+        $this->add('js', $this->load('js', $asset));
       }
     }
   }
 
-  private function rtl() {
+  protected function rtl() {
     if($language = site()->language() and $language->direction() === 'rtl') {
-      $this->assets->setHook('css', self::load('css', 'components/rtl'));
+      $this->add('css', $this->load('css', 'components' . DS . 'rtl.css'));
     }
   }
 

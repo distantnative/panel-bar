@@ -3,7 +3,8 @@
 //   Textbox elements
 //====================================
 
-@import '../tools/mixins';
+@import '../util/colors';
+@import '../util/mixins';
 
 .panelBar-box {
   &__content {

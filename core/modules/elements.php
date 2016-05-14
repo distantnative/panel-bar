@@ -1,107 +1,64 @@
 <?php
 
-namespace panelBar;
+namespace Kirby\Plugins\distantnative\panelBar;
 
 use C;
-use panelBar\Tpl;
-use panelBar\Assets;
+use F;
 
-class Element {
+class Elements {
 
-  public function __construct($panelBar) {
-    $this->core     = $panelBar;
-    $this->assets   = $this->core->assets;
-    $this->output   = $this->core->output;
+  public static $defaults = [
+    'panel',
+    'panel',
+    'add',
+    'edit',
+    'toggle',
+    'images',
+    'logout',
+    'user'
+  ];
 
-    $this->panel    = $this->core->panel;
-    $this->site     = $this->panel->site();
-    $this->page     = $this->panel->page($this->core->page->id());
+
+  public function __construct($core, $args = []) {
+    $this->core     = $core;
+    $this->elements = is_array($args['elements']) ? $args['elements'] : c::get('plugin.panelBar.elements', static::$defaults);
+
+    $this->hook();
   }
 
-  //====================================
-  //   Element characteristics
-  //====================================
+  public function hook() {
+    foreach($this->elements as $id => $element) {
+      // load element class
+      $this->load($element);
 
-  protected function getElementDir() {
-    $root = realpath(__DIR__ . '/../..');
-    return $root . DS . 'elements' . DS . $this->getElementName() . DS;
-  }
-
-  protected function getElementName() {
-    $class     = get_class($this);
-    $namespace = 'panelBar\\Elements\\';
-    return strtolower(str_replace($namespace, '', $class));
-  }
-
-  //====================================
-  //   Custom templates & assets loading
-  //====================================
-
-  protected function url($file) {
-    return $this->getElementDir() . $file;
-  }
-
-  protected function tpl($file, $array = array()) {
-    if($tpl = $this->load('templates' . DS . $file . '.php', $array)) {
-      return $tpl;
-    } else {
-      return tpl::load($file, $array);
+      // get element's output
+      $this->core->html->add('elements', $this->get($element, $id));
     }
   }
 
-  protected function css($file, $array = array()) {
-    if($css = $this->load('assets/css' . DS . $file . '.css', $array)) {
-      return $css;
-    } else {
-      return assets::load('css', $file, $array);
+  protected function get($element, $id) {
+    // $element is standard or plugin element
+    if($class  = 'Kirby\Plugins\distantnative\panelBar\Elements\\' . $element and class_exists($class)) {
+      return $this->getObject($class);
     }
   }
 
-  protected function js($file, $array = array()) {
-    if($js = $this->load('assets/js/' . DS . $file . '.js', $array)) {
-      return $js;
-    } else {
-      return assets::load('js', $file, $array);
+  protected function getObject($class) {
+    $obj = new $class($this->core);
+    return $obj->render();
+  }
+
+
+  protected function load($element) {
+    if($class  = 'Kirby\Plugins\distantnative\panelBar\Elements\\' . $element and !class_exists($class)) {
+      $root = dirname(__DIR__) . DS . '..' . DS;
+
+      foreach([$root . 'elements', $root . 'plugins'] as $dir) {
+        f::load($dir . DS . $element . '.php');
+        f::load($dir . DS . $element . DS . $element . '.php');
+      }
     }
-  }
 
-  protected function load($path, $array) {
-    return \tpl::load($this->getElementDir() . $path, $array);
-  }
-
-  //====================================
-  //   Features
-  //====================================
-
-  protected function withBubble($items) {
-    return '<span class="panelBar-element__count-bubble">' . count($items) . '</span>';
-  }
-
-  protected function withIframe($modal = false, $id = null) {
-    if(c::get('panelbar.enhancedJS', true)) {
-      // prepare assets
-      $id       =  isset($id) ? $id : $this->getElementName();
-      $selector = '.panelBar--' . $id . ' a';
-      $asModal  = $modal ? 'true' : 'false';
-
-      // register assets
-      $this->assets->setHooks(array(
-        'js'  => array(
-          'siteURL="'.$this->site->url().'";',
-          $this->js('components/iframe'),
-          'panelBar.iframe.bind("' . $selector . '", ' . $asModal . ');'
-        ),
-        'css' => $this->css('components/iframe')
-      ));
-
-      // register output
-      $this->output->setHooks(array(
-        'before'   => $this->tpl('components/iframe/frame', array(
-          'modal' => $modal
-        )),
-        'elements' => $this->tpl('components/iframe/btn')
-      ));
-    }
   }
 
 }

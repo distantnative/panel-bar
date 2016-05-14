@@ -1,27 +1,24 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-
-class Panel extends \panelBar\Element {
+class Panel extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
-    // register assets
-    $this->withIframe();
+  public function render() {
+    // register iFrame output and assets
+    $this->withFrame();
 
-    // return output
-    return pattern::link(array(
-      'id'      => $this->getElementName(),
-      'label'   => '<span class="in-compact">Go to </span>Panel',
-      'icon'    => 'cogs',
-      'url'     => $this->panel->urls()->index(),
-      'compact' => true,
-    ));
+    // return pattern output
+    return $this->pattern('link', [
+      'id'    => $this->name(),
+      'label' => 'Panel',
+      'icon'  => 'cogs',
+      'url'   => $this->panel->urls()->index(),
+    ]);
   }
 
 }

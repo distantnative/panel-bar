@@ -1,23 +1,30 @@
 <?php
 
+namespace Kirby\Plugins\distantnative\panelBar;
+
+use Dir;
+use F;
+
+$dir = __DIR__ . DS;
+
 //====================================
-//   Libraries
+//   Core
 //====================================
-f::load(__DIR__ . '/lib/hooks.php');
+f::load($dir . 'core.php');
+
 
 //====================================
 //   Modules
 //====================================
-f::load(__DIR__ . '/modules/elements.php');
-f::load(__DIR__ . '/modules/patterns.php');
-f::load(__DIR__ . '/modules/templates.php');
-f::load(__DIR__ . '/modules/output.php');
-f::load(__DIR__ . '/modules/assets.php');
+f::load($dir . 'modules' . DS . 'assets.php');
+f::load($dir . 'modules' . DS . 'html.php');
+f::load($dir . 'modules' . DS . 'elements.php');
+f::load($dir . 'modules' . DS . 'element.php');
+f::load($dir . 'modules' . DS . 'pattern.php');
 
 //====================================
 //   Patterns
 //====================================
-$dir = __DIR__ . '/patterns';
-foreach(array_diff(scandir($dir), array('.', '..')) as $file) {
-  f::load($dir . DS . $file);
+foreach(dir::read($dir . 'patterns') as $file) {
+  f::load($dir . 'patterns' . DS . $file);
 }

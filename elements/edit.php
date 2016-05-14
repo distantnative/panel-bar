@@ -1,28 +1,27 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
 use C;
-use panelBar\Pattern;
 
-class Edit extends \panelBar\Element {
+class Edit extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
-    // register assets
-    $this->withIframe();
+  public function render() {
+    // register iFrame output and assets
+    $this->withFrame();
 
-    // return output
-    return pattern::link(array(
-      'id'     => $this->getElementName(),
-      'label'  => 'Edit',
-      'icon'   => 'pencil',
-      'url'    => $this->page->url('edit'),
-      'title'  => c::get('panelbar.keys', true) ? 'Alt + M' : null,
-    ));
+    // return pattern output
+    return $this->pattern('link', [
+      'id'    => $this->name(),
+      'label' => 'Edit',
+      'icon'  => 'pencil',
+      'url'   => $this->page->url('edit'),
+      'title' => c::get('plugin.panelBar.keys', true) ? 'Alt + M' : null,
+    ]);
   }
 
 }

@@ -1,60 +1,45 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-use panelBar\Tpl;
-use panelBar\Assets;
-
-class Images extends \panelBar\Element {
+class Images extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html($type = 'image') {
+  public function render($type = 'image') {
     if($images = $this->items($this->page, $type)) {
+      // register iFrame output and assets
+      $this->withFrame();
+      $this->asset('css', 'images.css');
+      // this css files
 
-      // register assets
-      $this->withIframe();
-      $this->assets->setHook('css', $this->css('modules/drop'));
-      $this->assets->setHook('css', $this->css('images'));
-
-      // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
-      $grid = $this->tpl('grid', array(
-        'items'   => $images,
-        'all'     => array(
-          'label' => $term,
-          'url'   => $this->page->url('files'),
-        ),
-        'count'   => 'panelBar-images--' . $this->count($images),
-      ));
-
-      // return output
-      return pattern::blank('panelBar-images', $grid, array(
-        'id'     => $this->getElementName(),
-        'icon'   => $type == 'image' ? 'photo'  : 'file',
-        'label'  => $term . $this->withBubble($images),
-        'class'  => 'panelBar-mDropParent',
-      ));
-
+      // return pattern output
+      return $this->pattern('link', [
+        'id'      => $this->name(),
+        'label'   => $term . $this->withCount($images),
+        'icon'    => $type == 'image' ? 'photo'  : 'file',
+        'content' => $this->tpl('grid', [
+          'items'   => $images,
+          'all'     => [
+            'label' => $term,
+            'url'   => $this->page->url('files'),
+          ],
+        ]),
+        'class'   => 'panelBar-images panelBar-mDropParent'
+      ]);
     }
   }
 
+
   //====================================
-  //   Helpers
+  //   Items
   //====================================
 
-  private function count($images) {
-    if    (count($images) > 12)  return '12more';
-    elseif(count($images) > 2)   return 'default';
-    elseif(count($images) == 2)  return '2';
-    elseif(count($images) == 1)  return '1';
-  }
-
-  private function items($page, $type = null) {
+  public function items($page, $type = null) {
     if(!$page->canShowFiles()) return false;
 
     // get files collection
@@ -64,15 +49,15 @@ class Images extends \panelBar\Element {
     if ($files->count() == 0) return false;
 
     // prepare output
-    $items = array();
+    $items = [];
     foreach($files as $file) {
-      $args = array(
+      $args = [
         'type'      => $file->type(),
         'url'       => $file->url('edit'),
         'label'     => $file->name(),
         'extension' => $file->extension(),
         'size'      => $file->niceSize(),
-      );
+      ];
 
       if($file->type() == 'image') $args['image']  = $file->url();
       else                         $args['icon']   = $file->icon();

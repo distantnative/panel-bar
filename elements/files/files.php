@@ -1,48 +1,42 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-use panelBar\Tpl;
-use panelBar\Assets;
-
-class Files extends \panelBar\Element {
+class Files extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html($type = null) {
+  public function render($type = null) {
     if($files = $this->items($this->page, $type)) {
+      // register iFrame output and assets
+      $this->withFrame();
+      $this->asset('css', 'files.css');
+      // this css files
 
-      // register assets
-      $this->withIframe();
-      $this->assets->setHook('css', $this->css('modules/drop'));
-      $this->assets->setHook('css', $this->css('files'));
-
-      // prepare output
       $term = $type == 'image' ? 'Images' : 'Files';
 
-      $list = $this->tpl('list', array(
-        'items'   => $files,
-        'all'     => array(
-          'label' => $term,
-          'url'   => $this->page->url('files'),
-        ),
-      ));
-
-      // return output
-      return pattern::blank('panelBar-files', $list, array(
-        'id'     => $this->getElementName(),
-        'icon'   => 'th-list',
-        'label'  => $term . $this->withBubble($files),
-        'class'  => 'panelBar-mDropParent'
-      ));
+      // return pattern output
+      return $this->pattern('link', [
+        'id'      => $this->name(),
+        'label'   => $term . $this->withCount($files),
+        'icon'    => 'th-list',
+        'content' => $this->tpl('list', [
+          'items'   => $files,
+          'all'     => [
+            'label' => $term,
+            'url'   => $this->page->url('files'),
+          ],
+        ]),
+        'class'   => 'panelBar-files panelBar-mDropParent'
+      ]);
     }
   }
 
+
   //====================================
-  //   Helpers
+  //   Items
   //====================================
 
   public function items($page, $type = null) {

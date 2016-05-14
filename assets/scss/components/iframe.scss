@@ -1,56 +1,49 @@
 
-//====================================
-//   iFrame mode
-//====================================
 
-@import '../tools/vars';
+@import '../util/colors';
+
+//====================================
+//   iFrame
+//====================================
 
 .panelBar-iframe {
-  &__btns {
-    display:  none;
-    cursor:   pointer;
+  display:      none;
+  position:     fixed;
+  top:          48px;
+  left:         0;
+  width:        100%;
+  height:       100%;
+  overflow:     hidden;
+  background:   $color-almostwhite;
+
+
+  > iframe {
+    position: absolute;
+    top:      -48px;
+    left:     0;
+    width:    100%;
+    height:   100%;
   }
 
-  &__iframe {
-    display:      none;
-    position:     fixed;
-    top:          48px;
-    left:         0;
-    width:        100%;
-    height:       100%;
-    overflow:     hidden;
+  > span {
+    position:       absolute;
+    top:            40%;
+    left:           50%;
+    max-width:      350px;
+    transform:      translate(-50%, -50%);
 
-    &--full {
-      background:   $color-almostwhite;
-    }
-
-    &--modal {
-      top: calc(48px + 10vh);
-      left: 50%;
-      width: 70%;
-      max-width: 30em;
-      transform: translateX(-50%);
-    }
-
-    > iframe {
-      position: absolute;
-      top:      -48px;
-      left:     0;
-      width:    100%;
-      height:   100%;
-    }
-
-    > span {
-      position:       absolute;
-      top:            40%;
-      left:           50%;
-      max-width:      350px;
-      transform:      translate(-50%, -50%);
-
-      font-size:      .95em;
-      line-height:    1.4;
-      text-align:     center;
-      text-transform: uppercase;
-    }
+    font-size:      .95em;
+    line-height:    1.4;
+    text-align:     center;
+    text-transform: uppercase;
   }
+}
+
+//====================================
+//   iFrame links
+//====================================
+
+.panelBar-iframelinks {
+  display:  none;
+  cursor:   pointer;
 }

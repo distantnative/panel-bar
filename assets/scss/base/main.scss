@@ -1,0 +1,43 @@
+
+//====================================
+//   Wrapper
+//====================================
+
+.panelBar {
+  position:      fixed;
+  right:         0;
+  left:          0;
+  padding-right: 68px;
+
+  background-color: $color-black;
+  font-family:      'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size:        16px;
+  font-weight:      normal;
+  line-height:      1;
+
+  box-shadow:       rgba($color-black, .075) 0 0 4px;
+  z-index:          2147483000;
+
+  &--hidden { display: none; }
+  &--top    { top:    0;     }
+  &--bottom { bottom: 0;     }
+}
+
+
+//====================================
+//   Main elements bar
+//====================================
+
+.panelBar-main {
+  @include clearfix;
+
+  white-space: nowrap;
+
+  a {
+    transition:      none;
+    color:           $color-white;
+    text-decoration: none;
+
+    &:hover { color: $color-midgrey; }
+  }
+}

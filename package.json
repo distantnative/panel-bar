@@ -1,8 +1,12 @@
 {
-  "name":     "panelBar",
-  "author":   "Nico Hoffmann",
-  "version":  "2.0",
+  "name": "panelBar",
+  "author": "Nico Hoffmann",
+  "version": "2.0.0",
   "repository": {
     "url": "https://github.com/distantnative/panel-bar"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1"
   }
 }

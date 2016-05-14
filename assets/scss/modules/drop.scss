@@ -1,11 +1,11 @@
 
+@import '../util/colors';
+@import '../util/mixins';
+
 //====================================
-//   Drop modules
+//   Dropdown
 //====================================
 
-@import '../tools/mixins';
-
-// Dropdown
 .panelBar-mDrop {
   position:     absolute;
   left:         50%;
@@ -26,7 +26,10 @@
 }
 
 
-// Arrow on Parent
+//====================================
+//   Arrow on parent
+//====================================
+
 .panelBar-mDropParent {
   position:   relative;
   cursor:     pointer;
@@ -54,25 +57,5 @@
         border-top: 8px solid $color-white;
       }
     }
-  }
-}
-
-
-//====================================
-//   Drop modules - RTL
-//====================================
-
-body.rtl {
-  .panelBar-mDrop {
-    right:      50%;
-    left:       auto;
-    transform:  translateX(50%);
-  }
-
-  .panelBar-mDropParent:hover:after {
-    right:        50%;
-    left:         auto;
-    margin-right: -8px;
-    margin-left:  0;
   }
 }

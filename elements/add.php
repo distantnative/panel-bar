@@ -1,47 +1,48 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-
-class Add extends \panelBar\Element {
+class Add extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
-    // register assets
-    $this->withIframe(true);
+  public function render() {
+    // register iFrame output and assets
+    $this->withFrame();
 
-    // return output
-    return pattern::dropdown(array(
-      'id'     => $this->getElementName(),
-      'label'  => 'Add',
-      'icon'   => 'plus',
-      'items'  => $this->items(),
-    ));
+    // return pattern output
+    return $this->pattern('dropdown', [
+      'id'    => $this->name(),
+      'label' => 'Add',
+      'icon'  => 'plus',
+      'items'  => $this->items()
+    ]);
   }
+
 
   //====================================
   //   Items
   //====================================
 
-  private function items() {
-    $items = array();
+  protected function items() {
+    $items = [];
 
+    // Add Child entry
     if($this->page->canHaveSubpages()) {
-      $items[] = array(
+      $items[] = [
         'url'   => $this->page->url('add'),
         'label' => 'Child',
-      );
+      ];
     }
 
+    // Add Sibling entry
     if($parent = $this->page->parent() and $parent->canHaveSubpages()) {
-      $items[] = array(
+      $items[] = [
         'url'   => $parent->url('add'),
         'label' => 'Sibling',
-      );
+      ];
     }
 
     return $items;

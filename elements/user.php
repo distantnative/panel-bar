@@ -1,27 +1,27 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-
-class User extends \panelBar\Element {
+class User extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
-    // register assets
-    $this->withIframe();
+  public function render() {
+    if($user = $this->site->user()) {
+      // register iFrame output and assets
+      $this->withFrame();
 
-    // return output
-    return pattern::link(array(
-      'id'     => $this->getElementName(),
-      'label'  => $this->site->user(),
-      'icon'   => 'user',
-      'url'    => $this->site->user()->url('edit'),
-      'float'  => 'right',
-    ));
+      // return pattern output
+      return $this->pattern('link', [
+        'id'    => $this->name(),
+        'label' => $user,
+        'icon'  => 'user',
+        'url'   => $user->url('edit'),
+        'right' => true
+      ]);
+    }
   }
 
 }

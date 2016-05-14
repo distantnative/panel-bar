@@ -1,29 +1,24 @@
 <?php
 
-namespace panelBar\Patterns;
+namespace Kirby\Plugins\distantnative\panelBar\Patterns;
 
-use panelBar\Tpl;
-use panelBar\Assets;
+use A;
+use Tpl;
 
-class Box {
+class Box extends Pattern {
 
-  public static function html($arguments) {
-    $box = tpl::load('patterns/box', array(
-      'box' => $arguments['box'],
-    ));
+  public function render($args) {
+    // register assets
+    $this->asset('css', 'patterns' . DS . 'box.css');
+    $this->asset('css', 'modules'  . DS . 'drop.css');
 
-    return array(
-      'element' => array(
-        'panelBar-box panelBar-mDropParent',
-        $box,
-        $arguments
-      ),
-      'assets'  => array('css' => array(
-        assets::load('css', 'patterns/box'),
-        assets::load('css', 'modules/drop'),
-      )),
-    );
-
+    // return output
+    return $this->base(a::merge([
+      'class'   => 'panelBar-box panelBar-mDropParent',
+      'content' => tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns' . DS . 'box.php', [
+        'box' => $args['box'],
+      ], $args)
+    ]));
   }
 
 }

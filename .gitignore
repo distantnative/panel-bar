@@ -3,3 +3,4 @@
 *.css.map
 
 .sass-lint.yml
+/node_modules/

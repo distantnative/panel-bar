@@ -1,28 +1,24 @@
 <?php
 
-namespace panelBar\Patterns;
+namespace Kirby\Plugins\distantnative\panelBar\Patterns;
 
-use panelBar\Tpl;
-use panelBar\Assets;
+use A;
+use Tpl;
 
-class Dropdown {
+class Dropdown extends Pattern {
 
-  public static function html($arguments) {
-    $dropdown = tpl::load('patterns/dropdown', array(
-      'items' => $arguments['items']
-    ));
+  public function render($args) {
+    // register assets
+    $this->asset('css', 'patterns' . DS . 'dropdown.css');
+    $this->asset('css', 'modules'  . DS . 'drop.css');
 
-    return array(
-      'element' => array(
-        'panelBar-dropdown panelBar-mDropParent',
-        $dropdown,
-        $arguments
-      ),
-      'assets'  => array('css' => array(
-        assets::load('css', 'patterns/dropdown'),
-        assets::load('css', 'modules/drop'),
-      )),
-    );
+    // return output
+    return $this->base(a::merge([
+      'class'   => 'panelBar-dropdown panelBar-mDropParent',
+      'content' => tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns' . DS . 'dropdown.php', [
+        'items' => $args['items'],
+      ])
+    ], $args));
   }
 
 }

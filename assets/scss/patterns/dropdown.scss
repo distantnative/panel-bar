@@ -3,7 +3,8 @@
 //   Dropdown elements
 //====================================
 
-@import '../tools/mixins';
+@import '../util/colors';
+@import '../util/mixins';
 
 .panelBar-drop {
   &__list > a { color: $color-black; }

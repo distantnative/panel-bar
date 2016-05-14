@@ -1,0 +1,42 @@
+
+//====================================
+//   Element base
+//====================================
+
+.panelBar-element {
+  display:      inline-block;
+  float:        left;
+  border-right: 1px solid $color-middarkgrey;
+  color:        $color-white !important;
+
+  &--right { float: right; }
+
+
+  > a,
+  > span {
+    display: inline-block;
+    padding: 16px 14px 16px 18px;
+
+    > i {
+      margin-right: 7px;
+    }
+  }
+}
+
+
+//====================================
+//   Count bubble
+//====================================
+
+.panelBar-count {
+  margin-left:     7px;
+  padding:         1px 5px;
+
+  border-radius:   50px;
+
+  background:      $color-white;
+  color:           $color-black;
+  font-size:       10px;
+  font-weight:     700;
+  vertical-align:  middle;
+}

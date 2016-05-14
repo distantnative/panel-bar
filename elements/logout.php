@@ -1,23 +1,22 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\Plugins\distantnative\panelBar\Elements;
 
-use panelBar\Pattern;
-
-class Logout extends \panelBar\Element {
+class Logout extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
-    return pattern::link(array(
-      'id'     => $this->getElementName(),
-      'label'  => 'Logout',
-      'icon'   => 'power-off',
-      'url'    => $this->panel->urls()->logout(),
-      'float'  => 'right',
-    ));
+  public function render() {
+    // return pattern output
+    return $this->pattern('link', [
+      'id'    => $this->name(),
+      'label' => 'Logout',
+      'icon'  => 'power-off',
+      'url'   => $this->panel->urls()->logout(),
+      'right' => true
+    ]);
   }
 
 }

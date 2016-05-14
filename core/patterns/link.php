@@ -1,20 +1,19 @@
 <?php
 
-namespace panelBar\Patterns;
+namespace Kirby\Plugins\distantnative\panelBar\Patterns;
 
-use panelBar\Assets;
+use A;
 
-class Link {
+class Link extends Pattern {
 
-  public static function html($arguments) {
-    return array(
-      'element' => array(
-        'panelBar-btn',
-        null,
-        $arguments
-      ),
-      'assets'  => array('css' => assets::load('css', 'patterns/btn')),
-    );
+  public function render($args) {
+    // register assets
+    $this->asset('css', 'patterns' . DS . 'link.css');
+
+    // return output
+    return $this->base(a::merge([
+      'class' => 'panelBar-link',
+    ], $args));
   }
 
 }
