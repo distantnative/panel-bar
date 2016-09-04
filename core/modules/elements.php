@@ -12,7 +12,7 @@ class Elements {
     'add',
     'edit',
     'toggle',
-    'images',
+    'files',
     'logout',
     'user'
   ];
@@ -36,9 +36,12 @@ class Elements {
       f::load($path . DS . $element . '.php');
 
       $element = new $class($this->core);
-      $this->core->html->add('elements', $element->render());
-      $this->elements[] = $element;
+    } elseif(is_callable($element)) {
+      $element = call_user_func($element);
     }
+
+    $this->core->html->add('elements', $element->render());
+    $this->elements[] = $element;
   }
 
   protected function elements($elements) {

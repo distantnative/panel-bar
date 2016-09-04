@@ -3,9 +3,10 @@
 $panelBar = new Kirby\panelBar\Core([
   'elements' => isset($elements) ? $elements : null,
 ]);
-
-if($panelBar->isShown()) :
 ?>
+
+
+<?php if($panelBar->isShown()) : ?>
 
   <div class="panelBar <?= $panelBar->classes() ?>" id="panelBar">
     <?= $panelBar->pre() ?>

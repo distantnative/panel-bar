@@ -2,6 +2,8 @@
 
 ## Version 2.0.0
 - Complete rewrite for Kirby 2.3
+- Feature: Encapsulated elements
+- Feature: Own registry for panelBar elements (so other plugins can provide their elements for the panelBar)
 - Improved: Added methods to use localStorage for custom elements
 
 ## Version 1.0
