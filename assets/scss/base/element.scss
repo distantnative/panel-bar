@@ -9,7 +9,13 @@
   border-right: 1px solid $color-middarkgrey;
   color:        $color-white !important;
 
-  &--right { float: right; }
+  &--right {
+    float: right;
+
+    &:last-of-type {
+      border-left: 1px solid $color-middarkgrey;
+    }
+  }
 
 
   > a,
