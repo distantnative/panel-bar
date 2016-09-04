@@ -10,7 +10,6 @@
   position:     absolute;
   left:         50%;
 
-  max-height:   80vh;
   max-height:   calc(100vh - 80px);
   transform:    translateX(-50%);
 
@@ -19,7 +18,7 @@
   visibility:   hidden;
   overflow-y:   auto;
 
-  .panelBar--top    & { top: 100%; }
+  .panelBar--top    & { top: 100%;    }
   .panelBar--bottom & { bottom: 100%; }
 
   @media (max-width: 550px) { @include dropFullwidth; }
@@ -35,7 +34,9 @@
   cursor:     pointer;
 
   &:hover {
-    .panelBar-mDrop { visibility: visible; }
+    .panelBar-mDrop {
+      visibility: visible;
+    }
 
     &:after {
       position:    absolute;

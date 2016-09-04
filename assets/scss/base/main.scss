@@ -7,7 +7,7 @@
   position:      fixed;
   right:         0;
   left:          0;
-  padding-right: 68px;
+  padding-right: 4.2em;
 
   background-color: $color-black;
   font-family:      'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
@@ -15,7 +15,7 @@
   font-weight:      normal;
   line-height:      1;
 
-  box-shadow:       rgba($color-black, .075) 0 0 4px;
+  box-shadow:       0 0 .25em rgba($color-black, .075);
   z-index:          2147483000;
 
   &--hidden { display: none; }

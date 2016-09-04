@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar;
+namespace Kirby\distantnative\panelBar;
 
 use C;
 use Str;
@@ -72,14 +72,15 @@ class Assets {
     $this->add('js', $this->load('js', 'panelbar.js'));
 
     // Optional additional assets
-    $this->bundles();
+    $this->optionals();
     $this->rtl();
   }
 
-  protected function bundles() {
+  protected function optionals() {
     $bundles = [
-      'panelbar.keys'       => 'components' . DS . 'keybindings.js',
-      'panelbar.remember'   => 'components' . DS . 'localstorage.js',
+      'plugin.panelBar.keys'       => 'components' . DS . 'keybindings.js',
+      'plugin.panelBar.remember'   => 'components' . DS . 'localstorage.js',
+      'plugin.panelBar.responsive' => 'components' . DS . 'responsive.js',
     ];
 
     foreach ($bundles as $option => $asset) {

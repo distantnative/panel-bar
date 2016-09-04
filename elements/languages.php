@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar\Elements;
+namespace Kirby\distantnative\panelBar\Elements;
 
 class Languages extends Element {
 

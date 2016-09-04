@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar;
+namespace Kirby\distantnative\panelBar;
 
 use Tpl;
 

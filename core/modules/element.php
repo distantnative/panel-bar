@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar\Elements;
+namespace Kirby\distantnative\panelBar\Elements;
 
 use C;
 use Tpl;
@@ -25,7 +25,7 @@ class Element {
   }
 
   protected function name() {
-    $namespace = 'Kirby\Plugins\distantnative\panelBar\Elements\\';
+    $namespace = 'Kirby\distantnative\panelBar\Elements\\';
     return strtolower(str_replace($namespace, '', get_class($this)));
   }
 
@@ -46,7 +46,7 @@ class Element {
   }
 
   protected function pattern($pattern, $args = []) {
-    $class = 'Kirby\Plugins\distantnative\panelBar\Patterns\\' . $pattern;
+    $class = 'Kirby\distantnative\panelBar\Patterns\\' . $pattern;
     $class = new $class($this->core);
     return $class->render($args);
   }
@@ -58,6 +58,10 @@ class Element {
   //====================================
 
   protected function withCount($items) {
+    $this->core->assets->add('css', [
+      $this->core->assets->load('css', 'components' . DS . 'count.css'),
+    ]);
+
     $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
     return tpl::load($dir . DS . 'count.php', ['count' => count($items)]);
   }

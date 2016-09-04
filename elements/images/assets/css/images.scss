@@ -3,19 +3,20 @@
 //   Images element
 //====================================
 
-@import '../../../../assets/scss/tools/mixins';
+@import '../../../../assets/scss/util/colors';
+@import '../../../../assets/scss/util/mixins';
 
 .panelBar-images {
 
   &__grid {
+    position: fixed;
+    width: 95%;
     padding:      10px;
     font-size:    0;
     white-space:  normal;
     cursor:       default;
 
-    &.panelBar-images--2       { width: 340px;           }
-    &.panelBar-images--default { width: 500px;           }
-    &.panelBar-images--12more  { @include dropFullwidth; }
+    .panelBar--top & {top: 49px;}
   }
 
   &__item {
@@ -32,22 +33,6 @@
     &--image {
       @include mosaicBackground(20px);
       background-color: $color-white;
-    }
-
-    .panelBar-images--1 &,
-    .panelBar-images--2 &:nth-child(2n+2),
-    .panelBar-images--default &:nth-child(3n+3) {
-      border-right: none;
-    }
-
-    .panelBar-images--12more & {
-      @include responsiveGridItem(0,      549px,    2);
-      @include responsiveGridItem(550px,  749px,    3);
-      @include responsiveGridItem(750px,  899px,    4);
-      @include responsiveGridItem(900px,  999px,    5);
-      @include responsiveGridItem(1000px, 1199px,   6);
-      @include responsiveGridItem(1200px, 1349px,   7);
-      @include responsiveGridItem(1350px, 999999px, 8);
     }
 
     @media (max-width: 550px) { min-width: 50%; }
@@ -121,25 +106,4 @@
   }
 
   &__more { @include moreFiles(8px 5px 2px); }
-}
-
-
-//====================================
-//   Images element - RTL
-//====================================
-
-body.rtl {
-  .panelBar-images {
-    &__item {
-      border-right:   none;
-      border-left:    2px solid $color-white;
-
-      &.panelBar-images--1,
-      &.panelBar-images--2:last-child,
-      &.panelBar-images--default:nth-child(3n+3) {
-        border-left: none;
-      }
-    }
-
-  }
 }

@@ -1,0 +1,19 @@
+
+@import '../util/colors';
+
+//====================================
+//   Count bubble
+//====================================
+
+.panelBar-count {
+  margin-left:     .75em;
+  padding:         1px 5px;
+
+  border-radius:   50px;
+
+  background:      $color-white;
+  color:           $color-black;
+  font-size:       10px;
+  font-weight:     700;
+  vertical-align:  middle;
+}

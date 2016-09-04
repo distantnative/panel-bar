@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar;
+namespace Kirby\distantnative\panelBar;
 
 use C;
 use F;
@@ -38,7 +38,7 @@ class Elements {
 
   protected function get($element, $id) {
     // $element is standard or plugin element
-    if($class  = 'Kirby\Plugins\distantnative\panelBar\Elements\\' . $element and class_exists($class)) {
+    if($class  = 'Kirby\distantnative\panelBar\Elements\\' . $element and class_exists($class)) {
       return $this->getObject($class);
     }
   }
@@ -50,7 +50,7 @@ class Elements {
 
 
   protected function load($element) {
-    if($class  = 'Kirby\Plugins\distantnative\panelBar\Elements\\' . $element and !class_exists($class)) {
+    if($class  = 'Kirby\distantnative\panelBar\Elements\\' . $element and !class_exists($class)) {
       $root = dirname(__DIR__) . DS . '..' . DS;
 
       foreach([$root . 'elements', $root . 'plugins'] as $dir) {

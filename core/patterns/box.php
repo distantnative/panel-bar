@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\Plugins\distantnative\panelBar\Patterns;
+namespace Kirby\distantnative\panelBar\Patterns;
 
 use A;
 use Tpl;

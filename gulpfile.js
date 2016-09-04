@@ -15,12 +15,9 @@ var browserSync   = require('browser-sync').create();
 gulp.task('css', function() {
   return gulp.src([
       'assets/scss/panelbar.scss',
-      'assets/scss/components/iframe.scss',
-      'assets/scss/components/rtl.scss',
-      'assets/scss/modules/drop.scss',
-      'assets/scss/patterns/box.scss',
-      'assets/scss/patterns/link.scss',
-      'assets/scss/patterns/dropdown.scss',
+      'assets/scss/components/*.scss',
+      'assets/scss/modules/*.scss',
+      'assets/scss/patterns/*.scss',
     ], {base: 'assets/scss'})
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
@@ -29,12 +26,25 @@ gulp.task('css', function() {
     .pipe(browserSync.stream());
 });
 
+gulp.task('css-elements', function() {
+  return gulp.src([
+      'elements/**/assets/css/*.scss',
+    ])
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(cssmin())
+    .pipe(gulp.dest(function(file) {
+      return file.base;
+    }))
+    .pipe(browserSync.stream());
+});
+
 
 // =============================================
 //  JS
 // =============================================
 
-gulp.task('js-main', function() {
+gulp.task('js', function() {
   return gulp.src([
       'assets/js/src/util/classes.js',
       'assets/js/src/panelbar.js'
@@ -57,14 +67,17 @@ gulp.task('js-components', function() {
 //  Watch
 // =============================================
 
-gulp.task('watch', function() {
+gulp.task('watch', ['css', 'css-elements', 'js', 'js-components'], function() {
   browserSync.init({
     proxy:    'kirby:8888',
     notify:   false
   });
 
   gulp.watch('assets/scss/**/*.scss', ['css']);
-  gulp.watch('assets/js/src/**/*.js',    ['js-main', 'js-components']).on('change', browserSync.reload);
+  gulp.watch('elements/**/assets/css/*.scss', ['css-elements']);
+  gulp.watch('assets/js/src/panelbar.js',    ['js']).on('change', browserSync.reload);
+  gulp.watch('assets/js/src/components/*.js',    ['js-components']).on('change', browserSync.reload);
+
   gulp.watch([
     'core/**/*.php',
     'elements/**/*.php',
