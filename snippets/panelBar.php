@@ -1,6 +1,6 @@
 
 <?php
-$panelBar = new Kirby\distantnative\panelBar\Core([
+$panelBar = new Kirby\panelBar\Core([
   'elements' => isset($elements) ? $elements : null,
 ]);
 

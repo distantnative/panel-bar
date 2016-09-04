@@ -1,8 +1,8 @@
 <?php
 
-namespace Kirby\distantnative\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class Files extends Element {
+class FilesElement extends Element {
 
   //====================================
   //   Output

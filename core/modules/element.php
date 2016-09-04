@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\distantnative\panelBar\Elements;
+namespace Kirby\panelBar;
 
 use C;
 use Tpl;
@@ -25,7 +25,7 @@ class Element {
   }
 
   protected function name() {
-    $namespace = 'Kirby\distantnative\panelBar\Elements\\';
+    $namespace = 'Kirby\panelBar\\';
     return strtolower(str_replace($namespace, '', get_class($this)));
   }
 
@@ -46,7 +46,7 @@ class Element {
   }
 
   protected function pattern($pattern, $args = []) {
-    $class = 'Kirby\distantnative\panelBar\Patterns\\' . $pattern;
+    $class = 'Kirby\panelBar\Patterns\\' . $pattern;
     $class = new $class($this->core);
     return $class->render($args);
   }

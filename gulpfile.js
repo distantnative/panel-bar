@@ -68,19 +68,8 @@ gulp.task('js-components', function() {
 // =============================================
 
 gulp.task('watch', ['css', 'css-elements', 'js', 'js-components'], function() {
-  browserSync.init({
-    proxy:    'kirby:8888',
-    notify:   false
-  });
-
   gulp.watch('assets/scss/**/*.scss', ['css']);
   gulp.watch('elements/**/assets/css/*.scss', ['css-elements']);
-  gulp.watch('assets/js/src/panelbar.js',    ['js']).on('change', browserSync.reload);
-  gulp.watch('assets/js/src/components/*.js',    ['js-components']).on('change', browserSync.reload);
-
-  gulp.watch([
-    'core/**/*.php',
-    'elements/**/*.php',
-    'snippets/**/*.php',
-  ]).on('change', browserSync.reload);
+  gulp.watch('assets/js/src/panelbar.js',    ['js']);
+  gulp.watch('assets/js/src/components/*.js',    ['js-components']);
 });

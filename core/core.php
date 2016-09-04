@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\distantnative\panelBar;
+namespace Kirby\panelBar;
 
 use C;
 use F;

@@ -1,6 +1,7 @@
 # Changelog
 
-## Version 2.0
+## Version 2.0.0
+- Complete rewrite for Kirby 2.3
 - Improved: Added methods to use localStorage for custom elements
 
 ## Version 1.0

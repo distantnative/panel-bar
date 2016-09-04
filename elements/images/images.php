@@ -1,8 +1,8 @@
 <?php
 
-namespace Kirby\distantnative\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class Images extends Element {
+class ImagesElement extends Element {
 
   //====================================
   //   Output

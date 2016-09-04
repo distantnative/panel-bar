@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\distantnative\panelBar;
+namespace Kirby\panelBar;
 
 use C;
 use F;
@@ -8,7 +8,6 @@ use F;
 class Elements {
 
   public static $defaults = [
-    'panel',
     'panel',
     'add',
     'edit',
@@ -20,45 +19,32 @@ class Elements {
 
 
   public function __construct($core, $args = []) {
-    $this->core     = $core;
-    $this->elements = is_array($args['elements']) ? $args['elements'] : c::get('plugin.panelBar.elements', static::$defaults);
-
-    $this->hook();
+    $this->core = $core;
+    $this->init($this->elements($args['elements']));
   }
 
-  public function hook() {
-    foreach($this->elements as $id => $element) {
-      // load element class
-      $this->load($element);
-
-      // get element's output
-      $this->core->html->add('elements', $this->get($element, $id));
+  protected function init($elements) {
+    foreach($elements as $element) {
+      $this->element($element);
     }
   }
 
-  protected function get($element, $id) {
-    // $element is standard or plugin element
-    if($class  = 'Kirby\distantnative\panelBar\Elements\\' . $element and class_exists($class)) {
-      return $this->getObject($class);
+  protected function element($element) {
+    if($path = kirby()->get('panelBar', $element)) {
+      $this->core->html->add('elements', $this->load($element, $path)->render());
+      $this->elements[] = $element;
     }
   }
 
-  protected function getObject($class) {
-    $obj = new $class($this->core);
-    return $obj->render();
+  protected function load($element, $path) {
+    f::load($path . DS . $element . '.php');
+
+    $class  = 'Kirby\panelBar\\' . ucfirst($element) . 'Element';
+    return new $class($this->core);
   }
 
-
-  protected function load($element) {
-    if($class  = 'Kirby\distantnative\panelBar\Elements\\' . $element and !class_exists($class)) {
-      $root = dirname(__DIR__) . DS . '..' . DS;
-
-      foreach([$root . 'elements', $root . 'plugins'] as $dir) {
-        f::load($dir . DS . $element . '.php');
-        f::load($dir . DS . $element . DS . $element . '.php');
-      }
-    }
-
+  protected function elements($elements) {
+    return is_array($elements) ? $elements : c::get('plugin.panelBar.elements', static::$defaults);
   }
 
 }
