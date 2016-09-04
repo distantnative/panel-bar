@@ -25,22 +25,20 @@ class Elements {
 
   protected function init($elements) {
     foreach($elements as $element) {
-      $this->element($element);
+      $this->add($element);
     }
   }
 
-  protected function element($element) {
+  protected function add($element) {
+    $class   = 'Kirby\panelBar\\' . ucfirst($element) . 'Element';
+
     if($path = kirby()->get('panelBar', $element)) {
-      $this->core->html->add('elements', $this->load($element, $path)->render());
+      f::load($path . DS . $element . '.php');
+
+      $element = new $class($this->core);
+      $this->core->html->add('elements', $element->render());
       $this->elements[] = $element;
     }
-  }
-
-  protected function load($element, $path) {
-    f::load($path . DS . $element . '.php');
-
-    $class  = 'Kirby\panelBar\\' . ucfirst($element) . 'Element';
-    return new $class($this->core);
   }
 
   protected function elements($elements) {

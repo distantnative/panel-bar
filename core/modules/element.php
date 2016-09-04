@@ -26,7 +26,9 @@ class Element {
 
   protected function name() {
     $namespace = 'Kirby\panelBar\\';
-    return strtolower(str_replace($namespace, '', get_class($this)));
+    $name      = str_replace($namespace, '', get_class($this));
+    $name      = str_ireplace('element', '', $name);
+    return strtolower($name);
   }
 
   protected function url($file) {

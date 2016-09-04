@@ -1,41 +1,38 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\panelBar;
 
-use panelBar\Pattern;
-use panelBar\Assets;
-
-class Index extends \panelBar\Element {
+class IndexElement extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
+  public function render() {
     // register assets
-    $this->assets->setHook('css', $this->css('index'));
+    $this->asset('css', 'index.css');
 
-    // return output
-    return pattern::dropdown(array(
-      'id'     => $this->getElementName(),
+    // return pattern output
+    return $this->pattern('dropdown', [
+      'id'      => $this->name(),
       'icon'   => 'th',
       'label'  => 'Index',
       'items'  => $this->items(),
-      'class'  => 'panelBar-index',
-    ));
+      'class'   => 'panelBar-index panelBar-mDropParent'
+    ]);
   }
 
   //====================================
   //   Items
   //====================================
 
-  private function items() {
+  protected function items() {
     $home  = $this->site->homePage();
     $index = $this->site->index()->prepend($home->id(), $home);
-    $items = array();
+    $items = [];
 
     foreach($index as $page) {
-      array_push($items, array(
+      $items[] = [
         'label' => $this->tpl('label', array(
           'title'   => $page->title(),
           'num'     => $page->num(),
@@ -43,7 +40,7 @@ class Index extends \panelBar\Element {
           'visible' => $page->isVisible()
         )),
         'url'   => $page->url(),
-      ));
+      ];
     }
 
     return $items;

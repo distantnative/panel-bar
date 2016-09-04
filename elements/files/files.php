@@ -51,17 +51,17 @@ class FilesElement extends Element {
     // prepare output
     $items = array();
     foreach($files as $file) {
-      $args = array(
+      $args = [
         'type'      => $file->type(),
         'url'       => $file->url('edit'),
         'label'     => $file->name(),
         'extension' => $file->extension(),
         'size'      => $file->niceSize(),
-      );
+      ];
 
       if($file->type() == 'image') $args['image']  = $file->url();
       else                         $args['icon']   = $file->icon();
-      array_push($items, $args);
+      $items[] = $args;
     }
 
     return $items;
