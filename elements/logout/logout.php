@@ -1,8 +1,8 @@
 <?php
 
-namespace Kirby\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class Logout extends Element {
+class LogoutElement extends Element {
 
   //====================================
   //   Output

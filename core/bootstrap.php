@@ -13,10 +13,6 @@ $dir = __DIR__ . DS;
 f::load($dir . 'core.php');
 f::load($dir . 'registry.php');
 
-$kirby->set('panelBar', 'files', dirname(__DIR__) . DS . 'elements' . DS . 'files');
-$kirby->set('panelBar', 'images', dirname(__DIR__) . DS . 'elements' . DS . 'images');
-$kirby->set('panelBar', 'add', dirname(__DIR__) . DS . 'elements' . DS . 'add');
-
 
 //====================================
 //   Modules
@@ -29,17 +25,18 @@ f::load($dir . 'modules' . DS . 'pattern.php');
 
 
 //====================================
-//   Elements
-//====================================
-foreach(dir::read($dir . 'elements') as $file) {
-  $kirby->set('panelBar', $file, $dir . DS . 'elements' . DS . $file);
-
-}
-
-
-//====================================
 //   Patterns
 //====================================
 foreach(dir::read($dir . 'patterns') as $file) {
   f::load($dir . 'patterns' . DS . $file);
+}
+
+
+//====================================
+//   Elements
+//====================================
+$dir = dirname(__DIR__) . DS;
+
+foreach(dir::read($dir . 'elements') as $file) {
+  $kirby->set('panelBar', $file, $dir . 'elements' . DS . $file);
 }

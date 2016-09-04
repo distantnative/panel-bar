@@ -1,8 +1,10 @@
 <?php
 
-namespace Kirby\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class Panel extends Element {
+use C;
+
+class EditElement extends Element {
 
   //====================================
   //   Output
@@ -15,9 +17,10 @@ class Panel extends Element {
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),
-      'label' => 'Panel',
-      'icon'  => 'cogs',
-      'url'   => $this->panel->urls()->index(),
+      'label' => 'Edit',
+      'icon'  => 'pencil',
+      'url'   => $this->page->url('edit'),
+      'title' => c::get('plugin.panelBar.keys', true) ? 'Alt + M' : null,
     ]);
   }
 

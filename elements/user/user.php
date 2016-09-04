@@ -1,8 +1,8 @@
 <?php
 
-namespace Kirby\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class User extends Element {
+class UserElement extends Element {
 
   //====================================
   //   Output

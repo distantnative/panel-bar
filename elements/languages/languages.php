@@ -1,8 +1,8 @@
 <?php
 
-namespace Kirby\panelBar\Elements;
+namespace Kirby\panelBar;
 
-class Languages extends Element {
+class LanguagesElement extends Element {
 
   //====================================
   //   Output
