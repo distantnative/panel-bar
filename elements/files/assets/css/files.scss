@@ -3,13 +3,16 @@
 //   Files element
 //====================================
 
-@import '../../../../assets/scss/tools/mixins';
+@import '../../../../assets/scss/util/colors';
+@import '../../../../assets/scss/util/mixins';
 
 .panelBar-files {
 
   &__list {
-    max-width:    340px;
     text-align:   center;
+
+    @media (min-width: 551px) { max-width: 340px; }
+
 
     > a { color: $color-black; }
   }
