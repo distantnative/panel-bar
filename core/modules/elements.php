@@ -12,7 +12,7 @@ class Elements {
     'add',
     'edit',
     'toggle',
-    'files',
+    'images',
     'logout',
     'user'
   ];
@@ -35,7 +35,7 @@ class Elements {
     if($path = kirby()->get('panelBar', $element)) {
       f::load($path . DS . $element . '.php');
       $element = new $class($this->core);
-      
+
     } elseif(is_callable($element)) {
       $element = call_user_func($element);
     }

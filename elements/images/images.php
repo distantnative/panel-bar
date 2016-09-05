@@ -24,6 +24,7 @@ class ImagesElement extends Element {
         'icon'    => $type == 'image' ? 'photo'  : 'file',
         'content' => $this->tpl('grid', [
           'items'   => $images,
+          'count'   => count($images),
           'all'     => [
             'label' => $term,
             'url'   => $this->page->url('files'),

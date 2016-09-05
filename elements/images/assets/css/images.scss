@@ -9,19 +9,51 @@
 .panelBar-images {
 
   &__grid {
-    position: fixed;
-    width: 95%;
-    padding:      10px;
-    font-size:    0;
-    white-space:  normal;
-    cursor:       default;
+    position:    fixed;
+    width:       95vw;
+    padding:     10px;
+    font-size:   0;
+    white-space: normal;
+    cursor:      default;
+
 
     .panelBar--top & {top: 49px;}
+
+    &.items--1 {
+      position: absolute;
+      width: 16.6666vw;
+      .panelBar-images__item { min-width: 100%; }
+    }
+
+    &.items--2 {
+      position: absolute;
+      width: 33.33333vw;
+      .panelBar-images__item { min-width: 50%; }
+    }
+
+    &.items--3 {
+      position: absolute;
+      width: 50vw;
+      .panelBar-images__item { min-width: 33.3333%; }
+    }
+
+    &.items--4 {
+      position: absolute;
+      width: 66.6666vw;
+      .panelBar-images__item { min-width: 25%; }
+    }
+
+    &.items--5 {
+      position: absolute;
+      width: 83.3333vw;
+      .panelBar-images__item { min-width: 20%; }
+    }
+
   }
 
   &__item {
-    display:        inline-block;
-    min-width:      160px;
+    display: inline-block;
+    min-width:  16.66666%;
 
     border-right:     2px solid $color-white;
     border-bottom:    3px solid $color-white;
@@ -35,7 +67,6 @@
       background-color: $color-white;
     }
 
-    @media (max-width: 550px) { min-width: 50%; }
   }
 
 

@@ -1,4 +1,4 @@
-<div class="panelBar-images__grid panelBar-mDrop <?php echo $count ?>">
+<div class="panelBar-images__grid panelBar-mDrop items--<?= $count ?>">
   <?php foreach($items as $item) : ?>
   <a href="<?php echo $item['url'] ?>" class="panelBar-images__item panelBar-images__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'] . '.' . $item['extension'] ?>">
     <div class="panelBar-images__preview">

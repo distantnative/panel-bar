@@ -48,13 +48,10 @@
     var mDrop = panelBar.dom.bar.querySelectorAll('.panelBar-mDrop');
     var i;
     for(i = 0; i < mDrop.length; i++) {
-      cl.remove(mDrop[i], 'panelBar-element--overlapLeft');
-      cl.remove(mDrop[i], 'panelBar-element--overlapRight');
+      cl.remove(mDrop[i], 'panelBar-element--overlap');
       var position = mDrop[i].getBoundingClientRect();
-      if(position.left < 0) {
-        cl.add(mDrop[i], 'panelBar-element--overlapLeft');
-      } else if (position.right < 0) {
-        cl.add(mDrop[i], 'panelBar-element--overlapRight');
+      if(position.left < 0 || position.right < 0) {
+        cl.add(mDrop[i], 'panelBar-element--overlap');
       }
     }
   };
@@ -65,9 +62,9 @@
 
   panelBar.responsive = {
     data: {
-      resize:   null,
-      mobile:   null,
-      desktop:  null,
+      resize:  null,
+      mobile:  null,
+      desktop: null,
     },
     init: function() {
       if(!isSupported) return;
