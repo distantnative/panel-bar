@@ -3,13 +3,11 @@
   var keys = function(e) {
     e = e || event;
 
-    if(!e.altKey)         return;
-    if(isOverlayActive()) return;
+    if(!e.altKey || isOverlayActive()) return;
 
-    var shortcut = _.bindings[e.keyCode];
-    if(shortcut) {
+    if(shortcut = _.bindings[e.keyCode]) {
       shortcut();
-      if(typeof panelBar.overlay !== 'undefined') panelBar.state.update();
+      if(typeof panelBar.state !== 'undefined') panelBar.state.update();
     }
 
   };

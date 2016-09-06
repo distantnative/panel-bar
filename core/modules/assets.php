@@ -72,11 +72,11 @@ class Assets {
     $this->add('js', $this->load('js', 'panelbar.js'));
 
     // Optional additional assets
-    $this->optionals();
+    $this->components();
     $this->rtl();
   }
 
-  protected function optionals() {
+  protected function components() {
     $bundles = [
       'plugin.panelBar.keys'       => 'components' . DS . 'keybindings.js',
       'plugin.panelBar.remember'   => 'components' . DS . 'localstorage.js',
