@@ -5,7 +5,6 @@ var sass          = require('gulp-sass');
 var cssmin        = require('gulp-cssmin');
 var rename        = require('gulp-rename');
 var uglify        = require('gulp-uglify');
-var browserSync   = require('browser-sync').create();
 
 
 // =============================================
@@ -22,8 +21,7 @@ gulp.task('css', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cssmin())
-    .pipe(gulp.dest('assets/css'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('assets/css'));
 });
 
 gulp.task('css-elements', function() {
@@ -35,8 +33,7 @@ gulp.task('css-elements', function() {
     .pipe(cssmin())
     .pipe(gulp.dest(function(file) {
       return file.base;
-    }))
-    .pipe(browserSync.stream());
+    }));
 });
 
 
@@ -51,15 +48,25 @@ gulp.task('js', function() {
     ])
     .pipe(concat('panelbar.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('assets/js'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('assets/js'));
 });
 
 gulp.task('js-components', function() {
   return gulp.src('assets/js/src/components/*.js', {base: 'assets/js/src'})
     .pipe(uglify())
-    .pipe(gulp.dest('assets/js'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('js-elements', function() {
+  return gulp.src([
+      'elements/**/assets/js/*.js',
+      '!elements/**/assets/js/*.min.js',
+    ])
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(function(file) {
+      return file.base;
+    }));
 });
 
 
@@ -67,9 +74,10 @@ gulp.task('js-components', function() {
 //  Watch
 // =============================================
 
-gulp.task('watch', ['css', 'css-elements', 'js', 'js-components'], function() {
+gulp.task('watch', ['css', 'css-elements', 'js', 'js-components', 'js-elements'], function() {
   gulp.watch('assets/scss/**/*.scss', ['css']);
   gulp.watch('elements/**/assets/css/*.scss', ['css-elements']);
   gulp.watch('assets/js/src/panelbar.js',    ['js']);
   gulp.watch('assets/js/src/components/*.js',    ['js-components']);
+  gulp.watch('elements/**/assets/js/*.js', ['js-elements']);
 });

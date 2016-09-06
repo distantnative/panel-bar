@@ -39,12 +39,12 @@ class Element {
     $this->core->assets->add($type, $this->load('assets' . DS . $type . DS . $asset));
   }
 
-  protected function load($file, $args = []) {
-    return tpl::load($this->url($file), $args);
-  }
-
   protected function tpl($file, $args) {
     return $this->load('templates' . DS . $file . '.php', $args);
+  }
+
+  protected function load($file, $args = []) {
+    return tpl::load($this->url($file), $args);
   }
 
   protected function pattern($pattern, $args = []) {

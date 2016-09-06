@@ -20,6 +20,7 @@ class Elements {
 
   public function __construct($core, $args = []) {
     $this->core = $core;
+
     $this->init($this->elements($args['elements']));
   }
 

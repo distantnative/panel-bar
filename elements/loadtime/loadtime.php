@@ -1,33 +1,31 @@
 <?php
 
-namespace panelBar\Elements;
+namespace Kirby\panelBar;
 
-use panelBar\Pattern;
-use panelBar\Assets;
-
-class Loadtime extends \panelBar\Element {
+class LoadtimeElement extends Element {
 
   //====================================
-  //   HTML output
+  //   Output
   //====================================
 
-  public function html() {
+  public function render() {
     // register assets
-    $this->assets->setHook('js', $this->js('dist/loadtime.min'));
+    $this->asset('js', 'loadtime.min.js');
+
     // return output
-    return pattern::label(array(
-      'id'     => $this->getElementName(),
+    return $this->pattern('link', [
+      'id'      => $this->name(),
       'icon'   => 'clock-o',
       'label'  => $this->time(),
       'mobile' => 'label',
-    ));
+    ]);
   }
 
   //====================================
   //   Helpers
   //====================================
 
-  private function time() {
+  protected function time() {
     return number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 2);
   }
 

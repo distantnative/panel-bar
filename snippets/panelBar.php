@@ -6,7 +6,7 @@ $panelBar = new Kirby\panelBar\Core([
 ?>
 
 
-<?php if($panelBar->isShown()) : ?>
+<?php if($panelBar->isShown() and !get('hidePanelBar')) : ?>
 
   <div class="panelBar <?= $panelBar->classes() ?>" id="panelBar">
     <?= $panelBar->pre() ?>
