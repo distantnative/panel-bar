@@ -2,6 +2,10 @@
 .panelBar--mobile {
   .panelBar-element {
 
+    &.responsive--none {
+      display: hide;
+    }
+
     &.responsive--icon {
       > span,
       > a {
