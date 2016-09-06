@@ -1,7 +1,7 @@
-
 var panelBar = (function (panelBar) {
 
   var _ = {};
+
 
   _.elements = {};
 
@@ -19,15 +19,12 @@ var panelBar = (function (panelBar) {
 
   _.status = {
     visible:   !cl.has(_.dom.bar, 'panelBar--hidden'),
-    position:  cl.has(_.dom.wrapper, 'panelBar--top') ? 'top' : 'bottom',
+    position:   cl.has(_.dom.wrapper, 'panelBar--top') ? 'top' : 'bottom',
   };
 
   _.init = function() {
-    if (isSupported()) {
-      activate();
-    } else  {
-      _.deactivate();
-    }
+    if(isSupported())   activate();
+    else              _.deactivate();
   };
 
   var activate = function() {
