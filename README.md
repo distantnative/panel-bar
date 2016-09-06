@@ -29,8 +29,6 @@ This plugin enables you to include a panelBar on top of your site which gives yo
   3. [Element Patterns](#Patterns)
   4. [Custom Element Plugins](#Plugins)
     1. [Custom CSS/JS](#CustomCSSJS)
-    2. [Hooks](#Hooks)
-  5. [Output CSS/JS](#OutputCSSJS)
   6. [Assets Guide](GUIDE.md)
 5. Options
   1. [Default Position](#OptionPosition)
@@ -148,24 +146,42 @@ snippet('plugin.panelBar', ['elements' => $elements])
 
 For more complex custom elements, you should consider creating a [Custom Element Plugin](#Plugins).
 
-### Element Patterns <a id="Patterns"></a>
-…
-
 ### Custom Element Plugins <a id="Plugins"></a>
+
+A plugin for a custom element consist at least of a folder and a `.php` file with the same name. The file contains the basic structure:
+
+```php
+<?php
+
+namespace Kirby\panelBar;
+
+class CustomElement extends Element {
+
+  public function render() {
+    return 'your HTML output';
+  }
+
+}
+```
+
+Please be aware of the class naming. It is the name of the element followed by an 'Element' suffix, e.g. the `edit` element is defined by the `EditElement` class.
+
+For examples take a look at [`EditElement`](elements/edit) or [`LoadtimeElement`](elements/loadtime).
+
+You can register the custom element to be used by the panelBar as follows:
+```php
+kibry()->set('panelBar', 'customElement', 'path/to/element/folder');
+```
+
+### Element Patterns <a id="Patterns"></a>
 …
 
 Also have a look at panelBar's [assets guide](GUIDE.md) on its core CSS and Javascript elements.
 
-#### Custom CSS/JS <a id="CustomCSSJS"></a>
+### Custom CSS/JS <a id="CustomCSSJS"></a>
 …
 
 
-#### Hooks for Assets/Output <a id="Hooks"></a>
-…
-
-
-### Output CSS/JS separately <a id="OutputCSSJS"></a>
-…
 
 &nbsp;  
 
