@@ -10,10 +10,9 @@ class FilesElement extends Element {
 
   public function render($type = null) {
     if($files = $this->items($this->page, $type)) {
-      // register iFrame output and assets
-      $this->withFrame();
+      // register output and assets
+      $this->withOverlay();
       $this->asset('css', 'files.css');
-      // this css files
 
       $term = $type == 'image' ? 'Images' : 'Files';
 

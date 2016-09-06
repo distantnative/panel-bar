@@ -11,9 +11,9 @@ class EditElement extends Element {
   //====================================
 
   public function render() {
-    // register iFrame output and assets
-    $this->withFrame();
-
+    // register overlay output and assets
+    $this->withOverlay();
+    
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),

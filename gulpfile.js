@@ -57,7 +57,7 @@ gulp.task('js', function() {
 
 gulp.task('js-components', function() {
   return gulp.src('assets/js/src/components/*.js', {base: 'assets/js/src'})
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('assets/js'))
     .pipe(browserSync.stream());
 });

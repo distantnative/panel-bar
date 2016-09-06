@@ -3,18 +3,18 @@
 @import '../util/colors';
 
 //====================================
-//   iFrame
+//   Overlay
 //====================================
 
-.panelBar-iframe {
+.panelBar-overlay {
   display:      none;
   position:     fixed;
   top:          48px;
   left:         0;
   width:        100%;
   height:       100%;
-  overflow:     hidden;
   background:   $color-almostwhite;
+  overflow:     hidden;
 
 
   > iframe {
@@ -40,10 +40,10 @@
 }
 
 //====================================
-//   iFrame links
+//   Overlay links
 //====================================
 
-.panelBar-iframelinks {
+.panelBar-overlay__links {
   display:  none;
   cursor:   pointer;
 }

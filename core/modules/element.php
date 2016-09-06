@@ -68,20 +68,20 @@ class Element {
     return tpl::load($dir . DS . 'count.php', ['count' => count($items)]);
   }
 
-  protected function withFrame() {
+  protected function withOverlay() {
     $this->core->assets->add('js', [
       'siteURL="' . $this->site->url() . '";',
-      $this->core->assets->load('js', 'components' . DS . 'iframe.js'),
-      'panelBar.iframe.bind(".panelBar--' . $this->name() . ' a");'
+      $this->core->assets->load('js', 'components' . DS . 'overlay.js'),
+      'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'
     ]);
 
     $this->core->assets->add('css', [
-      $this->core->assets->load('css', 'components' . DS . 'iframe.css'),
+      $this->core->assets->load('css', 'components' . DS . 'overlay.css'),
     ]);
 
     // register output
-    $this->core->html->add('pre', $this->core->html->load('components' . DS . 'iframe' . DS . 'frame.php'));
-    $this->core->html->add('elements', $this->core->html->load('components' . DS . 'iframe' . DS . 'links.php'));
+    $this->core->html->add('pre', $this->core->html->load('components' . DS . 'overlay' . DS . 'frame.php'));
+    $this->core->html->add('elements', $this->core->html->load('components' . DS . 'overlay' . DS . 'links.php'));
   }
 
 }

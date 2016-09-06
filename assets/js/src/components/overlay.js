@@ -17,7 +17,7 @@
     _.dom.buttons.refresh[event]('click', refresh);
   };
 
-  var setPanelbar = function(clear) {
+  var setBar = function(clear) {
     var elements = _.dom.elements;
     var i;
     for (i = 0; i < elements.length; i++) {
@@ -73,10 +73,10 @@
   };
 
   var parent  = panelBar.dom;
-  var wrapper = parent.wrapper.querySelector(".panelBar-iframe");
-  var buttons = parent.bar.querySelector(".panelBar-iframelinks");
+  var wrapper = parent.wrapper.querySelector(".panelBar-overlay");
+  var buttons = parent.bar.querySelector(".panelBar-overlay__links");
 
-  panelBar.iframe = {
+  panelBar.overlay = {
     dom : {
       wrapper:    wrapper,
       iframe:     wrapper.children[1],
@@ -117,7 +117,7 @@
     show : function(url) {
       _.status.active = /^(f|ht)tps?:\/\//i.test(url);
       setPosition(_.status.active);
-      setPanelbar(_.status.active);
+      setBar(_.status.active);
       setOverlay(_.status.active);
       _.load(url);
     },
@@ -148,8 +148,8 @@
     }
   };
 
-  var _ = panelBar.iframe;
+  var _ = panelBar.overlay;
 
 })(panelBar);
 
-panelBar.iframe.isSupported();
+panelBar.overlay.isSupported();

@@ -10,9 +10,9 @@ class UserElement extends Element {
 
   public function render() {
     if($user = $this->site->user()) {
-      // register iFrame output and assets
-      $this->withFrame();
-
+      // register overlay output and assets
+      $this->withOverlay();
+      
       // return pattern output
       return $this->pattern('link', [
         'id'    => $this->name(),

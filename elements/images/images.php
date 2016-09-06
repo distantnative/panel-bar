@@ -10,10 +10,9 @@ class ImagesElement extends Element {
 
   public function render($type = 'image') {
     if($images = $this->items($this->page, $type)) {
-      // register iFrame output and assets
-      $this->withFrame();
+      // register overlay output and assets
+      $this->withOverlay();
       $this->asset('css', 'images.css');
-      // this css files
 
       $term = $type == 'image' ? 'Images' : 'Files';
 
