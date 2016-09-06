@@ -48,11 +48,8 @@
     _.dom.iframe.addEventListener('load', function() {
       var body = _.dom.iframe.contentDocument.querySelector('body.app');
 
-      if(typeof body !== undefined) {
-        loadingScreen('');
-      } else {
-        setTimeout(redirect, 4000);
-      }
+      if(typeof body !== undefined)  loadingScreen('');
+      else                           setTimeout(redirect, 4000);
     });
 
     // wait and check if loading got cleared, if not redirect
@@ -62,9 +59,7 @@
   var timeout = function() {
     if(_.dom.loading.innerHTML !== '') {
       _.loading.innerHTML = _.message.loadingFailed;
-      setTimeout(function() {
-        location.href = url;
-      }, 2000);
+      setTimeout(function() { location.href = url; }, 2000);
     }
   };
 
@@ -117,8 +112,8 @@
     show : function(url) {
       _.status.active = /^(f|ht)tps?:\/\//i.test(url);
       setPosition(_.status.active);
-      setBar(_.status.active);
-      setOverlay(_.status.active);
+      setBar     (_.status.active);
+      setOverlay (_.status.active);
       _.load(url);
     },
 
@@ -131,15 +126,15 @@
     },
 
     isSupported : function() {
-      var testFrame = document.createElement('iframe');
-      testFrame.id            = 'panelBarJStestFrame';
-      testFrame.src           = siteURL + '/panel/';
-      testFrame.style.display = 'none';
-      document.body.appendChild(testFrame);
+      var test           = document.createElement('iframe');
+      test.id            = 'panelBarJStestFrame';
+      test.src           = siteURL + '/panel/';
+      test.style.display = 'none';
+      document.body.appendChild(test);
 
-      testFrame.addEventListener("load", function() {
-        var body = testFrame.contentDocument.querySelector('body.app');
-        if(typeof body !== undefined) document.body.removeChild(testFrame);
+      test.addEventListener("load", function() {
+        var body = test.contentDocument.querySelector('body.app');
+        if(typeof body !== undefined) document.body.removeChild(test);
       });
 
       setTimeout(function() {
