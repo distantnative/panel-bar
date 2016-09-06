@@ -9,14 +9,11 @@ This plugin enables you to include a panelBar on top of your site which gives yo
 *Requires PHP 5.3+ and Kirby 2.3 or higher*
 
 
-![panelBar - Files element](assets/screens/screen.png)  
-![panelBar - Images element](assets/screens/screen2.png)  
-![panelBar - Edit in iFrame view](assets/screens/screen3.png)  
-![panelBar - Toggle element](assets/screens/screen4.png)
-![panelBar - Add element](assets/screens/screen5.png)  
+![panelBar - Images element](https://cloud.githubusercontent.com/assets/3788865/18286237/27565c70-7472-11e6-8f1e-2d63e7558148.png)  
 
 
-**Please support the development by buying a [moral license](https://gumroad.com/l/kirby-panelbar)!**
+
+**You can support the development by buying a [moral license](https://gumroad.com/l/kirby-panelbar)!**
 
 &nbsp;  
 
@@ -50,6 +47,11 @@ This plugin enables you to include a panelBar on top of your site which gives yo
 1. Download the [panelBar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
 2. Copy the whole folder to `site/plugins/panel-bar`
 
+#### With the [Kirby CLI](https://github.com/getkirby/cli)
+```
+kirby plugin:install distantnative/panel-bar
+```
+
 &nbsp;  
 
 # Usage <a id="Usage"></a>
@@ -58,7 +60,7 @@ Include in your `site/snippets/footer.php` (or equivalent) before the `</body>` 
 <?php snippet('plugin.panelBar') ?>
 ```
 
-If you want the panelBar hidden when the page loads:
+If you want to hide the panelBar at page load:
 ```php
 <?php snippet('plugin.panelBar.hide') ?>
 ```
@@ -85,14 +87,16 @@ Name        | Description
 `files`     | List of files of the current page
 `images`    | Viewer for images of the current page
 `loadtime`  | Info label for loading time
-`language`  | Dropdown to switch between site languages
-`system`    | Info box with version check of kirby, toolkit and the panel
+`languages` | Dropdown to switch between site languages
+`system`    | Info box with version checks for kirby, toolkit and panel
 `user`      | Current user
 `logout`    | Sign out current user
 
 
 ### Default Set of Elements <a id="DefaultSet"></a>
 The pre-defined default set of elements consists of `panel`, `add`, `edit`, `toggle`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
+
+![Default set of Elements](https://cloud.githubusercontent.com/assets/3788865/18286238/27566daa-7472-11e6-919d-f66dba317ff7.png)
 
 &nbsp;  
 
@@ -125,15 +129,13 @@ The panelBar can include custom elements. You can either include the custom elem
 <?php
 // custom callable element
 function customSongs() {
-  return '<div class="panelbar-element panelbar-drop"><span><i class="fa fa-headphones "></i><span>Songs</span></span><div class="panelbar-drop__list"><a href="https://www.youtube.com/watch?v=BIp_Y28qyZc" class="panelbar-drop__item">Como Soy</a><a href="https://www.youtube.com/watch?v=gdby5w5rseo" class="panelbar-drop__item">Me Gusta</a></div></div>';
+  return '<div class="panelBar-element panelBar-dropdown panelBar-mDropParent"><span><i class="fa fa-headphones "></i><span>Favorite Songs</span></span><div class="panelBar-drop__list panelBar-mDrop"><a href="https://www.youtube.com/watch?v=vqRWMDv0r78" class="panelBar-drop__item">Der Anfang ist nah</a><a href="https://www.youtube.com/watch?v=2vjPBrBU-TM" class="panelBar-drop__item">Chandelier</a></div></div>';
 }
 
 // array of elements
 $elements = [
-  'panel',
   'add',
-  'edit',
-  '<div class="panelbar-element panelbar-btn"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>',
+  '<div class="panelBar-element panelBar-link"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>',
   'customSongs',
 ];
 
@@ -142,13 +144,17 @@ snippet('plugin.panelBar', ['elements' => $elements])
 ?>
 ```
 
-For more complex custom elements, have a look at panelBar's [assets guide](GUIDE.md) on its core CSS and Javascript elements.
+![Custom Elements](https://cloud.githubusercontent.com/assets/3788865/18286769/84921e22-7474-11e6-9821-e3a9767e683a.png)
+
+For more complex custom elements, you should consider creating a [Custom Element Plugin](#Plugins).
 
 ### Element Patterns <a id="Patterns"></a>
 …
 
 ### Custom Element Plugins <a id="Plugins"></a>
 …
+
+Also have a look at panelBar's [assets guide](GUIDE.md) on its core CSS and Javascript elements.
 
 #### Custom CSS/JS <a id="CustomCSSJS"></a>
 …

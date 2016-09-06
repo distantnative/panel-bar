@@ -1,12 +1,11 @@
 {
   "name": "panelBar",
-  "author": "Nico Hoffmann",
+  "description": "Kirby panelBar Plugin",
+  "author":      "Nico Hoffmann <nico@getkirby.com>",
+  "type":        "kirby-plugin",
+  "license":     "MIT",
   "version": "2.0.0",
   "repository": {
     "url": "https://github.com/distantnative/panel-bar"
   },
-  "devDependencies": {
-    "browser-sync": "^2.12.8",
-    "gulp": "^3.9.1"
-  }
 }
