@@ -1,0 +1,43 @@
+//====================================
+//   System element
+//====================================
+
+@import '../../../../assets/scss/util/colors';
+
+.panelBar--system {
+  .panelBar-box__content {
+
+    li {
+      list-style-type: none;
+
+      > b {
+        display:       inline-block;
+        width:         75%;
+        padding-right: 50px;
+      }
+
+      > span {
+        display:    inline-block;
+        width:      25%;
+        color:      $color-midgrey;
+        font-style: normal;
+        text-align: right;
+      }
+    }
+  }
+
+  .version {
+    &--0 {
+      color: $color-red !important;
+    }
+
+    &--1 {
+      color: $color-brand-green !important;
+    }
+
+    &--2 {
+      color:      $color-brand-green !important;
+      font-style: italic;
+    }
+  }
+}

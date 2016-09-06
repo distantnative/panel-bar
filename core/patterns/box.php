@@ -17,8 +17,8 @@ class Box extends Pattern {
       'class'   => 'panelBar-box panelBar-mDropParent',
       'content' => tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns' . DS . 'box.php', [
         'box' => $args['box'],
-      ], $args)
-    ]));
+      ])], $args
+    ));
   }
 
 }

@@ -39,7 +39,7 @@ class Element {
     $this->core->assets->add($type, $this->load('assets' . DS . $type . DS . $asset));
   }
 
-  protected function tpl($file, $args) {
+  protected function tpl($file, $args = []) {
     return $this->load('templates' . DS . $file . '.php', $args);
   }
 
