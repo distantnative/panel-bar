@@ -79,7 +79,7 @@ class Assets {
   protected function components() {
     $bundles = [
       'plugin.panelBar.keys'       => 'components' . DS . 'keybindings.js',
-      'plugin.panelBar.remember'   => 'components' . DS . 'localstorage.js',
+      'plugin.panelBar.remember'   => 'components' . DS . 'state.js',
       'plugin.panelBar.responsive' => 'components' . DS . 'responsive.js',
     ];
 

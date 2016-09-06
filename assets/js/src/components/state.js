@@ -38,7 +38,7 @@
       if(!isSupported()) return;
 
       if(expired()) reset();
-      else restore();
+      else          restore();
 
       save();
       panelBar.dom.controls.all.addEventListener('click', save);
