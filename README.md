@@ -32,9 +32,7 @@ This plugin enables you to include a panelBar on top of your site which gives yo
   6. [Assets Guide](GUIDE.md)
 5. Options
   1. [Default Position](#OptionPosition)
-  2. [Responsiveness](#OptionResponsive)
-  3. [Remember State](#OptionState)
-  4. [Keyboard Shortcuts](#OptionKeyboard)
+  2. [Keyboard Shortcuts](#OptionKeyboard)
 6. [Known Problems](#Problems)
 7. [Help & Improve](#Help)
 8. [Changelog](CHANGELOG.md)
@@ -194,22 +192,6 @@ To change the default position of the panelBar to bottom include:
 c::set('panelbar.position', 'bottom');
 ```
 
-
-### Responsivesness <a id="OptionResponsive"></a>
-To deactivate the javascript that makes the panelBar responsive to mobile devices include:
-```php
-c::set('panelbar.responsive', false);
-```
-
-
-### Remember State <a id="OptionState"></a>
-The panelBar will be loaded on default at the [defined positon](#OptionPosition) and visible whether you included it in your templates with `::show()` or `::hide()`. But it also tries to remember its state across page loads (e.g. it loads on top, you move it to bottom and you want it to be still on bottom after clicking on a link) via your browser's local storage. If you want to disable this, you need to include:
-```php
-c::set('panelbar.remember', false);
-```
-
-
-
 ### Keyboard Shortcuts <a id="OptionKeyboard"></a>
 By default the panelBar features a few keyboard shortcuts:  
 
@@ -222,10 +204,6 @@ Keyboard Shortcut    | Effect
 `alt` + `M`          | Open Edit mode
 `alt` + `P`          | Open the Kirby panel
 
-If you want to deactivate these keyboard shortcuts, you have to include:
-```php
-c::set('panelbar.keys', false);
-```
 
 &nbsp;  
 

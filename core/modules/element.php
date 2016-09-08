@@ -50,7 +50,7 @@ class Element {
   }
 
   protected function pattern($pattern, $args = []) {
-    $class = 'Kirby\panelBar\Patterns\\' . $pattern;
+    $class = 'Kirby\panelBar\\' . $pattern . 'Pattern';
     $class = new $class($this->core);
     return $class->render($args);
   }

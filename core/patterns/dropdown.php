@@ -1,11 +1,11 @@
 <?php
 
-namespace Kirby\panelBar\Patterns;
+namespace Kirby\panelBar;
 
 use A;
 use Tpl;
 
-class Dropdown extends Pattern {
+class DropdownPattern extends Pattern {
 
   public function render($args) {
     // register assets

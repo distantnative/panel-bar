@@ -1,6 +1,6 @@
 <?php
 
-namespace Kirby\panelBar\Patterns;
+namespace Kirby\panelBar;
 
 use A;
 use Tpl;

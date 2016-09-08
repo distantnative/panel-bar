@@ -1,10 +1,10 @@
 <?php
 
-namespace Kirby\panelBar\Patterns;
+namespace Kirby\panelBar;
 
 use A;
 
-class Link extends Pattern {
+class LinkPattern extends Pattern {
 
   public function render($args) {
     // register assets

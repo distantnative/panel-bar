@@ -1,11 +1,11 @@
 <?php
 
-namespace Kirby\panelBar\Patterns;
+namespace Kirby\panelBar;
 
 use A;
 use Tpl;
 
-class Box extends Pattern {
+class BoxPattern extends Pattern {
 
   public function render($args) {
     // register assets
