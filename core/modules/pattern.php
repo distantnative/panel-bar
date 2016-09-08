@@ -12,7 +12,7 @@ class Pattern {
   }
 
   protected function asset($type, $asset) {
-    $asset = $this->core->assets->load($type, $asset);
+    $asset = $this->core->assets->link($type, $asset);
     $this->core->assets->add($type, $asset);
   }
 

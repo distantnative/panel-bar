@@ -36,7 +36,9 @@ class Element {
   }
 
   protected function asset($type, $asset) {
-    $this->core->assets->add($type, $this->load('assets' . DS . $type . DS . $asset));
+    $url  = 'elements/' . $this->name() . '/' . $asset;
+    $link = $this->core->assets->link($type, $url);
+    $this->core->assets->add($type, $link);
   }
 
   protected function tpl($file, $args = []) {
@@ -61,7 +63,7 @@ class Element {
 
   protected function withCount($items) {
     $this->core->assets->add('css', [
-      $this->core->assets->load('css', 'components' . DS . 'count.css'),
+      $this->core->assets->link('css', 'components' . DS . 'count.css'),
     ]);
 
     $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
@@ -69,14 +71,16 @@ class Element {
   }
 
   protected function withOverlay() {
-    $this->core->assets->add('js', [
-      'siteURL="' . $this->site->url() . '";',
-      $this->core->assets->load('js', 'components' . DS . 'overlay.js'),
-      'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'
+    $a = $this->core->assets;
+
+    $a->add('js', [
+      $a->tag('js', 'siteURL="' . $this->site->url() . '";'),
+      $a->link('js', 'components' . DS . 'overlay.js'),
+      $a->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'),
     ]);
 
-    $this->core->assets->add('css', [
-      $this->core->assets->load('css', 'components' . DS . 'overlay.css'),
+    $a->add('css', [
+      $a->link('css', 'components' . DS . 'overlay.css'),
     ]);
 
     // register output

@@ -12,7 +12,10 @@ class Assets {
   public $js  = [];
 
   public function __construct() {
-    $this->defaults();
+    $this->add('css', $this->link('css', 'panelbar.css'));
+    $this->add('js',  $this->link('js', 'panelbar.js'));
+
+    $this->rtl();
   }
 
   //====================================
@@ -37,10 +40,7 @@ class Assets {
 
   public function render($type) {
     if(!empty($this->{$type})) {
-      $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'assets';
-      return tpl::load($dir . DS . $type . '.php', [
-        $type => implode('', $this->{$type})
-      ]);
+      return implode('', $this->{$type});
     }
   }
 
@@ -49,50 +49,29 @@ class Assets {
   //   Load asset
   //====================================
 
-  public function load($type, $asset, $args = []) {
-    $dir = dirname(__DIR__) . DS . '..' . DS . 'assets';
-    return tpl::load($dir . DS . $type . DS . $asset, $args);
-  }
-
-
-  //====================================
-  //   Default assets
-  //====================================
-
-  protected function defaults() {
-
-    // Default CSS
-    $css = $this->load('css', 'panelbar.css');
-    $css = str::template($css, [
-      'fontPath' => panel()->urls()->assets() . '/fonts'
+  protected function load($type, $asset, $mode = 'link') {
+    return tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'assets' . DS . $mode . '.php', [
+      'type'   => $type,
+      'asset'  => $asset
     ]);
-    $this->add('css', $css);
-
-    // Default JS
-    $this->add('js', $this->load('js', 'panelbar.js'));
-
-    // Optional additional assets
-    $this->components();
-    $this->rtl();
   }
 
-  protected function components() {
-    $bundles = [
-      'plugin.panelBar.keys'       => 'components' . DS . 'keybindings.js',
-      'plugin.panelBar.remember'   => 'components' . DS . 'state.js',
-      'plugin.panelBar.responsive' => 'components' . DS . 'responsive.js',
-    ];
-
-    foreach ($bundles as $option => $asset) {
-      if(c::get($option, true)) {
-        $this->add('js', $this->load('js', $asset));
-      }
-    }
+  public function link($type, $asset) {
+    return $this->load($type, $asset);
   }
+
+  public function tag($type, $asset) {
+    return $this->load($type, $asset, 'tag');
+  }
+
+
+  //====================================
+  //   Optionals
+  //====================================
 
   protected function rtl() {
     if($language = site()->language() and $language->direction() === 'rtl') {
-      $this->add('css', $this->load('css', 'components' . DS . 'rtl.css'));
+      $this->add('css', $this->link('css', 'components' . DS . 'rtl.css'));
     }
   }
 

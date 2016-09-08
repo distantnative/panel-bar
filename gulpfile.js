@@ -44,7 +44,8 @@ gulp.task('css-elements', function() {
 gulp.task('js', function() {
   return gulp.src([
       'assets/js/src/util/classes.js',
-      'assets/js/src/panelbar.js'
+      'assets/js/src/panelbar.js',
+      'assets/js/src/core/*.js'
     ])
     .pipe(concat('panelbar.js'))
     .pipe(uglify())
