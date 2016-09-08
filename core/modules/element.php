@@ -56,7 +56,6 @@ class Element {
   }
 
 
-
   //====================================
   //   Features
   //====================================
@@ -71,21 +70,21 @@ class Element {
   }
 
   protected function withOverlay() {
-    $a = $this->core->assets;
+    $path   = 'components' . DS . 'overlay';
+    $assets = $this->core->assets;
+    $html   = $this->core->html;
 
-    $a->add('js', [
-      $a->tag('js', 'siteURL="' . $this->site->url() . '";'),
-      $a->link('js', 'components' . DS . 'overlay.js'),
-      $a->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'),
+    $assets->add('js', [
+      $assets->tag('js', 'siteURL="' . $this->site->url() . '";'),
+      $assets->link('js', $path . '.js'),
+      $assets->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'),
     ]);
 
-    $a->add('css', [
-      $a->link('css', 'components' . DS . 'overlay.css'),
-    ]);
+    $assets->add('css', $assets->link('css', $path . '.css'));
 
     // register output
-    $this->core->html->add('pre', $this->core->html->load('components' . DS . 'overlay' . DS . 'frame.php'));
-    $this->core->html->add('elements', $this->core->html->load('components' . DS . 'overlay' . DS . 'links.php'));
+    $html->add('pre',      $html->load($path . DS . 'frame.php'));
+    $html->add('elements', $html->load($path . DS . 'links.php'));
   }
 
 }
