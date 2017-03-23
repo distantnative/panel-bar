@@ -5,14 +5,20 @@ namespace Kirby\panelBar;
 use Dir;
 use F;
 
-$dir = __DIR__ . DS;
+$dir  = __DIR__ . DS;
+$root = dirname(__DIR__) . DS;
+
+//====================================
+//   Lib
+//====================================
+f::load($dir . 'lib' . DS . 'registry.php');
+f::load($dir . 'lib' . DS . 'route.php');
 
 //====================================
 //   Core
 //====================================
 f::load($dir . 'core.php');
-f::load($dir . 'registry.php');
-
+f::load($dir . 'routes.php');
 
 //====================================
 //   Modules
@@ -35,8 +41,7 @@ foreach(dir::read($dir . 'patterns') as $file) {
 //====================================
 //   Elements
 //====================================
-$dir = dirname(__DIR__) . DS;
 
-foreach(dir::read($dir . 'elements') as $file) {
-  $kirby->set('panelBar', $file, $dir . 'elements' . DS . $file);
+foreach(dir::read($root . 'elements') as $file) {
+  $kirby->set('panelBar', $file, $root . 'elements' . DS . $file);
 }

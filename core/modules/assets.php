@@ -40,7 +40,7 @@ class Assets {
 
   public function render($type) {
     if(!empty($this->{$type})) {
-      return implode('', $this->{$type});
+      return implode($this->{$type});
     }
   }
 

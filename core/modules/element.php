@@ -5,6 +5,8 @@ namespace Kirby\panelBar;
 use C;
 use Tpl;
 
+use Kirby\panelBar\Route;
+
 class Element {
 
   public function __construct($core) {
@@ -54,6 +56,9 @@ class Element {
     return $class->render($args);
   }
 
+  protected function route($route, $parameters= []) {
+    return Route::url($this->name(), $route, $parameters);
+  }
 
   //====================================
   //   Features
