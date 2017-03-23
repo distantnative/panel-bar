@@ -49,12 +49,15 @@
     var i;
     for(i = 0; i < mDrop.length; i++) {
       cl.remove(mDrop[i], 'panelBar-element--overlap');
-      cl.remove(mDrop[i], 'panelBar-element--overlap');
+      cl.remove(mDrop[i], 'panelBar-element--overlap-left');
+      cl.remove(mDrop[i], 'panelBar-element--overlap-right');
       var position = mDrop[i].getBoundingClientRect();
       if(position.left < 0) {
         cl.add(mDrop[i], 'panelBar-element--overlap');
+        cl.add(mDrop[i], 'panelBar-element--overlap-left');
       } else if (position.right < 0) {
         cl.add(mDrop[i], 'panelBar-element--overlap');
+        cl.add(mDrop[i], 'panelBar-element--overlap-right');
       }
     }
   };

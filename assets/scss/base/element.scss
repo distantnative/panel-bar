@@ -28,5 +28,12 @@
     }
   }
 
-  &--overlap { position: fixed !important; }
+  &--overlap {
+    position:  fixed !important;
+
+    &-left  { left:   0; }
+    &-right { right: 0;  }
+
+    .panelBar--bottom & { bottom: 50px; }
+  }
 }
