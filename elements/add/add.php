@@ -17,7 +17,7 @@ class AddElement extends Element {
       'id'    => $this->name(),
       'label' => 'Add',
       'icon'  => 'plus',
-      'items'  => $this->items()
+      'items' => $this->items()
     ]);
   }
 

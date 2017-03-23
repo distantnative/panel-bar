@@ -15,6 +15,7 @@ class Route {
       'action'  => $route['action'],
       'method'  => $route['method']
     ]);
+
   }
 
   public static function url($element, $route, $parameters= []) {

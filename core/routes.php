@@ -17,7 +17,7 @@ kirby()->set('route', [
 // =============================================
 //  Element routes
 // =============================================
-$root = dirname(dirname(__DIR__)) . DS;
+$root = dirname(__DIR__) . DS;
 foreach(dir::read($root . 'elements') as $element) {
   $file = $root . 'elements' . DS . $element . DS . 'routes.php';
   if(f::exists($file)) {

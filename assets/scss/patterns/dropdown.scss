@@ -9,6 +9,8 @@
 .panelBar-drop {
   &__list > a { color: $color-black; }
 
+  &__list > span {cursor: default}
+
   &__item {
     @include    textEllipsis;
     display:    block;

@@ -13,6 +13,7 @@ $root = dirname(__DIR__) . DS;
 //====================================
 f::load($dir . 'lib' . DS . 'registry.php');
 f::load($dir . 'lib' . DS . 'route.php');
+f::load($dir . 'lib' . DS . 'blueprint.php');
 
 //====================================
 //   Core

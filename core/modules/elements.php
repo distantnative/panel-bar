@@ -11,7 +11,7 @@ class Elements {
     'panel',
     'add',
     'edit',
-    'toggle',
+    'visibility',
     'files',
     'logout',
     'user'
