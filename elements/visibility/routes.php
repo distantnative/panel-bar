@@ -7,7 +7,6 @@ return [
     $page      = $panel->page($uri);
     $sort      = $page->parent()->blueprint()->pages()->num();
 
-
     if($action == 'hide') {
       $page->hide();
 

@@ -13,7 +13,7 @@ class Element {
     $this->core     = $core;
     $this->panel    = $core->panel;
 
-    $this->site     = site();
+    $this->site     = $this->panel->site();
     $this->page     = $this->panel->page($this->core->page->id());
   }
 
