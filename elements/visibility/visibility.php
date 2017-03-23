@@ -9,51 +9,45 @@ class VisibilityElement extends Element {
 
   protected $sort;
 
-  public function __construct($core) {
-    parent::__construct($core);
-
-    $this->sort = Blueprint::read($this->page->parent())->sort();
-  }
-
   //====================================
   //   Output
   //====================================
 
   public function render() {
-    $this->asset('css', 'visibility.css');
+    if($this->page->ui()->visibility()) {
+      $this->asset('css', 'visibility.css');
 
-    // return pattern output
-    if($this->page->isVisible()) {
-      return $this->pattern('link', [
-        'id'     => $this->name(),
-        'label'  => 'Visible',
-        'icon'   => 'toggle-on',
-        'url'    => $this->route('hide/' . $this->page->uri()),
-      ]);
+      // return pattern output
+      if($this->page->isVisible()) {
+        return $this->pattern('link', [
+          'id'     => $this->name(),
+          'label'  => 'Visible',
+          'icon'   => 'toggle-on',
+          'url'    => $this->route('hide/' . $this->page->uri()),
+        ]);
 
-    } else {
+      } else {
+        $sort = Blueprint::read($this->page->parent())->sort();
+        switch ($sort) {
+          case 'num':
+            return $this->pattern('dropdown', [
+              'id'    => $this->name(),
+              'label'  => 'Invisible',
+              'icon'   => 'toggle-off',
+              'items' => $this->pagelist()
+            ]);
+            break;
 
-      switch ($this->sort) {
-        case 'num':
-          return $this->pattern('dropdown', [
-            'id'    => $this->name(),
-            'label'  => 'Invisible',
-            'icon'   => 'toggle-off',
-            'items' => $this->pagelist()
-          ]);
-          break;
-
-        default:
-          return $this->pattern('link', [
-            'id'     => $this->name(),
-            'label'  => 'Invisible',
-            'icon'   => 'toggle-off',
-            'url'    => $this->route('show/' . $this->page->uri()),
-          ]);
-          break;
+          default:
+            return $this->pattern('link', [
+              'id'     => $this->name(),
+              'label'  => 'Invisible',
+              'icon'   => 'toggle-off',
+              'url'    => $this->route('show/' . $this->page->uri()),
+            ]);
+            break;
+        }
       }
-
-
     }
   }
 
