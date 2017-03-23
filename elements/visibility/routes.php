@@ -42,8 +42,8 @@ return [
 
         case 'date':
           $options = $blueprint->sort(true);
-          $field   = a::get($blueprint, 'field', 'date');
-          $format  = a::get($blueprint, 'format', 'Ymd');
+          $field   = a::get($options, 'field', 'date');
+          $format  = a::get($options, 'format', 'Ymd');
           $page->sort(date($format, $page->{$field}()));
           break;
 

@@ -18,15 +18,20 @@ class Blueprint {
   }
 
   public function sort($raw = false) {
-    if(!isset($blueprint['pages']['num'])) {
+    if(!isset($this->blueprint['pages']['num'])) {
       return 'num';
     } else {
+      $num = $this->blueprint['pages']['num'];
       if($raw) {
-        return $blueprint['pages']['num'];
+        return $num;
       } else {
-        return is_array($blueprint['pages']['num']) ? $blueprint['pages']['num']['mode'] : $blueprint['pages']['num'];
+        return is_array($num) ? $num['mode'] : $num;
       }
     }
+  }
+
+  public function __toArray() {
+    return $this->blueprint;
   }
 
 
