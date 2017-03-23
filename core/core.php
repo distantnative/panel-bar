@@ -14,7 +14,8 @@ class Core {
   public $visible  = true;
 
   public function __construct($args = []) {
-    $this->page     = page();
+    $this->page  = page();
+    $this->panel = require('lib/panel/integrate.php');
 
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
     $this->position = c::get('plugin.panelBar.position', 'top');

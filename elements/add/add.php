@@ -30,7 +30,7 @@ class AddElement extends Element {
     $items = [];
 
     // Add Child entry
-    if($this->page->canHaveSubpages()) {
+    if($this->page->ui()->pages()) {
       $items[] = [
         'url'   => $this->page->url('add'),
         'label' => 'Child',
@@ -38,7 +38,7 @@ class AddElement extends Element {
     }
 
     // Add Sibling entry
-    if($parent = $this->page->parent() and $parent->canHaveSubpages()) {
+    if($parent = $this->page->parent() and $parent->ui()->pages()) {
       $items[] = [
         'url'   => $parent->url('add'),
         'label' => 'Sibling',
