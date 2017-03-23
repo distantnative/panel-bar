@@ -73,24 +73,24 @@ if(!site()->user()) c::set('cache', true);
 ### Standard Elements <a id="StandardElements"></a>
 The panelBar provides several standard elements:  
 
-Name        | Description
------------ | ---------------------------------------------------------
-`panel`     | Open the Kirby panel
-`index`     | List of all pages (index)
-`add`       | Add page as sibling or child
-`edit`      | Edit current page
-`toggle`    | Change the visibility of the current page (hide/publish)
-`files`     | List of files of the current page
-`images`    | Viewer for images of the current page
-`loadtime`  | Info label for loading time
-`languages` | Dropdown to switch between site languages
-`system`    | Info box with version checks for kirby, toolkit and panel
-`user`      | Current user
-`logout`    | Sign out current user
+Name          | Description
+------------- | ---------------------------------------------------------
+`panel`       | Open the Kirby panel
+`index`       | List of all pages (index)
+`add`         | Add page as sibling or child
+`edit`        | Edit current page
+`visibility`  | Change the visibility of the current page (hide/publish)
+`files`       | List of files of the current page
+`images`      | Viewer for images of the current page
+`loadtime`    | Info label for loading time
+`languages`   | Dropdown to switch between site languages
+`system`      | Info box with version checks for kirby, toolkit and panel
+`user`        | Current user
+`logout`      | Sign out current user
 
 
 ### Default Set of Elements <a id="DefaultSet"></a>
-The pre-defined default set of elements consists of `panel`, `add`, `edit`, `toggle`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
+The pre-defined default set of elements consists of `panel`, `add`, `edit`, `visibility`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
 
 ![Default set of Elements](https://cloud.githubusercontent.com/assets/3788865/18286238/27566daa-7472-11e6-919d-f66dba317ff7.png)
 

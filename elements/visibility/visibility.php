@@ -27,9 +27,9 @@ class VisibilityElement extends Element {
         ]);
 
       } else {
-        $sort = Blueprint::read($this->page->parent())->sort();
-        switch ($sort) {
+        switch ($this->page->parent()->blueprint()->pages()->num()->mode) {
           case 'num':
+          case 'default':
             return $this->pattern('dropdown', [
               'id'    => $this->name(),
               'label'  => 'Invisible',

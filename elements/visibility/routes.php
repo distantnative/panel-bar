@@ -3,16 +3,17 @@
 return [
   'pattern' => '(:any)/(:all)',
   'action'  => function($action, $uri) {
-    $page      = page($uri);
-    $blueprint = Kirby\panelBar\Blueprint::read($page->parent());
-    $sort      = $blueprint->sort();
+    $panel     = require(dirname(dirname(__DIR__)) . DS . 'core/lib/panel/integrate.php');
+    $page      = $panel->page($uri);
+    $sort      = $page->parent()->blueprint()->pages()->num();
 
 
     if($action == 'hide') {
       $page->hide();
 
-      switch ($sort) {
+      switch($sort->mode) {
         case 'num':
+        case 'default';
           $num = 1;
           foreach($page->siblings()->visible() as $sibling) {
             $sibling->sort($num);
@@ -26,12 +27,13 @@ return [
 
     } else {
 
-      switch ($sort) {
+      switch($sort->mode) {
         case 'zero':
           $page->sort(0);
           break;
 
         case 'num':
+        case 'default':
           $num = get('num');
           foreach($page->siblings()->visible() as $sibling) {
             if($sibling->num() < $num) continue;
@@ -41,18 +43,12 @@ return [
           break;
 
         case 'date':
-          $options = $blueprint->sort(true);
-          $field   = a::get($options, 'field', 'date');
-          $format  = a::get($options, 'format', 'Ymd');
-          $page->sort(date($format, $page->{$field}()));
+          $page->sort(date($sort->format, $sort->{$sort->field}()));
           break;
 
         default:
           break;
       }
-
-      $num = get('num');
-      $page->sort($num);
     }
 
     go($page->url());
