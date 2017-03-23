@@ -10,9 +10,8 @@ class Element {
   public function __construct($core) {
     $this->core     = $core;
 
-    $this->panel    = $this->core->panel;
-    $this->site     = $this->panel->site();
-    $this->page     = $this->panel->page($this->core->page->id());
+    $this->site     = site();
+    $this->page     = $this->core->page;
   }
 
 

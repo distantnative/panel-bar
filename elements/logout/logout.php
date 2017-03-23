@@ -14,7 +14,7 @@ class LogoutElement extends Element {
       'id'    => $this->name(),
       'label' => 'Logout',
       'icon'  => 'power-off',
-      'url'   => $this->panel->urls()->logout(),
+      'url'   => kirby()->urls()->index() . '/panel/logout',
       'right' => true
     ]);
   }
