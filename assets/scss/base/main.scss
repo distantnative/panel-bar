@@ -21,6 +21,10 @@
   &--hidden { display: none; }
   &--top    { top:    0;     }
   &--bottom { bottom: 0;     }
+
+  a {
+    border: none;
+  }
 }
 
 
