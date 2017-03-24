@@ -26,38 +26,35 @@ class SystemElement extends Element {
       'icon'  => 'info',
       'label' => 'Site',
       'box'   => [
-        'style'   => 'keyvalue',
-        'content' => [
-          'Pages'       => [
-            'label' => $this->site->index()->count(),
-            'url'   => $this->site->url('subpages')
-          ],
-          'Files'       => $this->site->index()->files()->count(),
-          'Templates'   => count(dir::read($root . 'templates')),
-          'Blueprints'  => count(\Kirby\Panel\Models\Page\Blueprint::all()),
-          'Controllers' => count(dir::read($root . 'controllers')),
-          'Models'      => count(dir::read($root . 'models')),
-          null,
-          'Kirby'    => [
-            'label'    => \Kirby::version(),
-            'url'      => null,
-            'external' => true
-          ],
-          'Panel'    => [
-            'label'    => $this->version('panel'),
-            'url'      => null,
-            'external' => true
-          ],
-          'Toolkit'  => [
-            'label'    => \Toolkit::version(),
-            'url'      => null,
-            'external' => true
-          ],
-          'panelBar' => [
-            'label'    => Core::$version,
-            'url'      => null,
-            'external' => true
-          ]
+        'Pages'       => [
+          'label' => $this->site->index()->count(),
+          'url'   => $this->site->url('subpages')
+        ],
+        'Files'       => $this->site->index()->files()->count(),
+        'Templates'   => count(dir::read($root . 'templates')),
+        'Blueprints'  => count(\Kirby\Panel\Models\Page\Blueprint::all()),
+        'Controllers' => count(dir::read($root . 'controllers')),
+        'Models'      => count(dir::read($root . 'models')),
+        null,
+        'Kirby'    => [
+          'label'    => \Kirby::version(),
+          'url'      => null,
+          'external' => true
+        ],
+        'Panel'    => [
+          'label'    => $this->version('panel'),
+          'url'      => null,
+          'external' => true
+        ],
+        'Toolkit'  => [
+          'label'    => \Toolkit::version(),
+          'url'      => null,
+          'external' => true
+        ],
+        'panelBar' => [
+          'label'    => Core::$version,
+          'url'      => null,
+          'external' => true
         ]
       ]
     ]);
