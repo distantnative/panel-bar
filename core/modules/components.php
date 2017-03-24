@@ -29,7 +29,7 @@ class Components {
     $assets->add('js', [
       $assets->tag('js', 'siteURL="' . $this->element->site->url() . '";'),
       $assets->link('js', $path . '.js'),
-      $assets->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->element->name() . ' a");'),
+      $assets->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->element->name() . ' a:not(.external)");'),
     ]);
 
     $assets->add('css', $assets->link('css', $path . '.css'));
