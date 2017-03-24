@@ -12,7 +12,7 @@ class LinkPattern extends Pattern {
 
     // return output
     return $this->base(a::merge([
-      'class' => 'panelBar-link',
+      'class' => isset($args['url']) ? 'panelBar-link' : 'panelBar-label',
     ], $args));
   }
 
