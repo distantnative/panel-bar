@@ -17,7 +17,8 @@
     cursor:      default;
 
 
-    .panelBar--top & {top: 49px;}
+    .panelBar--top &    { top:    49px !important; }
+    .panelBar--bottom & { bottom: 49px !important; }
 
     &.items--1 {
       position: absolute;
@@ -59,7 +60,7 @@
     border-bottom:    3px solid $color-white;
     background-color: $color-black;
 
-    font-size:      1rem;
+    font-size:      18px;
     text-align:     center;
 
     &--image {
