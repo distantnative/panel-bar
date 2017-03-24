@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.0.1](https://github.com/distantnative/panel-bar/releases/tag/2.0.1) (2017-03-24)
+- :bug: Custom element asset route fixed
+
 ## [2.0.0](https://github.com/distantnative/panel-bar/releases/tag/2.0.0) (2017-03-24)
 - Version 2 is here after years! :sparkle:
 - Complete rewrite
