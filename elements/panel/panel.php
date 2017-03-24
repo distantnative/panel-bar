@@ -17,7 +17,7 @@ class PanelElement extends Element {
       'id'    => $this->name(),
       'label' => 'Panel',
       'icon'  => 'cogs',
-      'url'   => kirby()->urls()->index() . '/panel',
+      'url'   => $this->panel->urls()->index(),
     ]);
   }
 
