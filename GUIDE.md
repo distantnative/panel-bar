@@ -1,7 +1,7 @@
 # Guide to panelBar assets
 
 ## (S)CSS
-All of panelBar's CSS is pre-processed from several [SCSS](http://sass-lang.com) files (you can find them in `assets/scss/` and the processed CSS files in `assets/css/`). Moreover, panelBar's CSS is split up in several files to only load the CSS necessary for the active [set of elements](../README.md#CustomSet) and functions.
+panelBar's CSS is pre-processed from several [SCSS](http://sass-lang.com) files (you can find them in `assets/scss/` and the processed CSS files in `assets/css/`). Moreover, panelBar's CSS is split up in several files to only load the CSS necessary for the active [set of elements](README.md#CustomSet) and functions.
 
 The following class and selected modifier classes are added to the main panelBar wrapper:
 ```css
@@ -34,7 +34,7 @@ The following classes refer to the control buttons wrapper and each control butt
 ## Javascript
 
 ### panelBar (class panelBarObj)
-The `var panelBar` includes the main instance of the `panelBarObj` class, which includes all core JS functionalities of panelBar and can be used to help you with your custom element.
+`var panelBar` holds the main instance of the `panelBarObj` class, which includes all core JS functionalities of panelBar and can be used to help you with your custom element.
 
 Selected properties which might be useful for you:
 ```javascript
@@ -58,15 +58,15 @@ panelBar.hide()               // hides panelBar
 ```
 
 Options:  
-- [Keyboard Shortcuts](../README.md#OptionKeyboard)
+- [Keyboard Shortcuts](README.md#OptionKeyboard)
 
 
 ### pbResponsive (class panelBarResponsive)
-The `var pbResponsive` includes the main instance of the `panelBarResponsive` class, which is used for mobile responsiveness if not [switched off](../README.md#OptionResponsive).
+`var pbResponsive` holds the main instance of the `panelBarResponsive` class, which is used for mobile responsiveness.
 
 
 ### pbState (class panelBarState)
-The `var pbState` includes the main instance of the `panelBarState` class, which is used to store the current state of panelBar's position and visibility across page loads - if not [switched off](../README.md#OptionState).
+`var pbState` holds the main instance of the `panelBarState` class, which is used to store the current state of panelBar's position and visibility across page loads.
 
 Selected methods which might be useful for you:
 ```javascript
@@ -76,7 +76,7 @@ pbState.unset(key)        // removes key-value pair from localStorage
 ```
 
 ### pbIframe (class panelBarIframe)
-The `var pbIframe` includes the main instance of the `panelBarIframe` class, which is used for all elements that feature the iFrame mode (link click opens panel in an iFrame).
+`var pbIframe` holds the main instance of the `panelBarIframe` class, which is used for all elements that feature the overlay mode (link opens panel page in an iframe).
 
 Selected properties which might be useful for you:
 ```javascript
@@ -92,7 +92,7 @@ pbIframe.refreshBtn   // 'Return and Refresh' button
 
 Selected methods which might be useful for you:
 ```javascript
-pbIframe.add(link)      // adds iFrame mode functionality to a link
+pbIframe.add(link)      // adds iFrame mode functionality to a link element
 pbIframe.show(url)      // activates iFrame mode (deactivate with empty url)
 pbIframe.load(url)      // loads url in iFrame mode
 ```
