@@ -10,7 +10,6 @@
     },
 
     update: function() {
-      // label.innerHTML = ((window.performance.timing.responseEnd - window.performance.timing.navigationStart)/1000).toFixed(2);
       label.innerHTML = ((window.performance.timing.loadEventStart - window.performance.timing.domLoading)/1000).toFixed(2);
     },
   };

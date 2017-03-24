@@ -3,13 +3,16 @@
 //   Index element
 //====================================
 
-@import '../../../../assets/scss/tools/mixins';
+@import '../../../../assets/scss/util/colors';
 
 .panelBar-index {
   .panelBar-drop__item {
-    padding:    .6em 1.2em;
-    font-size:  .9em;
-    text-align: left;
+    max-width:     300px;
+    padding:       .6em 1.2em;
+    font-size:     .9em;
+    text-align:    left;
+    text-overflow: ellipsis;
+
 
     &:hover,
     &:hover .panelBar-index--invisible {
@@ -27,5 +30,5 @@
     font-weight: 700;
   }
 
-  &--invisible { color: $color-midgrey; }
+  &--invisible { color: $color-midlightgrey; }
 }
