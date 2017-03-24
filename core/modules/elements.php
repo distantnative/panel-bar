@@ -3,6 +3,7 @@
 namespace Kirby\panelBar;
 
 use C;
+use Dir;
 use F;
 
 class Elements {
@@ -51,5 +52,9 @@ class Elements {
     $config   = c::get('panelBar.elements', static::$defaults);
     $elements = is_array($elements) ? $elements : $config;
     return $elements;
+  }
+
+  public static function all() {
+    return dir::read(dirname(dirname(__DIR__)) . DS . 'elements');
   }
 }
