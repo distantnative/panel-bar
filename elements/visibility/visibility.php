@@ -59,7 +59,7 @@ class VisibilityElement extends Element {
     foreach($this->page->siblings()->visible() as $sibling) {
       $items[] = [
         'url'   => $this->route($route, ['num' => $sibling->num()]),
-        'label' => '&rarr;&nbsp;&nbsp;&larr;',
+        'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
       ];
 
       $items[] = ['label' => $sibling->title()];
@@ -67,7 +67,7 @@ class VisibilityElement extends Element {
 
     $items[] = [
       'url'   => $this->route($route, ['num' => $sibling->num() + 1]),
-      'label' => '&rarr; &larr;',
+      'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
     ];
 
     return $items;
