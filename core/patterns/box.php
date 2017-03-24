@@ -15,10 +15,10 @@ class BoxPattern extends Pattern {
     // return output
     return $this->base(a::merge([
       'class'   => 'panelBar-box panelBar-mDropParent',
-      'content' => tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns' . DS . 'box.php', [
+      'content' => $this->tpl('box', [
         'box' => $args['box'],
-      ])], $args
-    ));
+      ])
+    ], $args));
   }
 
 }

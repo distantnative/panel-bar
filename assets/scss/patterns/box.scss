@@ -16,5 +16,43 @@
 
     > a       { color: $color-midgrey; }
     > a:hover { color: $color-lightgrey; }
+
+    hr {
+      width:         calc(100% + 1em);
+      height:        auto;
+      margin:        .25em 0 .25em -.5em;
+      padding:       0;
+      border:        none;
+      border-bottom: 1px solid $color-midlightgrey;
+      color:         $color-midgrey;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    &--keyvalue {
+      margin: 0;
+
+      li {
+        list-style-type: none;
+
+        > b {
+          display:       inline-block;
+          width:         75%;
+          padding-right: 50px;
+        }
+
+        > span,
+        > a {
+          display:    inline-block;
+          width:      25%;
+          color:      $color-midgrey;
+          font-style: normal;
+          text-align: right;
+        }
+      }
+    }
   }
 }

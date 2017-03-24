@@ -17,7 +17,7 @@ class Components {
       $this->core->assets->link('css', 'components' . DS . 'count.css'),
     ]);
 
-    $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
+    $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'components';
     return tpl::load($dir . DS . 'count.php', ['count' => count($items)]);
   }
 

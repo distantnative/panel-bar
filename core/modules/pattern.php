@@ -16,6 +16,12 @@ class Pattern {
     $this->core->assets->add($type, $asset);
   }
 
+  protected function tpl($pattern, $args = []) {
+    $root    = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
+    $snippet = $root . DS . $pattern . '.php';
+    return tpl::load($snippet, $args);
+  }
+
   protected function base($args) {
     $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
     return tpl::load($dir . DS . 'base.php', a::merge([
