@@ -6,10 +6,10 @@
     },
 
     init: function() {
-      _.version('kirby');
-      _.version('panel');
-      _.version('toolkit');
-      _.version('panelbar');
+      _.version('Kirby');
+      _.version('Panel');
+      _.version('Toolkit');
+      _.version('panelBar');
     },
 
     version: function(repo) {
@@ -23,7 +23,7 @@
     },
 
     result: function(repo, data) {
-      var entry   = _.dom.list.querySelector('.' + repo);
+      var entry   = _.dom.list.querySelector('.key-' + repo);
       var version = entry.children[1];
       var status  = version_compare(version.textContent, data.name) + 1;
       cl.add(version, "version--" + status);
@@ -72,9 +72,9 @@ function version_compare(v1, v2, operator) {
   //        returns 4: 1
 
   // Important: compare must be initialized at 0.
-  var i
-  var x
-  var compare = 0
+  var i;
+  var x;
+  var compare = 0;
 
   // vm maps textual PHP versions to negatives so they're less than 0.
   // PHP currently defines these as CASE-SENSITIVE. It is important to
@@ -94,7 +94,7 @@ function version_compare(v1, v2, operator) {
     '#': -2,
     'p': 1,
     'pl': 1
-  }
+  };
 
   // This function will be called to prepare each version argument.
   // It replaces every _, -, and + with a dot.
@@ -106,37 +106,37 @@ function version_compare(v1, v2, operator) {
   // It's also important to not strip spaces because of this.
   //   version_compare('', ' ') === 1
   var _prepVersion = function (v) {
-    v = ('' + v).replace(/[_\-+]/g, '.')
-    v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.')
-    return (!v.length ? [-8] : v.split('.'))
-  }
+    v = ('' + v).replace(/[_\-+]/g, '.');
+    v = v.replace(/([^.\d]+)/g, '.$1.').replace(/\.{2,}/g, '.');
+    return (!v.length ? [-8] : v.split('.'));
+  };
   // This converts a version component to a number.
   // Empty component becomes 0.
   // Non-numerical component becomes a negative number.
   // Numerical component becomes itself as an integer.
   var _numVersion = function (v) {
-    return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10))
-  }
+    return !v ? 0 : (isNaN(v) ? vm[v] || -7 : parseInt(v, 10));
+  };
 
-  v1 = _prepVersion(v1)
-  v2 = _prepVersion(v2)
-  x = Math.max(v1.length, v2.length)
+  v1 = _prepVersion(v1);
+  v2 = _prepVersion(v2);
+  x = Math.max(v1.length, v2.length);
   for (i = 0; i < x; i++) {
     if (v1[i] === v2[i]) {
-      continue
+      continue;
     }
-    v1[i] = _numVersion(v1[i])
-    v2[i] = _numVersion(v2[i])
+    v1[i] = _numVersion(v1[i]);
+    v2[i] = _numVersion(v2[i]);
     if (v1[i] < v2[i]) {
-      compare = -1
-      break
+      compare = -1;
+      break;
     } else if (v1[i] > v2[i]) {
-      compare = 1
-      break
+      compare = 1;
+      break;
     }
   }
   if (!operator) {
-    return compare
+    return compare;
   }
 
   // Important: operator is CASE-SENSITIVE.
@@ -145,26 +145,26 @@ function version_compare(v1, v2, operator) {
   switch (operator) {
     case '>':
     case 'gt':
-      return (compare > 0)
+      return (compare > 0);
     case '>=':
     case 'ge':
-      return (compare >= 0)
+      return (compare >= 0);
     case '<=':
     case 'le':
-      return (compare <= 0)
+      return (compare <= 0);
     case '===':
     case '=':
     case 'eq':
-      return (compare === 0)
+      return (compare === 0);
     case '<>':
     case '!==':
     case 'ne':
-      return (compare !== 0)
+      return (compare !== 0);
     case '':
     case '<':
     case 'lt':
-      return (compare < 0)
+      return (compare < 0);
     default:
-      return null
+      return null;
   }
 }

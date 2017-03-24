@@ -21,12 +21,15 @@ class SystemElement extends Element {
       'id'    => $this->name(),
       'icon'  => 'info',
       'label' => 'System',
-      'box'   => $this->tpl('list', [
-        'kirby'    => \Kirby::version(),
-        'panel'    => $this->version('panel'),
-        'toolkit'  => \Toolkit::version(),
-        'panelbar' => Core::$version
-      ])
+      'box'   => [
+        'style'   => 'keyvalue',
+        'content' => [
+          'Kirby'    => ['label' => \Kirby::version(),        'url' => null],
+          'Panel'    => ['label' => $this->version('panel'),  'url' => null],
+          'Toolkit'  => ['label' => \Toolkit::version(),      'url' => null],
+          'panelBar' => ['label' => Core::$version,           'url' => null],
+        ]
+      ]
     ]);
   }
 
