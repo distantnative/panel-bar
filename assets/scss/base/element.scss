@@ -23,8 +23,8 @@
     display: inline-block;
     padding: 1em;
 
-    > i {
-      margin-right: .5em;
+    > i + span {
+      margin-left: .5em;
     }
   }
 
