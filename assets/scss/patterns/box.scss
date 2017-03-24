@@ -36,18 +36,14 @@
       margin: 0;
 
       li {
-        list-style-type: none;
+        display:               grid;
+        grid-template-columns: 1fr 1fr;
+        list-style-type:       none;
 
-        > b {
-          display:       inline-block;
-          width:         75%;
-          padding-right: 50px;
-        }
+        > b { padding-right: 10px; }
 
         > span,
         > a {
-          display:    inline-block;
-          width:      25%;
           color:      $color-midgrey;
           font-style: normal;
           text-align: right;
