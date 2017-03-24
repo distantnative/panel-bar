@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.0.2](https://github.com/distantnative/panel-bar/releases/tag/2.0.2) (?)
+- :bug: Overlay: border on iframe in Chrome
+
 ## [2.0.1](https://github.com/distantnative/panel-bar/releases/tag/2.0.1) (2017-03-24)
 - :bug: Custom element asset route fixed
 
