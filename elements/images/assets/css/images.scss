@@ -92,7 +92,7 @@
     text-align:     center;
 
     &--image {
-      @include mosaicBackground(20px);
+      @include mosaicBackground(15px);
       background-color: $color-white;
     }
 

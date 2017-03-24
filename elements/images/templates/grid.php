@@ -1,7 +1,7 @@
 <div class="panelBar-images__grid panelBar-mDrop items--<?= $count ?>">
   <div class="grid">
     <?php foreach($items as $item) : ?>
-    <a href="<?php echo $item['url'] ?>" class="panelBar-images__item panelBar-images__item--<?php echo $item['type'] ?>" title="<?php echo $item['label'] . '.' . $item['extension'] ?>">
+    <a href="<?php echo $item['url'] ?>" class="panelBar-images__item panelBar-images__item--image" title="<?php echo $item['label'] . '.' . $item['extension'] ?>">
       <div class="panelBar-images__preview">
         <div class="panelBar-images__image" style="background-image:url('<?php echo $item['image'] ?>');"></div>
         <div class="panelBar-images__overlay"></div>

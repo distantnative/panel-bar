@@ -8,23 +8,21 @@ class FilesElement extends Element {
   //   Output
   //====================================
 
-  public function render($type = null) {
-    if($files = $this->items($this->page, $type)) {
+  public function render() {
+    if($files = $this->items()) {
       // register output and assets
       $this->component()->overlay();
       $this->asset('css', 'files.css');
 
-      $term = $type == 'image' ? 'Images' : 'Files';
-
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => $term . $this->component()->count($files),
+        'label'   => 'Files' . $this->component()->count($files),
         'icon'    => 'th-list',
         'content' => $this->tpl('list', [
           'items'   => $files,
           'all'     => [
-            'label' => $term,
+            'label' => 'Files',
             'url'   => $this->page->url('files'),
           ],
         ]),
@@ -38,13 +36,11 @@ class FilesElement extends Element {
   //   Items
   //====================================
 
-  public function items($page, $type = null) {
-    if(!$page->canShowFiles()) return false;
+  public function items() {
+    if(!$this->page->ui()->files()) return false;
 
     // get files collection
-    $files = $page->files()->sortBy('extension', 'asc', 'name', 'asc');
-    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-
+    $files = $this->page->files()->sortBy('extension', 'asc', 'name', 'asc');
     if ($files->count() == 0) return false;
 
     // prepare output

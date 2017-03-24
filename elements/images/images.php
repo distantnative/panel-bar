@@ -8,24 +8,22 @@ class ImagesElement extends Element {
   //   Output
   //====================================
 
-  public function render($type = 'image') {
-    if($images = $this->items($this->page, $type)) {
+  public function render() {
+    if($images = $this->items()) {
       // register overlay output and assets
       $this->component()->overlay();
       $this->asset('css', 'images.css');
 
-      $term = $type == 'image' ? 'Images' : 'Files';
-
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => $term . $this->component()->count($images),
-        'icon'    => $type == 'image' ? 'photo'  : 'file',
+        'label'   => 'Images' . $this->component()->count($images),
+        'icon'    => 'photo',
         'content' => $this->tpl('grid', [
           'items'   => $images,
           'count'   => count($images),
           'all'     => [
-            'label' => $term,
+            'label' => 'Images',
             'url'   => $this->page->url('files'),
           ],
         ]),
@@ -39,29 +37,23 @@ class ImagesElement extends Element {
   //   Items
   //====================================
 
-  public function items($page, $type = null) {
-    if(!$page->canShowFiles()) return false;
+  public function items() {
+    if(!$this->page->ui()->files()) return false;
 
-    // get files collection
-    $files = $page->files()->sortBy('extension', 'asc', 'name', 'asc');
-    if (!is_null($type)) $files = $files->filterBy('type', '==', $type);
-
-    if ($files->count() == 0) return false;
+    // get images collection
+    $images = $this->page->images()->sortBy('name', 'asc');
+    if ($images->count() == 0) return false;
 
     // prepare output
     $items = [];
-    foreach($files as $file) {
-      $args = [
-        'type'      => $file->type(),
-        'url'       => $file->url('edit'),
-        'label'     => $file->name(),
-        'extension' => $file->extension(),
-        'size'      => $file->niceSize(),
+    foreach($images as $image) {
+      $items[] = [
+        'image'     => $image->url(),
+        'url'       => $image->url('edit'),
+        'label'     => $image->name(),
+        'extension' => $image->extension(),
+        'size'      => $image->niceSize(),
       ];
-
-      if($file->type() == 'image') $args['image']  = $file->url();
-      else                         $args['icon']   = $file->icon();
-      array_push($items, $args);
     }
 
     return $items;
