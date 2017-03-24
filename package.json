@@ -7,5 +7,8 @@
   "version":     "2.0.0",
   "repository": {
     "url": "https://github.com/distantnative/panel-bar"
+  },
+  "bugs": {
+    "url": "https://github.com/distantnative/panel-bar/issues"
   }
 }

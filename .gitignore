@@ -4,3 +4,4 @@
 
 .sass-lint.yml
 /node_modules/
+config.codekit

@@ -76,9 +76,9 @@ gulp.task('js-elements', function() {
 // =============================================
 
 gulp.task('watch', ['css', 'css-elements', 'js', 'js-components', 'js-elements'], function() {
-  gulp.watch('assets/scss/**/*.scss', ['css']);
-  gulp.watch('elements/**/assets/css/*.scss', ['css-elements']);
-  gulp.watch('assets/js/src/panelbar.js',    ['js']);
-  gulp.watch('assets/js/src/components/*.js',    ['js-components']);
-  gulp.watch('elements/**/assets/js/*.js', ['js-elements']);
+  gulp.watch('assets/scss/**/*.scss',           ['css']);
+  gulp.watch('elements/**/assets/css/*.scss',   ['css-elements']);
+  gulp.watch('assets/js/src/panelbar.js',       ['js']);
+  gulp.watch('assets/js/src/components/*.js',   ['js-components']);
+  gulp.watch('elements/**/assets/js/*.js',      ['js-elements']);
 });
