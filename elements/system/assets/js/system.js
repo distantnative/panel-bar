@@ -2,7 +2,7 @@
 
   panelBar.elements.system = {
     dom: {
-      list: panelBar.dom.bar.querySelector(".panelBar--system .panelBar-box__content > ul"),
+      list: panelBar.dom.bar.querySelector(".panelBar--system .panelBar-box__content"),
     },
 
     init: function() {
@@ -14,7 +14,7 @@
 
     version: function(repo) {
       var url;
-      if(repo === 'panelbar') {
+      if(repo === 'panelBar') {
         url  = 'https://api.github.com/repos/distantnative/panel-bar/tags';
       } else {
         url  = 'https://api.github.com/repos/getkirby/' + repo + '/tags';
