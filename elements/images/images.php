@@ -11,7 +11,7 @@ class ImagesElement extends Element {
   public function render($type = 'image') {
     if($images = $this->items($this->page, $type)) {
       // register overlay output and assets
-      $this->withOverlay();
+      $this->component()->overlay();
       $this->asset('css', 'images.css');
 
       $term = $type == 'image' ? 'Images' : 'Files';
@@ -19,7 +19,7 @@ class ImagesElement extends Element {
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => $term . $this->withCount($images),
+        'label'   => $term . $this->component()->count($images),
         'icon'    => $type == 'image' ? 'photo'  : 'file',
         'content' => $this->tpl('grid', [
           'items'   => $images,

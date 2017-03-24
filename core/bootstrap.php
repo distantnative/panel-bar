@@ -27,8 +27,8 @@ f::load($dir . 'modules' . DS . 'assets.php');
 f::load($dir . 'modules' . DS . 'html.php');
 f::load($dir . 'modules' . DS . 'elements.php');
 f::load($dir . 'modules' . DS . 'element.php');
+f::load($dir . 'modules' . DS . 'components.php');
 f::load($dir . 'modules' . DS . 'pattern.php');
-
 
 //====================================
 //   Patterns

@@ -11,7 +11,7 @@ class FilesElement extends Element {
   public function render($type = null) {
     if($files = $this->items($this->page, $type)) {
       // register output and assets
-      $this->withOverlay();
+      $this->component()->overlay();
       $this->asset('css', 'files.css');
 
       $term = $type == 'image' ? 'Images' : 'Files';
@@ -19,7 +19,7 @@ class FilesElement extends Element {
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => $term . $this->withCount($files),
+        'label'   => $term . $this->component()->count($files),
         'icon'    => 'th-list',
         'content' => $this->tpl('list', [
           'items'   => $files,

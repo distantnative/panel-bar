@@ -12,8 +12,8 @@ class EditElement extends Element {
 
   public function render() {
     // register overlay output and assets
-    $this->withOverlay();
-    
+    $this->component()->overlay();
+
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),

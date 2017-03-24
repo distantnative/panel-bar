@@ -11,8 +11,8 @@ class UserElement extends Element {
   public function render() {
     if($user = $this->site->user()) {
       // register overlay output and assets
-      $this->withOverlay();
-      
+      $this->component()->overlay();
+
       // return pattern output
       return $this->pattern('link', [
         'id'    => $this->name(),

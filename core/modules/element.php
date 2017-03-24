@@ -22,18 +22,18 @@ class Element {
   //   Element characteristics
   //====================================
 
-  protected function dir() {
+  public function dir() {
     return dirname(__DIR__) . DS . '..' . DS . 'elements' . DS . $this->name();
   }
 
-  protected function name() {
+  public function name() {
     $namespace = 'Kirby\panelBar\\';
     $name      = str_replace($namespace, '', get_class($this));
     $name      = str_ireplace('element', '', $name);
     return strtolower($name);
   }
 
-  protected function url($file) {
+  public function url($file) {
     return $this->dir() . DS . $file;
   }
 
@@ -64,32 +64,9 @@ class Element {
   //====================================
   //   Features
   //====================================
-
-  protected function withCount($items) {
-    $this->core->assets->add('css', [
-      $this->core->assets->link('css', 'components' . DS . 'count.css'),
-    ]);
-
-    $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
-    return tpl::load($dir . DS . 'count.php', ['count' => count($items)]);
+  public function component() {
+    return new Components($this);
   }
 
-  protected function withOverlay() {
-    $path   = 'components' . DS . 'overlay';
-    $assets = $this->core->assets;
-    $html   = $this->core->html;
-
-    $assets->add('js', [
-      $assets->tag('js', 'siteURL="' . $this->site->url() . '";'),
-      $assets->link('js', $path . '.js'),
-      $assets->tag('js', 'panelBar.overlay.bind(".panelBar--' . $this->name() . ' a");'),
-    ]);
-
-    $assets->add('css', $assets->link('css', $path . '.css'));
-
-    // register output
-    $html->add('pre',      $html->load($path . DS . 'frame.php'));
-    $html->add('elements', $html->load($path . DS . 'links.php'));
-  }
 
 }
