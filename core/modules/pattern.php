@@ -17,13 +17,13 @@ class Pattern {
   }
 
   protected function tpl($pattern, $args = []) {
-    $root    = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
+    $root    = $this->core->root . DS . 'snippets' . DS . 'patterns';
     $snippet = $root . DS . $pattern . '.php';
     return tpl::load($snippet, $args);
   }
 
   protected function base($args) {
-    $dir = dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'patterns';
+    $dir = $this->core->root . DS . 'snippets' . DS . 'patterns';
     return tpl::load($dir . DS . 'base.php', a::merge([
       'class'   => null,
       'url'     => null,

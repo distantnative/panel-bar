@@ -21,7 +21,7 @@ class VisibilityElement extends Element {
       if($this->page->isVisible()) {
         return $this->pattern('link', [
           'id'     => $this->name(),
-          'label'  => 'Visible',
+          'label'  => $this->l('visible'),
           'icon'   => 'toggle-on',
           'url'    => $this->route('hide/' . $this->page->uri()),
         ]);
@@ -32,7 +32,7 @@ class VisibilityElement extends Element {
           case 'default':
             return $this->pattern('dropdown', [
               'id'    => $this->name(),
-              'label'  => 'Invisible',
+              'label'  => $this->l('invisible'),
               'icon'   => 'toggle-off',
               'items' => $this->pagelist()
             ]);
@@ -41,7 +41,7 @@ class VisibilityElement extends Element {
           default:
             return $this->pattern('link', [
               'id'     => $this->name(),
-              'label'  => 'Invisible',
+              'label'  => $this->l('invisible'),
               'icon'   => 'toggle-off',
               'url'    => $this->route('show/' . $this->page->uri()),
             ]);

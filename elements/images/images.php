@@ -17,13 +17,13 @@ class ImagesElement extends Element {
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => 'Images' . $this->component()->count($images),
+        'label'   => $this->l('label') . $this->component()->count($images),
         'icon'    => 'photo',
         'content' => $this->tpl('grid', [
           'items'   => $images,
           'count'   => count($images),
           'all'     => [
-            'label' => 'Images',
+            'label' => $this->l('label'),
             'url'   => $this->page->url('files'),
           ],
         ]),

@@ -20,7 +20,7 @@ class Html {
   }
 
   public function load($file) {
-    return tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . $file);
+    return tpl::load(dirname(dirname(__DIR__)) . DS . 'snippets' . DS . $file);
   }
 
 }

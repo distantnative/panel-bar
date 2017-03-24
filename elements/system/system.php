@@ -18,7 +18,7 @@ class SystemElement extends Element {
 
     $this->component()->overlay();
 
-    $root = dirname(dirname(dirname(dirname(__DIR__)))) . DS;
+    $root = kirby()->roots()->site() . DS;
 
     // return output
     return $this->pattern('box', [

@@ -15,7 +15,7 @@ class AddElement extends Element {
     // return pattern output
     return $this->pattern('dropdown', [
       'id'    => $this->name(),
-      'label' => 'Add',
+      'label' => $this->l('label'),
       'icon'  => 'plus',
       'items' => $this->items()
     ]);
@@ -33,7 +33,7 @@ class AddElement extends Element {
     if($this->page->ui()->pages()) {
       $items[] = [
         'url'   => $this->page->url('add'),
-        'label' => 'Child',
+        'label' => $this->l('child'),
       ];
     }
 
@@ -41,7 +41,7 @@ class AddElement extends Element {
     if($parent = $this->page->parent() and $parent->ui()->pages()) {
       $items[] = [
         'url'   => $parent->url('add'),
-        'label' => 'Sibling',
+        'label' => $this->l('sibling'),
       ];
     }
 

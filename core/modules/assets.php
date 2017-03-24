@@ -50,7 +50,7 @@ class Assets {
   //====================================
 
   protected function load($type, $asset, $mode = 'link') {
-    return tpl::load(dirname(__DIR__) . DS . '..' . DS . 'snippets' . DS . 'assets' . DS . $mode . '.php', [
+    return tpl::load(dirname(dirname(__DIR__)) . DS . 'snippets' . DS . 'assets' . DS . $mode . '.php', [
       'type'   => $type,
       'asset'  => $asset
     ]);

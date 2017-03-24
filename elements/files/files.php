@@ -17,12 +17,12 @@ class FilesElement extends Element {
       // return pattern output
       return $this->pattern('link', [
         'id'      => $this->name(),
-        'label'   => 'Files' . $this->component()->count($files),
+        'label'   => $this->l('label') . $this->component()->count($files),
         'icon'    => 'th-list',
         'content' => $this->tpl('list', [
           'items'   => $files,
           'all'     => [
-            'label' => 'Files',
+            'label' => $this->l('label'),
             'url'   => $this->page->url('files'),
           ],
         ]),

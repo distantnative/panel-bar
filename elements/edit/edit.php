@@ -17,10 +17,10 @@ class EditElement extends Element {
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),
-      'label' => 'Edit',
+      'label' => $this->l('label'),
       'icon'  => 'pencil',
       'url'   => $this->page->url('edit'),
-      'title' => c::get('plugin.panelBar.keys', true) ? 'Alt + M' : null,
+      'title' => c::get('panelBar.keys', true) ? 'Alt + M' : null,
     ]);
   }
 

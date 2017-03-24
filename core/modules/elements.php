@@ -49,7 +49,9 @@ class Elements {
   }
 
   protected function elements($elements) {
-    return is_array($elements) ? $elements : c::get('plugin.panelBar.elements', static::$defaults);
+    $config   = c::get('panelBar.elements', static::$defaults);
+    $elements = is_array($elements) ? $elements : $config;
+    return $elements;
   }
 
 }

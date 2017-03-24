@@ -15,16 +15,20 @@ class Core {
   public $position = 'top';
   public $visible  = true;
 
+  public $root;
+
   public function __construct($args = []) {
+    $this->root  = dirname(__DIR__);
     $this->page  = page();
     $this->panel = require('lib/panel/integrate.php');
 
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
-    $this->position = c::get('plugin.panelBar.position', 'top');
+    $this->position = c::get('panelBar.position', 'top');
 
     $this->html     = new Html;
     $this->assets   = new Assets;
     $this->elements = new Elements($this, $args);
+
   }
 
 
@@ -47,7 +51,7 @@ class Core {
   }
 
   public function controls() {
-    return tpl::load(dirname(__DIR__) . DS .  'snippets' . DS . 'components' . DS . 'controls.php');
+    return tpl::load($this->root . DS .  'snippets' . DS . 'components' . DS . 'controls.php');
   }
 
   public function classes() {
