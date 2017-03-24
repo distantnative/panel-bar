@@ -1,6 +1,7 @@
 # Changelog
 
-## Version 2.0.0
+## [2.0.0](https://github.com/distantnative/panel-bar/releases/tag/2.0.0) (2017-03-24)
+- Version 2 is here after years! :sparkle:
 - Complete rewrite
 - Feature: Encapsulated elements, custom element plugins and so much more
 - Feature: Own registry for panelBar elements (so other plugins can provide their elements for the panelBar)
