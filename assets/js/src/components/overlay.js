@@ -96,7 +96,7 @@
     },
 
     bind : function(element, modal) {
-      var links = panelBar.dom.bar.querySelectorAll(element);
+      var links = panelBar.dom.bar.querySelectorAll(element + ':not(.external)');
       var i;
       for (i = 0; i < links.length; i++) {
         links[i].addEventListener('click', function(e) {

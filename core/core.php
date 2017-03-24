@@ -10,12 +10,11 @@ class Core {
 
   public static $version = '2.0.0';
 
+  public    $root;
   protected $elements;
 
   public $position = 'top';
   public $visible  = true;
-
-  public $root;
 
   public function __construct($args = []) {
     $this->root  = dirname(__DIR__);
@@ -28,14 +27,11 @@ class Core {
     $this->html     = new Html;
     $this->assets   = new Assets;
     $this->elements = new Elements($this, $args);
-
   }
-
 
   //====================================
   //   Output
   //====================================
-
   public function elements() {
     return $this->html->render('elements');
   }
@@ -60,14 +56,10 @@ class Core {
     return implode(' ', $classes);
   }
 
-
   //====================================
-  //   Use checks
+  //   Checks
   //====================================
-
   public function isShown() {
     return $user = site()->user() and $user->hasPanelAccess();
   }
-
-
 }

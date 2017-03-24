@@ -13,7 +13,7 @@ class Assets {
 
   public function __construct() {
     $this->add('css', $this->link('css', 'panelbar.css'));
-    $this->add('js',  $this->link('js', 'panelbar.js'));
+    $this->add('js',  $this->link('js',  'panelbar.js'));
 
     $this->rtl();
   }
@@ -49,15 +49,16 @@ class Assets {
   //   Load asset
   //====================================
 
-  protected function load($type, $asset, $mode = 'link') {
-    return tpl::load(dirname(dirname(__DIR__)) . DS . 'snippets' . DS . 'assets' . DS . $mode . '.php', [
+  protected function load($type, $asset, $mode) {
+    $root = dirname(dirname(__DIR__)) . DS . 'snippets' . DS . 'assets' . DS;
+    return tpl::load($root . $mode . '.php', [
       'type'   => $type,
       'asset'  => $asset
     ]);
   }
 
   public function link($type, $asset) {
-    return $this->load($type, $asset);
+    return $this->load($type, $asset, 'link');
   }
 
   public function tag($type, $asset) {

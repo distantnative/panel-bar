@@ -26,13 +26,8 @@ class Element {
 
 
   //====================================
-  //   Element characteristics
+  //   Characteristics
   //====================================
-
-  public function dir() {
-    return $this->root ?: $this->root = $this->core->root . DS . 'elements' . DS . $this->name();
-  }
-
   public function name() {
     if($this->name) return $this->name;
 
@@ -42,16 +37,26 @@ class Element {
     return $this->name = strtolower($name);
   }
 
+  public function dir() {
+    return $this->root ?: $this->root = $this->core->root . DS . 'elements' . DS . $this->name();
+  }
+
   public function url($file) {
     return $this->dir() . DS . $file;
   }
 
+  //====================================
+  //   Assets
+  //====================================
   protected function asset($type, $asset) {
     $url  = 'elements/' . $this->name() . '/' . $asset;
     $link = $this->core->assets->link($type, $url);
     $this->core->assets->add($type, $link);
   }
 
+  //====================================
+  //   Templates & Patterns
+  //====================================
   protected function tpl($file, $args = []) {
     return $this->load('templates' . DS . $file . '.php', $args);
   }
@@ -66,10 +71,23 @@ class Element {
     return $class->render($args);
   }
 
+  //====================================
+  //   Components
+  //====================================
+  public function component() {
+    return new Components($this);
+  }
+
+  //====================================
+  //   Routes
+  //====================================
   protected function route($route, $parameters= []) {
     return Route::url($this->name(), $route, $parameters);
   }
 
+  //====================================
+  //   Translations
+  //====================================
   protected function translations() {
     $dir = $this->dir() . DS . 'translations';
     if(f::exists($dir)) {
@@ -83,13 +101,5 @@ class Element {
   protected function l($key) {
     return l::get('panelBar.element.' . $this->name() . '.' . $key);
   }
-
-  //====================================
-  //   Features
-  //====================================
-  public function component() {
-    return new Components($this);
-  }
-
 
 }

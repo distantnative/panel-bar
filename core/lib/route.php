@@ -19,7 +19,8 @@ class Route {
   }
 
   public static function url($element, $route, $parameters= []) {
-    $url = kirby()->urls()->index() . '/' . self::$prefix . $element . '/' . $route;
+    $base = kirby()->urls()->index() . '/' . self::$prefix;
+    $url  = $base . $element . '/' . $route;
 
     if(!empty($parameters)) {
       $url .= '?';

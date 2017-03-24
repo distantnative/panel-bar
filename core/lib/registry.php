@@ -11,7 +11,6 @@ class panelBar extends Entry {
 
 	public function set($name, $path) {
 		if(is_dir($path)) {
-			// Register the new module
 			static::$elements[$name] = $path;
 			return $path;
 
@@ -19,17 +18,11 @@ class panelBar extends Entry {
 			throw new Exception('The panelBar element does not exist at the specified path: ' . $path);
 		}
 	}
-
-
+  
 	public function get($name = null) {
-		if(is_null($name)) {
-			return static::$elements;
-		}
-
-		// Get from registry
+		if(is_null($name))                  return static::$elements;
 		if(isset(static::$elements[$name])) return static::$elements[$name];
 
-		// No match
 		return false;
 	}
 }

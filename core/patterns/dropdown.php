@@ -3,7 +3,6 @@
 namespace Kirby\panelBar;
 
 use A;
-use Tpl;
 
 class DropdownPattern extends Pattern {
 
