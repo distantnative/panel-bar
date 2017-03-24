@@ -37,11 +37,17 @@ foreach(dir::read($dir . 'patterns') as $file) {
   f::load($dir . 'patterns' . DS . $file);
 }
 
+//====================================
+//   Translations
+//====================================
+foreach(['en', site()->locale()] as $lang) {
+  $file = $root . 'translations' . DS . $lang . '.php';
+  f::load($file);
+}
 
 //====================================
 //   Elements
 //====================================
-
 foreach(dir::read($root . 'elements') as $file) {
   $kirby->set('panelBar', $file, $root . 'elements' . DS . $file);
 }
