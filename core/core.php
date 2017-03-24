@@ -8,6 +8,8 @@ use Tpl;
 
 class Core {
 
+  public static $version = '2.0.0';
+
   protected $elements;
 
   public $position = 'top';

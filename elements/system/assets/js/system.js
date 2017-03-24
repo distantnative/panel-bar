@@ -9,10 +9,16 @@
       _.version('kirby');
       _.version('panel');
       _.version('toolkit');
+      _.version('panelbar');
     },
 
     version: function(repo) {
-      var url  = 'https://api.github.com/repos/getkirby/' + repo + '/tags';
+      var url;
+      if(repo === 'panelbar') {
+        url  = 'https://api.github.com/repos/distantnative/panel-bar/tags';
+      } else {
+        url  = 'https://api.github.com/repos/getkirby/' + repo + '/tags';
+      }
       var data = _.api(repo, url);
     },
 
