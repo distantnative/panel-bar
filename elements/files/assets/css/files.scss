@@ -1,0 +1,114 @@
+
+//====================================
+//   Files element
+//====================================
+
+@import '../../../../assets/scss/util/colors';
+@import '../../../../assets/scss/util/mixins';
+
+.panelBar-files {
+
+  &__list {
+    text-align:   center;
+
+    @media (min-width: 551px) { max-width: 340px; }
+
+
+    > a { color: $color-black; }
+  }
+
+  &__item {
+    display:    block;
+    padding:    .35em .5em;
+
+    .panelBar--top    & { border-bottom: 1px solid $color-almostwhite; }
+    .panelBar--bottom & { border-top:    1px solid $color-almostwhite; }
+  }
+
+  &__item       > span { display: inline-block; }
+  &__item:hover > span { color:   $color-brand-green; }
+
+  &__preview {
+    display:      inline-block;
+    width:        32px;
+    height:       20px;
+    margin-right: 3px;
+
+    background-color: $color-white;
+    text-align:       initial;
+
+    .panelBar-files--image & { @include mosaicBackground(10px); }
+  }
+
+  &__image {
+    @include backgroundContainCenter;
+    width:   100%;
+    height:  100%;
+  }
+
+  &__icon {
+    width:        100%;
+    padding-top:  2px;
+    color:        $color-midlightgrey;
+    text-align:   center;
+
+    .panelBar-files__item:hover & { color: $color-brand-green; }
+  }
+
+  &__overlay {
+    display:          none;
+    width:            100%;
+    height:           100%;
+    background-color: $color-brand-green;
+    opacity:          .5;
+
+    .panelBar-files--image:hover & { display: block; }
+  }
+
+  &__label {
+    @include        textEllipsis;
+    width:          160px;
+    margin-right:   3px;
+    padding-top:    2px;
+
+    font-size:      .95em;
+    line-height:    1.2;
+    text-align:     initial;
+    vertical-align: top;
+
+    @media (max-width: 550px) { width: calc(95vw - 150px); }
+  }
+
+  &__info {
+    width:          80px;
+    color:          $color-midgrey;
+    font-size:      .8em;
+    text-align:     right;
+
+    vertical-align: 10%;
+    .panelBar-files--image & { vertical-align: text-top; }
+  }
+
+  &__size:before { content: ' / '; }
+
+  &__more { @include moreFiles(.35em .5em .5em); }
+}
+
+
+//====================================
+//   Files element - RTL
+//====================================
+
+body.rtl {
+  .panelBar-files {
+    &__preview,
+    &__label {
+      margin-right:  0;
+      margin-left:   3px;
+    }
+
+    &__info {
+      text-align: left;
+    }
+  }
+}

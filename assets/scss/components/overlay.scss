@@ -1,0 +1,49 @@
+
+
+@import '../util/colors';
+
+//====================================
+//   Overlay
+//====================================
+
+.panelBar-overlay {
+  display:      none;
+  position:     fixed;
+  top:          45px;
+  left:         0;
+  width:        100%;
+  height:       100%;
+  background:   $color-almostwhite;
+  overflow:     hidden;
+
+
+  > iframe {
+    position: absolute;
+    top:      -48px;
+    left:     0;
+    width:    100%;
+    height:   100%;
+  }
+
+  > span {
+    position:       absolute;
+    top:            40%;
+    left:           50%;
+    max-width:      350px;
+    transform:      translate(-50%, -50%);
+
+    font-size:      .95em;
+    line-height:    1.4;
+    text-align:     center;
+    text-transform: uppercase;
+  }
+}
+
+//====================================
+//   Overlay links
+//====================================
+
+.panelBar-overlay__links {
+  display:  none;
+  cursor:   pointer;
+}

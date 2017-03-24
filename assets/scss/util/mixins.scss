@@ -1,0 +1,87 @@
+
+//====================================
+//   Mixin: absoluteFill
+//====================================
+
+@mixin dropFullwidth {
+  position:   fixed;
+  width:      95vw;
+
+  .panelBar--top    & { top:    45px; }
+  .panelBar--bottom & { bottom: 45px; }
+}
+
+
+//====================================
+//   Mixin: absoluteFill
+//====================================
+
+@mixin absoluteFill {
+  position:   absolute;
+  top:        0;
+  right:      0;
+  bottom:     0;
+  left:       0;
+}
+
+
+//====================================
+//   Mixin: moreFiles
+//====================================
+
+@mixin moreFiles($padding) {
+  display:        block;
+  padding:        $padding;
+
+  color:          $color-black !important;
+  font-size:      .95em;
+  text-align:     center;
+  text-transform: uppercase;
+
+  &:hover { color: $color-midgrey !important; }
+}
+
+
+//====================================
+//   Mixin: textEllipsis
+//====================================
+
+@mixin textEllipsis {
+  text-overflow:  ellipsis;
+  overflow:       hidden;
+}
+
+
+//====================================
+//   Mixin: backgroundContainCenter
+//====================================
+
+@mixin backgroundContainCenter {
+  background-repeat:    no-repeat;
+  background-position:  50% 50%;
+  background-size:      contain;
+}
+
+
+//====================================
+//   Mixin: mosaicBackground
+//====================================
+
+@mixin mosaicBackground($size) {
+  background-image:     linear-gradient(45deg, $color-transparent-mosaic 25%, transparent 25%, transparent 75%, $color-transparent-mosaic 75%, $color-transparent-mosaic), linear-gradient(45deg, $color-transparent-mosaic 25%, transparent 25%, transparent 75%, $color-transparent-mosaic 75%, $color-transparent-mosaic);
+  background-position:  0 0, ($size / 2) ($size / 2);
+  background-size:      $size $size;
+}
+
+
+//====================================
+//   Mixin: Clearfix
+//====================================
+
+@mixin clearfix {
+  &::after {
+    display:  table;
+    clear:    both;
+    content:  '';
+  }
+}

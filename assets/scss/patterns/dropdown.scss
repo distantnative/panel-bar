@@ -1,0 +1,24 @@
+
+//====================================
+//   Dropdown elements
+//====================================
+
+@import '../util/colors';
+@import '../util/mixins';
+
+.panelBar-drop {
+  &__list > a { color: $color-black; }
+
+  &__list > span {cursor: default}
+
+  &__item {
+    @include    textEllipsis;
+    display:    block;
+    padding:    .75em 1.5em;
+    color:      $color-black;
+    text-align: center;
+
+    .panelBar--top    & { border-bottom: 1px solid $color-almostwhite; }
+    .panelBar--bottom & { border-top:    1px solid $color-almostwhite; }
+  }
+}

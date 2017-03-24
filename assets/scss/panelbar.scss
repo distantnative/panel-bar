@@ -1,55 +1,25 @@
 
-/*------------------------------------*\
-   panelBar
-\*------------------------------------*/
 
-@import 'helpers/mixins';
+// =============================================
+//  Util
+// =============================================
 
-.panelBar {
-  position: fixed;
-  left:     0;
-  right:    0;
-  height:   48px;
-  z-index:  2147483000;
-
-  line-height:   1;
-  padding-right: 68px;
-
-  font-family: 'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
-  font-size:   16px;
-  font-weight: normal;
-
-  background-color: #000;
-  box-shadow:       rgba(0,0,0,0.075) 0 0px 4px;
-
-  &--hidden {
-    background-color: transparent;
-    box-shadow:       none;
-  }
-
-  &--top    { top:    0; }
-  &--bottom { bottom: 0; }
+@import 'util/colors';
+@import 'util/mixins';
 
 
-  // Elements bar
-  &__bar {
-    white-space: nowrap;
-    @include     clearfix;
+// =============================================
+//  Fonts
+// =============================================
 
-    .panelBar--hidden & { display: none; }
+@import 'fonts/fonts';
 
-    a {
-      color:           #fff;
-      transition:      none;
-      text-decoration: none;
 
-      &:hover { color: #999; }
-    }
-  }
-}
+// =============================================
+//  Base
+// =============================================
 
-@import 'elements/base';
-@import 'base/controls';
+@import 'base/main';
+@import 'base/element';
 @import 'base/responsive';
-@import 'base/fonts';
-
+@import 'base/controls';

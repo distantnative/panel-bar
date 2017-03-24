@@ -1,0 +1,39 @@
+
+//====================================
+//   Element base
+//====================================
+
+.panelBar-element {
+  display:      inline-block;
+  float:        left;
+  border-right: 1px solid $color-middarkgrey;
+  color:        $color-white !important;
+
+  &--right {
+    float: right;
+
+    &:last-of-type {
+      border-left: 1px solid $color-middarkgrey;
+    }
+  }
+
+
+  > a,
+  > span {
+    display: inline-block;
+    padding: 1em;
+
+    > i + span {
+      margin-left: .5em;
+    }
+  }
+
+  &--overlap {
+    position:  fixed !important;
+
+    &-left  { left:  0; }
+    &-right { right: 0; }
+
+    .panelBar--bottom & { bottom: 45px; }
+  }
+}
