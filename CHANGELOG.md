@@ -1,10 +1,14 @@
 # Changelog
 
 ## [2.1.0](https://github.com/distantnative/panel-bar/releases/tag/2.1.0) (?)
-- :sparkles: New element definition (only custom element plugins)
+- :sparkles: Panel widget to set the active panelBar elements
 - :sparkles: Config file `site/config/panelBar.yml`
-- :sparkles: Panel widget to set active elements
+- :sparkles: Modal component to be used by elements
+- :sparkles: Content component for easily styled text
+- :sparkles: Login icon when user is not signed-in
+- :rotating_light: Custom elements only through Element classes
 - :bug: Overlay: border on iframe in Chrome
+- :books: Documentation offers more direct links to helpful code examples
 
 ## [2.0.1](https://github.com/distantnative/panel-bar/releases/tag/2.0.1) (2017-03-24)
 - :bug: Custom element asset route fixed
