@@ -7,8 +7,9 @@ use Tpl;
 
 class Pattern {
 
-  public function __construct($core) {
-    $this->core = $core;
+  public function __construct($element) {
+    $this->core     = $element->core;
+    $this->element  = $element;
   }
 
   protected function asset($type, $asset) {

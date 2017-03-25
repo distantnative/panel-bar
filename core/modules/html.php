@@ -19,9 +19,9 @@ class Html {
     return implode('', $this->{$position});
   }
 
-  public function load($file) {
+  public function load($file, $args = []) {
     $root = dirname(dirname(__DIR__)) . DS . 'snippets';
-    return tpl::load($root . DS . $file);
+    return tpl::load($root . DS . $file, $args);
   }
 
 }
