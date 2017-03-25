@@ -11,8 +11,10 @@ return [
   ],
   'html' => function() {
    return tpl::load(__DIR__ . DS . 'template' . DS . 'list.php', [
-     'elements' => \Kirby\panelBar\Elements::all(),
-     'active'   => \Kirby\panelBar\Elements::active()
+     'el'     => \Kirby\panelBar\Elements::all(),
+     'active' => \Kirby\panelBar\Elements::active(),
+     'url'    => kirby()->urls()->index() . '/api/plugin/panel-bar-widget/set',
+     'assets' => __DIR__ . DS . 'assets' . DS
    ]);
   }
 ];

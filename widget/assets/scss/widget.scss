@@ -1,4 +1,6 @@
 
+$panel-grey: #ddd;
+
 .panelBar-widget {
   &__list {
     .item {
@@ -8,12 +10,10 @@
       cursor:     grab;
 
       &:not(:last-child) {
-        border-bottom: 1px dotted #ddd;
+        border-bottom: 1px dotted $panel-grey;
       }
 
-      input[type="checkbox"] {
-        margin-right: .75em;
-      }
+      input { margin-right: .75em; }
 
       .handles {
         position:   absolute;
@@ -21,7 +21,7 @@
         right:      0;
         width:      15px;
         border-top: 2px solid currentColor;
-        color:      #ddd;
+        color:      $panel-grey;
 
         &::before {
           position:      absolute;

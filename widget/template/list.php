@@ -1,22 +1,16 @@
-<ul class="panelBar-widget__list" id="panelBar-widget-list">
-  <?php foreach($active as $element) : ?>
+<ul class="panelBar-widget__list">
+  <?php foreach(a::merge($active, array_diff($el, $active)) as $element) : ?>
     <?= tpl::load(__DIR__ . DS . 'entry.php', [
       'element' => $element,
-      'checked' => true
-    ]) ?>
-  <?php endforeach ?>
-  <?php foreach(array_diff($elements, $active) as $element) : ?>
-    <?= tpl::load(__DIR__ . DS . 'entry.php', [
-      'element' => $element,
-      'checked' => false
+      'checked' => in_array($element, $active)
     ]) ?>
   <?php endforeach ?>
 </ul>
 <style>
-  <?= tpl::load(dirname(__DIR__) . DS . 'assets' . DS . 'css' . DS .  'widget.css') ?>
+  <?= tpl::load($assets . 'css' . DS .  'widget.css') ?>
 </style>
 <script>
-  var setURL = "<?= kirby()->urls()->index() ?>/api/plugin/panel-bar-widget/set";
-  <?= tpl::load(dirname(__DIR__) . DS . 'assets' . DS . 'js' . DS .  'Sortable.min.js') ?>
-  <?= tpl::load(dirname(__DIR__) . DS . 'assets' . DS . 'js' . DS .  'widget.min.js') ?>
+  var setURL = "<?= $url ?>";
+  <?= tpl::load($assets . 'js' . DS .  'Sortable.min.js') ?>
+  <?= tpl::load($assets . 'js' . DS .  'widget.min.js') ?>
 </script>
