@@ -35,7 +35,7 @@ class Elements {
   }
 
   protected function add($element) {
-    $class   = 'Kirby\panelBar\\' . ucfirst($element) . 'Element';
+    $class   = 'Kirby\panelBar\\' . ucfirst(str_replace('-', '', $element)) . 'Element';
 
     if($path = kirby()->get('panelBar', $element)) {
       f::load($path . DS . $element . '.php');

@@ -8,6 +8,7 @@
 - :sparkles: Login icon when user is not signed-in
 - :balloon: Added `about` element as sample for modal and content component
 - :rotating_light: Custom elements only through Element classes
+- :bug: Handle element names with `-`(now stripping `-`)
 - :bug: Overlay: border on iframe in Chrome
 - :bug: Images element: responsive grid sizes
 - :arrow_up: Updated FontAwesome to version 4.7
