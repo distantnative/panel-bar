@@ -3,7 +3,6 @@
 // =============================================
 //  Element assets
 // =============================================
-
 kirby()->set('route', [
   'pattern' => 'assets/plugins/panel-bar/(:any)/elements/(:any)/(:all)',
   'action'  => function($type, $element, $asset) {
@@ -26,3 +25,22 @@ foreach(dir::read($root . 'elements') as $element) {
     new Kirby\panelBar\Route($element, $route);
   }
 }
+
+// =============================================
+//  Widget routes
+// =============================================
+kirby()->set('route', [
+  'pattern' => 'api/plugin/panel-bar-widget/set',
+  'action'  => function() {
+    return \Kirby\panelBar\Elements::set(get('elements'));
+  },
+  'method' => 'POST'
+]);
+
+kirby()->set('route', [
+  'pattern' => 'api/plugin/panel-bar-widget/reset',
+  'action'  => function() {
+    return \Kirby\panelBar\Elements::clear();
+  },
+  'method' => 'POST'
+]);

@@ -48,6 +48,6 @@ foreach(['en', site()->locale()] as $lang) {
 //====================================
 //   Elements
 //====================================
-foreach(Elements::all() as $file) {
+foreach(dir::read(dirname(__DIR__) . DS . 'elements') as $file) {
   $kirby->set('panelBar', $file, $root . 'elements' . DS . $file);
 }
