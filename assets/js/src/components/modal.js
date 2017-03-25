@@ -4,14 +4,14 @@
   //  Helpers
   // =============================================
 
-  var wrapper = document.querySelector(".panelBar-modal");
-  var overlay = document.querySelector(".panelBar-modal__overlay");
+  var wrapper = document.querySelector('.panelBar-modal');
+  var overlay = document.querySelector('.panelBar-modal__overlay');
 
   panelBar.modal = {
     dom : {
       wrapper: wrapper,
       overlay: overlay,
-      close:   wrapper.querySelector(".panelBar-modal__close")
+      close:   wrapper.querySelector('.panelBar-modal__close')
     },
 
     show: function(modal) {
@@ -23,6 +23,7 @@
       var links = panelBar.dom.bar.querySelectorAll(element);
       var i;
       for (i = 0; i < links.length; i++) {
+        if(links[i].getAttribute('href') === '#modal')
         links[i].addEventListener('click', function(e) {
           e.preventDefault();
           _.close();
