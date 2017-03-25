@@ -72,24 +72,24 @@ if(!site()->user()) c::set('cache', true);
 ### Standard Elements <a id="StandardElements"></a>
 The panelBar provides several standard elements:  
 
-Name          | Description
-------------- | ---------------------------------------------------------
-`panel`       | Open the Kirby panel
-`index`       | List of all pages (index)
-`add`         | Add page as sibling or child
-`edit`        | Edit current page
-`visibility`  | Change the visibility of the current page (hide/publish)
-`files`       | List of files of the current page
-`images`      | Viewer for images of the current page
-`loadtime`    | Info label for loading time
-`languages`   | Dropdown to switch between site languages
-`system`      | Info box incl. version checks for kirby, toolkit and panel
-`user`        | Current user
-`logout`      | Sign out current user
+Name                                | Description
+----------------------------------- | ----------------------------------------
+[`add`](elements/add)               | Add page as sibling or child
+[`edit`](elements/edit)             | Edit current page
+[`files`](elements/files)           | List of files of the current page
+[`images`](elements/images)         | Viewer for images of the current page
+[`index`](elements/index)           | List of all pages (index)
+[`languages`](elements/languages)   | Dropdown to switch between site languages
+[`loadtime`](elements/loadtime)     | Info label for loading time
+[`logout`](elements/logout)         | Sign out current user
+[`panel`](elements/panel)           | Open the Kirby panel
+[`system`](elements/system)         | Info box incl. version checks for kirby, toolkit and panel
+[`user`](elements/user)             | Current user
+[`visibility`](elements/visibility) | Change the visibility of the current page (hide/publish)
 
 
 ### Default Set of Elements <a id="DefaultSet"></a>
-The pre-defined default set of elements consists of `panel`, `add`, `edit`, `visibility`, `files`, `user` and `logout`. You can define your own [custom set of elements](#CustomSet).
+The pre-defined default set of elements consists of [`panel`](elements/panel)  , [`add`](elements/add)  , [`edit`](elements/edit)  , [`visibility`](elements/visibility)  , [`files`](elements/files)  , [`user`](elements/user)   and [`logout`](elements/logout)  . You can define your own [custom set of elements](#CustomSet).
 
 ![Default set of Elements](https://nhoffmann.com/remote/github/panel-bar/standard-elements.png)
 
@@ -161,7 +161,7 @@ class CustomElement extends Element {
 }
 ```
 
-Class naming is crucial: it consists of the name of the element (like the folder and file) followed by `Element`, e.g. the `edit` element is defined as the `EditElement` class.
+Class naming is crucial: it consists of the name of the element (like the folder and file) followed by `Element`, e.g. the [`edit`](elements/edit) element is defined as the `EditElement` class.
 
 For examples take a look at [`EditElement`](elements/edit) or [`LoadtimeElement`](elements/loadtime).
 
@@ -189,11 +189,11 @@ return $this->pattern($type, [
 
 All of them share some arguments (see above), but the specific types also have some specific arguments based on their nature:
 
-**`link`**  
-Simple label or link button (e.g. the `user` element). No additional arguments.
+**[`link`](core/patterns/link.php)**  
+Simple label or link button (e.g. the [`user`](elements/user) element). No additional arguments.
 
-**`dropdown`**  
-Simple dropdown list (e.g. the `add` element). Additional argument `icons` with an array of the list entries:
+**[`dropdown`](core/patterns/dropdown.php)**  
+Simple dropdown list (e.g. the [`add`](elements/add) element). Additional argument `icons` with an array of the list entries:
 
 ```php
 return $this->pattern('dropdown', [
@@ -214,8 +214,8 @@ return $this->pattern('dropdown', [
 ]);
 ```
 
-**`box`**  
-Simple box for HTML content. Offers pre-defined template for information (as used by the `system` element). Important is the additional `box` argument:
+**[`box`](core/patterns/box.php)**  
+Simple box for HTML content. Offers pre-defined template for information (as used by the [`system`](elements/system) element). Important is the additional `box` argument:
 
 ```php
 return $this->pattern('box', [
