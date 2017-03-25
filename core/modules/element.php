@@ -19,7 +19,7 @@ class Element {
     $this->panel    = $core->panel;
 
     $this->site     = $this->panel->site();
-    $this->page     = $this->panel->page($this->core->page->id());
+    $this->page     = $this->panel->page($this->core->page);
 
     $this->translations();
   }

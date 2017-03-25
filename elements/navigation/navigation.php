@@ -16,7 +16,7 @@ class NavigationElement extends Element {
       // return pattern output
       return $this->pattern('dropdown', [
         'id'    => $this->name(),
-        'label' => 'Nav',
+        'label' => 'Navigation',
         'icon'  => 'unsorted',
         'items' => $this->items()
       ]);
@@ -29,7 +29,7 @@ class NavigationElement extends Element {
   //====================================
 
   protected function items() {
-    $page  = page($this->page->id());
+    $page  = page($this->page);
     $items = [];
 
     if($parent = $page->parent() and !$parent->is(site())) {
@@ -64,7 +64,7 @@ class NavigationElement extends Element {
         'class' => 'child'
       ];
     }
-    
+
     return $items;
   }
 
