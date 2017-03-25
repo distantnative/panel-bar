@@ -10,6 +10,7 @@
 - :rotating_light: Custom elements only through Element classes
 - :bug: Overlay: border on iframe in Chrome
 - :bug: Images element: responsive grid sizes
+- :arrow_up: Updated FontAwesome to version 4.7
 - :books: Documentation offers more direct links to helpful code examples
 
 ## [2.0.1](https://github.com/distantnative/panel-bar/releases/tag/2.0.1) (2017-03-24)
