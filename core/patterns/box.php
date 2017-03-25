@@ -16,7 +16,7 @@ class BoxPattern extends Pattern {
     return $this->base(a::merge([
       'class'   => 'panelBar-box panelBar-mDropParent',
       'content' => $this->tpl('box', [
-        'box' => $args['box'],
+        'box' => $this->element->component()->content($args['box']),
       ])
     ], $args));
   }
