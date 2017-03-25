@@ -27,26 +27,25 @@ class VisibilityElement extends Element {
         ]);
 
       } else {
-        switch ($this->page->parent()->blueprint()->pages()->num()->mode) {
-          case 'num':
-          case 'default':
-            return $this->pattern('dropdown', [
-              'id'    => $this->name(),
-              'label'  => $this->l('invisible'),
-              'icon'   => 'toggle-off',
-              'items' => $this->pagelist()
-            ]);
-            break;
+        $mode = $this->page->parent()->blueprint()->pages()->num()->mode;
 
-          default:
-            return $this->pattern('link', [
-              'id'     => $this->name(),
-              'label'  => $this->l('invisible'),
-              'icon'   => 'toggle-off',
-              'url'    => $this->route('show/' . $this->page->uri()),
-            ]);
-            break;
+        if($this->page->siblings(false)->count() > 0 and ($mode == 'num' or $mode == 'default')) {
+          return $this->pattern('dropdown', [
+            'id'    => $this->name(),
+            'label'  => $this->l('invisible'),
+            'icon'   => 'toggle-off',
+            'items' => $this->pagelist()
+          ]);
+        } else {
+          return $this->pattern('link', [
+            'id'     => $this->name(),
+            'label'  => $this->l('invisible'),
+            'icon'   => 'toggle-off',
+            'url'    => $this->route('show/' . $this->page->uri()),
+          ]);
         }
+
+
       }
     }
   }
