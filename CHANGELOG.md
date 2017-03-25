@@ -9,6 +9,7 @@
 - :sparkles: Login icon when user is not signed-in
 - :balloon: Dropdown pattern: additional CSS classes per dropdown item
 - :balloon: Added `about` element as sample for modal and content component
+- :balloon: Panel integration: respect custom site paths
 - :rotating_light: Custom elements only through Element classes
 - :bug: Handle element names with `-`(now stripping `-`)
 - :bug: Visibility element: Bug when hiding only child
