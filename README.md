@@ -19,15 +19,14 @@ panelBar includes a toolbar on top of your site which gives you direct access to
 3.  Elements
     1. [Standard Elements](#StandardElements)
     2. [Default Set of Elements](#DefaulSet)
-4.  Customize
-    1.  [Custom Set of Elements](#CustomSet)
-    4.  [Custom Elements](#CustomElements)
-        1. [Element Patterns](#Patterns)
-        2. [Custom CSS/JS](#CustomCSSJS)
-        3. [Routes](#Routes)
-        4. [Translations](#Translations)
-        5. [Using Components](#Components)
-    5. [CSS & JS Guide](GUIDE.md)
+    3.  [Custom Set of Elements](#CustomSet)
+4.  [Custom Elements](#CustomElements)
+    1. [Element Patterns](#Patterns)
+    2. [Custom CSS/JS](#CustomCSSJS)
+    3. [Routes](#Routes)
+    4. [Translations](#Translations)
+    5. [Using Components](#Components)
+    6. [CSS & JS Guide](GUIDE.md)
 5.  Options
     1. [Default Position](#OptionPosition)
     2. [Login Icon](#OptionLogin)
