@@ -5,8 +5,8 @@
   .panelBar-login {
     display:   block;
     position:  fixed;
-    top:       15px;
-    right:     15px;
+    bottom:    12px;
+    right:     17px;
     font-size: 15px;
     border:    none;
     color:     #000;
