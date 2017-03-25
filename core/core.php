@@ -8,7 +8,7 @@ use Tpl;
 
 class Core {
 
-  public static $version = '2.0.0';
+  public static $version = '2.1.0';
 
   public    $root;
   protected $elements;
