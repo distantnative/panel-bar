@@ -50,6 +50,12 @@ class Core {
     return tpl::load($this->root . DS .  'snippets' . DS . 'components' . DS . 'controls.php');
   }
 
+  public function login() {
+    if(c::get('panelBar.login', true)) {
+      return tpl::load($this->root . DS .  'snippets' . DS . 'components' . DS . 'login.php');
+    }
+  }
+
   public function classes() {
     $classes = ['panelBar--' . $this->position];
     if(!$this->visible) $classes[] = 'panelBar--hidden';

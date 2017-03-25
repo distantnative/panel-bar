@@ -10,5 +10,6 @@
   </div>
   <?= $panelBar->controls() ?>
   <?= $panelBar->post() ?>
-
+<?php else : ?>
+  <?= $panelBar->login() ?>
 <?php endif ?>

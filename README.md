@@ -30,7 +30,8 @@ panelBar includes a toolbar on top of your site which gives you direct access to
     5. [CSS & JS Guide](GUIDE.md)
 5.  Options
     1. [Default Position](#OptionPosition)
-    2. [Keyboard Shortcuts](#OptionKeyboard)
+    2. [Login Icon](#OptionLogin)
+    3. [Keyboard Shortcuts](#OptionKeyboard)
 6.  [Known Problems](#Problems)
 7.  [Help & Improve](#Help)
 8.  [Changelog](CHANGELOG.md)
@@ -317,6 +318,12 @@ All options refer to settings in the `site/config/config.php`.
 To change the default position of the panelBar to bottom include:
 ```php
 c::set('panelBar.position', 'bottom');
+```
+
+### Login Icon <a id="OptionLogin"></a>
+If the visitor is not logged-in to the panel, instead of the panelBar a sign-in icon is shown on the top-right of the page. To deactivate that icon include:
+```php
+c::set('panelBar.login', false);
 ```
 
 ### Keyboard Shortcuts <a id="OptionKeyboard"></a>
