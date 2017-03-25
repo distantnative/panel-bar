@@ -1,0 +1,15 @@
+
+
+.panelBar-reset {
+  font-family:      'Source Sans Pro', 'Apple LiGothic Medium', 'Microsoft JhengHei UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size:        15px;
+  font-weight:      normal;
+  line-height:      1;
+
+  a { border: none; }
+
+  ::selection {
+    background: highlight;
+    color:      highlighttext;
+  }
+}
