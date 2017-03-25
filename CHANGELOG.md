@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.0](https://github.com/distantnative/panel-bar/releases/tag/2.1.0) (?)
+- :sparkles: New element definition (only custom element plugins)
+- :sparkles: Config file `site/config/panelBar.yml`
+- :sparkles: Panel widget to set active elements
+
 ## [2.0.2](https://github.com/distantnative/panel-bar/releases/tag/2.0.2) (?)
 - :bug: Overlay: border on iframe in Chrome
 
