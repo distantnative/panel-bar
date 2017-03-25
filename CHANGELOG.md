@@ -6,6 +6,7 @@
 - :sparkles: Modal component to be used by elements
 - :sparkles: Content component for easily styled text
 - :sparkles: Login icon when user is not signed-in
+- :balloon: Added `about` element as sample for modal and content component
 - :rotating_light: Custom elements only through Element classes
 - :bug: Overlay: border on iframe in Chrome
 - :bug: Images element: responsive grid sizes

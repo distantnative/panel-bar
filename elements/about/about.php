@@ -10,29 +10,19 @@ class AboutElement extends Element {
 
   public function render() {
       // register overlay output and assets
-      $this->component()->modal(['# About Headline1
-Das hier ist etwas Text, der auch mal etwas länger werden könnte. Man müsste sich nun überlegen, was passiert, wenn dieser zu lang wird. Das hier ist etwas Text, der auch mal etwas länger werden könnte. Man müsste sich nun überlegen, was passiert, wenn dieser zu lang wird.
-## About Headline2
-Das hier ist etwas (link: projects: text: Text).
-### About Headline3
-Das hier ist etwas Text.
-#### About Headline4
-Das hier ist etwas Text.
-
-Und ein zweiter Absatz.
-
-
-##### About Headline5
-Das hier ist etwas Text.',
-null,
-'Karl' => 'Crew']);
+      $this->component()->modal([
+        '# panelBar ' . Core::$version . '
+panelBar is a plugin for (link: https://getkirby.com text: Kirby CMS). It is maintained by (link: https://github.com/distantnative text: Nico Hoffmann).
+#### Issues, ideas or questions?
+If you encounter any bugs, have suggestions for features to add or simply do not know how to work with an element, head over and open (link: https://github.com/distantnative/panel-bar/issues text: a new issue).'
+      ]);
 
       // return pattern output
       return $this->pattern('link', [
         'id'    => $this->name(),
-        'label' => 'About',
-        'icon'  => 'compass',
-        'url'   => '#'
+        'label' => null,
+        'icon'  => 'id-card-o',
+        'url'   => '#modal'
       ]);
   }
 
