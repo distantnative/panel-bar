@@ -1,0 +1,34 @@
+
+@import '../../../../assets/scss/util/colors';
+
+.panelBar--navigation {
+  .panelBar-drop__item {
+
+    &.parent {
+      background-color: $color-almostwhite;
+    }
+
+    &.sibling {
+      display:          inline-block;
+      min-width:        120px;
+      background-color: $color-lightgrey;
+
+      &.next  { margin-left: -2px; }
+      &.empty { color: transparent; }
+
+      &:first-child:nth-last-child(2),
+      &:first-child:nth-last-child(2) ~ & {
+        width: 50%;
+      }
+    }
+
+    &.child {
+      font-size: .85em;
+      text-align: left;
+
+      .fa-eye-slash { opacity: .35; }
+    }
+
+    .fa { margin-right: .5em; }
+  }
+}
