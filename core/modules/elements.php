@@ -5,6 +5,7 @@ namespace Kirby\panelBar;
 use C;
 use Dir;
 use F;
+use Yaml;
 
 class Elements {
 
@@ -21,9 +22,12 @@ class Elements {
 
   public function __construct($core, $args = []) {
     $this->core = $core;
-    $this->init($this->elements($args['elements']));
+    $this->init(self::active());
   }
 
+  //====================================
+  //   Add elements
+  //====================================
   protected function init($elements) {
     foreach($elements as $element) {
       $this->add($element);
@@ -38,23 +42,40 @@ class Elements {
       $element = new $class($this->core);
       $output  = $element->render();
 
-    } elseif(is_callable($element)) {
-      $element = $output = call_user_func($element);
-    } else {
-      $output = $element;
+      $this->core->html->add('elements', $output);
+      $this->elements[] = $element;
     }
-
-    $this->core->html->add('elements', $output);
-    $this->elements[] = $element;
-  }
-
-  protected function elements($elements) {
-    $config   = c::get('panelBar.elements', static::$defaults);
-    $elements = is_array($elements) ? $elements : $config;
-    return $elements;
   }
 
   public static function all() {
-    return dir::read(dirname(dirname(__DIR__)) . DS . 'elements');
+    return array_map(function($e) {
+      return substr($e, strrpos($e, '/') + 1);
+    }, kirby()->get('panelBar'));
   }
+
+  //====================================
+  //   Settings
+  //====================================
+  public static function active() {
+    $config = yaml::read(self::config());
+
+    if(f::exists(self::config()) and count($config) > 0) {
+      return $config;
+    } else {
+      return c::get('panelBar.elements', static::$defaults);
+    }
+  }
+
+  public static function set($elements = []) {
+    return yaml::write(self::config(), $elements);
+  }
+
+  public static function clear() {
+    return f::remove(self::config());
+  }
+
+  public static function config() {
+    return kirby()->roots()->config() . DS . 'panelBar.yml';
+  }
+
 }

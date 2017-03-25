@@ -1,13 +1,7 @@
 
-<?php
-$panelBar = new Kirby\panelBar\Core([
-  'elements' => isset($elements) ? $elements : null,
-]);
-?>
+<?php $panelBar = new Kirby\panelBar\Core(); ?>
 
-
-<?php if($panelBar->isShown() and !get('hidePanelBar')) : ?>
-
+<?php if($user = site()->user() and $user->hasPanelAccess()) : ?>
   <div class="panelBar <?= $panelBar->classes() ?>" id="panelBar">
     <?= $panelBar->pre() ?>
     <div class="panelBar-main" id="panelBar-main">

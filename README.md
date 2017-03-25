@@ -21,8 +21,7 @@ panelBar includes a toolbar on top of your site which gives you direct access to
     2. [Default Set of Elements](#DefaulSet)
 4.  Customize
     1.  [Custom Set of Elements](#CustomSet)
-    2.  [Custom Elements](#CustomElements)
-    4.  [Custom Element Plugins](#Plugins)
+    4.  [Custom Elements](#CustomElements)
         1. [Element Patterns](#Patterns)
         2. [Custom CSS/JS](#CustomCSSJS)
         3. [Routes](#Routes)
@@ -100,52 +99,34 @@ The pre-defined default set of elements consists of `panel`, `add`, `edit`, `vis
 ### Custom Set of Elements <a id="CustomSet"></a>
 You can define a custom set of elements in `site/config/config.php`:
 ```php
-c::set('panelbar.elements', […]);
-```
-
-Or pass them as a parameter when including the snippet:
-```php
-<?php snippet('plugin.panelBar', ['elements' => […]]) ?>
-```
-
-To include [standard elements](#StandardElements) in your custom set, simply name them:
-```php
 c::set('panelbar.elements', [
-  'panel',
+  'panel'.
+  'add',
   'edit',
-  'languages',
+  …
 ]);
+```
+
+Or directly in panelBar's own config file `site/config/panelBar.yml`:
+```ini
+- panel
+- add
+- edit
+…
+```
+
+This config file can also be edited right from the panelBar panel widget:
+
+![Widget](https://nhoffmann.com/remote/github/panel-bar/widget.png)
+
+You can deactivate the panel widget with this option:
+```php
+c::set('panelBar.widget', false);
 ```
 
 
 ### Custom Elements <a id="CustomElements"></a>
-panelBar can include custom elements. You can either include the custom element's output directly in the elements array or use the name of a callable function, which returns the output:
-```php
-<?php
-// custom callable element
-function customSongs() {
-  return '<div class="panelBar-element panelBar-dropdown panelBar-mDropParent"><span><i class="fa fa-headphones "></i><span>Favorite Songs</span></span><div class="panelBar-drop__list panelBar-mDrop"><a href="https://www.youtube.com/watch?v=FwpcGjQJfDw" class="panelBar-drop__item">Wobwobwob</a><a href="https://www.youtube.com/watch?v=2vjPBrBU-TM" class="panelBar-drop__item">Chandelier</a></div></div>';
-}
-
-// array of elements
-$elements = [
-  'add', // standard element
-  '<div class="panelBar-element panelBar-link"><a href="http://mydomain.com/pictureofmum.jpg"><i class="fa fa-heart "></i><span>Mum</span></a></div>', // custom output as string
-  'customSongs', // custom output via callable function
-];
-
-// output panelBar
-snippet('plugin.panelBar', ['elements' => $elements])
-?>
-```
-
-![Custom Elements](https://nhoffmann.com/remote/github/panel-bar/custom-elements.png)
-
-For more complex custom elements, you should creatin a [Custom Element Plugin](#Plugins).
-
-### Custom Element Plugins <a id="Plugins"></a>
-
-A plugin for a custom element consist at least of a folder and a PHP file with the same name. The file contains the basic structure:
+panelBar is designed to be modular and can include your own custom elements. A custom element can be included as a Kirby plugin, consisting at least of a folder and a PHP file with the same name. The file needs to contain the following basic structure:
 
 ```php
 <?php
@@ -161,7 +142,7 @@ class CustomElement extends Element {
 }
 ```
 
-Class naming is crucial: it consists of the name of the element (like the folder and file) followed by `Element`, e.g. the `edit` element is defined as the `EditElement` class.
+Class naming is crucial: It consists of the name of the element (like the folder and file) followed by `Element`, e.g. the `edit` element is defined as the `EditElement` class.
 
 For examples take a look at [`EditElement`](elements/edit) or [`LoadtimeElement`](elements/loadtime).
 

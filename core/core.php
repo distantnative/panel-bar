@@ -55,11 +55,4 @@ class Core {
     if(!$this->visible) $classes[] = 'panelBar--hidden';
     return implode(' ', $classes);
   }
-
-  //====================================
-  //   Checks
-  //====================================
-  public function isShown() {
-    return $user = site()->user() and $user->hasPanelAccess();
-  }
 }
