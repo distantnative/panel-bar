@@ -85,7 +85,6 @@
     },
 
     status : {
-      modal:      false,
       active:     false,
       position:   null,
       supported:  true,
@@ -95,14 +94,13 @@
       loadingFailed: 'Seems like something is blocking access to the panel inside an iframe. Redirecting…',
     },
 
-    bind : function(element, modal) {
+    bind : function(element) {
       var links = panelBar.dom.bar.querySelectorAll(element + ':not(.external)');
       var i;
       for (i = 0; i < links.length; i++) {
         links[i].addEventListener('click', function(e) {
           if(_.status.supported) {
             e.preventDefault();
-            _.status.modal = modal;
             _.show(this.href);
           }
         });

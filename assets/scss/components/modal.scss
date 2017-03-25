@@ -1,0 +1,48 @@
+
+@import '../util/colors';
+
+.panelBar-modal {
+  display:          none;
+  position:         fixed;
+  top:              50%;
+  left:             50%;
+  max-width:        85vw;
+  max-height:       calc(85vh - 49px);
+  padding:          1.5em 1.25em;
+  transform:        translate(-50%, -50%);
+  background-color: $color-white;
+  box-shadow:       rgba($color-black, .2) 0 2px 10px;
+  z-index:          5010;
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .25em .65em .4em;
+    background-color: $color-black;
+    color: $color-white;
+    font-size: .85em;
+    line-height: 1;
+
+    &:hover {
+      background-color: $color-brand-green;
+      cursor: pointer;
+    }
+  }
+
+  &__overlay {
+    display: none;
+    position:         absolute;
+    top:              0;
+    right:            0;
+    bottom:           0;
+    left:             0;
+    background-color: rgba($color-black, .6);
+    z-index:          5000;
+  }
+
+  &.is-open,
+  &.is-open ~ &__overlay {
+    display: block;
+  }
+}
