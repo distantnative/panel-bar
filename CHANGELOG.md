@@ -2,9 +2,9 @@
 
 ## [2.1.0](https://github.com/distantnative/panel-bar/releases/tag/2.1.0) (?)
 - :sparkles: Panel widget to set the active panelBar elements
-- :sparkles: Config file `site/config/panelBar.yml`
+- :sparkles: Config file `site/config/panelBar.yml` defines element set
 - :sparkles: Modal component to be used by elements
-- :sparkles: Content component for easily styled text
+- :sparkles: Content component for easy pre-styled text
 - :sparkles: New element: `navigation`
 - :sparkles: Login icon when user is not signed-in
 - :balloon: Dropdown pattern: additional CSS classes per dropdown item
@@ -15,7 +15,8 @@
 - :bug: Visibility element: Bug when hiding only child
 - :bug: Overlay: border on iframe in Chrome
 - :bug: Images element: responsive grid sizes
-- :arrow_up: Updated FontAwesome to version 4.7
+- :bug: Dropdowns disappeared in responsive mode
+- :arrow_up: FontAwesome 4.7
 - :books: Documentation offers more direct links to helpful code examples
 
 ## [2.0.1](https://github.com/distantnative/panel-bar/releases/tag/2.0.1) (2017-03-24)
