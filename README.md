@@ -39,13 +39,15 @@ panelBar includes a toolbar on top of your site which gives you direct access to
 &nbsp;  
 
 # Setup<a id="Setup"></a>
-1. Download the [panelBar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
-2. Copy the whole folder to `site/plugins/panel-bar`
 
 #### With the [Kirby CLI](https://github.com/getkirby/cli)
 ```
 kirby plugin:install distantnative/panel-bar
 ```
+
+#### Manually
+1. Download the [panelBar plugin](https://github.com/distantnative/panel-bar/zipball/master/)
+2. Copy the folder to `site/plugins/panel-bar`
 
 &nbsp;  
 
