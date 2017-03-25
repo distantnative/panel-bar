@@ -29,7 +29,7 @@ class VisibilityElement extends Element {
       } else {
         $mode = $this->page->parent()->blueprint()->pages()->num()->mode;
 
-        if($this->page->siblings(false)->count() > 0 and ($mode == 'num' or $mode == 'default')) {
+        if($this->page->hasSiblings() and ($mode == 'num' or $mode == 'default')) {
           return $this->pattern('dropdown', [
             'id'    => $this->name(),
             'label'  => $this->l('invisible'),
