@@ -39,14 +39,6 @@ foreach(dir::read($dir . 'patterns') as $file) {
 }
 
 //====================================
-//   Translations
-//====================================
-foreach(['en', site()->locale()] as $lang) {
-  $file = $root . 'translations' . DS . $lang . '.php';
-  f::load($file);
-}
-
-//====================================
 //   Elements
 //====================================
 foreach(dir::read(dirname(__DIR__) . DS . 'elements') as $file) {

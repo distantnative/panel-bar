@@ -24,6 +24,8 @@ class Core {
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
     $this->position = c::get('panelBar.position', 'top');
 
+    $this->translations();
+
     $this->html     = new Html;
     $this->assets   = new Assets;
     $this->elements = new Elements($this, $args);
@@ -60,5 +62,12 @@ class Core {
     $classes = ['panelBar--' . $this->position];
     if(!$this->visible) $classes[] = 'panelBar--hidden';
     return implode(' ', $classes);
+  }
+
+  protected function translations() {
+    foreach(['en', ($lang = site()->language() ? $language->code() : null)] as $translation) {
+      $file = dirname(__DIR__) . DS . 'translations' . DS . $translation . '.php';
+      f::load($file);
+    }
   }
 }
