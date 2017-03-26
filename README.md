@@ -278,7 +278,6 @@ public function render() {
     $this->component()->modal('This is the modal content');
 
     return $this->pattern('link', [
-      'id'    => $this->name(),
       'label' => 'About',
       'icon'  => 'compass',
       'url'   => '#modal'
@@ -286,7 +285,7 @@ public function render() {
 }
 ```
 
-You have to make sure that your panelBar element contains a link with the `href` attribute `#modal`. Check out the sample [`about` element](elements/about/about.php). For the modal content it might be helpful to use the content component (see below).
+You have to make sure that your panelBar element contains a link with the `href` attribute `#modal`. For the modal content it might be helpful to use the content component (see below).
 
 
 ### Content
@@ -322,8 +321,6 @@ You can see text elements and styles featured in this example:
 - `null` will result in a horizontal line
 - a key-value pair will be listed next to each other
 - a key-array pair will look the same, but offers the possibility to set the value as a link
-
-Check out the sample [`about` element](elements/about/about.php).
 
 ![Content component in modal](https://nhoffmann.com/remote/github/panel-bar/modal.png)
 
