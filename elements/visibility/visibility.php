@@ -56,28 +56,27 @@ class VisibilityElement extends Element {
     $route = 'show/' . $this->page->uri();
 
     foreach($this->page->siblings()->visible() as $sibling) {
-      $items[] = [
-        'url'   => $this->route($route, ['num' => $sibling->num()]),
-        'label' => $this->space(),
-        'title' => $this->l('setbefore') . ' ' . $sibling->title()
-      ];
-
+      $items[] = $this->insertPosition($sibling->num(), 'setbefore', $sibling->title());
       $items[] = ['label' => $sibling->title()];
     }
 
-    $items[] = [
-      'url'   => $this->route($route, ['num' => $sibling->num() + 1]),
-      'label' => $this->space(),
-      'title' => $this->l('setafter') . ' ' . $sibling->title()
-    ];
+    $items[] = $this->insertPosition($sibling->num() + 1, 'setafter', $sibling->title());
 
     return $items;
+  }
+
+  protected function insertPosition($num, $l, $title) {
+    return [
+      'url'   => $this->route($route, ['num' => $num]),
+      'label' => $this->space(),
+      'title' => $this->l($l) . ' ' . $title
+    ];
   }
 
   //====================================
   //   Helper methods
   //==================================
-  public function space() {
+  protected function space() {
     return '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;';
   }
 
