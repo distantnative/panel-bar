@@ -1,7 +1,8 @@
 # Changelog
 
-## [2.1.1](https://github.com/distantnative/panel-bar/releases/tag/2.1.1) (2017-03-?)
-
+## [2.1.1](https://github.com/distantnative/panel-bar/releases/tag/2.1.1) (2017-03-26)
+:bug: Visibility element: Unhiding numbered pages works again  
+:bug: Modals: close button works again  
 
 ## [2.1.0](https://github.com/distantnative/panel-bar/releases/tag/2.1.0) (2017-03-26)
 :rotating_light: Custom elements can only be created through element classes  
