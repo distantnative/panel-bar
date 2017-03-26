@@ -3,9 +3,9 @@
   <?php foreach($items as $item) : ?>
 
     <?php if(isset($item['url'])) : ?>
-      <a href="<?= $item['url'] ?>" class="panelBar-drop__item <?php e(isset($item['external']), 'external') ?>" title="<?= isset($item['title']) ? $item['title'] : '' ?>">
+      <a href="<?= $item['url'] ?>" class="panelBar-drop__item <?= isset($item['class']) ? $item['class'] : '' ?> <?php e(isset($item['external']), 'external') ?>" title="<?= isset($item['title']) ? $item['title'] : strip_tags($item['label']) ?>">
     <?php else : ?>
-      <span class="panelBar-drop__item" title="<?= isset($item['title']) ? $item['title'] : '' ?>">
+      <span class="panelBar-drop__item <?= isset($item['class']) ? $item['class'] : '' ?>" title="<?= isset($item['title']) ? $item['title'] : strip_tags($item['label']) ?>">
     <?php endif ?>
 
     <?= $item['label'] ?>

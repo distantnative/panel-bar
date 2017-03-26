@@ -2,19 +2,17 @@
 
 namespace Kirby\panelBar;
 
+use A;
 use C;
 use F;
 use Tpl;
 
 class Core {
 
-  public static $version = '2.0.0';
+  public static $version = '2.1.0';
 
   public    $root;
   protected $elements;
-
-  public $position = 'top';
-  public $visible  = true;
 
   public function __construct($args = []) {
     $this->root  = dirname(__DIR__);
@@ -24,13 +22,15 @@ class Core {
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
     $this->position = c::get('panelBar.position', 'top');
 
-    $this->html     = new Html;
-    $this->assets   = new Assets;
+    $this->translations();
+
+    $this->html     = new Html($this);
+    $this->assets   = new Assets($this);
     $this->elements = new Elements($this, $args);
   }
 
   //====================================
-  //   Output
+  //   Output hooks
   //====================================
   public function elements() {
     return $this->html->render('elements');
@@ -38,28 +38,47 @@ class Core {
 
   public function pre() {
     $this->html->add('pre', $this->assets->render('css'));
-    $this->html->add('post', $this->assets->render('js'));
     return $this->html->render('pre');
   }
 
   public function post() {
+    $this->html->add('post', $this->assets->render('js'));
     return $this->html->render('post');
   }
 
+  //====================================
+  //   Components
+  //====================================
   public function controls() {
-    return tpl::load($this->root . DS .  'snippets' . DS . 'components' . DS . 'controls.php');
+    return $this->html->load('components' . DS . 'controls');
   }
 
+  public function login() {
+    if(c::get('panelBar.login', true)) {
+      return $this->html->load('components' . DS . 'login');
+    }
+  }
+
+  //====================================
+  //   Styling
+  //====================================
   public function classes() {
-    $classes = ['panelBar--' . $this->position];
-    if(!$this->visible) $classes[] = 'panelBar--hidden';
-    return implode(' ', $classes);
+    return implode(' ', a::merge(
+      ['panelBar--' . $this->position],
+      (!$this->visible ? ['panelBar--hidden'] : [])
+    ));
   }
 
   //====================================
-  //   Checks
+  //   Translations
   //====================================
-  public function isShown() {
-    return $user = site()->user() and $user->hasPanelAccess();
+  protected function translations() {
+    $this->translation('en');
+    if($lang = site()->language()) $this->translation($lang->code());
+  }
+
+  protected function translation($lang) {
+    $dir  = $this->root . DS . 'translations';
+    f::load($dir . DS . $lang . '.php');
   }
 }

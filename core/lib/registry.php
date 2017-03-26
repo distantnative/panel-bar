@@ -15,10 +15,10 @@ class panelBar extends Entry {
 			return $path;
 
 		} else if($this->kirby->option('debug')) {
-			throw new Exception('The panelBar element does not exist at the specified path: ' . $path);
+			throw new Exception('panelBar element does not exist at path: ' . $path);
 		}
 	}
-  
+
 	public function get($name = null) {
 		if(is_null($name))                  return static::$elements;
 		if(isset(static::$elements[$name])) return static::$elements[$name];

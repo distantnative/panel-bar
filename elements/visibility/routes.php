@@ -3,13 +3,19 @@
 return [
   'pattern' => '(:any)/(:all)',
   'action'  => function($action, $uri) {
-    $panel     = require(dirname(dirname(__DIR__)) . DS . 'core/lib/panel/integrate.php');
-    $page      = $panel->page($uri);
-    $sort      = $page->parent()->blueprint()->pages()->num();
+    $root  = dirname(dirname(__DIR__));
+    $panel = require($root . DS . 'core/lib/panel/integrate.php');
+    $page  = $panel->page($uri);
+    $sort  = $page->parent()->blueprint()->pages()->num();
 
+    //====================================
+    //   Make invisible
+    //==================================
     if($action == 'hide') {
+      // hide the page
       $page->hide();
 
+      // re-sort visible siblings
       switch($sort->mode) {
         case 'num':
         case 'default';
@@ -23,9 +29,10 @@ return [
           break;
       }
 
-
+    //====================================
+    //   Make visible
+    //==================================
     } else {
-
       switch($sort->mode) {
         case 'zero':
           $page->sort(0);

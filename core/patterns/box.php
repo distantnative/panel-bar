@@ -7,6 +7,8 @@ use Tpl;
 
 class BoxPattern extends Pattern {
 
+  public static $classes = 'panelBar-box panelBar-mDropParent';
+
   public function render($args) {
     // register assets
     $this->asset('css', 'patterns' . DS . 'box.css');
@@ -14,9 +16,8 @@ class BoxPattern extends Pattern {
 
     // return output
     return $this->base(a::merge([
-      'class'   => 'panelBar-box panelBar-mDropParent',
       'content' => $this->tpl('box', [
-        'box' => $args['box'],
+        'box' => $this->element->component()->content($args['box']),
       ])
     ], $args));
   }

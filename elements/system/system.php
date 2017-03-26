@@ -10,19 +10,17 @@ class SystemElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     // register assets
     $this->asset('css', 'system.css');
     $this->asset('js',  'system.min.js');
 
+    // register component
     $this->component()->overlay();
-
-    $root = kirby()->roots()->site() . DS;
+    $root = kirby()->roots()->site();
 
     // return output
     return $this->pattern('box', [
-      'id'    => $this->name(),
       'icon'  => 'info',
       'label' => 'Site',
       'box'   => [
@@ -31,10 +29,10 @@ class SystemElement extends Element {
           'url'   => $this->site->url('subpages')
         ],
         'Files'       => $this->site->index()->files()->count(),
-        'Templates'   => count(dir::read($root . 'templates')),
+        'Templates'   => count(dir::read($root . DS . 'templates')),
         'Blueprints'  => count(\Kirby\Panel\Models\Page\Blueprint::all()),
-        'Controllers' => count(dir::read($root . 'controllers')),
-        'Models'      => count(dir::read($root . 'models')),
+        'Controllers' => count(dir::read($root . DS . 'controllers')),
+        'Models'      => count(dir::read($root . DS . 'models')),
         null,
         'Kirby'    => [
           'label'    => \Kirby::version(),
@@ -60,9 +58,13 @@ class SystemElement extends Element {
     ]);
   }
 
+  //====================================
+  //   Read version from package.json
+  //====================================
   protected function version($path) {
-    $root = kirby()->roots()->index() . DS;
-    return json_decode(f::read($root . $path . DS . 'package.json'))->version;
+    $root = kirby()->roots()->index();
+    $json = json_decode(f::read($root . DS . $path . DS . 'package.json'));
+    return $json->version;
   }
 
 }

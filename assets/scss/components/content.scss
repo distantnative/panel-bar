@@ -1,0 +1,86 @@
+
+@import '../util/colors';
+
+.panelBar-content {
+  margin:       0;
+  padding:      .75em 1em;
+  color:        $color-black;
+  line-height:  1.4;
+
+  cursor:       default;
+
+  a       { color: $color-brand-green; }
+  a:hover { color: $color-midlightgrey;   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin:         0;
+    border-bottom:  1px solid $color-midlightgrey;
+    font:           inherit;
+    font-size:      .9em;
+    font-weight:    700;
+    text-align:     left;
+    text-transform: uppercase;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  h1 { font-size: 2em;   }
+  h2 { font-size: 1.8em; }
+  h3 { font-size: 1.2em; }
+  h4 { font-size: 1em;   }
+  h5 { font-size: .9em;   }
+
+  p {
+    margin:     0;
+    font-size: .9em;
+
+    &:not(:first-child) {
+      margin-top: .25em;
+    }
+    &:not(:last-child) {
+      margin-bottom: .75em;
+    }
+  }
+
+  li {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap:       20px;
+    list-style-type:       none;
+
+    > span,
+    > a {
+      color:      $color-midgrey;
+      font-style: normal;
+      text-align: right;
+    }
+
+    a:hover {
+      color: $color-lightgrey;
+    }
+  }
+
+  hr {
+    width:         calc(100% + 1em);
+    height:        auto;
+    margin:        .25em 0 .25em -.5em;
+    padding:       0;
+    border:        none;
+    border-bottom: 1px solid $color-midlightgrey;
+    color:         $color-midgrey;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}

@@ -6,14 +6,10 @@ use A;
 
 class LinkPattern extends Pattern {
 
-  public function render($args) {
-    // register assets
-    $this->asset('css', 'patterns' . DS . 'link.css');
+  public static $classes = 'panelBar-link';
 
-    // return output
-    return $this->base(a::merge([
-      'class' => isset($args['url']) ? 'panelBar-link' : 'panelBar-label',
-    ], $args));
+  public function render($args) {
+    return $this->base($args);
   }
 
 }

@@ -19,16 +19,15 @@ class Element {
     $this->panel    = $core->panel;
 
     $this->site     = $this->panel->site();
-    $this->page     = $this->panel->page($this->core->page->id());
+    $this->page     = $this->panel->page($this->core->page);
 
     $this->translations();
   }
 
-
   //====================================
   //   Characteristics
   //====================================
-  public function name() {
+  public function __toString() {
     if($this->name) return $this->name;
 
     $namespace = 'Kirby\panelBar\\';
@@ -38,10 +37,14 @@ class Element {
   }
 
   public function dir() {
-    return $this->root ?: $this->root = $this->core->root . DS . 'elements' . DS . $this->name();
+    if($this->root) {
+      return $this->root;
+    } else {
+      return $this->root = $this->core->root . DS . 'elements' . DS . $this;
+    }
   }
 
-  public function url($file) {
+  public function path($file) {
     return $this->dir() . DS . $file;
   }
 
@@ -49,9 +52,13 @@ class Element {
   //   Assets
   //====================================
   protected function asset($type, $asset) {
-    $url  = 'elements/' . $this->name() . '/' . $asset;
-    $link = $this->core->assets->link($type, $url);
-    $this->core->assets->add($type, $link);
+    $url  = 'elements/' . $this . '/' . $asset;
+    $this->core->assets->add($type, $this->core->assets->link($type, $url));
+  }
+
+  protected function keybinding($key, $js) {
+    $js = 'panelBar.keys.bindings[' . $key . '] = function() { ' . $js . ' };';
+    $this->core->assets->add('js', $this->core->assets->tag('js', $js));
   }
 
   //====================================
@@ -62,12 +69,17 @@ class Element {
   }
 
   protected function load($file, $args = []) {
-    return tpl::load($this->url($file), $args);
+    return tpl::load($this->path($file), $args);
   }
 
   protected function pattern($pattern, $args = []) {
     $class = 'Kirby\panelBar\\' . $pattern . 'Pattern';
-    $class = new $class($this->core);
+    $class = new $class($this);
+
+    if(isset($args['class'])) {
+      $args['class'] = $class::classes($args['class']);
+    }
+
     return $class->render($args);
   }
 
@@ -82,24 +94,24 @@ class Element {
   //   Routes
   //====================================
   protected function route($route, $parameters= []) {
-    return Route::url($this->name(), $route, $parameters);
+    return Route::url($this, $route, $parameters);
   }
 
   //====================================
   //   Translations
   //====================================
   protected function translations() {
+    $this->translation('en');
+    if($lang = site()->language()) $this->translation($lang->code());
+  }
+
+  protected function translation($lang) {
     $dir = $this->dir() . DS . 'translations';
-    if(f::exists($dir)) {
-      foreach(['en', $this->site->locale()] as $lang) {
-        $file = $dir . DS . $lang . '.php';
-        f::load($file);
-      }
-    }
+    f::load($dir . DS . $lang . '.php');
   }
 
   protected function l($key) {
-    return l::get('panelBar.element.' . $this->name() . '.' . $key);
+    return l::get('panelBar.element.' . $this . '.' . $key);
   }
 
 }

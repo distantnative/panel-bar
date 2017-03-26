@@ -23,10 +23,10 @@
 
     .panelBar--top    & { border-bottom: 1px solid $color-almostwhite; }
     .panelBar--bottom & { border-top:    1px solid $color-almostwhite; }
-  }
 
-  &__item       > span { display: inline-block; }
-  &__item:hover > span { color:   $color-brand-green; }
+            > span { display: inline-block; }
+    &:hover > span { color:   $color-brand-green; }
+  }
 
   &__preview {
     display:      inline-block;
@@ -89,7 +89,7 @@
     .panelBar-files--image & { vertical-align: text-top; }
   }
 
-  &__size:before { content: ' / '; }
+  &__size::before { content: ' / '; }
 
   &__more { @include moreFiles(.35em .5em .5em); }
 }
@@ -107,8 +107,6 @@ body.rtl {
       margin-left:   3px;
     }
 
-    &__info {
-      text-align: left;
-    }
+    &__info { text-align: left; }
   }
 }

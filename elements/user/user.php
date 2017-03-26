@@ -7,7 +7,6 @@ class UserElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if($user = $this->site->user()) {
       // register overlay output and assets
@@ -15,11 +14,11 @@ class UserElement extends Element {
 
       // return pattern output
       return $this->pattern('link', [
-        'id'    => $this->name(),
         'label' => $user,
         'icon'  => 'user',
         'url'   => $user->url('edit'),
-        'right' => true
+        'title' => 'User: ' . $user,
+        'right' => true,
       ]);
     }
   }

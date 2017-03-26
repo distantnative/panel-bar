@@ -1,30 +1,20 @@
 
 .panelBar--mobile {
   .panelBar-element {
-
-    &.responsive--none {
-      display: hide;
-    }
+    &.responsive--none { display: hide; }
 
     &.responsive--icon {
       > span,
       > a {
-        > i {
-          margin-right: 0;
-        }
-
-        > span {
-          display: none;
-        }
+        > i    { margin-right: 0; }
+        > span { display: none;   }
       }
     }
 
     &.responsive--label {
       > span,
       > a {
-        > i {
-          display: none;
-        }
+        > i { display: none; }
       }
     }
   }

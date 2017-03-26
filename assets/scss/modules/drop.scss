@@ -19,10 +19,10 @@
   &:not(.panelBar-element--overlap) {
     left:      50%;
     transform: translateX(-50%);
-
-    .panelBar--top    & { top: 100%;    }
-    .panelBar--bottom & { bottom: 100%; }
   }
+
+  .panelBar--top    & { top:    45px; }
+  .panelBar--bottom & { bottom: 45px; }
 
   @media (max-width: 550px) { @include dropFullwidth; }
 }

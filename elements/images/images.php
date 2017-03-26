@@ -7,7 +7,6 @@ class ImagesElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if($images = $this->items()) {
       // register overlay output and assets
@@ -16,9 +15,9 @@ class ImagesElement extends Element {
 
       // return pattern output
       return $this->pattern('link', [
-        'id'      => $this->name(),
         'label'   => $this->l('label') . $this->component()->count($images),
         'icon'    => 'photo',
+        'class'   => 'panelBar-images panelBar-mDropParent',
         'content' => $this->tpl('grid', [
           'items'   => $images,
           'count'   => count($images),
@@ -26,17 +25,14 @@ class ImagesElement extends Element {
             'label' => $this->l('label'),
             'url'   => $this->page->url('files'),
           ],
-        ]),
-        'class'   => 'panelBar-images panelBar-mDropParent'
+        ])
       ]);
     }
   }
 
-
   //====================================
   //   Items
   //====================================
-
   public function items() {
     if(!$this->page->ui()->files()) return false;
 

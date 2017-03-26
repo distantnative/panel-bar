@@ -7,8 +7,29 @@ use Tpl;
 
 class Pattern {
 
-  public function __construct($core) {
-    $this->core = $core;
+  public static $classes;
+
+  public function __construct($element) {
+    $this->core     = $element->core;
+    $this->element  = $element;
+  }
+
+  protected function base($args) {
+    return $this->core->html->load('patterns' . DS . 'base', a::merge([
+      'id'      => $this->element,
+      'class'   => self::classes(),
+      'url'     => null,
+      'label'   => null,
+      'icon'    => null,
+      'mobile'  => 'icon',
+      'content' => null,
+      'title'   => isset($args['label']) ? strip_tags($args['label']) : null,
+      'right'   => false
+    ], $args));
+  }
+
+  protected function tpl($pattern, $args = []) {
+    return $this->core->html->load('patterns' . DS . $pattern, $args);
   }
 
   protected function asset($type, $asset) {
@@ -16,24 +37,8 @@ class Pattern {
     $this->core->assets->add($type, $asset);
   }
 
-  protected function tpl($pattern, $args = []) {
-    $root    = $this->core->root . DS . 'snippets' . DS . 'patterns';
-    $snippet = $root . DS . $pattern . '.php';
-    return tpl::load($snippet, $args);
-  }
-
-  protected function base($args) {
-    $dir = $this->core->root . DS . 'snippets' . DS . 'patterns';
-    return tpl::load($dir . DS . 'base.php', a::merge([
-      'class'   => null,
-      'url'     => null,
-      'label'   => null,
-      'icon'    => null,
-      'mobile'  => 'icon',
-      'content' => null,
-      'title'   => null,
-      'right'   => false
-    ], $args));
+  public static function classes($additional = '') {
+    return static::$classes . ' ' . $additional;
   }
 
 }

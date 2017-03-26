@@ -1,3 +1,1 @@
-<?php snippet('plugin.panelBar', [
-  'hidden' => true
-]) ?>
+<?php snippet('plugin.panelBar', ['hidden' => true]) ?>

@@ -36,6 +36,16 @@ gulp.task('css-elements', function() {
     }));
 });
 
+gulp.task('css-widget', function() {
+  return gulp.src([
+      'widget/assets/scss/widget.scss',
+    ])
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(cssmin())
+    .pipe(gulp.dest('widget/assets/css'));
+});
+
 
 // =============================================
 //  JS
@@ -70,15 +80,27 @@ gulp.task('js-elements', function() {
     }));
 });
 
+gulp.task('js-widget', function() {
+  return gulp.src([
+      'widget/assets/js/*.js',
+      '!widget/assets/js/*.min.js',
+    ])
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('widget/assets/js'));
+});
+
 
 // =============================================
 //  Watch
 // =============================================
 
-gulp.task('watch', ['css', 'css-elements', 'js', 'js-components', 'js-elements'], function() {
+gulp.task('watch', ['css', 'css-elements', 'css-widget', 'js', 'js-components', 'js-elements', 'js-widget'], function() {
   gulp.watch('assets/scss/**/*.scss',           ['css']);
   gulp.watch('elements/**/assets/css/*.scss',   ['css-elements']);
-  gulp.watch('assets/js/src/panelbar.js',       ['js']);
+  gulp.watch('widget/assets/scss/*.scss',       ['css-widget']);
+  gulp.watch(['assets/js/src/panelbar.js', 'assets/js/src/core/*.js'],       ['js']);
   gulp.watch('assets/js/src/components/*.js',   ['js-components']);
   gulp.watch('elements/**/assets/js/*.js',      ['js-elements']);
+  gulp.watch('widget/assets/js/*.js',           ['js-widget']);
 });

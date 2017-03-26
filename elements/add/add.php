@@ -7,25 +7,21 @@ class AddElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     // register overlay output and assets
     $this->component()->overlay();
 
     // return pattern output
     return $this->pattern('dropdown', [
-      'id'    => $this->name(),
       'label' => $this->l('label'),
       'icon'  => 'plus',
       'items' => $this->items()
     ]);
   }
 
-
   //====================================
   //   Items
   //====================================
-
   protected function items() {
     $items = [];
 
@@ -34,6 +30,7 @@ class AddElement extends Element {
       $items[] = [
         'url'   => $this->page->url('add'),
         'label' => $this->l('child'),
+        'title' => $this->l('label') . ' ' . $this->l('child')
       ];
     }
 
@@ -42,6 +39,7 @@ class AddElement extends Element {
       $items[] = [
         'url'   => $parent->url('add'),
         'label' => $this->l('sibling'),
+        'title' => $this->l('label') . ' ' . $this->l('sibling')
       ];
     }
 

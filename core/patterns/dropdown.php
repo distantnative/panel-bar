@@ -6,6 +6,8 @@ use A;
 
 class DropdownPattern extends Pattern {
 
+  public static $classes = 'panelBar-dropdown panelBar-mDropParent';
+
   public function render($args) {
     // register assets
     $this->asset('css', 'patterns' . DS . 'dropdown.css');
@@ -13,7 +15,6 @@ class DropdownPattern extends Pattern {
 
     // return output
     return $this->base(a::merge([
-      'class'   => 'panelBar-dropdown panelBar-mDropParent',
       'content' => $this->tpl('dropdown', [
         'items' => $args['items'],
       ])

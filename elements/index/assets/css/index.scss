@@ -12,12 +12,6 @@
     font-size:     .9em;
     text-align:    left;
     text-overflow: ellipsis;
-
-
-    &:hover,
-    &:hover .panelBar-index--invisible {
-      color:  $color-brand-green;
-    }
   }
 
   &__depth {
@@ -30,5 +24,5 @@
     font-weight: 700;
   }
 
-  &--invisible { color: $color-midlightgrey; }
+  &--invisible { opacity: .25; }
 }
