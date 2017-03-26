@@ -20,10 +20,11 @@ class VisibilityElement extends Element {
       // return pattern output
       if($this->page->isVisible()) {
         return $this->pattern('link', [
-          'id'     => $this->name(),
-          'label'  => $this->l('visible'),
-          'icon'   => 'toggle-on',
-          'url'    => $this->route('hide/' . $this->page->uri()),
+          'id'    => $this->name(),
+          'label' => $this->l('visible'),
+          'icon'  => 'toggle-on',
+          'url'   => $this->route('hide/' . $this->page->uri()),
+          'title' => $this->l('makeinvisible')
         ]);
 
       } else {
@@ -32,16 +33,18 @@ class VisibilityElement extends Element {
         if($this->page->hasSiblings() and ($mode == 'num' or $mode == 'default')) {
           return $this->pattern('dropdown', [
             'id'    => $this->name(),
-            'label'  => $this->l('invisible'),
-            'icon'   => 'toggle-off',
-            'items' => $this->pagelist()
+            'label' => $this->l('invisible'),
+            'icon'  => 'toggle-off',
+            'items' => $this->pagelist(),
+            'title' => $this->l('makevisible')
           ]);
         } else {
           return $this->pattern('link', [
-            'id'     => $this->name(),
-            'label'  => $this->l('invisible'),
-            'icon'   => 'toggle-off',
-            'url'    => $this->route('show/' . $this->page->uri()),
+            'id'    => $this->name(),
+            'label' => $this->l('invisible'),
+            'icon'  => 'toggle-off',
+            'url'   => $this->route('show/' . $this->page->uri()),
+            'title' => $this->l('makevisible')
           ]);
         }
 
@@ -59,6 +62,7 @@ class VisibilityElement extends Element {
       $items[] = [
         'url'   => $this->route($route, ['num' => $sibling->num()]),
         'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
+        'title' => $this->l('setbefore') . ' ' . $sibling->title()
       ];
 
       $items[] = ['label' => $sibling->title()];
@@ -67,6 +71,7 @@ class VisibilityElement extends Element {
     $items[] = [
       'url'   => $this->route($route, ['num' => $sibling->num() + 1]),
       'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
+      'title' => $this->l('setafter') . ' ' . $sibling->title()
     ];
 
     return $items;

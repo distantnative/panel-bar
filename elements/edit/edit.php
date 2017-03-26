@@ -23,7 +23,7 @@ class EditElement extends Element {
       'label' => $this->l('label'),
       'icon'  => 'pencil',
       'url'   => $this->page->url('edit'),
-      'title' => c::get('panelBar.keys', true) ? 'Alt + M' : null,
+      'title' => $this->l('label') . (c::get('panelBar.keys', true) ? ' (Alt + M)' : null),
     ]);
   }
 

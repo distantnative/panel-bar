@@ -14,6 +14,7 @@ class LogoutElement extends Element {
       'id'    => $this->name(),
       'icon'  => 'power-off',
       'url'   => $this->panel->urls()->logout(),
+      'title' => $this->l('title'),
       'right' => true
     ]);
   }

@@ -13,5 +13,7 @@ l::set('panelBar.overlay.returnrefresh', 'Return and Refresh');
 // Modal
 l::set('panelBar.modal.close', 'Close');
 
+// All
+
 // Login
 l::set('panelBar.login', 'Sign-in to the panel');

@@ -32,7 +32,7 @@ class Pattern {
       'icon'    => null,
       'mobile'  => 'icon',
       'content' => null,
-      'title'   => null,
+      'title'   => isset($args['label']) ? strip_tags($args['label']) : null,
       'right'   => false
     ], $args));
   }

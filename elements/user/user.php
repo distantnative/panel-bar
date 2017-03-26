@@ -19,7 +19,8 @@ class UserElement extends Element {
         'label' => $user,
         'icon'  => 'user',
         'url'   => $user->url('edit'),
-        'right' => true
+        'title' => 'User: ' . $user,
+        'right' => true,
       ]);
     }
   }

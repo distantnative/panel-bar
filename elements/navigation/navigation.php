@@ -37,6 +37,7 @@ class NavigationElement extends Element {
         'class' => 'parent',
         'url'   => $parent->url(),
         'label' => '<i class="fa fa-angle-double-up"></i> ' . $parent->title(),
+        'title' => $this->title($parent, 'parent')
       ];
     }
 
@@ -47,7 +48,8 @@ class NavigationElement extends Element {
       $items[] = [
         'url'   => $prev->url(),
         'label' => $prev->title(),
-        'class' => 'sibling prev' . ($next ? ' both' : '')
+        'class' => 'sibling prev' . ($next ? ' both' : ''),
+        'title' => $this->title($prev, 'prevsibling')
       ];
     }
 
@@ -56,7 +58,8 @@ class NavigationElement extends Element {
       $items[] = [
         'url'   => $next->url(),
         'label' => $next->title(),
-        'class' => 'sibling next' . ($prev ? ' both' : '')
+        'class' => 'sibling next' . ($prev ? ' both' : ''),
+        'title' => $this->title($next, 'nextsibling')
       ];
     }
 
@@ -64,11 +67,16 @@ class NavigationElement extends Element {
       $items[] = [
         'url'   => $child->url(),
         'label' => '<i class="fa ' . ($child->isVisible() ? 'fa-eye' : 'fa-eye-slash') . '"></i>' . $child->title(),
-        'class' => 'child'
+        'class' => 'child',
+        'title' => $this->title($child, 'child')
       ];
     }
 
     return $items;
+  }
+
+  protected function title($page, $key) {
+    return $this->l($key) . ': ' . $page->title();
   }
 
 }

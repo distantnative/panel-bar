@@ -10,12 +10,14 @@ class LanguagesElement extends Element {
 
   public function render() {
     if ($languages = $this->site->languages()) {
+      $current = $this->site->language()->code();
+
       // return pattern output
       return $this->pattern('dropdown', [
         'id'     => $this->name(),
-        'label'  => strtoupper($this->site->language()->code()),
+        'label'  => strtoupper($current),
         'icon'   => 'flag',
-        'items'  => $this->items($languages),
+        'items'  => $this->items($languages->not($current)),
         'mobile' => 'label'
       ]);
     }
@@ -29,7 +31,7 @@ class LanguagesElement extends Element {
   protected function items($languages) {
     $items = [];
 
-    foreach($languages->not($this->site->language()->code()) as $language) {
+    foreach($languages as $language) {
       $items[] = [
         'url'   => $language->url() . '/' . $this->page->uri(),
         'label' => strtoupper($language->code()),
