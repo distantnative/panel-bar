@@ -7,14 +7,12 @@ class LanguagesElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if ($languages = $this->site->languages()) {
       $current = $this->site->language()->code();
 
       // return pattern output
       return $this->pattern('dropdown', [
-        'id'     => $this->name(),
         'label'  => strtoupper($current),
         'icon'   => 'flag',
         'items'  => $this->items($languages->not($current)),
@@ -23,22 +21,19 @@ class LanguagesElement extends Element {
     }
   }
 
-
   //====================================
   //   Items
   //====================================
-
   protected function items($languages) {
     $items = [];
 
-    foreach($languages as $language) {
+    foreach($languages as $lang) {
       $items[] = [
-        'url'   => $language->url() . '/' . $this->page->uri(),
-        'label' => strtoupper($language->code()),
+        'url'   => $lang->url() . '/' . $this->page->uri(),
+        'label' => strtoupper($lang->code()),
       ];
     }
 
     return $items;
   }
-
 }

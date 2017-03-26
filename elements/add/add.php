@@ -7,25 +7,21 @@ class AddElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     // register overlay output and assets
     $this->component()->overlay();
 
     // return pattern output
     return $this->pattern('dropdown', [
-      'id'    => $this->name(),
       'label' => $this->l('label'),
       'icon'  => 'plus',
       'items' => $this->items()
     ]);
   }
 
-
   //====================================
   //   Items
   //====================================
-
   protected function items() {
     $items = [];
 

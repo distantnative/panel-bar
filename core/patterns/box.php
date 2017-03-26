@@ -16,7 +16,6 @@ class BoxPattern extends Pattern {
 
     // return output
     return $this->base(a::merge([
-      'class'   => self::classes(),
       'content' => $this->tpl('box', [
         'box' => $this->element->component()->content($args['box']),
       ])

@@ -11,7 +11,6 @@ class LogoutElement extends Element {
   public function render() {
     // return pattern output
     return $this->pattern('link', [
-      'id'    => $this->name(),
       'icon'  => 'power-off',
       'url'   => $this->panel->urls()->logout(),
       'title' => $this->l('title'),

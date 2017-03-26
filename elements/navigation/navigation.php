@@ -7,37 +7,40 @@ class NavigationElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if($items = $this->items()) {
       // register overlay output and assets
       $this->asset('css', 'navigation.css');
 
-      // return pattern output
       $pattern = [
-        'id'    => $this->name(),
         'label' => 'Navigation',
         'icon'  => 'unsorted',
         'items' => $this->items(),
       ];
 
+      // styling helper CSS class
       if($this->page->hasParent()) {
         $pattern['class'] = 'with-parent';
       }
 
+      // return pattern output
       return $this->pattern('dropdown', $pattern);
     }
   }
 
-
   //====================================
   //   Items
   //====================================
-
   protected function items() {
     $page  = page($this->page);
     $items = [];
+    $items = $this->parent($items, $page);
+    $items = $this->siblings($items, $page);
+    $items = $this->children($items, $page);
+    return $items;
+  }
 
+  protected function parent($items, $page) {
     if($page->hasParent()) {
       $parent = $page->parent();
       $items[] = [
@@ -48,6 +51,10 @@ class NavigationElement extends Element {
       ];
     }
 
+    return $items;
+  }
+
+  protected function siblings($items, $page) {
     $prev = $page->prev();
     $next = $page->next();
 
@@ -60,7 +67,6 @@ class NavigationElement extends Element {
       ];
     }
 
-
     if($next) {
       $items[] = [
         'url'   => $next->url(),
@@ -70,6 +76,10 @@ class NavigationElement extends Element {
       ];
     }
 
+    return $items;
+  }
+
+  protected function children($items, $page) {
     foreach($page->children() as $child) {
       $items[] = [
         'url'   => $child->url(),
@@ -82,8 +92,10 @@ class NavigationElement extends Element {
     return $items;
   }
 
+  //====================================
+  //   Helper methods
+  //====================================
   protected function title($page, $key) {
     return $this->l($key) . ': ' . $page->title();
   }
-
 }

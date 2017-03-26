@@ -14,21 +14,10 @@ class Pattern {
     $this->element  = $element;
   }
 
-  protected function asset($type, $asset) {
-    $asset = $this->core->assets->link($type, $asset);
-    $this->core->assets->add($type, $asset);
-  }
-
-  protected function tpl($pattern, $args = []) {
-    $root    = $this->core->root . DS . 'snippets' . DS . 'patterns';
-    $snippet = $root . DS . $pattern . '.php';
-    return tpl::load($snippet, $args);
-  }
-
   protected function base($args) {
-    $dir = $this->core->root . DS . 'snippets' . DS . 'patterns';
-    return tpl::load($dir . DS . 'base.php', a::merge([
-      'class'   => null,
+    return $this->core->html->load('patterns' . DS . 'base', a::merge([
+      'id'      => $this->element,
+      'class'   => self::classes(),
       'url'     => null,
       'label'   => null,
       'icon'    => null,
@@ -37,6 +26,15 @@ class Pattern {
       'title'   => isset($args['label']) ? strip_tags($args['label']) : null,
       'right'   => false
     ], $args));
+  }
+
+  protected function tpl($pattern, $args = []) {
+    return $this->core->html->load('patterns' . DS . $pattern, $args);
+  }
+
+  protected function asset($type, $asset) {
+    $asset = $this->core->assets->link($type, $asset);
+    $this->core->assets->add($type, $asset);
   }
 
   public static function classes($additional = '') {

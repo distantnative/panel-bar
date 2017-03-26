@@ -11,7 +11,9 @@ class Assets {
   public $css = [];
   public $js  = [];
 
-  public function __construct() {
+  public function __construct($core) {
+    $this->core = $core;
+
     $this->add('css', $this->link('css', 'panelbar.css'));
     $this->add('js',  $this->link('js',  'panelbar.js'));
 
@@ -21,7 +23,6 @@ class Assets {
   //====================================
   //   Add asset
   //====================================
-
   public function add($type, $asset) {
     if(is_array($asset)) {
       foreach ($asset as $a) {
@@ -33,25 +34,20 @@ class Assets {
     }
   }
 
-
   //====================================
   //   Render combined assets
   //====================================
-
   public function render($type) {
     if(!empty($this->{$type})) {
       return implode($this->{$type});
     }
   }
 
-
   //====================================
   //   Load asset
   //====================================
-
   protected function load($type, $asset, $mode) {
-    $root = dirname(dirname(__DIR__)) . DS . 'snippets' . DS . 'assets' . DS;
-    return tpl::load($root . $mode . '.php', [
+    return $this->core->html->load('assets' . DS . $mode, [
       'type'   => $type,
       'asset'  => $asset
     ]);
@@ -71,7 +67,7 @@ class Assets {
   //====================================
 
   protected function rtl() {
-    if($language = site()->language() and $language->direction() === 'rtl') {
+    if($lang = site()->language() and $lang->direction() === 'rtl') {
       $this->add('css', $this->link('css', 'components' . DS . 'rtl.css'));
     }
   }

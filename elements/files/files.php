@@ -7,7 +7,6 @@ class FilesElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if($files = $this->items()) {
       // register output and assets
@@ -16,26 +15,23 @@ class FilesElement extends Element {
 
       // return pattern output
       return $this->pattern('link', [
-        'id'      => $this->name(),
         'label'   => $this->l('label') . $this->component()->count($files),
         'icon'    => 'th-list',
+        'class'   => 'panelBar-files panelBar-mDropParent',
         'content' => $this->tpl('list', [
           'items'   => $files,
           'all'     => [
             'label' => $this->l('label'),
             'url'   => $this->page->url('files'),
           ],
-        ]),
-        'class'   => 'panelBar-files panelBar-mDropParent'
+        ])
       ]);
     }
   }
 
-
   //====================================
   //   Items
   //====================================
-
   public function items() {
     if(!$this->page->ui()->files()) return false;
 

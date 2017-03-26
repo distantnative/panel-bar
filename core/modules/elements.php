@@ -20,7 +20,6 @@ class Elements {
     'user'
   ];
 
-
   public function __construct($core, $args = []) {
     $this->core = $core;
     $this->init(self::active());
@@ -35,38 +34,41 @@ class Elements {
     }
   }
 
-  protected function add($element) {
-    $class   = 'Kirby\panelBar\\' . ucfirst(str_replace('-', '', $element)) . 'Element';
+  protected function add($el) {
+    if($path = kirby()->get('panelBar', $el)) {
+      $nspace = 'Kirby\panelBar\\';
+      $obj    = $nspace . ucfirst(str_replace('-', '', $el)) . 'Element';
 
-    if($path = kirby()->get('panelBar', $element)) {
-      f::load($path . DS . $element . '.php');
-      $element = new $class($this->core);
-      $output  = $element->render();
+      f::load($path . DS . $el . '.php');
+      $el     = new $obj($this->core);
+      $output = $el->render();
 
       $this->core->html->add('elements', $output);
-      $this->elements[] = $element;
+      $this->elements[] = $el;
     }
   }
 
-  public static function all() {
-    return array_map(function($e) {
+  //====================================
+  //   Get elements
+  //====================================
+  public static function all($withPath = false) {
+    $all = kirby()->get('panelBar');
+
+    return $withPath ? $all : array_map(function($e) {
       return substr($e, strrpos($e, '/') + 1);
-    }, kirby()->get('panelBar'));
+    }, $all);
   }
 
-  //====================================
-  //   Settings
-  //====================================
   public static function active() {
-    $config = yaml::read(self::config());
-
-    if(f::exists(self::config()) and count($config) > 0) {
-      return $config;
-    } else {
-      return c::get('panelBar.elements', static::$defaults);
+    if(f::exists(self::config())) {
+      $config = yaml::read(self::config());
+      return count($config) > 0 ? $config : c::get('panelBar.elements', static::$defaults);
     }
   }
 
+  //====================================
+  //   Define elements set
+  //====================================
   public static function set($elements = []) {
     return yaml::write(self::config(), $elements);
   }
@@ -75,6 +77,9 @@ class Elements {
     return f::remove(self::config());
   }
 
+  //====================================
+  //   Config for element set
+  //====================================
   public static function config() {
     return kirby()->roots()->config() . DS . 'panelBar.yml';
   }

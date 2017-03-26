@@ -12,7 +12,6 @@ class VisibilityElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     if($this->page->ui()->visibility()) {
       $this->asset('css', 'visibility.css');
@@ -20,7 +19,6 @@ class VisibilityElement extends Element {
       // return pattern output
       if($this->page->isVisible()) {
         return $this->pattern('link', [
-          'id'    => $this->name(),
           'label' => $this->l('visible'),
           'icon'  => 'toggle-on',
           'url'   => $this->route('hide/' . $this->page->uri()),
@@ -28,11 +26,11 @@ class VisibilityElement extends Element {
         ]);
 
       } else {
-        $mode = $this->page->parent()->blueprint()->pages()->num()->mode;
+        $blueprint = $this->page->parent()->blueprint();
+        $mode      = $blueprint->pages()->num()->mode;
 
         if($this->page->hasSiblings() and ($mode == 'num' or $mode == 'default')) {
           return $this->pattern('dropdown', [
-            'id'    => $this->name(),
             'label' => $this->l('invisible'),
             'icon'  => 'toggle-off',
             'items' => $this->pagelist(),
@@ -40,20 +38,19 @@ class VisibilityElement extends Element {
           ]);
         } else {
           return $this->pattern('link', [
-            'id'    => $this->name(),
             'label' => $this->l('invisible'),
             'icon'  => 'toggle-off',
             'url'   => $this->route('show/' . $this->page->uri()),
             'title' => $this->l('makevisible')
           ]);
         }
-
-
       }
     }
   }
 
-
+  //====================================
+  //   Page list
+  //====================================
   protected function pagelist() {
     $items = [];
     $route = 'show/' . $this->page->uri();
@@ -61,7 +58,7 @@ class VisibilityElement extends Element {
     foreach($this->page->siblings()->visible() as $sibling) {
       $items[] = [
         'url'   => $this->route($route, ['num' => $sibling->num()]),
-        'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
+        'label' => $this->space(),
         'title' => $this->l('setbefore') . ' ' . $sibling->title()
       ];
 
@@ -70,11 +67,18 @@ class VisibilityElement extends Element {
 
     $items[] = [
       'url'   => $this->route($route, ['num' => $sibling->num() + 1]),
-      'label' => '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;',
+      'label' => $this->space(),
       'title' => $this->l('setafter') . ' ' . $sibling->title()
     ];
 
     return $items;
+  }
+
+  //====================================
+  //   Helper methods
+  //==================================
+  public function space() {
+    return '&rarr;&nbsp;<span class="space">&nbsp;</span>&nbsp;&larr;';
   }
 
 }

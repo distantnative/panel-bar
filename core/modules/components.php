@@ -13,27 +13,22 @@ class Components {
     $this->html    = $this->core->html;
   }
 
-  public function element() {
-    return $this->element->name();
-  }
-
   //====================================
   //   Overlay
   //====================================
   public function overlay() {
-    $path   = 'components' . DS . 'overlay';
+    $path = 'components' . DS . 'overlay';
+    $url  = $this->element->site->url();
 
-    $this->assets->add('js', [
-      $this->assets->tag('js', 'siteURL="' . $this->element->site->url() . '";'),
-      $this->assets->link('js', $path . '.js'),
-      $this->assets->tag('js',  'panelBar.overlay.bind(".panelBar--' . $this->element() . ' a");'),
-    ]);
-
-    $this->assets->add('css', $this->assets->link('css', $path . '.css'));
+    // register assets
+    $this->css($path);
+    $this->js('siteURL="' . $url . '";', 'tag');
+    $this->js($path);
+    $this->js('panelBar.overlay.bind(".panelBar--' . $this->element . ' a");', 'tag');
 
     // register output
-    $this->html->add('pre',      $this->html->load($path . DS . 'frame.php'));
-    $this->html->add('elements', $this->html->load($path . DS . 'links.php'));
+    $this->html('pre',      $path . DS . 'frame');
+    $this->html('elements', $path . DS . 'links');
   }
 
   //====================================
@@ -42,45 +37,59 @@ class Components {
   public function modal($content) {
     $path = 'components' . DS . 'modal';
 
-    $this->assets->add('css', [
-      $this->assets->link('css', $path . '.css'),
-    ]);
-    $this->assets->add('js', [
-      $this->assets->link('js', $path . '.js'),
-      $this->assets->tag('js', 'panelBar.modal.bind(".panelBar--' . $this->element() . ' > a", "' . $this->element() . '");'),
-    ]);
+    // register assets
+    $this->css($path);
+    $this->js($path);
+    $this->js('panelBar.modal.bind(".panelBar--' . $this->element . ' > a", "' . $this->element . '");', 'tag');
 
-    $this->html->add('post', $this->html->load($path . '.php', [
-      'id'      => $this->element(),
+    // register output
+    $this->html('post', $path, [
+      'id'      => $this->element,
       'content' => $this->content($content)
-    ]));
+    ]);
   }
 
   //====================================
   //   Content
   //====================================
   public function content($content) {
-    $this->assets->add('css', [
-      $this->assets->link('css', 'components' . DS . 'content.css'),
-    ]);
-
-    return $this->html->load('components' . DS . 'content.php', [
-      'content' => $content
-    ]);
+    $path = 'components' . DS . 'content';
+    $this->css($path);
+    return $this->render($path, ['content' => $content]);
   }
 
   //====================================
   //   Count
   //====================================
   public function count($items) {
-    $this->assets->add('css', [
-      $this->assets->link('css', 'components' . DS . 'count.css'),
-    ]);
-
-    return $this->html->load('components' . DS . 'count.php', [
-      'count' => count($items)
-    ]);
+    $path = 'components' . DS . 'count';
+    $this->css($path);
+    return $this->render($path, ['count' => count($items)]);
   }
 
+  //====================================
+  //   Helper methods
+  //====================================
+  protected function asset($type, $path, $mode = 'link') {
+    $string = $path . ($mode === 'link' ? '.' . $type : '');
+    $asset  = $this->assets->{$mode}($type, $string);
+    $this->assets->add($type, $asset);
+  }
+
+  protected function css($path, $mode = 'link') {
+    $this->asset('css', $path, $mode);
+  }
+
+  protected function js($path, $mode = 'link') {
+    return $this->asset('js', $path, $mode);
+  }
+
+  protected function html($hook, $path, $args = []) {
+    return $this->html->add($hook, $this->html->load($path, $args));
+  }
+
+  protected function render($path, $args = []) {
+    return $this->html->load($path, $args);
+  }
 
 }

@@ -10,6 +10,10 @@ class Html {
   public $pre      = [];
   public $post     = [];
 
+  public function __construct($core) {
+    $this->core = $core;
+  }
+
   public function add($position, $html) {
     $this->{$position}[] = $html;
     $this->{$position}   = array_unique($this->{$position});
@@ -20,8 +24,8 @@ class Html {
   }
 
   public function load($file, $args = []) {
-    $root = dirname(dirname(__DIR__)) . DS . 'snippets';
-    return tpl::load($root . DS . $file, $args);
+    $file = $this->core->root . DS . 'snippets' . DS . $file . '.php';
+    return tpl::load($file, $args);
   }
 
 }

@@ -7,14 +7,12 @@ class LoadtimeElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     // register assets
     $this->asset('js', 'loadtime.min.js');
 
     // return output
     return $this->pattern('link', [
-      'id'      => $this->name(),
       'icon'   => 'clock-o',
       'label'  => $this->time(),
       'mobile' => 'label',
@@ -24,7 +22,6 @@ class LoadtimeElement extends Element {
   //====================================
   //   Helpers
   //====================================
-
   protected function time() {
     return number_format((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 2);
   }

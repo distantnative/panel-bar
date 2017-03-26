@@ -15,7 +15,6 @@ class DropdownPattern extends Pattern {
 
     // return output
     return $this->base(a::merge([
-      'class'   => self::classes(),
       'content' => $this->tpl('dropdown', [
         'items' => $args['items'],
       ])

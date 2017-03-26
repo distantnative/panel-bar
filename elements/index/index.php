@@ -7,29 +7,26 @@ class IndexElement extends Element {
   //====================================
   //   Output
   //====================================
-
   public function render() {
     // register assets
     $this->asset('css', 'index.css');
 
     // return pattern output
     return $this->pattern('dropdown', [
-      'id'      => $this->name(),
       'icon'   => 'th',
       'label'  => 'Index',
       'items'  => $this->items(),
-      'class'   => 'panelBar-index panelBar-mDropParent'
+      'class'   => 'panelBar-index'
     ]);
   }
 
   //====================================
   //   Items
   //====================================
-
   protected function items() {
+    $items = [];
     $home  = $this->site->homePage();
     $index = $this->site->index()->prepend($home->id(), $home);
-    $items = [];
 
     foreach($index as $page) {
       $items[] = [
@@ -46,5 +43,4 @@ class IndexElement extends Element {
 
     return $items;
   }
-
 }

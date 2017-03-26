@@ -1,1 +1,3 @@
-<<?php e($type === 'js', 'script', 'style') ?>><?= $asset ?></<?php e($type === 'js', 'script', 'style') ?>>
+<<?php e($type === 'js', 'script', 'style') ?>>
+  <?= $asset ?>
+</<?php e($type === 'js', 'script', 'style') ?>>
