@@ -6,7 +6,7 @@
 :sparkles: Config file `site/config/panelBar.yml` defines element set  
 :sparkles: Modal component to be used by elements  
 :sparkles: Content component for easy pre-styled text  
-:sparkles: New element: `navigation`  
+:sparkles: New element: `navigation` (included in default set)  
 :sparkles: Login icon when user is not signed-in  
 :balloon: Dropdown pattern: additional CSS classes per dropdown item  
 :balloon: Added `about` element as sample for modal and content component  

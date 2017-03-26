@@ -26,11 +26,8 @@
     border-bottom:    none;
     background-color: $color-lightgrey;
 
-    &.both {
-      width: 50%;
-
-      &.next { margin-left: -2px; }
-    }
+    &.both { width: 50%;        }
+    & + &  { margin-left: -2px; }
   }
 
   &__child {

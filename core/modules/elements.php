@@ -14,6 +14,7 @@ class Elements {
     'add',
     'edit',
     'visibility',
+    'navigation',
     'files',
     'logout',
     'user'
