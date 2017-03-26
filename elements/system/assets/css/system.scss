@@ -5,13 +5,12 @@
 @import '../../../../assets/scss/util/colors';
 
 .panelBar--system {
-  .version {
+  &__version {
     &--0 { color: $color-red         !important; }
     &--1 { color: $color-brand-green !important; }
 
     &--2 {
       color:      $color-midgrey !important;
-      font-style: italic;
     }
   }
 }

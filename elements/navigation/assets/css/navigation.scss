@@ -14,33 +14,34 @@
     }
   }
 
-  .panelBar-drop__item {
-    &.parent {
-      border-bottom:    none;
-      background-color: $color-almostwhite;
+  &__parent {
+    border-bottom:    none;
+    background-color: $color-almostwhite;
+  }
+
+  &__sibling {
+    display:          inline-block;
+    width:            100%;
+    min-width:        120px;
+    border-bottom:    none;
+    background-color: $color-lightgrey;
+
+    &.both {
+      width: 50%;
+
+      &.next { margin-left: -2px; }
     }
+  }
 
-    &.sibling {
-      display:          inline-block;
-      width:            100%;
-      min-width:        120px;
-      border-bottom:    none;
-      background-color: $color-lightgrey;
+  &__child {
+    font-size: .85em;
+    text-align: left;
 
-      &.both {
-        width: 50%;
+    .fa-eye-slash { opacity: .35; }
+  }
 
-        &.next { margin-left: -2px; }
-      }
-    }
-
-    &.child {
-      font-size: .85em;
-      text-align: left;
-
-      .fa-eye-slash { opacity: .35; }
-    }
-
+  &__parent,
+  &__child {
     .fa { margin-right: .5em; }
   }
 }

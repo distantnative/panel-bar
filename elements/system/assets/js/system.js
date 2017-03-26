@@ -26,7 +26,7 @@
       var entry   = _.dom.list.querySelector('.key-' + repo);
       var version = entry.children[1];
       var status  = version_compare(version.textContent, data.name) + 1;
-      cl.add(version, "version--" + status);
+      cl.add(version, "panelBar--system__version--" + status);
       if(status === 0) {
         version.href = data.zipball_url;
       }

@@ -40,11 +40,11 @@ class Core {
 
   public function pre() {
     $this->html->add('pre', $this->assets->render('css'));
-    $this->html->add('post', $this->assets->render('js'));
     return $this->html->render('pre');
   }
 
   public function post() {
+    $this->html->add('post', $this->assets->render('js'));
     return $this->html->render('post');
   }
 
@@ -65,7 +65,8 @@ class Core {
   }
 
   protected function translations() {
-    foreach(['en', ($lang = site()->language() ? $language->code() : null)] as $translation) {
+    $lang = site()->language();
+    foreach(['en', ($lang ? $lang->code() : null)] as $translation) {
       $file = dirname(__DIR__) . DS . 'translations' . DS . $translation . '.php';
       f::load($file);
     }
