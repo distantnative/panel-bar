@@ -34,6 +34,7 @@ class AddElement extends Element {
       $items[] = [
         'url'   => $this->page->url('add'),
         'label' => $this->l('child'),
+        'title' => $this->l('label') . ' ' . $this->l('child')
       ];
     }
 
@@ -42,6 +43,7 @@ class AddElement extends Element {
       $items[] = [
         'url'   => $parent->url('add'),
         'label' => $this->l('sibling'),
+        'title' => $this->l('label') . ' ' . $this->l('sibling')
       ];
     }
 
