@@ -14,12 +14,18 @@ class NavigationElement extends Element {
       $this->asset('css', 'navigation.css');
 
       // return pattern output
-      return $this->pattern('dropdown', [
+      $pattern = [
         'id'    => $this->name(),
         'label' => 'Navigation',
         'icon'  => 'unsorted',
-        'items' => $this->items()
-      ]);
+        'items' => $this->items(),
+      ];
+
+      if($this->page->hasParent()) {
+        $pattern['class'] = 'with-parent';
+      }
+
+      return $this->pattern('dropdown', $pattern);
     }
   }
 
@@ -32,7 +38,8 @@ class NavigationElement extends Element {
     $page  = page($this->page);
     $items = [];
 
-    if($parent = $page->parent() and !$parent->is(site())) {
+    if($page->hasParent()) {
+      $parent = $page->parent();
       $items[] = [
         'class' => 'parent',
         'url'   => $parent->url(),

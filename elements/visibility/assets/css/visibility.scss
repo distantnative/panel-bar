@@ -3,6 +3,12 @@
 
 
 .panelBar--visibility {
+  &.panelBar-mDropParent {
+    &:hover::after {
+      border-bottom-color: $color-almostwhite;
+    }
+  }
+
   .panelBar-drop__item {
     &:nth-child(2n + 1) {
       padding:          .25em 1.5em;

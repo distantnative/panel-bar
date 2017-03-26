@@ -2,8 +2,19 @@
 @import '../../../../assets/scss/util/colors';
 
 .panelBar--navigation {
-  .panelBar-drop__item {
+  &.panelBar-mDropParent {
+    &:hover::after {
+      border-bottom-color: $color-lightgrey;
+    }
 
+    &.with-parent {
+      &:hover::after {
+        border-bottom-color: $color-almostwhite;
+      }
+    }
+  }
+
+  .panelBar-drop__item {
     &.parent {
       border-bottom:    none;
       background-color: $color-almostwhite;
@@ -16,9 +27,11 @@
       border-bottom:    none;
       background-color: $color-lightgrey;
 
-      &.both       { width: 50%;        }
-      &.both.next  { margin-left: -2px; }
+      &.both {
+        width: 50%;
 
+        &.next { margin-left: -2px; }
+      }
     }
 
     &.child {
