@@ -35,7 +35,7 @@
   };
 
   var width = function() {
-    var width = panelBar.dom.controls.all.offsetWidth + 20;
+    var width    = panelBar.dom.controls.all.offsetWidth + 20;
     var elements = panelBar.dom.bar.querySelectorAll('.panelBar-element');
     var i;
     for (i = 0; i < elements.length; i++) {
@@ -49,15 +49,11 @@
     var i;
     for(i = 0; i < mDrop.length; i++) {
       cl.remove(mDrop[i], 'panelBar-element--overlap');
-      cl.remove(mDrop[i], 'panelBar-element--overlap-left');
-      cl.remove(mDrop[i], 'panelBar-element--overlap-right');
       var position = mDrop[i].getBoundingClientRect();
       if(position.left < 0) {
         cl.add(mDrop[i], 'panelBar-element--overlap');
-        cl.add(mDrop[i], 'panelBar-element--overlap-left');
       } else if (position.right < 0) {
         cl.add(mDrop[i], 'panelBar-element--overlap');
-        cl.add(mDrop[i], 'panelBar-element--overlap-right');
       }
     }
   };
