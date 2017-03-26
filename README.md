@@ -381,3 +381,12 @@ If you have set the `X-Frame-Options` in your `.htaccess` to `DENY`, panelBar wi
 
 # Help & Improve <a id="Help"></a>
 If you find any bugs, have troubles or ideas for new elements or further configuration options, please let me know [by opening a new issue](https://github.com/distantnative/panel-bar/issues/new).
+
+&nbsp; 
+
+# License
+[MIT License](http://www.opensource.org/licenses/mit-license.php)
+
+
+# Author
+Nico Hoffmann - <https://nhoffmann.com>
