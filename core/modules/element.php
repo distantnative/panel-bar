@@ -74,6 +74,11 @@ class Element {
   protected function pattern($pattern, $args = []) {
     $class = 'Kirby\panelBar\\' . $pattern . 'Pattern';
     $class = new $class($this);
+
+    if(isset($args['class'])) {
+      $args['class'] = $class::classes($args['class']);
+    }
+
     return $class->render($args);
   }
 

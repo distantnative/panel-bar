@@ -7,6 +7,8 @@ use Tpl;
 
 class Pattern {
 
+  public static $classes;
+
   public function __construct($element) {
     $this->core     = $element->core;
     $this->element  = $element;
@@ -35,6 +37,10 @@ class Pattern {
       'title'   => isset($args['label']) ? strip_tags($args['label']) : null,
       'right'   => false
     ], $args));
+  }
+
+  public static function classes($additional = '') {
+    return static::$classes . ' ' . $additional;
   }
 
 }
