@@ -5,21 +5,20 @@
   .panelBar-drop__item {
 
     &.parent {
+      border-bottom:    none;
       background-color: $color-almostwhite;
     }
 
     &.sibling {
       display:          inline-block;
+      width:            100%;
       min-width:        120px;
+      border-bottom:    none;
       background-color: $color-lightgrey;
 
-      &.next  { margin-left: -2px; }
-      &.empty { color: transparent; }
+      &.both       { width: 50%;        }
+      &.both.next  { margin-left: -2px; }
 
-      &:first-child:nth-last-child(2),
-      &:first-child:nth-last-child(2) ~ & {
-        width: 50%;
-      }
     }
 
     &.child {

@@ -40,20 +40,23 @@ class NavigationElement extends Element {
       ];
     }
 
-    if($prev = $page->prev()) {
+    $prev = $page->prev();
+    $next = $page->next();
+
+    if($prev) {
       $items[] = [
-        'url'   => $prev ? $prev->url() : null,
-        'label' => $prev ? $prev->title() : '&nbsp;',
-        'class' => 'sibling prev' . ($prev ? '' : ' empty')
+        'url'   => $prev->url(),
+        'label' => $prev->title(),
+        'class' => 'sibling prev' . ($next ? ' both' : '')
       ];
     }
 
 
-    if($next = $page->next()) {
+    if($next) {
       $items[] = [
-        'url'   => $next ? $next->url() : null,
-        'label' => $next ? $next->title() : '&nbsp;',
-        'class' => 'sibling next' . ($next ? '' : ' empty')
+        'url'   => $next->url(),
+        'label' => $next->title(),
+        'class' => 'sibling next' . ($prev ? ' both' : '')
       ];
     }
 
