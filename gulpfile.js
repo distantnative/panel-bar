@@ -99,7 +99,7 @@ gulp.task('watch', ['css', 'css-elements', 'css-widget', 'js', 'js-components', 
   gulp.watch('assets/scss/**/*.scss',           ['css']);
   gulp.watch('elements/**/assets/css/*.scss',   ['css-elements']);
   gulp.watch('widget/assets/scss/*.scss',       ['css-widget']);
-  gulp.watch('assets/js/src/panelbar.js',       ['js']);
+  gulp.watch(['assets/js/src/panelbar.js', 'assets/js/src/core/*.js'],       ['js']);
   gulp.watch('assets/js/src/components/*.js',   ['js-components']);
   gulp.watch('elements/**/assets/js/*.js',      ['js-elements']);
   gulp.watch('widget/assets/js/*.js',           ['js-widget']);
