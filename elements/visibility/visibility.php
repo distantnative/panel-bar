@@ -53,7 +53,6 @@ class VisibilityElement extends Element {
   //====================================
   protected function pagelist() {
     $items = [];
-    $route = 'show/' . $this->page->uri();
 
     foreach($this->page->siblings()->visible() as $sibling) {
       $items[] = $this->insertPosition($sibling->num(), 'setbefore', $sibling->title());
@@ -67,7 +66,7 @@ class VisibilityElement extends Element {
 
   protected function insertPosition($num, $l, $title) {
     return [
-      'url'   => $this->route($route, ['num' => $num]),
+      'url'   => $this->route('show/' . $this->page->uri(), ['num' => $num]),
       'label' => $this->space(),
       'title' => $this->l($l) . ' ' . $title
     ];

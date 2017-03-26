@@ -5,12 +5,14 @@
   // =============================================
 
   panelBar.modal = {
-    overlay: document.querySelector('.panelBar-modal__overlay'),
-    close:   document.querySelectorAll('.panelBar-modal__close'),
+    dom: {
+      overlay: document.querySelector('.panelBar-modal__overlay'),
+      close:   document.querySelectorAll('.panelBar-modal__close')
+    },
 
     show: function(modal) {
       cl.add(modal, 'is-open');
-      cl.add(_.overlay, 'is-open');
+      cl.add(_.dom.overlay, 'is-open');
     },
 
     bind : function(element, modalID) {
@@ -30,19 +32,19 @@
     close: function() {
       var modal = document.querySelector('.panelBar-modal.is-open');
       if(modal !== null) cl.remove(modal, 'is-open');
-      cl.remove(_.overlay, 'is-open');
+      cl.remove(_.dom.overlay, 'is-open');
     },
 
     init: function() {
       var i;
-      for (i = 0; i < _.close.length; i++) {
-        _.close[i].addEventListener('click', function(e) {
+      for (i = 0; i < _.dom.close.length; i++) {
+        _.dom.close[i].addEventListener('click', function(e) {
           e.preventDefault();
-          cl.remove(this.parentElement, 'is-open');
+          _.close();
         });
       }
 
-      _.overlay.addEventListener('click', function(e) {
+      _.dom.overlay.addEventListener('click', function(e) {
         _.close();
       });
     },
