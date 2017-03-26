@@ -54,6 +54,12 @@ class Element {
     $this->core->assets->add($type, $link);
   }
 
+  protected function key($keycode, $js) {
+    $this->core->assets->add('js', [
+      $this->core->assets->tag('js',  'panelBar.keys.bindings[' . $keycode . '] = function() { ' . $js . ' };'),
+    ]);
+  }
+
   //====================================
   //   Templates & Patterns
   //====================================

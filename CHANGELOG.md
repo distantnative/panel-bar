@@ -1,6 +1,7 @@
 # Changelog
 
 ## [2.1.0](https://github.com/distantnative/panel-bar/releases/tag/2.1.0) (?)
+- :rotating_light: Custom elements can only be created through element classes
 - :sparkles: Panel widget to set the active panelBar elements
 - :sparkles: Config file `site/config/panelBar.yml` defines element set
 - :sparkles: Modal component to be used by elements
@@ -10,7 +11,7 @@
 - :balloon: Dropdown pattern: additional CSS classes per dropdown item
 - :balloon: Added `about` element as sample for modal and content component
 - :balloon: Panel integration: respect custom site paths
-- :rotating_light: Custom elements only through Element classes
+- :balloon: Set key shortcuts per element (`$this->key($keycode, $jsfunction)`)
 - :bug: Handle element names with `-`(now stripping `-`)
 - :bug: Visibility element: Bug when hiding only child
 - :bug: Overlay: border on iframe in Chrome

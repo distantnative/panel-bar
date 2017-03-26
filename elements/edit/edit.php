@@ -14,6 +14,9 @@ class EditElement extends Element {
     // register overlay output and assets
     $this->component()->overlay();
 
+    // register key shortcut: alt + M
+    $this->key(77, 'panelBar.dom.bar.querySelector(".panelBar--' . $this->name() . ' a").click();');
+
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),

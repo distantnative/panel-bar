@@ -12,6 +12,9 @@ class PanelElement extends Element {
     // register overlay output and assets
     $this->component()->overlay();
 
+    // register key shortcut: alt + P
+    $this->key(80, 'location.href = panelBar.dom.bar.querySelector(".panelBar--' . $this->name() . ' a").href;');
+
     // return pattern output
     return $this->pattern('link', [
       'id'    => $this->name(),

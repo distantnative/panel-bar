@@ -23,30 +23,13 @@
 
     bindings: {
       // alt + X
-      88: function() {
-        panelBar.toggleVisibility();
-
-      },
+      88: function() { panelBar.toggleVisibility(); },
       // alt + - (dash)
-      189: function() {
-        panelBar.togglePosition();
-      },
+      189: function() { panelBar.togglePosition();  },
       // alt + arrow-up
-      38: function() {
-        panelBar.top();
-      },
+      38: function() { panelBar.top();    },
       // alt + arrow-down
-      40: function() {
-        panelBar.bottom();
-      },
-      // alt + M
-      77: function() {
-        panelBar.dom.bar.querySelector('.panelBar--edit a').click();
-      },
-      // alt + P
-      80: function() {
-        location.href = panelBar.dom.bar.querySelector('.panelBar--panel a').href;
-      },
+      40: function() { panelBar.bottom(); },
     },
   };
 
