@@ -33,12 +33,13 @@ class IndexElement extends Element {
 
     foreach($index as $page) {
       $items[] = [
-        'label' => $this->tpl('label', array(
+        'label' => $this->tpl('label', [
+          'icon'    => $page->icon(),
           'title'   => $page->title(),
           'num'     => $page->num(),
           'depth'   => $page->depth() - 1,
           'visible' => $page->isVisible()
-        )),
+        ]),
         'url'   => $page->url(),
       ];
     }

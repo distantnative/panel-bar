@@ -10,6 +10,7 @@
 - :sparkles: Login icon when user is not signed-in
 - :balloon: Dropdown pattern: additional CSS classes per dropdown item
 - :balloon: Added `about` element as sample for modal and content component
+- :balloon: Index element: using blueprint page icons
 - :balloon: Panel integration: respect custom site paths
 - :balloon: Set key shortcuts per element (`$this->key($keycode, $jsfunction)`)
 - :bug: Handle element names with `-`(now stripping `-`)
