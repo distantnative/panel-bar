@@ -22,7 +22,8 @@ If you encounter any bugs, have suggestions for features to add or simply do not
         'id'    => $this->name(),
         'label' => null,
         'icon'  => 'id-card-o',
-        'url'   => '#modal'
+        'url'   => '#modal',
+        'right' => true
       ]);
   }
 

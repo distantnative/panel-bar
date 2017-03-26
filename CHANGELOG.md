@@ -13,7 +13,8 @@
 :balloon: Index element: using blueprint page icons  
 :balloon: Panel integration: respect custom site paths  
 :balloon: Set key shortcuts per element (`$this->key($keycode, $jsfunction)`)  
-:bug: Handle element names with `-`(now stripping `-`)  
+:bug: Handle element names with `-`(now stripping `-`) 
+:bug: Core translations loading in time to be displayed   
 :bug: Visibility element: Bug when hiding only child  
 :bug: Overlay: border on iframe in Chrome  
 :bug: Images element: responsive grid sizes  
