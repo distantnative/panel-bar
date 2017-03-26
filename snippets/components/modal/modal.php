@@ -2,4 +2,3 @@
   <?= kirbytext($content) ?>
   <div class="panelBar-modal__close" title="<?= l::get('panelBar.modal.close'); ?>">x</div>
 </div>
-<div class="panelBar-modal__overlay"></div>

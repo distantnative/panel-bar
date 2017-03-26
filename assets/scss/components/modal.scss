@@ -44,7 +44,7 @@
   }
 
   &.is-open,
-  &.is-open ~ &__overlay {
+  &__overlay.is-open {
     display: block;
   }
 }

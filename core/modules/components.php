@@ -43,7 +43,8 @@ class Components {
     $this->js('panelBar.modal.bind(".panelBar--' . $this->element . ' > a", "' . $this->element . '");', 'tag');
 
     // register output
-    $this->html('post', $path, [
+    $this->html('post', $path . DS . 'overlay');
+    $this->html('post', $path . DS . 'modal', [
       'id'      => $this->element,
       'content' => $this->content($content)
     ]);
