@@ -1,5 +1,5 @@
 {
-  "name":        "panelBar",
+  "name":        "panel-bar",
   "description": "Kirby panelBar Plugin",
   "author":      "Nico Hoffmann <nico@getkirby.com>",
   "type":        "kirby-plugin",

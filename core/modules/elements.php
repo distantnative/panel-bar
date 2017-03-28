@@ -60,10 +60,8 @@ class Elements {
   }
 
   public static function active() {
-    if(f::exists(self::config())) {
-      $config = yaml::read(self::config());
-      return count($config) > 0 ? $config : c::get('panelBar.elements', static::$defaults);
-    }
+    $config = f::exists(self::config()) ? yaml::read(self::config()) : [];
+    return count($config) > 0 ? $config : c::get('panelBar.elements', static::$defaults);
   }
 
   //====================================
