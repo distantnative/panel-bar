@@ -2,6 +2,7 @@
 
 ## [2.1.2](https://github.com/distantnative/panel-bar/releases/tag/2.1.2) (2017-03-28)
 :bug: CLI installing to wrong destination
+:bug: active elements not considering default element set
 
 ## [2.1.1](https://github.com/distantnative/panel-bar/releases/tag/2.1.1) (2017-03-26)
 :bug: Visibility element: Unhiding numbered pages works again  
