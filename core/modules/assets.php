@@ -16,8 +16,6 @@ class Assets {
 
     $this->add('css', $this->link('css', 'panelbar.css'));
     $this->add('js',  $this->link('js',  'panelbar.js'));
-
-    $this->rtl();
   }
 
   //====================================
@@ -59,17 +57,6 @@ class Assets {
 
   public function tag($type, $asset) {
     return $this->load($type, $asset, 'tag');
-  }
-
-
-  //====================================
-  //   Optionals
-  //====================================
-
-  protected function rtl() {
-    if($lang = site()->language() and $lang->direction() === 'rtl') {
-      $this->add('css', $this->link('css', 'components' . DS . 'rtl.css'));
-    }
   }
 
 }

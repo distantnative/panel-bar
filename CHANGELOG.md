@@ -2,7 +2,8 @@
 
 ## [2.2.0](https://github.com/distantnative/panel-bar/releases/tag/2.2.0) (2017-03-?)
 :balloon: Translations now follow the panel user's language  
-:balloon: Translations now get passed {$variables} to be more flexible  
+:balloon: Translations now get passed {$variables} to be more flexible 
+:poop: Dropped RTL support for the moment   
 
 ## [2.1.2](https://github.com/distantnative/panel-bar/releases/tag/2.1.2) (2017-03-28)
 :bug: CLI installing to wrong destination  
