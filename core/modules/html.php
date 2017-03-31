@@ -24,7 +24,7 @@ class Html {
   }
 
   public function load($file, $args = []) {
-    $file = $this->core->root . DS . 'snippets' . DS . $file . '.php';
+    $file = $this->core->dir() . DS . 'snippets' . DS . $file . '.php';
     return tpl::load($file, $args);
   }
 

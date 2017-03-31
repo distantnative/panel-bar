@@ -14,6 +14,7 @@ function dir($folder = '', $root = false) {
 //====================================
 f::load(dir('lib') . DS . 'registry.php');
 f::load(dir('lib') . DS . 'route.php');
+f::load(dir('lib') . DS . 'translations.php');
 f::load(dir('lib') . DS . 'helpers.php');
 
 //====================================

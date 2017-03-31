@@ -7,7 +7,7 @@ use C;
 use F;
 use Tpl;
 
-class Core {
+class Core extends Translations {
 
   public static $version = '2.1.1';
 
@@ -27,6 +27,14 @@ class Core {
     $this->html     = new Html($this);
     $this->assets   = new Assets($this);
     $this->elements = new Elements($this, $args);
+  }
+
+  //====================================
+  //   Characteristics
+  //====================================
+
+  public function dir() {
+    return $this->root;
   }
 
   //====================================
@@ -67,18 +75,5 @@ class Core {
       ['panelBar--' . $this->position],
       (!$this->visible ? ['panelBar--hidden'] : [])
     ));
-  }
-
-  //====================================
-  //   Translations
-  //====================================
-  protected function translations() {
-    $this->translation('en');
-    if($lang = site()->language()) $this->translation($lang->code());
-  }
-
-  protected function translation($lang) {
-    $dir  = $this->root . DS . 'translations';
-    f::load($dir . DS . $lang . '.php');
   }
 }

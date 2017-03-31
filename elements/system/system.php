@@ -22,17 +22,17 @@ class SystemElement extends Element {
     // return output
     return $this->pattern('box', [
       'icon'  => 'info',
-      'label' => 'Site',
+      'label' => $this->l('label'),
       'box'   => [
-        'Pages'       => [
+        $this->l('pages') => [
           'label' => $this->site->index()->count(),
           'url'   => $this->site->url('subpages')
         ],
-        'Files'       => $this->site->index()->files()->count(),
-        'Templates'   => count(dir::read($root . DS . 'templates')),
-        'Blueprints'  => count(\Kirby\Panel\Models\Page\Blueprint::all()),
-        'Controllers' => count(dir::read($root . DS . 'controllers')),
-        'Models'      => count(dir::read($root . DS . 'models')),
+        $this->l('files')       => $this->site->index()->files()->count(),
+        $this->l('templates')   => count(dir::read($root . DS . 'templates')),
+        $this->l('blueprints')  => count(\Kirby\Panel\Models\Page\Blueprint::all()),
+        $this->l('controllers') => count(dir::read($root . DS . 'controllers')),
+        $this->l('models')      => count(dir::read($root . DS . 'models')),
         null,
         'Kirby'    => [
           'label'    => \Kirby::version(),
