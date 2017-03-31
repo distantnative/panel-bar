@@ -20,6 +20,6 @@
   <?php endforeach ?>
 
   <a href="<?= $all['url'] ?>" class="panelBar-files__more">
-    <?= l::get('panelBar.element.files.all') ?> <?= $all['label'] ?>
+    <?= $all['label'] ?>
   </a>
 </div>

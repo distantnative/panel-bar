@@ -21,7 +21,7 @@ class FilesElement extends Element {
         'content' => $this->tpl('list', [
           'items'   => $files,
           'all'     => [
-            'label' => $this->l('label'),
+            'label' => $this->l('all'),
             'url'   => $this->page->url('files'),
           ],
         ])

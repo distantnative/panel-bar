@@ -17,8 +17,8 @@ class Translations {
     f::load($dir . DS . $lang . '.php');
   }
 
-  public function l($key) {
-    return l::get(implode('.', array_merge(['panelBar'], $key)));
+  public function l($key, $data = []) {
+    return l::get(implode('.', array_merge(['panelBar'], $key)), $data);
   }
 
 }

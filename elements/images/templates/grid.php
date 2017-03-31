@@ -16,6 +16,6 @@
   </div>
 
   <a href="<?= $all['url'] ?>" class="panelBar-images__more">
-    <?= l::get('panelBar.element.images.all') ?> <?= $all['label'] ?>
+    <?= $all['label'] ?>
   </a>
 </div>

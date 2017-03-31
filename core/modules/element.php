@@ -100,8 +100,8 @@ class Element extends Translations {
   //====================================
   //   Translations
   //====================================
-  public function l($key) {
-    return parent::l(['element', $this, $key]);
+  public function l($key, $data = []) {
+    return parent::l(['element', $this, $key], $data);
   }
 
 }

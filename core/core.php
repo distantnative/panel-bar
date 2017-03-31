@@ -9,7 +9,7 @@ use Tpl;
 
 class Core extends Translations {
 
-  public static $version = '2.1.3';
+  public static $version = '2.2.0';
 
   public    $root;
   protected $elements;
