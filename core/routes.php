@@ -21,7 +21,8 @@ $kirby->set('route', [
 // =============================================
 $root = dirname(__DIR__) . DS . 'elements';
 foreach(dir::read($root) as $element) {
-  if($file = $root . DS . $element . DS . 'routes.php' and f::exists($file)) {
+  $file = $root . DS . $element . DS . 'routes.php';
+  if(f::exists($file)) {
     $route = require($file);
     new Kirby\panelBar\Route($element, $route);
   }
@@ -33,7 +34,18 @@ foreach(dir::read($root) as $element) {
 $kirby->set('route', [
   'pattern' => 'api/plugin/panel-bar-widget/set',
   'action'  => function() {
-    return \Kirby\panelBar\Elements::set(get('elements'));
+    $elements = [];
+
+    foreach(get('elements') as $element) {
+      $elements[$element['element']] = [];
+
+      if($element['float']) {
+        $elements[$element['element']]['float'] = $element['float'];
+      }
+    }
+
+    $config = new \Kirby\panelBar\Config;
+    return $config->set($elements);
   },
   'method' => 'POST'
 ]);
@@ -41,7 +53,8 @@ $kirby->set('route', [
 $kirby->set('route', [
   'pattern' => 'api/plugin/panel-bar-widget/reset',
   'action'  => function() {
-    return \Kirby\panelBar\Elements::clear();
+    $config = new \Kirby\panelBar\Config;
+    return $config->clear();
   },
   'method' => 'POST'
 ]);

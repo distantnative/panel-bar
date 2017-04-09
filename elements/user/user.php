@@ -18,7 +18,6 @@ class UserElement extends Element {
         'icon'  => 'user',
         'url'   => $user->url('edit'),
         'title' => $this->l('user' , ['user' => $user->username()]),
-        'right' => true,
       ]);
     }
   }

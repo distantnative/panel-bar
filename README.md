@@ -108,9 +108,10 @@ c::set('panelbar.elements', [
 
 Or directly in panelBar's own config file `site/config/panelBar.yml`:
 ```ini
-- panel
-- add
-- edit
+panel:
+add:
+edit:
+  float: right
 …
 ```
 

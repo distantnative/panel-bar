@@ -2,15 +2,16 @@
   <?php foreach(a::merge($active, array_diff($el, $active)) as $element) : ?>
     <?= tpl::load(__DIR__ . DS . 'entry.php', [
       'element' => $element,
-      'checked' => in_array($element, $active)
+      'checked' => in_array($element, $active),
+      'float'   => a::get($config->element($element), 'float', in_array($element, $active) ? 'left' : null)
     ]) ?>
   <?php endforeach ?>
 </ul>
 <style>
-  <?= tpl::load($assets . 'css' . DS .  'widget.css') ?>
+  <?= tpl::load($assets . DS . 'css' . DS .  'widget.css') ?>
 </style>
 <script>
-  var setURL = "<?= $url ?>";
-  <?= tpl::load($assets . 'js' . DS .  'Sortable.min.js') ?>
-  <?= tpl::load($assets . 'js' . DS .  'widget.min.js') ?>
+  var setPanelBarURL = "<?= $url ?>";
+  <?= tpl::load($assets . DS . 'js' . DS .  'Sortable.min.js') ?>
+  <?= tpl::load($assets . DS . 'js' . DS .  'widget.min.js') ?>
 </script>

@@ -15,6 +15,17 @@ $panel-grey: #ddd;
 
       input { margin-right: .75em; }
 
+      .floats {
+        position:   absolute;
+        top:        6px;
+        right:      30px;
+        color:      $panel-grey;
+
+        > a:not(.active) {
+          color: $panel-grey;
+        }
+      }
+
       .handles {
         position:   absolute;
         top:        7px;

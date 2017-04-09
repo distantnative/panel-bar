@@ -21,6 +21,7 @@ f::load(dir('lib') . DS . 'helpers.php');
 //   Core
 //====================================
 f::load(dir() . 'core.php');
+f::load(dir() . 'config.php');
 f::load(dir() . 'routes.php');
 
 //====================================

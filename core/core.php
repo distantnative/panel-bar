@@ -15,9 +15,10 @@ class Core extends Translations {
   protected $elements;
 
   public function __construct($args = []) {
-    $this->root  = dirname(__DIR__);
-    $this->page  = page();
-    $this->panel = require('lib/panel/integrate.php');
+    $this->config = new Config;
+    $this->root   = dirname(__DIR__);
+    $this->page   = page();
+    $this->panel  = require('lib/panel/integrate.php');
 
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
     $this->position = c::get('panelBar.position', 'top');

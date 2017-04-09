@@ -1,20 +1,25 @@
 <?php
 
+$config = new \Kirby\panelBar\Config;
+
 return [
-  'title' => 'panelBar',
+  'title' => 'panelBar Elements',
   'options' => [
     [
-      'text' => 'Default',
+      'text' => 'Default Set',
       'icon' => 'history',
       'link' => kirby()->urls()->index() . '/api/plugin/panel-bar-widget/reset'
     ]
   ],
-  'html' => function() {
-   return tpl::load(__DIR__ . DS . 'template' . DS . 'list.php', [
+  'html' => function() use($config) {
+    $template = __DIR__ . DS . 'template' . DS . 'list.php';
+
+   return tpl::load($template, [
+     'config' => $config,
      'el'     => \Kirby\panelBar\Elements::all(),
-     'active' => \Kirby\panelBar\Elements::active(),
+     'active' => $config->elements(),
      'url'    => kirby()->urls()->index() . '/api/plugin/panel-bar-widget/set',
-     'assets' => __DIR__ . DS . 'assets' . DS
+     'assets' => __DIR__ . DS . 'assets'
    ]);
   }
 ];
