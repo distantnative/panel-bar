@@ -5,31 +5,50 @@ var panelBarList = $('.panelBar-widget__list');
 //  Sortable
 // =============================================
 var sortable = Sortable.create(panelBarList[0], {
-  onUpdate: setPanelBarElements
+  forceFallback: true,
+  filter:        ".panelBar-widget--undraggable",
+  chosenClass:   "panelBar-widget__chosen",
+  ghostClass:    "panelBar-widget__ghost",
+  onUpdate:      setPanelBarElements,
+
 });
 
 // =============================================
 //  On checking/unchecking
 // =============================================
 panelBarList.find('input').change(function(e) {
-  var el     = $(this);
-  var active = panelBarList.find(':checked').not(el);
+  var input    = $(this);
+  var checkbox = input.parent();
+  var item     = checkbox.parent();
 
-  var floats = el.siblings('.floats').find('a');
-  floats.removeClass('active');
-  if(el.is(':checked')) floats.first().addClass('active');
+  item.toggleClass('panelBar-widget--undraggable');
 
-  el.parent().insertAfter(active.last().parent());
+  var actives  = panelBarList.find(':checked').not(input);
+  var insert   = actives.last().parent().parent();
+
+  var float = checkbox.siblings('.controls').find('.float');
+  float.attr('data-float', input.is(':checked') ? 'left' : '');
+
+  item.insertAfter(insert);
+
+  if(!input.is(':checked')) sortPanelBarElements();
+
   setPanelBarElements();
 });
+
+function sortPanelBarElements() {
+  $(".panelBar-widget--undraggable").sort(function(a, b) {
+    return ($(b).find('.name').text()) < ($(a).find('.name').text()) ? 1 : -1;
+  }).appendTo('.panelBar-widget__list');
+}
 
 // =============================================
 //  On float setting
 // =============================================
-panelBarList.find('.floats > a').click(function(e) {
+panelBarList.find('.float > a').click(function(e) {
   e.preventDefault();
-  $(this).toggleClass('active');
-  $(this).siblings().removeClass('active');
+  var el = $(this);
+  el.parent().attr('data-float', el.index() === 0 ? 'left' : 'right');
   setPanelBarElements();
   return false;
 });
@@ -47,9 +66,12 @@ function generatePanelBarConfig() {
   var data = { 'elements' : []};
 
   panelBarList.find(":checked").each(function() {
+    var el    = $(this);
+    var float = el.parent().siblings('.controls').find('.float');
+
     data.elements.push({
-      element: $(this).val(),
-      float:   $(this).siblings('.floats').find('.active').data('float')
+      element: el.val(),
+      float:   float.attr('data-float') == 'right' ? 'right' : null
     });
   });
 

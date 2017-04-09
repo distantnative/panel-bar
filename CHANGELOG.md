@@ -2,6 +2,7 @@
 
 ## [2.2.0](https://github.com/distantnative/panel-bar/releases/tag/2.2.0) (2017-03-?)
 :sparkles: Set element float via panel widget
+:lipstick: Panel widget: now all pretty
 :balloon: Translations now follow the panel user's language  
 :balloon: Translations now get passed {$variables} to be more flexible 
 :poop: Dropped RTL support for the moment   
