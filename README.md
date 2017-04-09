@@ -84,6 +84,7 @@ Name                                | Description
 [`loadtime`](elements/loadtime)     | Info label for loading time
 [`logout`](elements/logout)         | Sign out current user
 [`navigation`](elements/navigation) | Navigate between parent, siblings and children pages
+[`pagespeed`](elements/pagespeed)   | Google PageSpeed API
 [`panel`](elements/panel)           | Open the Kirby panel
 [`system`](elements/system)         | Info box incl. version checks for kirby, toolkit and panel
 [`user`](elements/user)             | Current user

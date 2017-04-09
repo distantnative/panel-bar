@@ -1,6 +1,7 @@
 # Changelog
 
-## [2.2.0](https://github.com/distantnative/panel-bar/releases/tag/2.2.0) (2017-03-?)
+## [2.2.0](https://github.com/distantnative/panel-bar/releases/tag/2.2.0) (2017-04-9)
+:sparkles: New element: Google PageSpeed API
 :sparkles: Set element float via panel widget
 :lipstick: Panel widget: now all pretty
 :balloon: Translations now follow the panel user's language  

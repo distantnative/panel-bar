@@ -1,0 +1,26 @@
+//====================================
+//   Google PageSpeed element
+//====================================
+
+@import '../../../../assets/scss/util/colors';
+
+.panelBar--pagespeed {
+  &__wrapper {
+    display:               grid;
+    min-width:             600px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap:       1px;
+
+    & + a {
+      display:          block;
+      margin-top:       .5em;
+      padding:          .5em;
+      background-color: $color-brand-green;
+      color:            $color-white !important;
+      font-weight:      bold;
+      text-align:       center;
+
+      &:hover { opacity: .75; }
+    }
+  }
+}
