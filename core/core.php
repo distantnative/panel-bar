@@ -7,17 +7,18 @@ use C;
 use F;
 use Tpl;
 
-class Core {
+class Core extends Translations {
 
-  public static $version = '2.1.1';
+  public static $version = '2.2.0';
 
   public    $root;
   protected $elements;
 
   public function __construct($args = []) {
-    $this->root  = dirname(__DIR__);
-    $this->page  = page();
-    $this->panel = require('lib/panel/integrate.php');
+    $this->config = new Config;
+    $this->root   = dirname(__DIR__);
+    $this->page   = page();
+    $this->panel  = require('lib/panel/integrate.php');
 
     $this->visible  = !isset($args['hidden']) || $args['hidden'] === true;
     $this->position = c::get('panelBar.position', 'top');
@@ -27,6 +28,14 @@ class Core {
     $this->html     = new Html($this);
     $this->assets   = new Assets($this);
     $this->elements = new Elements($this, $args);
+  }
+
+  //====================================
+  //   Characteristics
+  //====================================
+
+  public function dir() {
+    return $this->root;
   }
 
   //====================================
@@ -67,18 +76,5 @@ class Core {
       ['panelBar--' . $this->position],
       (!$this->visible ? ['panelBar--hidden'] : [])
     ));
-  }
-
-  //====================================
-  //   Translations
-  //====================================
-  protected function translations() {
-    $this->translation('en');
-    if($lang = site()->language()) $this->translation($lang->code());
-  }
-
-  protected function translation($lang) {
-    $dir  = $this->root . DS . 'translations';
-    f::load($dir . DS . $lang . '.php');
   }
 }

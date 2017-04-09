@@ -5,7 +5,6 @@ namespace Kirby\panelBar;
 use C;
 use Dir;
 use F;
-use Yaml;
 
 class Elements {
 
@@ -16,8 +15,12 @@ class Elements {
     'visibility',
     'navigation',
     'files',
-    'logout',
-    'user'
+    'logout' => [
+      'float' => 'right'
+    ],
+    'user' => [
+      'float' => 'right'
+    ]
   ];
 
   public function __construct($core, $args = []) {
@@ -59,27 +62,8 @@ class Elements {
     }, $all);
   }
 
-  public static function active() {
-    $config = f::exists(self::config()) ? yaml::read(self::config()) : [];
-    return count($config) > 0 ? $config : c::get('panelBar.elements', static::$defaults);
-  }
-
-  //====================================
-  //   Define elements set
-  //====================================
-  public static function set($elements = []) {
-    return yaml::write(self::config(), $elements);
-  }
-
-  public static function clear() {
-    return f::remove(self::config());
-  }
-
-  //====================================
-  //   Config for element set
-  //====================================
-  public static function config() {
-    return kirby()->roots()->config() . DS . 'panelBar.yml';
+  public function active() {
+    return $this->core->config->elements();
   }
 
 }

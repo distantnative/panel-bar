@@ -68,7 +68,7 @@ class VisibilityElement extends Element {
     return [
       'url'   => $this->route('show/' . $this->page->uri(), ['num' => $num]),
       'label' => $this->space(),
-      'title' => $this->l($l) . ' ' . $title
+      'title' => $this->l($l, ['page' => $title])
     ];
   }
 

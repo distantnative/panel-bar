@@ -22,7 +22,7 @@ class ImagesElement extends Element {
           'items'   => $images,
           'count'   => count($images),
           'all'     => [
-            'label' => $this->l('label'),
+            'label' => $this->l('all'),
             'url'   => $this->page->url('files'),
           ],
         ])

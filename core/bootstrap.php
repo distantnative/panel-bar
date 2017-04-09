@@ -14,12 +14,14 @@ function dir($folder = '', $root = false) {
 //====================================
 f::load(dir('lib') . DS . 'registry.php');
 f::load(dir('lib') . DS . 'route.php');
+f::load(dir('lib') . DS . 'translations.php');
 f::load(dir('lib') . DS . 'helpers.php');
 
 //====================================
 //   Core
 //====================================
 f::load(dir() . 'core.php');
+f::load(dir() . 'config.php');
 f::load(dir() . 'routes.php');
 
 //====================================

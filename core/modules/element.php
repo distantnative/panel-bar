@@ -9,7 +9,7 @@ use Tpl;
 
 use Kirby\panelBar\Route;
 
-class Element {
+class Element extends Translations {
 
   public $name;
   public $root;
@@ -40,7 +40,7 @@ class Element {
     if($this->root) {
       return $this->root;
     } else {
-      return $this->root = $this->core->root . DS . 'elements' . DS . $this;
+      return $this->root = $this->core->dir() . DS . 'elements' . DS . $this;
     }
   }
 
@@ -100,18 +100,8 @@ class Element {
   //====================================
   //   Translations
   //====================================
-  protected function translations() {
-    $this->translation('en');
-    if($lang = site()->language()) $this->translation($lang->code());
-  }
-
-  protected function translation($lang) {
-    $dir = $this->dir() . DS . 'translations';
-    f::load($dir . DS . $lang . '.php');
-  }
-
-  protected function l($key) {
-    return l::get('panelBar.element.' . $this . '.' . $key);
+  public function l($key, $data = []) {
+    return parent::l(['element', $this, $key], $data);
   }
 
 }

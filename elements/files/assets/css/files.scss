@@ -93,20 +93,3 @@
 
   &__more { @include moreFiles(.35em .5em .5em); }
 }
-
-
-//====================================
-//   Files element - RTL
-//====================================
-
-body.rtl {
-  .panelBar-files {
-    &__preview,
-    &__label {
-      margin-right:  0;
-      margin-left:   3px;
-    }
-
-    &__info { text-align: left; }
-  }
-}

@@ -13,8 +13,7 @@ class LogoutElement extends Element {
     return $this->pattern('link', [
       'icon'  => 'power-off',
       'url'   => $this->panel->urls()->logout(),
-      'title' => $this->l('title'),
-      'right' => true
+      'title' => $this->l('title')
     ]);
   }
 
