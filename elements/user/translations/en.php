@@ -1,3 +1,3 @@
 <?php
 
-l::set('panelBar.element.user.user', 'User: {$user}');
+l::set('panelBar.element.user.user', 'User: {user}');
