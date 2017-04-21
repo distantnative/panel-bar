@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.x.x](https://github.com/distantnative/panel-bar/releases/tag/2.x.x) (2017-05-?)
+## [2.2.1](https://github.com/distantnative/panel-bar/releases/tag/2.2.1) (2017-04-21)
 :balloon: Do not display login shortcut as default (if you want it: `c::set('panelBar.login', true)`)  
 :lipstick: Navigation element: Using blueprint page icons  
 :bug: User element: display $user in translation  
