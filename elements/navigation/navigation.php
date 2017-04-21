@@ -83,9 +83,9 @@ class NavigationElement extends Element {
     foreach($page->children() as $child) {
       $items[] = [
         'url'   => $child->url(),
-        'label' => '<i class="fa ' . ($child->isVisible() ? 'fa-eye' : 'fa-eye-slash') . '"></i>' . $child->title(),
-        'class' => 'panelBar--navigation__child',
-        'title' => $this->title($child, 'child')
+        'label' => $this->panel->page($child)->icon() . '<i class="panelBar--navigation__eye fa fa-circle" aria-hidden="true"></i><i class="panelBar--navigation__eye fa ' . ($child->isVisible() ? 'fa-eye' : 'fa-eye-slash') . '"></i>' . $child->title(),
+        'class' => 'panelBar--navigation__child panelBar--navigation--' . ($child->isVisible() ? 'visible' : 'invisible'),
+        'title' => $this->title($child, 'child'),
       ];
     }
 
