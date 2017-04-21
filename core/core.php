@@ -63,7 +63,7 @@ class Core extends Translations {
   }
 
   public function login() {
-    if(c::get('panelBar.login', true)) {
+    if(c::get('panelBar.login', false)) {
       return $this->html->load('components' . DS . 'login');
     }
   }
