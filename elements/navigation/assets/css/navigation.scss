@@ -34,7 +34,29 @@
     font-size: .85em;
     text-align: left;
 
-    .fa-eye-slash { opacity: .35; }
+    .icon.fa { margin-right: 12px; }
+
+  }
+
+  &__eye {
+    position: absolute;
+
+    &.fa-eye,
+    &.fa-eye-slash {
+      transform: translate(-17px, 40%);
+      font-size: .85em;
+    }
+
+    &.fa-circle {
+      transform: translate(-19px, 4px);
+      color: rgba($color-white, .85);
+      font-size: 1.2em;
+    }
+
+  }
+
+  &--invisible {
+    .icon { opacity: .3; }
   }
 
   &__parent,

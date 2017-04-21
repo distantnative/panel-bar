@@ -9,7 +9,7 @@ use Tpl;
 
 class Core extends Translations {
 
-  public static $version = '2.2.0';
+  public static $version = '2.2.1';
 
   public    $root;
   protected $elements;
@@ -63,7 +63,7 @@ class Core extends Translations {
   }
 
   public function login() {
-    if(c::get('panelBar.login', true)) {
+    if(c::get('panelBar.login', false)) {
       return $this->html->load('components' . DS . 'login');
     }
   }

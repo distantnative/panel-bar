@@ -61,7 +61,7 @@ class NavigationElement extends Element {
     if($prev) {
       $items[] = [
         'url'   => $prev->url(),
-        'label' => $prev->title(),
+        'label' => $this->panel->page($prev)->icon() . '&nbsp;&nbsp;' . $prev->title(),
         'class' => 'panelBar--navigation__sibling prev' . ($next ? ' both' : ''),
         'title' => $this->title($prev, 'prevsibling')
       ];
@@ -70,7 +70,7 @@ class NavigationElement extends Element {
     if($next) {
       $items[] = [
         'url'   => $next->url(),
-        'label' => $next->title(),
+        'label' => $this->panel->page($next)->icon() . '&nbsp;&nbsp;' . $next->title(),
         'class' => 'panelBar--navigation__sibling next' . ($prev ? ' both' : ''),
         'title' => $this->title($next, 'nextsibling')
       ];
@@ -83,9 +83,9 @@ class NavigationElement extends Element {
     foreach($page->children() as $child) {
       $items[] = [
         'url'   => $child->url(),
-        'label' => '<i class="fa ' . ($child->isVisible() ? 'fa-eye' : 'fa-eye-slash') . '"></i>' . $child->title(),
-        'class' => 'panelBar--navigation__child',
-        'title' => $this->title($child, 'child')
+        'label' => $this->panel->page($child)->icon() . '<i class="panelBar--navigation__eye fa fa-circle" aria-hidden="true"></i><i class="panelBar--navigation__eye fa ' . ($child->isVisible() ? 'fa-eye' : 'fa-eye-slash') . '"></i>' . $child->title(),
+        'class' => 'panelBar--navigation__child panelBar--navigation--' . ($child->isVisible() ? 'visible' : 'invisible'),
+        'title' => $this->title($child, 'child'),
       ];
     }
 
