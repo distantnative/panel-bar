@@ -1,101 +1,19 @@
 
-$panel-grey:  #ddd;
-$panel-green: #8dad28;
+#panel-bar-widget {
+  background-color: #000;
+  color: #fff;
 
-.panelBar-widget {
-  &__list { user-select: none; }
-
-  &__item {
-    padding:    .35em 0;
-    font-size:  .9em;
-    list-style: none;
-
-    &:not(:last-child) {
-      border-bottom: 1px dotted $panel-grey;
-    }
-
-    .controls {
-      position:   absolute;
-      top:        0;
-      right:      0;
-      color:      $panel-grey;
-
-      > span {
-        display:     inline-block;
-        padding:     .45em .5em .25em;
-        border-left: 1px dotted $panel-grey;
-      }
-    }
-
-    .float {
-      &[data-float=''] > a { color: $panel-grey; }
-
-      &[data-float='left']  > a:last-child,
-      &[data-float='right'] > a:first-child {
-        color: $panel-grey;
-
-        &:hover { color: $panel-green; }
-      }
-    }
-
-    .handles {
-      cursor: move;
-
-      &:hover {color: $panel-green}
-    }
+  .hgroup-compressed {
+    margin-bottom: 0;
   }
 
-  &__checkbox {
-    display:          block;
-    background-color: transparent;
-    cursor:           pointer;
-    overflow:         visible;
-
-
-    input {
-      margin-right: .5em;
-      opacity:      0;
-
-      &:checked {
-        &       + .icons > i:last-child { display: block; }
-        &:hover + .icons > i:last-child { display: none;  }
-      }
-
-      &:hover + .icons > i:nth-child(2) { display: block; }
-    }
-
-    .icons {
-      position: absolute;
-      top:      0;
-      left:     0;
-
-      > i {
-        position: absolute;
-        top:      0;
-        left:     0;
-
-        &:not(:first-child) { display: none; }
-      }
-    }
+  .hgroup-title {
+    border: none;
+    padding-bottom: 0;
   }
 
-  &--undraggable {
-    .panelBar-widget__checkbox {
-      opacity: .25;
-
-      &:hover { opacity: 1; }
-    }
-
-    .controls {
-      opacity:        0;
-      pointer-events: none;
-    }
+  a,
+  .icon {
+    color: #fff;
   }
-
-  &__chosen {
-    background-color: $panel-green;
-
-    .handles { color: #627b0f; }
-  }
-  &__ghost  { opacity: .25; }
 }

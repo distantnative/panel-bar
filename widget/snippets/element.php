@@ -1,6 +1,6 @@
-<li class="item panelBar-widget__item <?php e(!$checked, 'panelBar-widget--undraggable') ?>">
+<li class="item panelBarView-element <?php e(!$checked, 'panelBarView-element--fixed') ?>">
 
-  <label class="item panelBar-widget__checkbox">
+  <label class="item">
     <input type="checkbox" <?php e($checked, 'checked="checked"') ?> name="panelbar[]" value="<?= $element ?>" />
 
     <div class="icons">
@@ -8,7 +8,7 @@
       <?= i('check-square-o') ?>
       <?= i('check-square') ?>
     </div>
-    
+
     <span class="name"><?= ucfirst($element) ?></span>
   </label>
 

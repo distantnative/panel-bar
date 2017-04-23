@@ -1,14 +1,14 @@
 
-var panelBarList = $('.panelBar-widget__list');
+var panelBarList = $('.panelBarView-elements');
 
 // =============================================
 //  Sortable
 // =============================================
 var sortable = Sortable.create(panelBarList[0], {
   forceFallback: true,
-  filter:        ".panelBar-widget--undraggable",
-  chosenClass:   "panelBar-widget__chosen",
-  ghostClass:    "panelBar-widget__ghost",
+  filter:        ".panelBarView-element--fixed",
+  chosenClass:   "panelBarView-element--chosen",
+  ghostClass:    "panelBarView-element--ghost",
   onUpdate:      setPanelBarElements,
 
 });
@@ -21,7 +21,7 @@ panelBarList.find('input').change(function(e) {
   var checkbox = input.parent();
   var item     = checkbox.parent();
 
-  item.toggleClass('panelBar-widget--undraggable');
+  item.toggleClass('panelBarView-element--fixed');
 
   var actives  = panelBarList.find(':checked').not(input);
   var insert   = actives.last().parent().parent();
@@ -37,9 +37,9 @@ panelBarList.find('input').change(function(e) {
 });
 
 function sortPanelBarElements() {
-  $(".panelBar-widget--undraggable").sort(function(a, b) {
+  $(".panelBarView-element--fixed").sort(function(a, b) {
     return ($(b).find('.name').text()) < ($(a).find('.name').text()) ? 1 : -1;
-  }).appendTo('.panelBar-widget__list');
+  }).appendTo('.panelBarView-elements');
 }
 
 // =============================================
@@ -59,7 +59,7 @@ panelBarList.find('.float > a').click(function(e) {
 // =============================================
 function setPanelBarElements() {
   var data = generatePanelBarConfig();
-  $.post(setPanelBarURL, data);
+  $.post(panelBarAPI + 'set', data);
 }
 
 function generatePanelBarConfig() {

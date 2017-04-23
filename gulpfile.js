@@ -39,6 +39,7 @@ gulp.task('css-elements', function() {
 gulp.task('css-widget', function() {
   return gulp.src([
       'widget/assets/scss/widget.scss',
+      'widget/assets/scss/view.scss',
     ])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
