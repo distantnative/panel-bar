@@ -32,7 +32,7 @@ foreach(dir::read($root) as $element) {
 //  Widget routes
 // =============================================
 $kirby->set('route', [
-  'pattern' => 'api/plugin/panel-bar-widget/set',
+  'pattern' => 'api/plugin/panel-bar/set',
   'action'  => function() {
     $elements = [];
 
@@ -51,7 +51,7 @@ $kirby->set('route', [
 ]);
 
 $kirby->set('route', [
-  'pattern' => 'api/plugin/panel-bar-widget/reset',
+  'pattern' => 'api/plugin/panel-bar/reset',
   'action'  => function() {
     $config = new \Kirby\panelBar\Config;
     return $config->clear();
