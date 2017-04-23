@@ -17,7 +17,6 @@ $panel-green: #8dad28;
 
   &-element {
     padding:    .35em 0;
-    font-size:  .9em;
     list-style: none;
 
     &:not(:last-child) {
@@ -44,7 +43,7 @@ $panel-green: #8dad28;
 
       .icons {
         position: absolute;
-        top:      0;
+        top:      1px;
         left:     0;
 
         > i {
