@@ -6,5 +6,5 @@
 <script>
   var panelBarAPI = "<?= $api ?>";
   <?= tpl::load($path . DS . 'js' . DS .  'Sortable.min.js') ?>
-  <?= tpl::load($path . DS . 'js' . DS .  'view.min.js') ?>
+  <?= tpl::load($path . DS . 'js' . DS .  'elements.min.js') ?>
 </script>
