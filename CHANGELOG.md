@@ -1,7 +1,7 @@
 # Changelog
 
-## [2.3.0](https://github.com/distantnative/panel-bar/releases/tag/2.3.0) (2017-04-?)
-:sparkles: Setting panel elements in a panel view instead of widget  
+## [2.3.0](https://github.com/distantnative/panel-bar/releases/tag/2.3.0) (2017-04-23)
+:sparkles: Setting panel elements: panel view instead of widget  
 
 
 ## [2.2.1](https://github.com/distantnative/panel-bar/releases/tag/2.2.1) (2017-04-21)
