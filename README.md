@@ -348,9 +348,9 @@ c::set('panelBar.position', 'bottom');
 ```
 
 ### Login Icon <a id="OptionLogin"></a>
-If the visitor is not logged-in to the panel, instead of the panelBar a sign-in icon is shown on the bottom-right of the page. To deactivate that icon include:
+If the visitor is not logged-in to the panel, instead of the panelBar a sign-in icon is shown on the bottom-right of the page. To activate that icon include:
 ```php
-c::set('panelBar.login', false);
+c::set('panelBar.login', true);
 ```
 
 ### Keyboard Shortcuts <a id="OptionKeyboard"></a>
