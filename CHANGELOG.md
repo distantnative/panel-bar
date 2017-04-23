@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.x.x](https://github.com/distantnative/panel-bar/releases/tag/2.x.x) (2017-05-x)
+:zap: Improved handling of custom element plugins  
+:truck: Moved files around  
+
+
 ## [2.3.0](https://github.com/distantnative/panel-bar/releases/tag/2.3.0) (2017-04-23)
 :sparkles: Setting panel elements: panel view instead of widget  
 

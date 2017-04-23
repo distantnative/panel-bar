@@ -25,18 +25,15 @@ class Elements {
 
   public function __construct($core, $args = []) {
     $this->core = $core;
-    $this->init(self::active());
+
+    foreach($this->active() as $element) {
+      $this->add($element);
+    }
   }
 
   //====================================
   //   Add elements
   //====================================
-  protected function init($elements) {
-    foreach($elements as $element) {
-      $this->add($element);
-    }
-  }
-
   protected function add($el) {
     if($path = kirby()->get('panelBar', $el)) {
       $nspace = 'Kirby\panelBar\\';
@@ -54,12 +51,8 @@ class Elements {
   //====================================
   //   Get elements
   //====================================
-  public static function all($withPath = false) {
-    $all = kirby()->get('panelBar');
-
-    return $withPath ? $all : array_map(function($e) {
-      return substr($e, strrpos($e, '/') + 1);
-    }, $all);
+  public static function all() {
+    return array_keys(kirby()->get('panelBar'));
   }
 
   public function active() {
