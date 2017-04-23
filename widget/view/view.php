@@ -1,10 +1,9 @@
 <div class="section">
 
   <h2 class="hgroup cf">
-    <span>
-      Configure <a href="<?php __(purl('plugin/panel-bar')) ?>">panelBar</a>
-    </span>
+    <span>Configure <a href="<?php __(purl('plugin/panel-bar')) ?>">panelBar</a></span>
   </h2>
+
 
   <div class="panelBarView-grid">
 
@@ -21,11 +20,11 @@
         </span>
       </h2>
 
-
       <?= $elements ?>
     </div>
 
-    
+    <?= $status ?>
+    <?= $settings ?>
 
   </div>
 

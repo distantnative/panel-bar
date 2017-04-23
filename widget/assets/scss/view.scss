@@ -105,12 +105,21 @@ $panel-green: #8dad28;
     &--chosen {
       background-color: $panel-green;
 
-      .handles { color: #627b0f; }
+      .handles { color: darken($panel-green, 10%); }
     }
     &--ghost  { opacity: .25; }
 
 
 
     &s { user-select: none; }
+  }
+
+  &-link {
+    display:    block;
+    margin-top: 1.2em;
+    color:      $panel-green;
+    font-size:  .8em;
+
+    &:hover { opacity: .6; }
   }
 }

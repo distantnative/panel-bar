@@ -11,11 +11,15 @@ class panelBarController extends Kirby\Panel\Controllers\Base {
     $bar = new panelBar;
 
     return $this->layout('app', [
-      'topbar'  => new Topbar('panel-bar', $bar),
-      'content' => $this->view('view/view', [
+      'topbar'     => new Topbar('panel-bar', $bar),
+      'content'    => $this->view('view/view', [
         'bar'      => $bar,
         'elements' => $this->elements($bar),
-        'assets' => $this->view('snippets/assets', [
+        'status'   => $this->view('snippets/status', [
+          'bar' => $bar
+        ]),
+        'settings' => $this->view('snippets/settings', []),
+        'assets'   => $this->view('snippets/assets', [
           'path' => dirname(__DIR__) . DS . 'assets',
           'api'  => $bar->url()
         ])

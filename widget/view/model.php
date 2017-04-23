@@ -3,6 +3,7 @@
 namespace Kirby\Panel\Models;
 
 use A;
+use Dir;
 
 class panelBar {
 
@@ -23,6 +24,14 @@ class panelBar {
 
   public function all() {
     return $this->all;
+  }
+
+  public function standard() {
+    return dir::read(dirname(dirname(__DIR__)) . DS . 'elements');
+  }
+
+  public function custom() {
+    return array_diff($this->all(), $this->standard());
   }
 
   public function element($name) {
