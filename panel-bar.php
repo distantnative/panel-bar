@@ -13,7 +13,7 @@ $kirby->set('snippet', 'plugin.panelBar',      $snippets . 'panelBar.php');
 $kirby->set('snippet', 'plugin.panelBar.hide', $snippets . 'hide.php');
 
 // =============================================
-//  Register widget & add view panel route
+//  Register panel view & add route
 // =============================================
 if(c::get('panelBar.widget', true)) {
   $kirby->set('widget', 'panel-bar', __DIR__ . '/view');

@@ -15,7 +15,7 @@
 
   <div class="controls">
     <span class="float" data-float="<?= $float ?>">
-      <a href="#" data-float="left" title="Make element float left"><?= i('align-left') ?></a>&nbsp;&nbsp;&nbsp;<a href="#" data-float="right" title="Make element float right"><?= i('align-right') ?></a>
+      <a href="#" data-float="left" title="<?= l('panelBar.view.elements.float.left') ?>"><?= i('align-left') ?></a>&nbsp;&nbsp;&nbsp;<a href="#" data-float="right" title="<?= l('panelBar.view.elements.float.right') ?>"><?= i('align-right') ?></a>
     </span>
     <span class="handles"><?= i('reorder') ?></span>
   </div>

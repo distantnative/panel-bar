@@ -35,6 +35,8 @@ class panelBarController extends Kirby\Panel\Controllers\Base {
   }
 
   public function view($path, $data = []) {
+    f::load(dirname(dirname(__DIR__)) . DS . 'core' . DS . 'translations' . DS . panel()->user()->language() . '.php');
+
     $view = new View($path, $data);
     $view->_root = dirname(__DIR__);
     return $view;
