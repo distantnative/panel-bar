@@ -12,7 +12,7 @@ class panelBarController extends Kirby\Panel\Controllers\Base {
 
     return $this->layout('app', [
       'topbar'     => new Topbar('panel-bar', $bar),
-      'content'    => $this->view('view/view', [
+      'content'    => $this->view('src/view', [
         'bar'      => $bar,
         'elements' => $this->elements($bar),
         'status'   => $this->view('snippets/status', [
