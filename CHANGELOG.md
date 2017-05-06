@@ -2,6 +2,7 @@
 
 ## [2.x.x](https://github.com/distantnative/panel-bar/releases/tag/2.x.x) (2017-05-x)
 :zap: Improved handling of custom element plugins  
+:lock: Restricted API routes to users with panel access  
 :truck: Moved files around  
 
 

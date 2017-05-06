@@ -34,18 +34,20 @@ foreach(dir::read($root) as $element) {
 $kirby->set('route', [
   'pattern' => 'api/plugin/panel-bar/set',
   'action'  => function() {
-    $elements = [];
+    if($user = site()->user() and $user->hasPanelAccess()) {
+      $elements = [];
 
-    foreach(get('elements') as $element) {
-      $elements[$element['element']] = [];
+      foreach(get('elements') as $element) {
+        $elements[$element['element']] = [];
 
-      if($element['float']) {
-        $elements[$element['element']]['float'] = $element['float'];
+        if($element['float']) {
+          $elements[$element['element']]['float'] = $element['float'];
+        }
       }
-    }
 
-    $config = new \Kirby\panelBar\Config;
-    return $config->set($elements);
+      $config = new \Kirby\panelBar\Config;
+      return $config->set($elements);
+    }
   },
   'method' => 'POST'
 ]);
@@ -53,8 +55,10 @@ $kirby->set('route', [
 $kirby->set('route', [
   'pattern' => 'api/plugin/panel-bar/reset',
   'action'  => function() {
-    $config = new \Kirby\panelBar\Config;
-    return $config->clear();
+    if($user = site()->user() and $user->hasPanelAccess()) {
+      $config = new \Kirby\panelBar\Config;
+      return $config->clear();
+    }
   },
   'method' => 'POST'
 ]);
