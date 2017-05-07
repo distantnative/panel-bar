@@ -4,6 +4,7 @@
 :zap: Improved handling of custom element plugins  
 :globe_with_meridians: Panel view translatable  
 :lock: Restricted API routes to users with panel access  
+:alien: Improved panel instance imitation  
 :truck: Moved files around  
 
 

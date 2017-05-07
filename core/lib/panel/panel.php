@@ -1,8 +1,9 @@
 <?php
 
-namespace Kirby;
+// Changes made from original panel.php
+// - rename namespace to Kirby\Panel
 
-// create the panel object
+namespace Kirby\Panel;
 
 use A;
 use C;
@@ -27,6 +28,7 @@ use Tpl;
 use Url;
 
 use Kirby\Panel\Event;
+use Kirby\Panel\ErrorHandling;
 use Kirby\Panel\Installer;
 use Kirby\Panel\Form;
 use Kirby\Panel\Models\Site;
