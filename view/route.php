@@ -6,8 +6,8 @@ if(function_exists('panel') && $panel = panel()) {
     [
       'pattern' => 'plugin/panel-bar',
       'action'  => function() {
-        require 'view/controller.php';
-        require 'view/model.php';
+        require 'src/controller.php';
+        require 'src/model.php';
 
         $controller = new panelBarController;
         echo $controller->config();

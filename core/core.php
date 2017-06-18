@@ -9,14 +9,14 @@ use Tpl;
 
 class Core extends Translations {
 
-  public static $version = '2.3.0';
+  public static $version = '2.3.1';
 
   public    $root;
   protected $elements;
 
   public function __construct($args = []) {
     $this->config = new Config;
-    $this->root   = dirname(__DIR__);
+    $this->root   = __DIR__;
     $this->page   = page();
     $this->panel  = require('lib/panel/integrate.php');
 

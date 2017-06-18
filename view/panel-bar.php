@@ -1,11 +1,13 @@
 <?php
 
+f::load(dirname(__DIR__) . DS . 'core' . DS . 'translations' . DS . panel()->user()->language() . '.php');
+
 return [
   'title' => 'panelBar',
   'options' => [
     [
-      'text' => 'Configure',
-      'icon' => 'cog',
+      'text' => l('panelBar.view.configure'),
+      'icon' => 'cogs',
       'link' => purl('plugin/panel-bar')
     ]
   ],

@@ -1,6 +1,13 @@
 <?php
 
-// load the panel bootstrapper
+// Changes made from original bootstrap.php
+// - replace load function root parameter with: $root . DS . 'app' . DS . 'src'
+// - remove panel.php from load array
+// - modify class alias to `Kirby\Panel`
+// - change helpers.php include path to: $root . DS . 'app' . DS . 'helpers.php'
+
+if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
+
 load(array(
   // global stuff
   'kirby\\panel\\login'                            => 'panel' . DS . 'login.php',
@@ -73,5 +80,6 @@ load(array(
 
 // some fallbacks for possible namespace issues and convenience
 class_alias('Kirby\\Panel\\Form\\FieldOptions', 'FieldOptions');
+class_alias('Kirby\\Panel\\Panel', 'Kirby\Panel');
 
 include($root . DS . 'app' . DS . 'helpers.php');

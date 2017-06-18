@@ -40,7 +40,7 @@ class Element extends Translations {
     if($this->root) {
       return $this->root;
     } else {
-      return $this->root = $this->core->dir() . DS . 'elements' . DS . $this;
+      return $this->root = dirname($this->core->dir()) . DS . 'elements' . DS . $this;
     }
   }
 

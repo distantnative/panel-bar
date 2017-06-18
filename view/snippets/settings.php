@@ -1,6 +1,6 @@
 <div class="section white dashboard-section">
   <h2 class="hgroup hgroup-compressed hgroup-single-line cf">
-    <span class="hgroup-title">Settings</span>
+    <span class="hgroup-title"><?= l('panelBar.view.settings') ?></span>
   </h2>
 
   <ul class="nav nav-list sidebar-list">
@@ -20,5 +20,5 @@
     </li>
   </ul>
 
-  <a href="https://github.com/distantnative/panel-bar" class="panelBarView-link">Documentation on GitHub</a>
+  <a href="https://github.com/distantnative/panel-bar" class="panelBarView-link"><?= l('panelBar.view.docs') ?></a>
 </div>

@@ -2,7 +2,6 @@
 
 namespace Kirby\Panel\Models;
 
-use A;
 use Dir;
 
 class panelBar {
@@ -15,7 +14,7 @@ class panelBar {
   }
 
   public function elements() {
-    return a::merge($this->active(), array_diff($this->all(), $this->active()));
+    return array_merge($this->active(), array_diff($this->all(), $this->active()));
   }
 
   public function active() {

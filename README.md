@@ -148,7 +148,9 @@ Class naming is crucial: it consists of the name of the element (like the folder
 
 You can register the custom element to be used by the panelBar:
 ```php
-kibry()->set('panelBar', 'customElement', 'path/to/element/folder');
+if(kirby()->plugin('panel-bar')) {
+  kibry()->set('panelBar', 'customElement', 'path/to/element/folder');
+}
 ```
 
 ## Element Patterns <a id="Patterns"></a>

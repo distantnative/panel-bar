@@ -4,7 +4,7 @@
   "author":      "Nico Hoffmann <nico@getkirby.com>",
   "type":        "kirby-plugin",
   "license":     "MIT",
-  "version":     "2.3.0",
+  "version":     "2.3.1",
   "repository": {
     "url": "https://github.com/distantnative/panel-bar"
   },
