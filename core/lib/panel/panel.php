@@ -2,6 +2,7 @@
 
 // Changes made from original panel.php
 // - rename namespace to Kirby\Panel
+// - comment outline 282 and 285
 
 namespace Kirby\Panel;
 
@@ -279,10 +280,10 @@ class Panel {
     }
 
     // set the path and lang for the original site object
-    $this->kirby->site()->visit('/', $language);
+    // $this->kirby->site()->visit('/', $language);
 
     // set the path and lang for the panel site object
-    $this->site->visit('/', $language);
+    // $this->site->visit('/', $language);
 
     // store the language code
     if($this->site->multilang()) {

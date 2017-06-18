@@ -1,10 +1,11 @@
 # Changelog
 
-## [2.x.x](https://github.com/distantnative/panel-bar/releases/tag/2.x.x) (2017-05-x)
+## [2.3.1](https://github.com/distantnative/panel-bar/releases/tag/2.3.1) (2017-05-18)
 :zap: Improved handling of custom element plugins  
 :globe_with_meridians: Panel view translatable  
 :lock: Restricted API routes to users with panel access  
-:alien: Improved panel instance imitation  
+:alien: Improved panel instance imitation 
+:bug: prevent reset of $site to home by panel instance imitation   
 :truck: Moved files around  
 
 
