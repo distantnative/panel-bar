@@ -1,10 +1,14 @@
 # Changelog
 
+## [2.3.2](https://github.com/distantnative/panel-bar/releases/tag/2.3.2) (2017-08-06)
+:bug: Fixed display of non-images in File element  
+
+
 ## [2.3.1](https://github.com/distantnative/panel-bar/releases/tag/2.3.1) (2017-05-18)
 :zap: Improved handling of custom element plugins  
 :globe_with_meridians: Panel view translatable  
 :lock: Restricted API routes to users with panel access  
-:alien: Improved panel instance imitation 
+:alien: Improved panel instance imitation
 :bug: prevent reset of $site to home by panel instance imitation   
 :truck: Moved files around  
 
@@ -24,7 +28,7 @@
 :sparkles: Set element float via panel widget
 :lipstick: Panel widget: now all pretty
 :balloon: Translations now follow the panel user's language  
-:balloon: Translations now get passed {$variables} to be more flexible 
+:balloon: Translations now get passed {$variables} to be more flexible
 :poop: Dropped RTL support for the moment   
 
 ## [2.1.2](https://github.com/distantnative/panel-bar/releases/tag/2.1.2) (2017-03-28)
@@ -87,7 +91,7 @@
 - Internal: Renamed toolkit `pb::` to `tools::`, redundant namespace references removed
 
 ## Version 0.7
-- Feature: Added Filelist and Imagelist standard element 
+- Feature: Added Filelist and Imagelist standard element
 - Feature: Added Index standard element
 - Feature: Added Toggle element to default set of elements
 - Feature: Scrollable drop elements (dropdown, textbox, fileviewer etc.)

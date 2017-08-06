@@ -1,9 +1,9 @@
 <div class="panelBar-files__list panelBar-mDrop">
-  <?php foreach($items as $item) : ?>
+  <?php foreach ($items as $item) : ?>
     <a href="<?= $item['url'] ?>" class="panelBar-files__item panelBar-files--<?= $item['type'] ?>" title="<?= $item['label'].'.'.$item['extension'] ?>">
 
       <div class="panelBar-files__preview">
-        <div class="panelBar-files__image" <?php e($item['type'] === 'image' and isset($item['image']), 'style="background-image:url(' . $item['image'] . ');"') ?>>
+        <div class="panelBar-files__image" <?php if($item['type'] === 'image' && isset($item['image'])) { echo 'style="background-image:url(' . $item['image'] . ');"'; } ?>>
           <?php if($item['type'] !== 'image' and isset($item['icon'])) : ?>
             <div class="panelBar-files__icon"><?= $item['icon'] ?></div>
           <?php endif ?>
