@@ -1,4 +1,4 @@
-![panelBar for Kirby CMS](http://distantnative.com/remote/github/kirby-panelbar.png)  
+# panelBar for Kirby 2 CMS  
 
 [![Release](https://img.shields.io/github/release/distantnative/panel-bar.svg)](https://github.com/distantnative/panel-bar/releases)  [![Issues](https://img.shields.io/github/issues/distantnative/panel-bar.svg)](https://github.com/distantnative/panel-bar/issues) ![Kirby Version](https://img.shields.io/badge/Kirby-2.4.1%2B-red.svg)
 
@@ -7,8 +7,7 @@ panelBar includes a toolbar on top of your site which gives you direct access to
 
 *Requires PHP 5.5+ and Kirby 2.4.1 or higher*
 
-
-![panelBar - Images element](https://nhoffmann.com/remote/github/panel-bar/images-element.png)  
+**With the release of [Kirby 3](https://getkirby.com), this plugin has been archived and will not be maintained.**
 
 
 &nbsp;  
